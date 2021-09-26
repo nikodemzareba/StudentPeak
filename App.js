@@ -12,6 +12,12 @@ import Welcome from './components/authentication/Welcome';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';
 
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleWare} from 'redux'
+import rootReducer from './redux/reducers'
+import thunk from 'rdux-thunk'
+const store = createStore(rootReducer, applyMiddleWare(thunk))
+
 // Firebase connection -- database
 // *** Later build orchestration layer for database protection. 
 const firebaseConfig = {

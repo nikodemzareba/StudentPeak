@@ -11,12 +11,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './components/authentication/Welcome';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';
+import Main from './components/Main';
 
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleWare} from 'redux'
+import { createStore, applyMiddleware} from 'redux'
 import rootReducer from './redux/reducers'
-import thunk from 'rdux-thunk'
-const store = createStore(rootReducer, applyMiddleWare(thunk))
+import thunk from 'redux-thunk'
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 // Firebase connection -- database
 // *** Later build orchestration layer for database protection. 
@@ -78,15 +79,16 @@ export class App extends Component {
         <Stack.Navigator initialRouteName = "Welcome">
           <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
           <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
       </NavigationContainer>
       )
     }
 
     return(
-      <View style= {{flex:1, justifyContent: 'center'}}>
-        <Text>User is logged in</Text>
-      </View>
+      <Provider store= {store}>
+      <Main/>
+      </Provider>
     )
   }
 }

@@ -11,7 +11,7 @@ export function fetchUser(){
             if(snapshot.exists){
                 dispatchEvent({type: USER_STATE_CHANGE, currentUser: snapshot.data()  })
             }else{
-                console.log('Error: User is not in the database')
+                console.log('User is not in the database: new account has been formed')
             }
 
         })

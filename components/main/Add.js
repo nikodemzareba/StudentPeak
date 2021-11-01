@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-n
 import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 
-export default function App() {
+export default function Add({navigation}) {
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);

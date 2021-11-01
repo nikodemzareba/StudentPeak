@@ -15,7 +15,7 @@ export default function App() {
       
         <View style = {{
           backgroundColor: "black",
-          flex: 1,
+          flex: 2,
           width: "100%",
           height: "100%",
           position: "absolute",

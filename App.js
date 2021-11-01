@@ -1,102 +1,152 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Component } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Alert, Image, Button } from 'react-native';
+import SafeAreaViewAndroid from "./SafeAreaViewAndroid";
 
-import { View, Text } from 'react-native'
-import firebase from 'firebase';
+export default function App() {
+  return (
+      <View 
+      style = {{
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "flex-start",
+      }}
+      >
+      
+        <View style = {{
+          backgroundColor: "black",
+          flex: 1,
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+        }}
+          />
+          <Image 
+        source = {require('./assets/ProfilePicture.png')}
+        style = {{
+        width: 100,
+        height: 100,
+        left: 50,
+        top: 30,
+        borderRadius: 150 / 2,
+        borderColor: "white",
+        borderWidth: 3,
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+        }}
+        />
+         
 
-import Welcome from './components/authentication/Welcome';
-import Register from './components/authentication/Register';
-import Login from './components/authentication/Login';
-import Main from './components/Main';
+          <Image 
+          source= {{
+        width: 100,
+        height: 150,
+        uri: "https://picsum.photos/200/300",
 
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware} from 'redux'
-import rootReducer from './redux/reducers'
-import thunk from 'redux-thunk'
-const store = createStore(rootReducer, applyMiddleware(thunk))
+        }}
+        style = {{
+          top:250,
+          position: "absolute",
+          borderColor: "white",
+          borderWidth: 3,
+        }}
+        />
+       
+          <Image 
+          source= {{
+        width: 100,
+        height: 150,
+        uri: "https://picsum.photos/200/300",
 
-// Firebase connection -- database
-// *** Later build orchestration layer for database protection. 
-const firebaseConfig = {
-  apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
-  authDomain: "studentpeak-8b306.firebaseapp.com",
-  projectId: "studentpeak-8b306",
-  storageBucket: "studentpeak-8b306.appspot.com",
-  messagingSenderId: "166397144012",
-  appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
-  measurementId: "G-4GN727QJLZ"
-};
+        }}
+        style = {{
+          top:250,
+          left: 150,
+          position: "absolute",
+          borderColor: "white",
+          borderWidth: 3,
+        }}
+        />
+          <Image 
+          source= {{
+        width: 100,
+        height: 150,
+        uri: "https://picsum.photos/200/300",
 
-// Prevents running an instance of firebase = Avoids crash
-if (firebase.apps.length === 0) {
-  firebase.initializeApp(firebaseConfig)
-}
-// Creates Route. Landing Page -> Login -> Register page
-const Stack = createStackNavigator();
+        }}
+        style = {{
+          top:250,
+          left: 290,
+          position: "absolute",
+          borderColor: "white",
+          borderWidth: 3,
+        }}
+        />
+          <Image 
+          source= {{
+        width: 100,
+        height: 150,
+        uri: "https://picsum.photos/200/300",
 
-export class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loaded: false,
-    }
-  }
+        }}
+        style = {{
+          top:450,
+          position: "absolute",
+          borderColor: "white",
+          borderWidth: 3,
+        }}
+        />
+       
+          <Image 
+          source= {{
+        width: 100,
+        height: 150,
+        uri: "https://picsum.photos/200/300",
 
-  componentDidMount(){
-    firebase.auth().onAuthStateChanged((user) => {
-      if(!user){
-        this.setState({
-          loggedIn: false,
-          loaded: true,
-        })
-      }else{
-      this.setState({
-        loggedIn: true,
-        loaded: true,
-      })
-      }
-    })
-  }
+        }}
+        style = {{
+          top:450,
+          left: 150,
+          position: "absolute",
+          borderColor: "white",
+          borderWidth: 3,
+        }}
+        />
+          <Image 
+          source= {{
+        width: 100,
+        height: 150,
+        uri: "https://picsum.photos/200/300",
+
+        }}
+        style = {{
+          top:450,
+          left: 290,
+          position: "absolute",
+          borderColor: "white",
+          borderWidth: 3,
+        }}
+        />
+       
+        
+        <Text style = {{fontSize: 20, fontWeight: "bold", padding: 10, color: "white", left: 75, top: 25}}>Mike Wazowski</Text>
+        <Text style = {{fontSize: 15, fontWeight: "bold", padding: 10, color: "white", right: 85, top: 75}}>Followers: {"\n"}    1.2m</Text>
+        <Text style = {{fontSize: 15, fontWeight: "bold", padding: 10, color: "white", right: 85, top: 75}}>Following: {"\n"}        1</Text>
+        <Text style = {{fontSize: 15, fontWeight: "bold", padding: 10, color: "white", right: 250, top: 140, borderStyle: "solid", borderColor: "white", borderWidth: 1, borderRadius: 50}}>Edit Profile</Text>
 
 
-  render() {
-    const {loggedIn, loaded} = this.state;
-    if(!loaded){
-      return(
-        <View style= {{flex: 1, justifyContent: 'center'}}>
-          <Text>Loading</Text>
-        </View>
-      )
-    }
-
-    if(!loggedIn){
-      return (
-        <NavigationContainer>
-        <Stack.Navigator initialRouteName = "Welcome">
-          <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Login" component={Login} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      )
-    }
-
-    return(
-      <Provider store= {store}>
-      <Main/>
-      </Provider>
-    )
-  }
-}
+      </View>
     
+  );
 
-export default App
+  const containerStyle = {backgroundColor: "orange"};
+}
 
-
-
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 

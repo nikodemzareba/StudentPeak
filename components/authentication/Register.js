@@ -11,15 +11,42 @@ export class Register extends Component {
         this.onSignUp = this.onSignUp.bind(this)
     }
 
+    //TODO: dob should be a calendar
+    //TODO: gender should be at least 4: Male, Female, Other, Prefer not to say
+    //TODO: courses should be all courses presented by UKC
+    //TODO: yearofstudy should be 4 options based on UG(1-4) and PG(1)
+    //TODO: stage should be 2 options Undergraduate and Postgraduate
+    //TODO: accomodation list of colleges depending on location(Canterbury or Medway)
+    //TODO: nationality list of all nationalities
+    //TODO: placeofstudy should be 2 options Medway and Canterbury
     onSignUp(){
         const  {email,
                 password,
                 name,
+                surname,
+                dob,
+                gender,
+                anonynoususername,
+                username,
+                course,
+                yearofstudy,
+                stage,
                 bio,
                 topics,
                 friends,
                 photos,
-                messages
+                messages,
+                accomodation,
+                stayaround, //same as accomodation
+                nationality,
+                placeofstudy,
+                followers,
+                following,
+                videos,
+                likes,
+                societies,
+                profileimage
+
                 } = this.state;
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -27,13 +54,32 @@ export class Register extends Component {
             firebase.firestore().collection("users")
             .doc(firebase.auth().currentUser.uid)
             .set({
-                name,
                 email,
+                password,
+                name,
+                surname,
+                dob,
+                gender,
+                anonynoususername,
+                username,
+                course,
+                yearofstudy,
+                stage,
                 bio,
                 topics,
                 friends,
                 photos,
-                messages
+                messages,
+                accomodation,
+                stayaround, //same as accomodation
+                nationality,
+                placeofstudy,
+                followers,
+                following,
+                videos,
+                likes,
+                societies,
+                profileimage
             },)
             console.log(result)
         })

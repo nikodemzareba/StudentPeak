@@ -87,7 +87,11 @@ export class App extends Component {
 
     return(
       <Provider store= {store}>
-      <Main/>
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName = "Main">
+            <Stack.Screen name="Main " component={Main} options={{headerShown: false}}/>
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     )
   }

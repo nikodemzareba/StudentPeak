@@ -12,6 +12,7 @@ import Welcome from './components/authentication/Welcome';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';
 import Main from './components/Main';
+import Profile from './components/main/Profile';
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware} from 'redux'
@@ -80,6 +81,7 @@ export class App extends Component {
           <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Profile Test" component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
       )

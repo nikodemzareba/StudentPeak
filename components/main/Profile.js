@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Alert, Image, Button } from 'react-native';
-import SafeAreaViewAndroid from "./SafeAreaViewAndroid";
 
 export default function App() {
     return (
@@ -22,7 +21,7 @@ export default function App() {
             }}
             />
             <Image
-                source = {require('./assets/ProfilePicture.png')}
+                source = {require('../../assets/ProfilePicture.png')} 
                 style = {{
                     width: 100,
                     height: 100,

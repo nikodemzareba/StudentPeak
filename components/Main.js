@@ -3,11 +3,12 @@ import { View, Text  } from 'react-native'
 
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
-import { fetchUser } from "../redux/actions/index";
+import { fetchUser, fetchUserPosts } from "../redux/actions/index";
 
 export class Main extends Component{
     componentDidMount(){
       this.props.fetchUser();
+      this.props.fetchUserPosts();
     }
     render(){
         return(
@@ -18,6 +19,6 @@ export class Main extends Component{
     }
 }
 
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts}, dispatch)
 
 export default connect(null, mapDispatchProps)(Main);

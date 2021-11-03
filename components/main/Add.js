@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import { View, Text } from 'react-native'
-
-export default function Add() {
-    return (
-        <View>
-            {/*Shows you what page you're on */}
-            <Text>Camera</Text>
-        </View>
-    )
-}
-=======
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-native';
 import { Camera } from 'expo-camera';
@@ -102,4 +89,3 @@ const styles = StyleSheet.create({
     aspectRatio: 1
    }
 })
->>>>>>> 16010f2b7cf632e70a085a0f988afbe860c1eb9d

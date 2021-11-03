@@ -11,8 +11,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './components/authentication/Welcome';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';
-import AddScreen from './components/authentication/Add';
-import SaveScreen from './components/authentication/Save';
+import AddScreen from './components/main/Add';
+import SaveScreen from './components/main/Save';
 import Main from './components/Main';
 
 import { Provider } from 'react-redux'

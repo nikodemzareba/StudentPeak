@@ -11,6 +11,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './components/authentication/Welcome';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';
+import AddScreen from './components/authentication/Add';
+import SaveScreen from './components/authentication/Save';
 import Main from './components/Main';
 
 import { Provider } from 'react-redux'
@@ -80,6 +82,8 @@ export class App extends Component {
           <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Add" component={AddScreen} navigation = {this.props.navigation} />
+          <Stack.Screen name="Save" component={SaveScreen} navigation = {this.props.navigation} />
         </Stack.Navigator>
       </NavigationContainer>
       )

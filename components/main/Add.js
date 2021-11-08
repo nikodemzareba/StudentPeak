@@ -3,29 +3,40 @@ import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-n
 import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 
+
 export default function Add({navigation}) {
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
 
   useEffect(() => { // checks if user has set permissions to use the camera
     (async () => {
-      const cameraStatus = await Camera.requestPermissionsAsync();
-      setHasCameraPermission(cameraStatus.status === 'granted');
+      const hasCameraPermission = await Camera.requestPermissionsAsync();
 
-      const  galleryStatus  = await ImagePicker.requestCameraRollPermissionAsync();
-      hasCameraPermission(galleryStatus.status === 'granted');
+      setHasCameraPermission(hasCameraPermission.status === 'granted');
 
-      
+      const  galleryStatus  = await ImagePicker.getMediaLibraryPermissionsAsync();
+      console.log(galleryStatus.status);
+
+     setHasGalleryPermission(galleryStatus.status === 'granted');
+
+        if (
+            galleryStatus.status !== 'granted' &&
+            hasCameraPermission.status !== 'granted'
+        ) {
+            alert('Permission for media access needed.');
+        }
+
     })();
   }, []);
 
   const takePicture = async () => {
       if(camera){
           const data = await camera.takePictureAsync(null);
-          //console.log(data.uri)
+          console.log(data.uri)
           setImage(data.uri)
       }
   }
@@ -45,21 +56,24 @@ export default function Add({navigation}) {
     }
   };
 
+  
+  //What does this section do?
   if (hasCameraPermission === null || hasGalleryPermission === false) {
     return <View />;
   }
   if (hasCameraPermission === false || hasGalleryPermission === false) {
     return <Text>No access to camera</Text>;
   }
+  
   return (
-    <View style={{flex : 1}}> 
-        <View style={styles.cameraContainer}> 
-            <Camera 
+    <View style={{flex : 1}}>
+        <View style={styles.cameraContainer}>
+            <Camera
                 ref = {ref => setCamera(ref)}
                 style={styles.fixedRatio}
                 type={type}
                 ratio ={'1:1'} />
-        </View> 
+        </View>
 
         <Button
             title = "Flip Image"
@@ -69,11 +83,11 @@ export default function Add({navigation}) {
                     ? Camera.Constants.Type.front
                     : Camera.Constants.Type.back
                 );
-            }}>      
+            }}>
         </Button>
-        <Button title="Take Picture" onPress ={() => takePicture()}/> 
-        <Button title="Pick Image From Gallery" onPress ={() => pickImage()}/> 
-        <Button title="Save" onPress ={() => navigation.navigate('Save', {image})}/> 
+        <Button title="Take Picture" onPress ={() => takePicture()}/>
+        <Button title="Pick Image From Gallery" onPress ={() => pickImage()}/>
+        <Button title="Save" onPress ={() => navigation.navigate('Save', {image})}/>
         {image && <Image source = {{uri:image}} style = {{flex: 1}} />}  {/* Displays image taken below  */}
     </View>
   );
@@ -81,7 +95,7 @@ export default function Add({navigation}) {
 
 const styles = StyleSheet.create({
    cameraContainer: {
-       flex:1, 
+       flex:1,
        flexDirection: 'row'
    },
    fixedRatio:{

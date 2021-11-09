@@ -1,53 +1,242 @@
-import React from 'react';
-import { Component } from 'react';
-import { View, Button, TextInput } from 'react-native';
+import React from 'react'
+import { Component, useState } from 'react'
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native'
+
+import SwitchSelector from 'react-native-switch-selector'
+import { SimpleLineIcons } from '@expo/vector-icons'; 
 
 import firebase from 'firebase'
-import "firebase/firestore";
+import 'firebase/firestore'
 
-export class Login extends Component {
-    constructor(props){
-    super (props);
-    
-    this.state = {
-        email: '',
-        password: ''
-       }
-       this.onLogin = this.onLogin.bind(this)
-    }
+const Login = ({navigation}) => {
+  function navigate(){
+      /* 
+      Add validation with 
+      database and send user to profile.
+      */
+      navigation.navigate('Welcome'); 
+  }
 
-    onLogin(){
-        const { email, password} = this.state;
-        firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((result) => {
-            console.log(result)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }
+    return (
+      <View style={styles.container}>
+        <View >
+        <SimpleLineIcons style={styles.icon} name="arrow-left" size={20} color="white" />
+        </View>
+        <View>
+          <Text style={styles.logo}>StudentPeak</Text>
+        </View>
+        <View>
+          <Text style={styles.etextView}>Email address</Text>
+        </View>
+        <View style={styles.emailView}>
+          <TextInput
+            style={styles.inputText}
+            placeholder="Email address*"
+            placeholderTextColor="black"
+            //onChangeText={(text) => this.setState({ email: text })}
+          />
+        </View>
+        <View>
+          <Text style={styles.ptextView}>Password</Text>
+        </View>
+        <View style={styles.passView}>
+          <TextInput
+            secureTextEntry
+            style={styles.inputText}
+            placeholder="Password*"
+            placeholderTextColor="black"
+            //onChangeText={(text) => this.setState({ password: text })}
+          />
+        </View>
+        <TouchableOpacity>
+          <Text style={styles.forgot}>Forgot your password?</Text>
+        </TouchableOpacity>
 
-    render() {
-        return (
-            <View>
-                <TextInput
-                    placeholder="email"
-                    onChangeText={(email) => this.setState({email})}
-                />
+        <View>
+          <Text style={styles.stayLogged}>Stay Logged in?</Text>
+          <SwitchSelector
+            textStyle={{ fontFamily: 'Montserrat' }}
+            selectedTextStyle={{ fontFamily: 'Montserrat' }}
+            initial={0}
+            //onPress={(value) => this.setState({ signIn: value })}
+            textColor="black" //'#7a44cf'
+            fontSize={20}
+            selectedColor="white"
+            buttonColor="black"
+            borderColor="white"
+            hasPadding
+            options={[
+              { label: ' YES ', value: 'y' }, 
+              { label: ' NO ', value: 'n' }, 
+            ]}
+            testID="signIn-switch-selector"
+            accessibilityLabel="signIn-switch-selector"
+          />
+        </View>
 
-                <TextInput
-                    placeholder="password"
-                    secureTextEntry={true} 
-                    onChangeText={(password) => this.setState({password})}
-                />
-                <Button
-                  onPress={() => this.onLogin()}
-                  title="Sign Up"
-                />
-            </View>
-        )
-    }
-}
+        <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
+          <Text style={styles.loginText}>LOGIN</Text>
+        </TouchableOpacity>
 
+        <TouchableOpacity>
+          <Text style={styles.signText}>Don't have an account? Signup</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    marginRight: 300,
+    marginBottom: 40,
+    height: 20,
+  },
+  logo: {
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
+    fontSize: 40,
+    color: 'white',
+    marginTop: 10,
+    marginBottom: 70,
+  },
+  emailView: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 20,
+    height: 50,
+    marginBottom: 30,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  passView: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 20,
+    height: 50,
+    marginBottom: 10,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  inputText: {
+    height: 50,
+    color: 'black',
+    fontFamily: 'Montserrat',
+  },
+  forgot: {
+    color: 'white',
+    fontSize: 11,
+    fontFamily: 'Montserrat',
+    marginBottom: 30,
+    marginLeft: 150,
+  },
+  loginBtn: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 25,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+    marginBottom: 30,
+  },
+  loginText: {
+    color: 'black',
+    fontFamily: 'Montserrat',
+  },
+  passwordText: {
+    color: 'white',
+    fontFamily: 'Montserrat',
+    borderRadius: 20,
+  },
+  etextView: {
+    height: 30,
+    marginRight: 160,
+    fontSize: 20,
+    color: 'white',
+    fontFamily: 'Montserrat',
+  },
+  ptextView: {
+    height: 30,
+    marginRight: 200,
+    fontSize: 20,
+    color: 'white',
+    fontFamily: 'Montserrat',
+  },
+  signText: {
+    marginTop: 10,
+    color: 'white',
+    fontFamily: 'Montserrat',
+  },
+  buttonText: {
+    color: 'white',
+    fontFamily: 'Montserrat',
+  },
+  stayLogged: {
+    color: 'white',
+    fontFamily: 'Montserrat',
+    textAlign: 'center',
+    fontSize: 15,
+    marginBottom: 20,
+  },
+})
 
 export default Login
+
+// export class Login extends Component {
+//     constructor(props){
+//     super (props);
+
+//     this.state = {
+//         email: '',
+//         password: ''
+//        }
+//        this.onLogin = this.onLogin.bind(this)
+//     }
+
+//     onLogin(){
+//         const { email, password} = this.state;
+//         firebase.auth().signInWithEmailAndPassword(email, password)
+//         .then((result) => {
+//             console.log(result)
+//         })
+//         .catch((error) => {
+//             console.log(error)
+//         })
+//     }
+
+//     render() {
+//         return (
+//             <View>
+//                 <TextInput
+//                     placeholder="email"
+//                     onChangeText={(email) => this.setState({email})}
+//                 />
+
+//                 <TextInput
+//                     placeholder="password"
+//                     secureTextEntry={true}
+//                     onChangeText={(password) => this.setState({password})}
+//                 />
+//                 <Button
+//                   onPress={() => this.onLogin()}
+//                   title="Sign Up"
+//                 />
+//             </View>
+//         )
+//     }
+// }
+
+// export default Login

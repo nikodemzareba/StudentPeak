@@ -25,9 +25,9 @@ const Login = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-        <View >
+        <TouchableOpacity onPress={() => navigation.goBack()}>
         <SimpleLineIcons style={styles.icon} name="arrow-left" size={20} color="white" />
-        </View>
+        </TouchableOpacity>
         <View>
           <Text style={styles.logo}>StudentPeak</Text>
         </View>

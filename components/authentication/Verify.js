@@ -6,71 +6,70 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Picker,
 } from 'react-native'
 
-
-import { SimpleLineIcons } from '@expo/vector-icons'; 
+import { SimpleLineIcons } from '@expo/vector-icons'
 
 import firebase from 'firebase'
 import 'firebase/firestore'
 
-const Verify = ({navigation}) => {
-  function navigate(){
-      /* 
+const Verify = ({ navigation }) => {
+  function navigate() {
+    /* 
       Add validation with 
       database and send user to profile.
       */
-      navigation.navigate('Login'); 
+    navigation.navigate('Login')
   }
-
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-        <SimpleLineIcons style={styles.icon} name="arrow-left" size={20} color="white" />
-        </TouchableOpacity>
-        <View>
-          <Text style={styles.logo}>StudentPeak</Text>
-        </View>
-        <View>
-          <Text style={styles.createText}>Student Status</Text>
-        </View>
-        <View>
-          <Text style={styles.etextView}>Student Email</Text>
-        </View>
-        <View style={styles.emailView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="Email address*"
-            placeholderTextColor="black"
-            //onChangeText={(text) => this.setState({ email: text })}
-          />
-        </View>
-        <View>
-          <Text style={styles.ptextView}>Place of Study</Text>
-        </View>
-        <View style={styles.passView}>
-          <TextInput
-            secureTextEntry
-            style={styles.inputText}
-            placeholder="University name"
-            placeholderTextColor="black"
-            //onChangeText={(text) => this.setState({ password: text })}
-          />
-        </View>
-        
-     
-
-      
-
-        <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
-          <Text style={styles.loginText}>Verify</Text>
-        </TouchableOpacity>
-
-        
+  const [selectedValue, setSelectedValue] = useState("University of Kent");
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <SimpleLineIcons
+          style={styles.icon}
+          name="arrow-left"
+          size={20}
+          color="white"
+        />
+      </TouchableOpacity>
+      <View>
+        <Text style={styles.logo}>StudentPeak</Text>
       </View>
-    )
-  }
+      <View>
+        <Text style={styles.createText}>Student Status</Text>
+      </View>
+      <View>
+        <Text style={styles.etextView}>Student Email</Text>
+      </View>
+      <View style={styles.emailView}>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Email address*"
+          placeholderTextColor="black"
+          //onChangeText={(text) => this.setState({ email: text })}
+        />
+      </View>
+      <View>
+        <Text style={styles.ptextView}>Place of Study</Text>
+      </View>
+      <View style={styles.passView}>
+        <Picker
+          selectedValue={selectedValue}
+          style={{ height:100, width: 260 }}
+          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+        >
+          <Picker.Item label="University of Kent" value="ukc" />
+          <Picker.Item label="Canterbury Christ Church" value="ccu" />
+        </Picker>
+      </View>
 
+      <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
+        <Text style={styles.loginText}>Verify</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -177,7 +176,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: 'white',
     fontFamily: 'Montserrat',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   buttonText: {
     color: 'white',
@@ -193,5 +192,3 @@ const styles = StyleSheet.create({
 })
 
 export default Verify
-
-

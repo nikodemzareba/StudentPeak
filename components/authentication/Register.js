@@ -20,7 +20,7 @@ const Register = ({navigation}) => {
       Add validation with 
       database and send user to profile.
       */
-      navigation.navigate('Login'); 
+      navigation.navigate('Verify'); 
   }
 
     return (

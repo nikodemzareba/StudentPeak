@@ -47,21 +47,63 @@ export class App extends Component {
     }
   }
 
-  componentDidMount(){
-    firebase.auth().onAuthStateChanged((user) => {
-      if(!user){
-        this.setState({
-          loggedIn: false,
-          loaded: true,
-        })
-      }else{
-      this.setState({
-        loggedIn: true,
-        loaded: true,
-      })
-      }
-    })
-  }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+// import { Provider } from 'react-redux'
+// import { createStore, applyMiddleware} from 'redux'
+// import rootReducer from './redux/reducers'
+// import thunk from 'redux-thunk'
+// const store = createStore(rootReducer, applyMiddleware(thunk))
+
+// // Firebase connection -- database
+// // *** Later build orchestration layer for database protection. 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
+//   authDomain: "studentpeak-8b306.firebaseapp.com",
+//   projectId: "studentpeak-8b306",
+//   storageBucket: "studentpeak-8b306.appspot.com",
+//   messagingSenderId: "166397144012",
+//   appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
+//   measurementId: "G-4GN727QJLZ"
+// };
+
+// // Prevents running an instance of firebase = Avoids crash
+// if (firebase.apps.length === 0) {
+//   firebase.initializeApp(firebaseConfig)
+// }
+// // Creates Route. Landing Page -> Login -> Register page
+// const Stack = createStackNavigator();
+
+// export class App extends Component {
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       loaded: false,
+//     }
+//   }
+
+//   componentDidMount(){
+//     firebase.auth().onAuthStateChanged((user) => {
+//       if(!user){
+//         this.setState({
+//           loggedIn: false,
+//           loaded: true,
+//         })
+//       }else{
+//       this.setState({
+//         loggedIn: true,
+//         loaded: true,
+//       })
+//       }
+//     })
+//   }
 
 
   render() {
@@ -84,9 +126,8 @@ export class App extends Component {
           <Stack.Screen name="Profile Test" component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
-      )
-    }
-
+  );
+}
     return(
       <Provider store= {store}>
       <Main/>

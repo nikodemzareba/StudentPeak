@@ -10,19 +10,23 @@ import {
 } from 'react-native'
 
 import { SimpleLineIcons } from '@expo/vector-icons'
-
 import firebase from 'firebase'
 import 'firebase/firestore'
 
-const Verify = ({ navigation }) => {
+const AboutYou = ({ navigation }) => {
   function navigate() {
     /* 
       Add validation with 
       database and send user to profile.
       */
-    navigation.navigate('AboutYou')
+    navigation.navigate('Login')
   }
   const [selectedValue, setSelectedValue] = useState("University of Kent");
+
+
+ 
+  
+    
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -37,21 +41,61 @@ const Verify = ({ navigation }) => {
         <Text style={styles.logo}>StudentPeak</Text>
       </View>
       <View>
-        <Text style={styles.createText}>Student Status</Text>
+        <Text style={styles.createText}>About You</Text>
       </View>
       <View>
-        <Text style={styles.etextView}>Student Email</Text>
+        <Text style={styles.etextView}>First Name</Text>
       </View>
       <View style={styles.emailView}>
         <TextInput
           style={styles.inputText}
-          placeholder="Email address*"
+          placeholder=" First Name"
           placeholderTextColor="black"
           //onChangeText={(text) => this.setState({ email: text })}
         />
       </View>
       <View>
-        <Text style={styles.ptextView}>Place of Study</Text>
+        <Text style={styles.etextView}>Last Name</Text>
+      </View>
+      <View style={styles.emailView}>
+        <TextInput
+          style={styles.inputText}
+          placeholder=" Last Name"
+          placeholderTextColor="black"
+          //onChangeText={(text) => this.setState({ email: text })}
+        />
+      </View>
+      <View>
+      <Text style={styles.ptextView}>Date of Birth</Text>
+      </View>
+      <View style = {{flex: 1, flexDirection: 'row'}}>
+      <View style={styles.dobView}>
+      <TextInput
+          style={styles.inputText}
+          placeholder=" DD"
+          placeholderTextColor="black"
+          //onChangeText={(text) => this.setState({ email: text })}
+        />
+        </View>
+        <View style={styles.dobView}>
+         <TextInput
+          style={styles.inputText}
+          placeholder=" MM"
+          placeholderTextColor="black"
+          //onChangeText={(text) => this.setState({ email: text })}
+        />
+        </View>
+        <View style={styles.dobView}>
+         <TextInput
+          style={styles.inputText}
+          placeholder=" YYYY"
+          placeholderTextColor="black"
+          //onChangeText={(text) => this.setState({ email: text })}
+        />
+      </View>
+      </View>
+      <View>
+        <Text style={styles.ptextView}>Gender</Text>
       </View>
       <View style={styles.passView}>
         <Picker
@@ -59,8 +103,9 @@ const Verify = ({ navigation }) => {
           style={{ height:100, width: 260 }}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         >
-          <Picker.Item label="University of Kent" value="ukc" />
-          <Picker.Item label="Canterbury Christ Church" value="ccu" />
+          <Picker.Item label="Male" value="M" />
+          <Picker.Item label="Female" value="F" />
+          <Picker.Item label="Other" value="O" />
         </Picker>
       </View>
 
@@ -108,6 +153,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     justifyContent: 'center',
     padding: 20,
+  },
+  dobView: {
+      left: 200,
+    width: '15%',
+    backgroundColor: 'white',
+    borderRadius: 20,
+    height: 50,
+    marginBottom: 20,
+    padding: 20,
+    margin: 3
   },
   passView: {
     width: '80%',
@@ -191,4 +246,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Verify
+export default AboutYou

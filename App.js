@@ -36,7 +36,7 @@ export default function App() {
 
   return ( // Welcome screen set to first stack screen. 
     <NavigationContainer> 
-      <Stack.Navigator initialRouteName ="AboutYou"> 
+      <Stack.Navigator initialRouteName ="Welcome"> 
         <Stack.Screen name = "Welcome" component={Welcome} options={{ headerShown: false}} />
         <Stack.Screen name = "Login" component={Login} options={{ headerShown: false}}/>
         <Stack.Screen name = "Register" component={Register} options={{ headerShown: false}}/>

@@ -29,12 +29,16 @@ const AboutYou = ({ navigation }) => {
     
   return (
     <View style={styles.container}>
+        <View>
+        <Text style={styles.etextView}></Text>
+        </View>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <SimpleLineIcons
           style={styles.icon}
           name="arrow-left"
           size={20}
           color="white"
+          
         />
       </TouchableOpacity>
       <View>
@@ -66,7 +70,7 @@ const AboutYou = ({ navigation }) => {
         />
       </View>
       <View>
-      <Text style={styles.ptextView}>Date of Birth</Text>
+      <Text style={styles.etextView}>{'   Date of Birth'}</Text>
       </View>
       <View style = {{flex: 1, flexDirection: 'row'}}>
       <View style={styles.dobView}>
@@ -95,7 +99,8 @@ const AboutYou = ({ navigation }) => {
       </View>
       </View>
       <View>
-        <Text style={styles.ptextView}>Gender</Text>
+      <Text style={
+          styles.genderTextView}>{'Gender'}</Text>
       </View>
       <View style={styles.passView}>
         <Picker
@@ -156,13 +161,13 @@ const styles = StyleSheet.create({
   },
   dobView: {
       left: 200,
-    width: '15%',
+    width: '13.5%',
     backgroundColor: 'white',
     borderRadius: 20,
     height: 50,
     marginBottom: 20,
-    padding: 20,
-    margin: 3
+    padding: 10,
+    margin: 3 
   },
   passView: {
     width: '80%',
@@ -209,6 +214,13 @@ const styles = StyleSheet.create({
   etextView: {
     height: 30,
     marginRight: 160,
+    fontSize: 20,
+    color: 'white',
+    fontFamily: 'Montserrat',
+  },
+  genderTextView: {
+    height: 30,
+    marginRight: 200,
     fontSize: 20,
     color: 'white',
     fontFamily: 'Montserrat',

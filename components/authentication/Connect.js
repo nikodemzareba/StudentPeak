@@ -21,7 +21,7 @@ const Connect = ({navigation}) => {
       Add validation with 
       database and send user to profile.
       */
-      navigation.navigate('Login'); 
+      navigation.navigate('Bio'); 
   }
 
   const [selectedValue, setSelectedValue] = useState("University of Kent");

@@ -19,7 +19,7 @@ const ChooseUsername = ({ navigation }) => {
       Add validation with 
       database and send user to profile.
       */
-    navigation.navigate('Login')
+    navigation.navigate('StudyDetails')
   }
 
 

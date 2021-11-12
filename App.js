@@ -18,6 +18,9 @@ import Main from './components/Main';
 import Profile from './components/main/Profile';
 import Verify from './components/authentication/Verify';
 import AboutYou from './components/authentication/AboutYou';
+import ChooseUsername from './components/authentication/ChooseUsername';
+import StudyDetails from './components/authentication/StudyDetails';
+import Connect from './components/authentication/Connect';
 
 /*
  StackNavigator: Builds the screens on top of eachother. Saving the last screen state and allowing the user to return to it.
@@ -36,13 +39,16 @@ export default function App() {
 
   return ( // Welcome screen set to first stack screen. 
     <NavigationContainer> 
-      <Stack.Navigator initialRouteName ="Welcome"> 
+      <Stack.Navigator initialRouteName ="Connect"> 
         <Stack.Screen name = "Welcome" component={Welcome} options={{ headerShown: false}} />
         <Stack.Screen name = "Login" component={Login} options={{ headerShown: false}}/>
         <Stack.Screen name = "Register" component={Register} options={{ headerShown: false}}/>
         <Stack.Screen name = "Verify" component={Verify} options={{ headerShown: false}}/>
         <Stack.Screen name = "Profile" component={Profile} options={{ headerShown: false}}/>
         <Stack.Screen name = "AboutYou" component={AboutYou} options={{ headerShown: false}}/>
+        <Stack.Screen name = "ChooseUsername" component={ChooseUsername} options={{ headerShown: false}}/>
+        <Stack.Screen name = "StudyDetails" component={StudyDetails} options={{ headerShown: false}}/>
+        <Stack.Screen name = "Connect" component={Connect} options={{ headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

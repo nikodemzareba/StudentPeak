@@ -13,15 +13,15 @@ import { SimpleLineIcons } from '@expo/vector-icons'
 import firebase from 'firebase'
 import 'firebase/firestore'
 
-const AboutYou = ({ navigation }) => {
+const ChooseUsername = ({ navigation }) => {
   function navigate() {
     /* 
       Add validation with 
       database and send user to profile.
       */
-    navigation.navigate('ChooseUsername')
+    navigation.navigate('Login')
   }
-  const [selectedValue, setSelectedValue] = useState("University of Kent");
+
 
 
  
@@ -45,74 +45,31 @@ const AboutYou = ({ navigation }) => {
         <Text style={styles.logo}>StudentPeak</Text>
       </View>
       <View>
-        <Text style={styles.createText}>About You</Text>
+        <Text style={styles.createText}>Choose Username</Text>
       </View>
       <View>
-        <Text style={styles.etextView}>First Name</Text>
+        <Text style={styles.ptextView}>Username</Text>
       </View>
       <View style={styles.emailView}>
         <TextInput
           style={styles.inputText}
-          placeholder=" First Name"
+          placeholder=" Username"
           placeholderTextColor="black"
           //onChangeText={(text) => this.setState({ email: text })}
         />
       </View>
       <View>
-        <Text style={styles.etextView}>Last Name</Text>
+        <Text style={styles.etextView}>{"Anon-Username"}</Text>
       </View>
       <View style={styles.emailView}>
         <TextInput
           style={styles.inputText}
-          placeholder=" Last Name"
+          placeholder="Anonymous Username"
           placeholderTextColor="black"
           //onChangeText={(text) => this.setState({ email: text })}
         />
       </View>
-      <View>
-      <Text style={styles.etextView}>{'   Date of Birth'}</Text>
-      </View>
-      <View style = {{flex: 1, flexDirection: 'row'}}>
-      <View style={styles.dobView}>
-      <TextInput
-          style={styles.inputText}
-          placeholder=" DD"
-          placeholderTextColor="black"
-          //onChangeText={(text) => this.setState({ email: text })}
-        />
-        </View>
-        <View style={styles.dobView}>
-         <TextInput
-          style={styles.inputText}
-          placeholder=" MM"
-          placeholderTextColor="black"
-          //onChangeText={(text) => this.setState({ email: text })}
-        />
-        </View>
-        <View style={styles.dobView}>
-         <TextInput
-          style={styles.inputText}
-          placeholder=" YYYY"
-          placeholderTextColor="black"
-          //onChangeText={(text) => this.setState({ email: text })}
-        />
-      </View>
-      </View>
-      <View>
-      <Text style={
-          styles.genderTextView}>{'Gender'}</Text>
-      </View>
-      <View style={styles.passView}>
-        <Picker
-          selectedValue={selectedValue}
-          style={{ height:100, width: 260 }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="Male" value="M" />
-          <Picker.Item label="Female" value="F" />
-          <Picker.Item label="Other" value="O" />
-        </Picker>
-      </View>
+      
 
       <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
         <Text style={styles.loginText}>Continue</Text>
@@ -213,21 +170,22 @@ const styles = StyleSheet.create({
   },
   etextView: {
     height: 30,
-    marginRight: 160,
+    marginRight: 120,
     fontSize: 20,
     color: 'white',
     fontFamily: 'Montserrat',
+    flex: 1
   },
   genderTextView: {
     height: 30,
-    marginRight: 200,
+    marginRight: 130,
     fontSize: 20,
     color: 'white',
     fontFamily: 'Montserrat',
   },
   ptextView: {
     height: 30,
-    marginRight: 150,
+    marginRight: 180,
     fontSize: 20,
     color: 'white',
     fontFamily: 'Montserrat',
@@ -258,4 +216,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default AboutYou
+export default ChooseUsername

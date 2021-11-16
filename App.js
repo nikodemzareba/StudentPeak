@@ -1,16 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import * as React from 'react';
+import firebase from 'firebase'; // do not move this -- will cause errors.
+import * as React from 'react'; // imports React Native Library
+
+// Allows font imports
 import { useFonts } from 'expo-font';
-import { Component } from 'react';
-import { AppLoading} from "expo";
 
-import { StyleSheet, View, Text } from 'react-native'
-import firebase from 'firebase';
+// Firebase API
+const firebaseConfig = {
+  apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
+  authDomain: "studentpeak-8b306.firebaseapp.com",
+  projectId: "studentpeak-8b306",
+  storageBucket: "studentpeak-8b306.appspot.com",
+  messagingSenderId: "166397144012",
+  appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
+  measurementId: "G-4GN727QJLZ"
+};
 
+// Checks if app is already initialised.
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig)
+}
+
+// Allows to go back to previous state of screen
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SwitchSelector from 'react-native-switch-selector'
 
+// All of the screens imported.
 import Welcome from './components/authentication/Welcome';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';

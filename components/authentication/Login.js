@@ -19,6 +19,7 @@ PROBLEMS:
 - Navigation stack doesn't want to work - further research. 
 - Stay logged in button does not work - should control the state.
 - After user is successful send them to a different screen.   
+- Missing functionality to set password to visible. 
 
 FIXES: 
 - USER CAN LOGIN

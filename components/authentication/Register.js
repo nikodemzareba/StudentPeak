@@ -18,6 +18,7 @@ REGISTER CLASS v1.1
 PROBLEMS: 
 - Navigation stack doesn't want to work - further research. 
 - Add a notification saying that password is too short and firebase won't allow it. 
+- Missing functionality to set passwords to visible. 
 
 FIXES: 
 - USER DATA SENT TO FIREBASE

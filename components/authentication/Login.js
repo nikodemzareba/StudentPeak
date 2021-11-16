@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import React from 'react'
 import { Component, useState } from 'react'
 import {
@@ -11,18 +12,44 @@ import {
 import SwitchSelector from 'react-native-switch-selector'
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
-import firebase from 'firebase'
-import 'firebase/firestore'
+/* - 
+LOGIN CLASS v1.1
+PROBLEMS: 
+- Navigation stack doesn't want to work - further research. 
+- Stay logged in button does not work - should control the state.  
 
-const Login = ({navigation}) => {
-  function navigate(){
-      /* 
-      Add validation with 
-      database and send user to profile.
-      */
-      navigation.navigate('Welcome'); 
-  }
+FIXES: 
+- USER CAN LOGIN
+- Stay logged in button imported/installed.
+- GUI IMPROVED.
+*/
 
+export class Login extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        email: '',
+        password: '',
+    }
+
+    this.onSignIn = this.onSignIn.bind(this)
+}
+
+onSignIn() {
+    const { email, password } = this.state;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((result) => {
+            console.log(result)
+        })
+        .catch((error) => {
+            console.log(error)
+            alert("Account does not exist or wrong details provided.");
+        })
+}
+
+  render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -39,7 +66,7 @@ const Login = ({navigation}) => {
             style={styles.inputText}
             placeholder="Email address*"
             placeholderTextColor="black"
-            //onChangeText={(text) => this.setState({ email: text })}
+            onChangeText={(email) => this.setState({ email })}
           />
         </View>
         <View>
@@ -51,7 +78,7 @@ const Login = ({navigation}) => {
             style={styles.inputText}
             placeholder="Password*"
             placeholderTextColor="black"
-            //onChangeText={(text) => this.setState({ password: text })}
+            onChangeText={(password) => this.setState({ password })}
           />
         </View>
         <TouchableOpacity>
@@ -80,7 +107,7 @@ const Login = ({navigation}) => {
           />
         </View>
 
-        <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
+        <TouchableOpacity style={styles.loginBtn} onPress={this.onSignIn}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
 
@@ -90,6 +117,7 @@ const Login = ({navigation}) => {
       </View>
     )
   }
+}
 
 
 const styles = StyleSheet.create({

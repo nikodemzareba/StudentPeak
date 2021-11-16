@@ -1,4 +1,4 @@
-import firebase from 'firebase'; // do not move this -- will cause errors.
+import firebase from 'firebase'; // do not move this from first line -- will cause errors.
 import * as React from 'react'; // imports React Native Library
 
 // Allows font imports

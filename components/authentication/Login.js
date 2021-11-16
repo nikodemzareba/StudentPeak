@@ -20,6 +20,7 @@ PROBLEMS:
 - Stay logged in button does not work - should control the state.
 - After user is successful send them to a different screen.   
 - Missing functionality to set password to visible. 
+- Forgot password/ other GUI links needed.
 
 FIXES: 
 - USER CAN LOGIN

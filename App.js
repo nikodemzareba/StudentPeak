@@ -1,28 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Component } from 'react';
+import firebase from 'firebase'; // do not move this from first line -- will cause errors.
+import * as React from 'react'; // imports React Native Library
 
-import { View, Text } from 'react-native'
-import firebase from 'firebase';
+// Allows font imports
+import { useFonts } from 'expo-font';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import Welcome from './components/authentication/Welcome';
-import Register from './components/authentication/Register';
-import Login from './components/authentication/Login';
-import AddScreen from './components/main/Add';
-import SaveScreen from './components/main/Save';
-import Main from './components/Main';
-
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware} from 'redux'
-import rootReducer from './redux/reducers'
-import thunk from 'redux-thunk'
-const store = createStore(rootReducer, applyMiddleware(thunk))
-
-// Firebase connection -- database
-// *** Later build orchestration layer for database protection. 
+// Firebase API
 const firebaseConfig = {
   apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
   authDomain: "studentpeak-8b306.firebaseapp.com",
@@ -33,78 +15,61 @@ const firebaseConfig = {
   measurementId: "G-4GN727QJLZ"
 };
 
-// Prevents running an instance of firebase = Avoids crash
+// Checks if app is already initialised.
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig)
 }
-// Creates Route. Landing Page -> Login -> Register page
+
+// Allows to go back to previous state of screen
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+// All of the screens imported.
+import Welcome from './components/authentication/Welcome';
+import Register from './components/authentication/Register';
+import Login from './components/authentication/Login';
+import Main from './components/Main';
+import PrivateProfile from './components/main/PrivateProfile';
+import PublicProfile from './components/main/PublicProfile';
+import Verify from './components/authentication/Verify';
+import AboutYou from './components/authentication/AboutYou';
+import ChooseUsername from './components/authentication/ChooseUsername';
+import StudyDetails from './components/authentication/StudyDetails';
+import Connect from './components/authentication/Connect';
+import Bio from './components/authentication/Bio';
+
+
+/*
+ StackNavigator: Builds the screens on top of eachother. Saving the last screen state and allowing the user to return to it.
+*/
 const Stack = createStackNavigator();
 
-export class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loaded: false,
-    }
-  }
+export default function App() {
+  const [loaded] = useFonts({
+    Montserrat: require('./assets/fonts/Montserrat.ttf'),
+  });
 
-  componentDidMount(){
-    firebase.auth().onAuthStateChanged((user) => {
-      if(!user){
-        this.setState({
-          loggedIn: false,
-          loaded: true,
-        })
-      }else{
-      this.setState({
-        loggedIn: true,
-        loaded: true,
-      })
-      }
-    })
+  if (!loaded) {
+    return null;
   }
 
 
-  render() {
-    const {loggedIn, loaded} = this.state;
-    if(!loaded){
-      return(
-        <View style= {{flex: 1, justifyContent: 'center'}}>
-          <Text>Loading</Text>
-        </View>
-      )
-    }
+  return ( // Welcome screen set to first stack screen.
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName ="Welcome">
+          <Stack.Screen name = "Welcome" component={Welcome} options={{ headerShown: false}} />
+          <Stack.Screen name = "Login" component={Login} options={{ headerShown: false}}/>
+          <Stack.Screen name = "Register" component={Register} options={{ headerShown: false}}/>
+          <Stack.Screen name = "Verify" component={Verify} options={{ headerShown: false}}/>
+          <Stack.Screen name = "PrivateProfile" component={PrivateProfile} options={{ headerShown: false}}/>
+          <Stack.Screen name = "PublicProfile" component={PublicProfile} options={{ headerShown: false}}/>
+          <Stack.Screen name = "AboutYou" component={AboutYou} options={{ headerShown: false}}/>
+          <Stack.Screen name = "ChooseUsername" component={ChooseUsername} options={{ headerShown: false}}/>
+          <Stack.Screen name = "StudyDetails" component={StudyDetails} options={{ headerShown: false}}/>
+          <Stack.Screen name = "Connect" component={Connect} options={{ headerShown: false}}/>
+          <Stack.Screen name = "Bio" component={Bio} options={{ headerShown: false}}/>
 
-    if(!loggedIn){
-      return (
-        <NavigationContainer>
-        <Stack.Navigator initialRouteName = "Welcome">
-          <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Add" component={AddScreen} navigation = {this.props.navigation} />
-          <Stack.Screen name="Save" component={SaveScreen} navigation = {this.props.navigation} />
         </Stack.Navigator>
       </NavigationContainer>
-      )
-    }
-
-    return(
-      <Provider store= {store}>
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName = "Main">
-            <Stack.Screen name="Main " component={Main} options={{headerShown: false}}/>
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
-    )
-  }
+  );
 }
-    
-
-export default App
-
-
-
-
-

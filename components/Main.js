@@ -13,7 +13,7 @@ import EventScreen from "./main/Events"
 
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
-import { fetchUser } from "../redux/actions/index";
+import { fetchUser, fetchUserPosts } from "../redux/actions/index";
 
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -23,6 +23,7 @@ export class Main extends Component{
     componentDidMount(){
         //first page called whenever a user is logged in
       this.props.fetchUser();
+      this.props.fetchUserPosts();
     }
     render(){
         return(
@@ -85,6 +86,6 @@ export class Main extends Component{
     
 }
 
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts}, dispatch)
 
 export default connect(null, mapDispatchProps)(Main);

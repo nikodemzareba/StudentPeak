@@ -96,7 +96,7 @@ onSignIn() {
             selectedTextStyle={{ fontFamily: 'Montserrat' }}
             initial={0}
             //onPress={(value) => this.setState({ signIn: value })}
-            textColor="black" //'#7a44cf'
+            textColor="black" 
             fontSize={20}
             selectedColor="white"
             buttonColor="black"

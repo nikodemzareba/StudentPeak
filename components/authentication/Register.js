@@ -17,6 +17,7 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 REGISTER v1.1
 PROBLEMS: 
 - Navigation stack doesn't want to work - further research. 
+- Add a notification saying that password is too short and firebase won't allow it. 
 
 FIXES: 
 - USER DATA SENT TO FIREBASE

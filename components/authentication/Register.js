@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+import "firebase/firestore";
 import React from 'react'
 import { Component, useState } from 'react'
 import {
@@ -11,21 +13,57 @@ import {
 
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
-import firebase from 'firebase'
-import 'firebase/firestore'
+/*
+REGISTER v1.1
+PROBLEMS: 
+- Navigation stack doesn't want to work - further research. 
 
-const Register = ({navigation}) => {
-  function navigate(){
-      /* 
-      Add validation with 
-      database and send user to profile.
-      */
-      navigation.navigate('Verify'); 
-  }
+FIXES: 
+- USER DATA SENT TO FIREBASE
+- PASSWORD CONFIRMATION ADDED
+- GUI IMPROVED.
+*/
 
+
+export class Register extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        email: '',
+        password: '',
+        confirmPassword: ''
+    }
+
+    this.onSignUp = this.onSignUp.bind(this)
+}
+
+onSignUp() {
+    const { email, password, confirmPassword} = this.state;
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+  } else {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((result) => {
+            firebase.firestore().collection("users")
+                .doc(firebase.auth().currentUser.uid)
+                .set({
+                    email
+                })
+            console.log(result)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+}
+}
+
+    
+render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
         <SimpleLineIcons style={styles.icon} name="arrow-left" size={20} color="white" />
         </TouchableOpacity>
         <View>
@@ -42,7 +80,7 @@ const Register = ({navigation}) => {
             style={styles.inputText}
             placeholder="Email address*"
             placeholderTextColor="black"
-            //onChangeText={(text) => this.setState({ email: text })}
+            onChangeText={(email) => this.setState({ email })}
           />
         </View>
         <View>
@@ -54,7 +92,7 @@ const Register = ({navigation}) => {
             style={styles.inputText}
             placeholder="Password*"
             placeholderTextColor="black"
-            //onChangeText={(text) => this.setState({ password: text })}
+            onChangeText={(password) => this.setState({ password })}
           />
         </View>
         <View>
@@ -66,7 +104,7 @@ const Register = ({navigation}) => {
             style={styles.inputText}
             placeholder="Password*"
             placeholderTextColor="black"
-            //onChangeText={(text) => this.setState({ password: text })}
+            onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
           />
         </View>
      
@@ -76,7 +114,7 @@ const Register = ({navigation}) => {
           StudentPeak terms of service</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
+        <TouchableOpacity style={styles.loginBtn} onPress={this.onSignUp}>
           <Text style={styles.loginText}>Sign me up...</Text>
         </TouchableOpacity>
 
@@ -84,7 +122,7 @@ const Register = ({navigation}) => {
       </View>
     )
   }
-
+}
 
 const styles = StyleSheet.create({
   container: {

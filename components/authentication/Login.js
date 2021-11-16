@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import "firebase/firestore";
 import React from 'react'
 import { Component, useState } from 'react'
 import {

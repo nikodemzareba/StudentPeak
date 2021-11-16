@@ -15,7 +15,8 @@ import Welcome from './components/authentication/Welcome';
 import Register from './components/authentication/Register';
 import Login from './components/authentication/Login';
 import Main from './components/Main';
-import Profile from './components/main/Profile';
+import PrivateProfile from './components/main/PrivateProfile';
+import PublicProfile from './components/main/PublicProfile';
 import Verify from './components/authentication/Verify';
 import AboutYou from './components/authentication/AboutYou';
 import ChooseUsername from './components/authentication/ChooseUsername';
@@ -41,12 +42,13 @@ export default function App() {
 
   return ( // Welcome screen set to first stack screen. 
     <NavigationContainer> 
-      <Stack.Navigator initialRouteName ="Welcome"> 
+      <Stack.Navigator initialRouteName ="PublicProfile"> 
         <Stack.Screen name = "Welcome" component={Welcome} options={{ headerShown: false}} />
         <Stack.Screen name = "Login" component={Login} options={{ headerShown: false}}/>
         <Stack.Screen name = "Register" component={Register} options={{ headerShown: false}}/>
         <Stack.Screen name = "Verify" component={Verify} options={{ headerShown: false}}/>
-        <Stack.Screen name = "Profile" component={Profile} options={{ headerShown: false}}/>
+        <Stack.Screen name = "PrivateProfile" component={PrivateProfile} options={{ headerShown: false}}/>
+        <Stack.Screen name = "PublicProfile" component={PublicProfile} options={{ headerShown: false}}/>
         <Stack.Screen name = "AboutYou" component={AboutYou} options={{ headerShown: false}}/>
         <Stack.Screen name = "ChooseUsername" component={ChooseUsername} options={{ headerShown: false}}/>
         <Stack.Screen name = "StudyDetails" component={StudyDetails} options={{ headerShown: false}}/>

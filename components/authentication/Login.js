@@ -16,7 +16,8 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 LOGIN CLASS v1.1
 PROBLEMS: 
 - Navigation stack doesn't want to work - further research. 
-- Stay logged in button does not work - should control the state.  
+- Stay logged in button does not work - should control the state.
+- After user is successful send them to a different screen.   
 
 FIXES: 
 - USER CAN LOGIN

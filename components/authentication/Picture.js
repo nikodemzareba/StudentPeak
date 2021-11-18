@@ -39,6 +39,10 @@ const Picture = ({navigation}) => {
             <View>
                 <Text style={styles.createText}>Select a profile picture</Text>
             </View>
+            <TouchableOpacity style={styles.loginBtn} onPress={() => pickImage()}>
+            {image && <Image source={{ uri: image}} style={{flex: 1}} />}
+              <Text style = {styles.loginText}> Pick image from gallery</Text>
+              </TouchableOpacity>
             
         </View>
         
@@ -81,13 +85,7 @@ const Picture = ({navigation}) => {
     };
 
     
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button title="Pick an image from camera roll" onPress={pickImage} />
-        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-      </View>
-    );
-  }
+   
   
 
 

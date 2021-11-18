@@ -205,6 +205,6 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Bio
+export default Picture
 
 

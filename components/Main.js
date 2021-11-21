@@ -5,6 +5,9 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
 import { fetchUser, fetchUserPosts } from "../redux/actions/index";
 
+const Tab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
+
 export class Main extends Component{
     componentDidMount(){
       this.props.fetchUser();

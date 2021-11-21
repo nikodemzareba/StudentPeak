@@ -30,6 +30,7 @@ FIXES:
 
 export class Login extends Component {
 
+  
   constructor(props) {
     super(props);
 
@@ -54,6 +55,7 @@ onSignIn() {
 }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -225,7 +227,11 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Login
+export default function(props) {
+  const navigation = useNavigation();
+
+  return <Login {...props} navigation={navigation} />;
+}
 
 // export class Login extends Component {
 //     constructor(props){

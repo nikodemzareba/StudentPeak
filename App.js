@@ -3,10 +3,6 @@ import * as React from 'react'; // imports React Native Library
 
 // Allows font imports
 import { useFonts } from 'expo-font';
-
-
-// Allows font imports
-import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 

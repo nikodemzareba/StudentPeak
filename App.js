@@ -3,6 +3,7 @@ import * as React from 'react'; // imports React Native Library
 
 // Allows font imports
 import { useFonts } from 'expo-font';
+<<<<<<< HEAD
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -21,6 +22,9 @@ const store = createStore(rootReducer, applyMiddleware(thunk))
 
 // Firebase connection -- database
 // *** Later build orchestration layer for database protection. 
+=======
+
+>>>>>>> parent of 4eb1d50 (more duplicates fixed in G1 branch)
 // Firebase API
 const firebaseConfig = {
   apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
@@ -36,39 +40,6 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig)
 }
-
-// Allows to go back to previous state of screen
-//import { NavigationContainer } from '@react-navigation/native';
-//import { createStackNavigator } from '@react-navigation/stack';
-
-// All of the screens imported.
-//import Welcome from './components/authentication/Welcome';
-//import Register from './components/authentication/Register';
-//import Login from './components/authentication/Login';
-//import Main from './components/Main';
-import PrivateProfile from './components/main/PrivateProfile';
-import PublicProfile from './components/main/PublicProfile';
-import Verify from './components/authentication/Verify';
-import AboutYou from './components/authentication/AboutYou';
-import ChooseUsername from './components/authentication/ChooseUsername';
-import StudyDetails from './components/authentication/StudyDetails';
-import Connect from './components/authentication/Connect';
-import Bio from './components/authentication/Bio';
-
-
-/*
- StackNavigator: Builds the screens on top of eachother. Saving the last screen state and allowing the user to return to it.
-*/
-const Stack = createStackNavigator();
-
-export default function App() {
-   const [loaded] = useFonts({
-    Montserrat: require('./assets/fonts/Montserrat.ttf'),
-   });
-
-  if (!loaded) {
-    return null;
-  }
 
 // Allows to go back to previous state of screen
 import { NavigationContainer } from '@react-navigation/native';
@@ -93,17 +64,7 @@ import Bio from './components/authentication/Bio';
  StackNavigator: Builds the screens on top of eachother. Saving the last screen state and allowing the user to return to it.
 */
 const Stack = createStackNavigator();
-/*
-  render(){
-    const {loggedIn, loaded} = this.state;
-    if(!loaded){
-      return(
-        <View style= {{flex: 1, justifyContent: 'center'}}>
-          <Text>Loading</Text>
-        </View>
-      )
-    }
-*/
+
 export default function App() {
    const [loaded] = useFonts({
     Montserrat: require('./assets/fonts/Montserrat.ttf'),
@@ -132,4 +93,4 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}}
+}

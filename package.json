@@ -13,10 +13,6 @@
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/material-top-tabs": "^6.0.6",
-<<<<<<< Updated upstream
-=======
-    "@react-navigation/native": "^6.0.2",
->>>>>>> Stashed changes
     "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.7",
     "expo": "~42.0.1",

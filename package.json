@@ -11,6 +11,8 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^12.7.5",
     "@react-navigation/native": "^6.0.6",
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/material-top-tabs": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.7",
     "expo": "~42.0.1",
@@ -20,16 +22,24 @@
     "firebase": "8.2.3",
     "react": "^16.13.1",
     "react-dom": "^16.14.0",
+    "@react-navigation/material-bottom-tabs": "^6.0.9",
+    "expo-camera": "~11.2.2",
+    "expo-image-picker": "~10.2.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-date-picker": "^4.1.1",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-pager-view": "^5.4.8",
+
     "react-native-screens": "^3.7.0",
     "react-native-switch-selector": "^2.1.4",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "^0.17.5",
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "react-native-paper": "^4.10.1"
+    
+
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

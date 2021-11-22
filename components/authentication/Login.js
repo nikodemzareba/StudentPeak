@@ -30,7 +30,6 @@ FIXES:
 
 export class Login extends Component {
 
-  
   constructor(props) {
     super(props);
 
@@ -50,12 +49,10 @@ onSignIn() {
         })
         .catch((error) => {
             console.log(error)
-            alert("Account does not exist or wrong details provided.");
         })
 }
 
   render() {
-    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -227,11 +224,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function(props) {
-  const navigation = useNavigation();
-
-  return <Login {...props} navigation={navigation} />;
-}
+export default Login
 
 // export class Login extends Component {
 //     constructor(props){

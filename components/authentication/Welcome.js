@@ -10,7 +10,6 @@ export default function Welcome({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.logo}>StudentPeak</Text>
 
-
       <Text style={styles.intro}>A Social Network Exclusive to Students</Text>
 
       <TouchableOpacity
@@ -22,7 +21,7 @@ export default function Welcome({ navigation }) {
       <TouchableOpacity
         style={styles.loginBtn}
         onPress={() => navigation.navigate('Login')}
-        >
+      >
         <Text style={styles.loginText}>Login</Text>
       </TouchableOpacity>
 

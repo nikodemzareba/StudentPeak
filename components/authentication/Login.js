@@ -49,7 +49,6 @@ onSignIn() {
         })
         .catch((error) => {
             console.log(error)
-            alert("Account does not exist or wrong details provided.");
         })
 }
 

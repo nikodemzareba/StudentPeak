@@ -44,6 +44,8 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
+import Add from  './components/main/Add'
+import Save from  './components/main/Save'
 
 
 
@@ -165,6 +167,16 @@ export class App extends Component{
               name="Bio"
               component={Bio}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Add"
+                component={Add}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Save"
+                component={Save}
+                options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>

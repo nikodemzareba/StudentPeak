@@ -11,24 +11,16 @@ import { View, Text } from 'react-native'
 
 // Allows font imports
 import { useFonts } from 'expo-font'
+import Constants from 'expo-constants'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-// Firebase API
-const firebaseConfig = {
-  apiKey: 'AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk',
-  authDomain: 'studentpeak-8b306.firebaseapp.com',
-  projectId: 'studentpeak-8b306',
-  storageBucket: 'studentpeak-8b306.appspot.com',
-  messagingSenderId: '166397144012',
-  appId: '1:166397144012:web:1956c193cd6c0ca3ec4b69',
-  measurementId: 'G-4GN727QJLZ',
-}
+
 
 // Checks if app is already initialised.
 if (firebase.apps.length === 0) {
-  firebase.initializeApp(firebaseConfig)
+  firebase.initializeApp(Constants.manifest.web.config.firebase)
 }
 
 // All of the screens imported.
@@ -53,47 +45,7 @@ const Stack = createStackNavigator()
 
 export class App extends Component{
 
-  
-
-  constructor(props) {
-    super()
-    this.state = {
-      loaded: false,
-    }
-  }
-
-
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {
-        this.setState({
-          loggedIn: false,
-          loaded: true,
-        })
-      } else {
-        this.setState({
-          loggedIn: true,
-          loaded: true,
-        })
-      }
-    })
-  }
-
-  render() {
-    
-
-    const { loggedIn, loaded } = this.state
-    if (!loaded) {
-      return (
-        <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Text>Loading</Text>
-        </View>
-      )
-    }
-
-  
-
-    if (!loggedIn) {
+  render(){
       return (
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Welcome">
@@ -112,15 +64,6 @@ export class App extends Component{
               component={Register}
               options={{ headerShown: false }}
             />
-          </Stack.Navigator>
-        </NavigationContainer>
-      )
-    }
-
-    return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Verify">
             <Stack.Screen
               name="Main"
               component={Main}
@@ -168,7 +111,7 @@ export class App extends Component{
             />
           </Stack.Navigator>
         </NavigationContainer>
-      </Provider>
+     
     )
   }
 }

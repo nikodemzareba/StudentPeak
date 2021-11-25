@@ -36,6 +36,7 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
+import Picture from './components/authentication/Picture'
 
 
 
@@ -48,7 +49,12 @@ export class App extends Component{
   render(){
       return (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Welcome">
+          <Stack.Navigator initialRouteName="Picture">
+          <Stack.Screen
+              name="Picture"
+              component={Picture}
+              options={{ headerShown: false }}
+            />
             <Stack.Screen
               name="Welcome"
               component={Welcome}

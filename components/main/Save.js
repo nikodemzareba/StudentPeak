@@ -101,7 +101,7 @@ export default function Save(props) {
             });
     }
 
-    function getRandomString(length)
+    function getRandomString(length) {/* Generates random Doc ID for file being uploaded */}
     {
         var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var result = '';
@@ -110,7 +110,6 @@ export default function Save(props) {
         }
         return result;
     }
-
 
     return (
         <View style={{flex: 1}}>

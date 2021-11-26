@@ -1,5 +1,6 @@
 import firebase from 'firebase' // do not move this from first line -- will cause errors.
 import React, { Component } from 'react' // imports React Native Library
+
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
@@ -47,91 +48,82 @@ const Stack = createStackNavigator()
 export class App extends Component{
 
   render(){
-      return (
+    return (
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Picture">
-          <Stack.Screen
-              name="Picture"
-              component={Picture}
-              options={{ headerShown: false }}
+            <Stack.Screen
+                name="Picture"
+                component={Picture}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Welcome"
-              component={Welcome}
-              options={{ headerShown: false }}
+                name="Welcome"
+                component={Welcome}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ headerShown: false }}
+                name="Login"
+                component={Login}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Register"
-              component={Register}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      )
-    }
-
-    return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Main">
-            <Stack.Screen
-              name="Main"
-              component={Main}
-              options={{ headerShown: false }}
+                name="Register"
+                component={Register}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Verify"
-              component={Verify}
-              options={{ headerShown: false }}
+                name="Main"
+                component={Main}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="PrivateProfile"
-              component={PrivateProfile}
-              options={{ headerShown: false }}
+                name="Verify"
+                component={Verify}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="PublicProfile"
-              component={PublicProfile}
-              options={{ headerShown: false }}
+                name="PrivateProfile"
+                component={PrivateProfile}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="AboutYou"
-              component={AboutYou}
-              options={{ headerShown: false }}
+                name="PublicProfile"
+                component={PublicProfile}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="ChooseUsername"
-              component={ChooseUsername}
-              options={{ headerShown: false }}
+                name="AboutYou"
+                component={AboutYou}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="StudyDetails"
-              component={StudyDetails}
-              options={{ headerShown: false }}
+                name="ChooseUsername"
+                component={ChooseUsername}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Connect"
-              component={Connect}
-              options={{ headerShown: false }}
+                name="StudyDetails"
+                component={StudyDetails}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Bio"
-              component={Bio}
-              options={{ headerShown: false }}
+                name="Connect"
+                component={Connect}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Bio"
+                component={Bio}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Chat"
               component={Chat}
               options={{headerShown: false}}
-            />
+              />
           </Stack.Navigator>
         </NavigationContainer>
-     </Provider>
+
     )
   }
 }

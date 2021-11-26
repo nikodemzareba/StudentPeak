@@ -12,10 +12,13 @@ export default function Save(props) {
     //console.log(props.route.image)
     const [caption, setCaption] = useState("")
 
+    console.log(`HERE`);
+
     const uri = props.route.params.image;
-    const childPath = `post/${firebase.auth().currentUser.uid}/${Math.random.toString(36)}`;
 
     const uploadImage = async () => {
+
+        const childPath = `post/${firebase.auth().currentUser.uid}/${Math.random.toString(36)}`;
         const response = await fetch(uri);
         const blob = await response.blob();
 
@@ -91,7 +94,7 @@ export default function Save(props) {
                     })
                     .then(() => {
                     console.log(`Successfully uploaded file to fire-store`);
-                        props.navigation.navigate("Add2"); // return to camera screen
+                        props.navigation.navigate("Add3"); // return to camera screen
                 })
                     .catch((error) => {
                     console.log(`${error} \nError uploading file to fire-store!`);
@@ -101,15 +104,6 @@ export default function Save(props) {
             });
     }
 
-    function getRandomString(length) {/* Generates random Doc ID for file being uploaded */}
-    {
-        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var result = '';
-        for (var i = 0; i < length; i++) {
-            result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-        }
-        return result;
-    }
 
     return (
         <View style={{flex: 1}}>
@@ -121,4 +115,17 @@ export default function Save(props) {
             <Button title="Save" onPress={() => uploadImage2()}/>
         </View>
     )
+
+
+
+    function getRandomString(length) {/* Generates random Doc ID for file being uploaded */}
+    {
+        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var result = '';
+        for (var i = 0; i < length; i++) {
+            result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+        }
+        return result;
+    }
+
 }

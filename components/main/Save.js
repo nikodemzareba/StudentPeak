@@ -58,20 +58,49 @@ export default function Save(props) {
         }))
     }
 
-    const uploadImage2 = async () =>
-    {
+    const uploadImage2 = async () => {
         const childPath2 = `posts/${firebase.auth().currentUser.uid}/${getRandomString(36)}`;
         const response = await fetch(uri); // fetch image
         const blob = await response.blob(); // convert to blob
 
         var ref = firebase.storage().ref().child(childPath2); // reference to image
-        return ref.put(blob); // upload image
+
+        // upload image to fireStorage
+        await ref.put(blob)
+            .then(snapshot => {
+                return snapshot.ref.getDownloadURL();
+            })
+            .then(downloadURL =>
+            {
+                console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
+
+                //upload to firestore
+                firebase.firestore()
+                    .collection('posts')
+                    .doc(firebase.auth().currentUser.uid)
+                    .collection("userPosts")
+                    .add({
+                        downloadURL,
+                        caption
+
+
+                    })
+                    .then(downloadURL => {
+                    console.log(`Successfully uploaded file to fire-store`);
+                        props.navigation.popToTop();
+                }).catch((error) => {
+                    console.log(`${error} \nError uploading file to fire-store!`);
+                    return downloadURL;
+                });
+                return downloadURL;
+            });
     }
 
-    function getRandomString(length) {
+    function getRandomString(length)
+    {
         var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var result = '';
-        for ( var i = 0; i < length; i++ ) {
+        for (var i = 0; i < length; i++) {
             result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
         }
         return result;

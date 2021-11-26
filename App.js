@@ -1,6 +1,5 @@
 import firebase from 'firebase' // do not move this from first line -- will cause errors.
 import React, { Component } from 'react' // imports React Native Library
-
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
@@ -44,6 +43,7 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
+import Chat from './components/Chat/Chat'
 
 
 
@@ -120,7 +120,7 @@ export class App extends Component{
     return (
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Verify">
+          <Stack.Navigator initialRouteName="Main">
             <Stack.Screen
               name="Main"
               component={Main}
@@ -165,6 +165,11 @@ export class App extends Component{
               name="Bio"
               component={Bio}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Chat"
+              component={Chat}
+              options={{headerShown: false}}
             />
           </Stack.Navigator>
         </NavigationContainer>

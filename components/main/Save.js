@@ -4,6 +4,7 @@ import {View, TextInput, Image, Button} from 'react-native'
 import firebase from 'firebase'
 import {NavigationContainer} from '@react-navigation/native'
 
+
 require("firebase/firestore")
 require("firebase/firebase-Storage")
 
@@ -70,6 +71,10 @@ export default function Save(props) {
             .then(snapshot => {
                 return snapshot.ref.getDownloadURL();
             })
+            .catch((error) => {
+                console.log(`${error} \nError uploading file to fire-storage!`);
+                return downloadURL;
+            })
             .then(downloadURL =>
             {
                 console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
@@ -81,14 +86,14 @@ export default function Save(props) {
                     .collection("userPosts")
                     .add({
                         downloadURL,
-                        caption
-
-
+                        caption,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     })
                     .then(downloadURL => {
                     console.log(`Successfully uploaded file to fire-store`);
                         props.navigation.popToTop();
-                }).catch((error) => {
+                })
+                    .catch((error) => {
                     console.log(`${error} \nError uploading file to fire-store!`);
                     return downloadURL;
                 });

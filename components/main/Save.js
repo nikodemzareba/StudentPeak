@@ -89,9 +89,9 @@ export default function Save(props) {
                         caption,
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     })
-                    .then(downloadURL => {
+                    .then(() => {
                     console.log(`Successfully uploaded file to fire-store`);
-                        props.navigation.popToTop();
+                        props.navigation.navigate("Add2"); // return to camera screen
                 })
                     .catch((error) => {
                     console.log(`${error} \nError uploading file to fire-store!`);

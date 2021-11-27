@@ -13,15 +13,63 @@ import {
   TouchableOpacity
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { SimpleLineIcons } from '@expo/vector-icons'
+import { SimpleLineIcons } from '@expo/vector-icons';
+import App from '../../App';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
+  authDomain: "studentpeak-8b306.firebaseapp.com",
+  projectId: "studentpeak-8b306",
+  storageBucket: "studentpeak-8b306.appspot.com",
+  messagingSenderId: "166397144012",
+  appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
+  measurementId: "G-4GN727QJLZ"
+};
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+
 
 const followers = '20';
 const following = '56';
-const name = 'Mike Wazowski';
-const username = '@MikeWazowski123';
+let name = "test";
+let username = '';
 const bio = 'Welcome to Monsters Inc. I am an alien frog.';
+var test = "";
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+  setupUI(user);
+  
+
+  }
+});
+
+
+
+const setupUI = (user) => {
+  if (user) {
+    db.collection('users').doc(user.uid).onSnapshot((doc => {
+      if (doc.exists) {
+      name = doc.data().name;
+      username = doc.data().username;
+      console.log(name);
+      const user = firebase.auth().currentUser;
+      console.log(user.uid);
+      }
+    }))
+  }
+}
+
+//const user = firebase.auth().currentUser;
+
+//if (user !== null) {
+//  setupUI(user);
+//}
+
 
 export default function PrivateProfile() {
+  
   const styles = StyleSheet.create({
     imageStyle: {
       height: 50,

@@ -53,30 +53,6 @@ export class Register extends Component {
           firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid)
             .set({
               email,
-              name,
-              surname,
-              dob,
-              gender,
-              anonynoususername,
-              username,
-              course,
-              yearofstudy,
-              stage,
-              bio,
-              topics,
-              friends,
-              photos,
-              messages,
-              accomodation,
-              stayaround, 
-              nationality,
-              placeofstudy,
-              followers,
-              following,
-              videos,
-              likes,
-              societies,
-              profileimage
             })
           console.log(result)
         })

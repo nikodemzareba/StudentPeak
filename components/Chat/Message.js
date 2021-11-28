@@ -8,6 +8,7 @@ import {colors} from "../../theme/colors";
 import PropTypes from "prop-types";
 import {Time} from './Time';
 
+
 //TODO: state should get userId from firebase
 const Message = ({message}) => {
   const userID = useSelector(state => state.auth.userID);

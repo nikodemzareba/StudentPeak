@@ -7,6 +7,7 @@ import {Input} from "./Input";
 import {colors} from "../../theme/colors";
 import {fetchMessages, postMessage} from "../../redux/actions";
 
+
 const Chat = () => {
     const [userMessage, setUserMessage] = userState('');
     const messages = useSelector(state => state.messages.messages);

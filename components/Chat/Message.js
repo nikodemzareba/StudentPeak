@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     topContainer: {
         position: 'relative',
         flexDirection: 'row',
-        justifyContent: 'flext-start',
+        justifyContent: 'flex-start',
         width: '100%',
         marginBottom: 40,
     },

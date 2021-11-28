@@ -44,6 +44,8 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
+import Add3 from  './components/main/Add3'
+import Save from  './components/main/Save'
 
 
 
@@ -120,7 +122,7 @@ export class App extends Component{
     return (
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Verify">
+          <Stack.Navigator initialRouteName="Add3">
             <Stack.Screen
               name="Main"
               component={Main}
@@ -165,6 +167,16 @@ export class App extends Component{
               name="Bio"
               component={Bio}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Add3"
+                component={Add3}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Save"
+                component={Save}
+                options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>

@@ -122,7 +122,7 @@ export class App extends Component{
     return (
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Add3">
+          <Stack.Navigator initialRouteName="Feed">
             <Stack.Screen
               name="Main"
               component={Main}

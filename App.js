@@ -44,7 +44,7 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
-import Add3 from  './components/main/Add3'
+import Add from './components/main/Add'
 import Save from  './components/main/Save'
 
 
@@ -169,8 +169,8 @@ export class App extends Component{
               options={{ headerShown: false }}
             />
             <Stack.Screen
-                name="Add3"
-                component={Add3}
+                name="Add"
+                component={Add}
                 options={{ headerShown: false }}
             />
             <Stack.Screen

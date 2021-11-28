@@ -25,6 +25,10 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
+import Add from './components/main/Add'
+import Save from  './components/main/Save'
+
+
 import Picture from './components/authentication/Picture'
 
 const Stack = createStackNavigator()

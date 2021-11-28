@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import FeedScreen from "./main/Feed"
-import AddScreen from "./main/Add"
+import Add from "./main/Add"
 import TopicScreen from "./main/Topic"
 import SearchScreen from "./main/Search"
 import EventScreen from "./main/Events"
@@ -59,7 +59,7 @@ export class Main extends Component{
                     <MaterialCommunityIcons name="magnify" color={color} size={26}/>
                 ),
             }}/>
-             <Tab.Screen name="Add" component={AddScreen}
+             <Tab.Screen name="Add" component={Add}
             options={{
                 tabBarIcon: ({color, size}) => (
                     //decide what is inside the Icon

@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import "firebase/firestore";
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import { Component, useState } from 'react'
 import {
@@ -53,6 +54,7 @@ onSignIn() {
 }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -114,7 +116,7 @@ onSignIn() {
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
           <Text style={styles.signText}>Don't have an account? Signup</Text>
         </TouchableOpacity>
       </View>
@@ -224,50 +226,9 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Login
+export default function(props) {
+  const navigation = useNavigation();
 
-// export class Login extends Component {
-//     constructor(props){
-//     super (props);
+  return <Login {...props} navigation={navigation} />;
+}
 
-//     this.state = {
-//         email: '',
-//         password: ''
-//        }
-//        this.onLogin = this.onLogin.bind(this)
-//     }
-
-//     onLogin(){
-//         const { email, password} = this.state;
-//         firebase.auth().signInWithEmailAndPassword(email, password)
-//         .then((result) => {
-//             console.log(result)
-//         })
-//         .catch((error) => {
-//             console.log(error)
-//         })
-//     }
-
-//     render() {
-//         return (
-//             <View>
-//                 <TextInput
-//                     placeholder="email"
-//                     onChangeText={(email) => this.setState({email})}
-//                 />
-
-//                 <TextInput
-//                     placeholder="password"
-//                     secureTextEntry={true}
-//                     onChangeText={(password) => this.setState({password})}
-//                 />
-//                 <Button
-//                   onPress={() => this.onLogin()}
-//                   title="Sign Up"
-//                 />
-//             </View>
-//         )
-//     }
-// }
-
-// export default Login

@@ -35,14 +35,14 @@ const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
-  authDomain: "studentpeak-8b306.firebaseapp.com",
-  projectId: "studentpeak-8b306",
-  storageBucket: "studentpeak-8b306.appspot.com",
-  messagingSenderId: "166397144012",
-  appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
-  measurementId: "G-4GN727QJLZ"
-};
+    apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
+    authDomain: "studentpeak-8b306.firebaseapp.com",
+    projectId: "studentpeak-8b306",
+    storageBucket: "studentpeak-8b306.appspot.com",
+    messagingSenderId: "166397144012",
+    appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
+    measurementId: "G-4GN727QJLZ"
+  };
 
 if (firebase.apps.length === 0) {
    firebase.initializeApp(firebaseConfig)

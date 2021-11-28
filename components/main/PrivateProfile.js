@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import "firebase/auth";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
@@ -138,6 +140,11 @@ export default function PrivateProfile() {
         <View>
         <TouchableOpacity style={styles.loginBtn}>
           <Text style={styles.loginText}>Edit</Text>
+        </TouchableOpacity>
+        </View>
+        <View>
+        <TouchableOpacity style={styles.loginBtn} onPress={() => firebase.auth().signOut()}>
+          <Text style={styles.loginText}>Log out</Text>
         </TouchableOpacity>
         </View>
         <View>

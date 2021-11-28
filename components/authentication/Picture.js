@@ -1,208 +1,92 @@
-import React from 'react'
-import { Component, useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Picker,
-  UselessTextInput
-} from 'react-native'
 
-import SwitchSelector from 'react-native-switch-selector'
-import { SimpleLineIcons } from '@expo/vector-icons'; 
 
-import firebase from 'firebase'
-import 'firebase/firestore'
+export default function Add({ navigation }) {
+  const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const [camera, setCamera] = useState(null);
+  const [image, setImage] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
 
-const Picture = ({navigation}) => {
-  function navigate(){
-      /* 
-      Add validation with 
-      database and send user to profile.
-      */
-      navigation.navigate('Login'); 
-  }
+  useEffect(() => {
+    (async () => {
+      const cameraStatus = await Camera.requestPermissionsAsync();
+      setHasCameraPermission(cameraStatus.status === 'granted');
 
-  const [selectedValue, setSelectedValue] = useState("University of Kent");
+      const galleryStatus = await ImagePicker.requestCameraRollPermissionsAsync();
+      setHasGalleryPermission(galleryStatus.status === 'granted');
 
-    return (
-      <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-                <SimpleLineIcons style={styles.icon} name="arrow-left" size={20} color="white" />
-            </TouchableOpacity>
-            <View>
-                <Text style={styles.logo}>StudentPeak</Text>
-            </View>
-            <View>
-                <Text style={styles.createText}>Select a profile picture</Text>
-            </View>
-            <TouchableOpacity style={styles.loginBtn} onPress={() => pickImage()}>
-            {image && <Image source={{ uri: image}} style={{flex: 1}} />}
-              <Text style = {styles.loginText}> Pick image from gallery</Text>
-              </TouchableOpacity>
-            
-        </View>
-        
-      
 
-      
-    )
-  }
-  export default function ImagePicker() {
-    const [image, setImage] = useState(null);
-    const [hasPermission, setHasPermission] = useState(null);
-  
-    useEffect(() => {
-      (async () => {
+    })();
+  }, []);
 
-        const status = await ImagePicker.requestCameraRollPermissionsAsync();
-        setHasPermission(status.status === 'granted');
-        
-      })();
-    }, []);
-  
-    if (hasPermission === false || hasPermission === flase) {
-        return <View />;
+  const takePicture = async () => {
+    if (camera) {
+      const data = await camera.takePictureAsync(null);
+      setImage(data.uri);
     }
-  
-    
-    const pickImage = async () => {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-        aspect: [1, 1],
-        quality: 1,
-      });
-  
-      console.log(result);
-  
-      if (!result.cancelled) {
-        setImage(result.uri);
-      }
-    };
+  }
 
-    
-   
-  
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+    console.log(result);
 
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+
+  if (hasCameraPermission === null || hasGalleryPermission === false) {
+    return <View />;
+  }
+  if (hasCameraPermission === false || hasGalleryPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+  return (
+    <View style={{ flex: 1 }}>
+      <View style={styles.cameraContainer}>
+        <Camera
+          ref={ref => setCamera(ref)}
+          style={styles.fixedRatio}
+          type={type}
+          ratio={'1:1'} />
+      </View>
+
+      <Button
+        title="Flip Image"
+        onPress={() => {
+          setType(
+            type === Camera.Constants.Type.back
+              ? Camera.Constants.Type.front
+              : Camera.Constants.Type.back
+          );
+        }}>
+      </Button>
+      <Button title="Take Picture" onPress={() => takePicture()} />
+      <Button title="Pick Image From Gallery" onPress={() => pickImage()} />
+      <Button title="Save" onPress={() => navigation.navigate('Save', { image })} />
+      {image && <Image source={{ uri: image }} style={{ flex: 1 }} />}
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-  container: {
+  cameraContainer: {
     flex: 1,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row'
   },
-  icon: {
-    marginRight: 300,
-    marginBottom: 40,
-    height: 20,
-  },
-  logo: {
-    fontWeight: 'bold',
-    fontFamily: 'Montserrat',
-    fontSize: 40,
-    color: 'white',
-    marginTop: 10,
-    marginBottom: 70,
-  },
-  emailView: {
-    width: '80%',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    height: 200,
-    marginBottom: 30,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  passView: {
-    width: '80%',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    height: 50,
-    marginBottom: 10,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  inputText: {
-    height: 100,
-    margin: 20,
-    padding: 10,
-    borderColor: 'gray',
-    borderWidth: 1,
-    color: 'black',
-    fontFamily: 'Montserrat',
-  },
-  forgot: {
-    color: 'white',
-    fontSize: 11,
-    fontFamily: 'Montserrat',
-    marginBottom: 30,
-    marginLeft: 150,
-  },
-  loginBtn: {
-    width: '80%',
-    backgroundColor: 'white',
-    borderRadius: 25,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 50,
-    marginBottom: 30,
-  },
-  loginText: {
-    color: 'black',
-    fontFamily: 'Montserrat',
-  },
-  passwordText: {
-    color: 'white',
-    fontFamily: 'Montserrat',
-    borderRadius: 20,
-  },
-  etextView: {
-    height: 30,
-    marginRight: 160,
-    fontSize: 20,
-    color: 'white',
-    fontFamily: 'Montserrat',
-  },
-  ptextView: {
-    height: 30,
-    marginRight: 200,
-    fontSize: 20,
-    color: 'white',
-    fontFamily: 'Montserrat',
-  },
-  signText: {
-    marginTop: 10,
-    color: 'white',
-    fontFamily: 'Montserrat',
-  },
-  buttonText: {
-    color: 'white',
-    fontFamily: 'Montserrat',
-  },
-  stayLogged: {
-    color: 'white',
-    fontFamily: 'Montserrat',
-    textAlign: 'center',
-    fontSize: 15,
-    marginBottom: 20,
-  },
-  createText: {
-    fontWeight: 'bold',
-    fontFamily: 'Montserrat',
-    fontSize: 30,
-    color: 'white',
-    marginTop: 10,
-    marginRight: 60,
-    marginBottom: 30,
-  },
+  fixedRatio: {
+    flex: 1,
+    aspectRatio: 1
+  }
+
 })
-
-export default Picture
-
-

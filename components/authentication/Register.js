@@ -1,5 +1,6 @@
 import firebase from 'firebase'
-import "firebase/firestore";
+import 'firebase/firestore'
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import { Component, useState } from 'react'
 import {
@@ -8,10 +9,11 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  InteractionManager,
 } from 'react-native'
 
-
-import { SimpleLineIcons } from '@expo/vector-icons'; 
+import { SimpleLineIcons } from '@expo/vector-icons'
+import { string } from 'prop-types';
 
 /* - 
 REGISTER CLASS v1.1
@@ -26,47 +28,51 @@ FIXES:
 - GUI IMPROVED.
 */
 
-
 export class Register extends Component {
 
+
+
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-        email: '',
-        password: '',
-        confirmPassword: ''
+      email: '',
+      password: '',
+      confirmPassword: '',
     }
 
     this.onSignUp = this.onSignUp.bind(this)
-}
+  }
 
-onSignUp() {
-    const { email, password, confirmPassword} = this.state;
+  onSignUp() {
+    const { email, password, confirmPassword } = this.state
     if (password !== confirmPassword) {
-      alert("Passwords don't match");
-  } else {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((result) => {
-            firebase.firestore().collection("users")
-                .doc(firebase.auth().currentUser.uid)
-                .set({
-                    email
-                })
-            console.log(result)
+      alert("Passwords don't match")
+    } else {
+      firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
+          firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid)
+            .set({
+              email,
+            })
+          console.log(result)
         })
         .catch((error) => {
-            console.log(error)
+          console.log(error)
         })
-}
-}
+    }
+  }
 
-    
-render() {
+  render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-        <SimpleLineIcons style={styles.icon} name="arrow-left" size={20} color="white" />
+          <SimpleLineIcons
+            style={styles.icon}
+            name="arrow-left"
+            size={20}
+            color="white"
+          />
         </TouchableOpacity>
         <View>
           <Text style={styles.logo}>StudentPeak</Text>
@@ -106,21 +112,21 @@ render() {
             style={styles.inputText}
             placeholder="Password*"
             placeholderTextColor="black"
-            onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
+            onChangeText={(confirmPassword) =>
+              this.setState({ confirmPassword })
+            }
           />
         </View>
-     
 
         <TouchableOpacity>
-          <Text style={styles.signText}>By signing up you are agreeing to the 
-          StudentPeak terms of service</Text>
+          <Text style={styles.signText}>
+            By signing up you are agreeing to the StudentPeak terms of service
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.loginBtn} onPress={this.onSignUp}>
           <Text style={styles.loginText}>Sign me up...</Text>
         </TouchableOpacity>
-
-        
       </View>
     )
   }
@@ -231,7 +237,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: 'white',
     fontFamily: 'Montserrat',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   buttonText: {
     color: 'white',
@@ -246,7 +252,11 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Register
+export default function(props) {
+  const navigation = useNavigation();
+
+  return <Register {...props} navigation={navigation} />;
+}
 
 // export class Login extends Component {
 //     constructor(props){
@@ -293,7 +303,6 @@ export default Register
 // }
 
 // export default Login
-
 
 // export class Register extends Component {
 //     constructor(props){
@@ -393,7 +402,7 @@ export default Register
 
 //                 <TextInput
 //                     placeholder="password"
-//                     secureTextEntry={true} 
+//                     secureTextEntry={true}
 //                     onChangeText={(password) => this.setState({password})}
 //                 />
 //                 <Button
@@ -404,6 +413,5 @@ export default Register
 //         )
 //     }
 // }
-
 
 // export default Register

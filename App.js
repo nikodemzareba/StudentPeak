@@ -37,6 +37,7 @@ import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
 import Picture from './components/authentication/Picture'
+import Interests from './components/authentication/Interests'
 
 
 
@@ -49,7 +50,7 @@ export class App extends Component{
   render(){
       return (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Picture">
+          <Stack.Navigator initialRouteName="Welcome">
           <Stack.Screen
               name="Picture"
               component={Picture}
@@ -115,6 +116,12 @@ export class App extends Component{
               component={Bio}
               options={{ headerShown: false }}
             />
+            <Stack.Screen
+              name="Interests"
+              component={Interests}
+              options={{ headerShown: false }}
+            />
+
           </Stack.Navigator>
         </NavigationContainer>
      

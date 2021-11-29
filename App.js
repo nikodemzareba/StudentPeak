@@ -26,6 +26,7 @@ import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
 import Picture from './components/authentication/Picture'
+import Interests from './components/authentication/Interests'
 
 const Stack = createStackNavigator()
 

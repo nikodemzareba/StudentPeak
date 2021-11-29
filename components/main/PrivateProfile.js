@@ -17,7 +17,7 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import App from '../../App';
 
 
-const ProfileScreen = ({navigation}) => {
+const ProfileView = ({}) => {
 
 var db = firebase.firestore();
 
@@ -153,7 +153,7 @@ useEffect(() => {
   );
         };
 
-export default ProfileScreen;
+export default ProfileView;
 
 const styles = StyleSheet.create({
   imageStyle: {

@@ -50,42 +50,25 @@ export class Register extends Component {
       alert("Passwords don't match")
     } else {
       firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
-          firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid)
-            .set({
-              email,
-              name,
-              surname,
-              dob,
-              gender,
-              anonynoususername,
-              username,
-              course,
-              yearofstudy,
-              stage,
-              bio,
-              topics,
-              friends,
-              photos,
-              messages,
-              accomodation,
-              stayaround, 
-              nationality,
-              placeofstudy,
-              followers,
-              following,
-              videos,
-              likes,
-              societies,
-              profileimage
-            })
-          console.log(result)
+        firebase.firestore()
+        .collection("users")
+        .doc(firebase.auth().currentUser.uid)
+        .collection("userDetails")
+        .add({
+          email,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+        console.log(`Successfully added user`);
         })
         .catch((error) => {
           console.log(error)
         })
-    }
+    })
   }
+}
 
+                                  
   render() {
     const { navigation } = this.props;
     return (

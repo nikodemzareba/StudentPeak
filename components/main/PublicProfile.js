@@ -68,7 +68,7 @@ const [profileDisplay, setprofileDisplay] = useState();
 
 const user = firebase.auth().currentUser;
 
-
+// hard coded in a user
 const retrieveProfileInfo = async() => {
   if (user != null) {
   await db.collection('users').doc("6O9hi0r7NsfjlT9lNYypV81kONf1").get().then((doc) => {

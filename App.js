@@ -7,21 +7,8 @@ import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
-import { View, Text } from 'react-native'
-
-// Allows font imports
-import { useFonts } from 'expo-font'
-import Constants from 'expo-constants'
-
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-
-
-
-// Checks if app is already initialised.
-if (firebase.apps.length === 0) {
-  firebase.initializeApp(Constants.manifest.web.config.firebase)
-}
 
 // All of the screens imported.
 import Welcome from './components/authentication/Welcome'
@@ -36,97 +23,60 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
+import Add from './components/main/Add'
+import Save from  './components/main/Save'
+
+
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 
-
-
 const Stack = createStackNavigator()
 
+function App(){
+
+const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 
-export class App extends Component{
+const firebaseConfig = {
+    apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
+    authDomain: "studentpeak-8b306.firebaseapp.com",
+    projectId: "studentpeak-8b306",
+    storageBucket: "studentpeak-8b306.appspot.com",
+    messagingSenderId: "166397144012",
+    appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
+    measurementId: "G-4GN727QJLZ"
+  };
 
-  render(){
-      return (
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Welcome">
-          <Stack.Screen
-              name="Picture"
-              component={Picture}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Welcome"
-              component={Welcome}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={Register}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Main"
-              component={Main}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Verify"
-              component={Verify}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="PrivateProfile"
-              component={PrivateProfile}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="PublicProfile"
-              component={PublicProfile}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="AboutYou"
-              component={AboutYou}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ChooseUsername"
-              component={ChooseUsername}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="StudyDetails"
-              component={StudyDetails}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Connect"
-              component={Connect}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Bio"
-              component={Bio}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Interests"
-              component={Interests}
-              options={{ headerShown: false }}
-            />
-
-          </Stack.Navigator>
-        </NavigationContainer>
-     
-    )
-  }
+if (firebase.apps.length === 0) {
+   firebase.initializeApp(firebaseConfig)
+}else{
+    firebase.app()
 }
 
-export default App
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user != null) {
+      setIsLoggedIn(true)
+    } else {
+      setIsLoggedIn(false);
+    }
+  });
+
+
+  return (
+    <NavigationContainer>
+      {isLoggedIn ? <Stack.Navigator>
+        <Stack.Screen name="PrivateProfile" component={PrivateProfile} options={{ headerShown: false }} />
+      </Stack.Navigator> :
+        <Stack.Navigator initialRouteName= "Welcome">
+          <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+        </Stack.Navigator>}
+    </NavigationContainer>
+  );
+}
+
+export default App;
+
+

@@ -55,13 +55,25 @@ export class Register extends Component {
               email,
             })
           console.log(result)
+        firebase.firestore()
+        .collection("users")
+        .doc(firebase.auth().currentUser.uid)
+        .collection("userDetails")
+        .add({
+          email,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+        console.log(`Successfully added user`);
         })
         .catch((error) => {
           console.log(error)
         })
-    }
+    })
   }
+}
 
+                                  
   render() {
     const { navigation } = this.props;
     return (

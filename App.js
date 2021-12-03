@@ -1,5 +1,5 @@
 import firebase from 'firebase' // do not move this from first line -- will cause errors.
-import React, { Component } from 'react' // imports React Native Library
+import React, { Component, useState } from 'react' // imports React Native Library
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'

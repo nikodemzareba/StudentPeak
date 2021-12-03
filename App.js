@@ -1,7 +1,5 @@
-import firebase from "firebase/app";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import React, { useState } from 'react' // imports React Native Library
+import firebase from 'firebase' // do not move this from first line -- will cause errors.
+import React, { Component } from 'react' // imports React Native Library
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -25,6 +23,10 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
+import Add from './components/main/Add'
+import Save from  './components/main/Save'
+
+
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 

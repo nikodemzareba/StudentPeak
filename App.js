@@ -66,7 +66,7 @@ firebase.auth().onAuthStateChanged((user) => {
   return (
     <NavigationContainer>
       {isLoggedIn ? <Stack.Navigator>
-        <Stack.Screen name="Verify" component={Verify} options={{ headerShown: false }} />
+        <Stack.Screen name="PrivateProfile" component={PrivateProfile} options={{ headerShown: false }} />
       </Stack.Navigator> :
         <Stack.Navigator initialRouteName= "Welcome">
           <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />

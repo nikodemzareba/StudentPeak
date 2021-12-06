@@ -38,6 +38,7 @@ import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
+import Recommended from './components/authentication/Recommended'
 
 
 
@@ -50,7 +51,7 @@ export class App extends Component{
   render(){
       return (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Welcome">
+          <Stack.Navigator initialRouteName="Interests">
           <Stack.Screen
               name="Picture"
               component={Picture}
@@ -119,6 +120,12 @@ export class App extends Component{
             <Stack.Screen
               name="Interests"
               component={Interests}
+              options={{ headerShown: false }}
+            />
+            
+            <Stack.Screen
+              name="Recommended"
+              component={Recommended}
               options={{ headerShown: false }}
             />
 

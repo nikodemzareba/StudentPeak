@@ -17,6 +17,7 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import App from '../../App';
 
 
+
 const ProfileView = ({}) => {
 
 var db = firebase.firestore();
@@ -146,10 +147,11 @@ useEffect(() => {
             uri: "https://picsum.photos/200/300"
           }}
           />
-
+         
         </View>
       </ScrollView>
     </SafeAreaView>
+    
   );
         };
 

@@ -25,11 +25,13 @@ import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
 import Add from './components/main/Add'
 import Save from  './components/main/Save'
+import Topbar from './components/main/top/Topbar'
 
 
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
+import Chat from './components/main/top/Chat'
 
 const Stack = createStackNavigator()
 
@@ -68,7 +70,7 @@ firebase.auth().onAuthStateChanged((user) => {
     <NavigationContainer> 
       {isLoggedIn ? // if logged in
       <Stack.Navigator initialRouteName= "Recommended">
-        <Stack.Screen name="Recommended" component={Recommended} options={{ headerShown: false }} />
+        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
       </Stack.Navigator> 
       : // if not logged in
         <Stack.Navigator initialRouteName= "Welcome">

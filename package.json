@@ -28,6 +28,8 @@
     "react-dom": "^16.14.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-date-picker": "^4.1.1",
+    "react-native-floating-action": "^1.22.0",
+    "react-native-floating-action-button": "^0.2.2",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-pager-view": "^5.4.8",

@@ -11,161 +11,128 @@ export default function Interests({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.logo}>StudentPeak</Text>
 
-      <Text style={styles.intro}>Please select your interests</Text>
+      <Text style={styles.intro}>Recommended groups for you</Text>
       
         <View style={styles.buttons}>
         
           <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Art</Text>
+          <Text style={styles.loginText}>UKC Freshers 2022</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Sports</Text>
+          <Text style={styles.loginText}>UKC Theraputic Arts</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>DIY</Text>
-          </TouchableOpacity>
+          
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Debating</Text>
-          </TouchableOpacity>
+         
 
          </View>
         
         <View style={styles.buttons}>
 
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Drama</Text>
+          <Text style={styles.loginText}>UKC Compuing Society</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Dance</Text>
+          <Text style={styles.loginText}>UKC Dance Society</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>History</Text>
-          </TouchableOpacity>
+          
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Technology</Text>
-          </TouchableOpacity>
+         
         </View>
 
         <View style={styles.buttons}>
 
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Movies</Text>
+          <Text style={styles.loginText}>UKC Film Society</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Music</Text>
+          <Text style={styles.loginText}>UKC Music Society</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Culture</Text>
-          </TouchableOpacity>
+          
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Anime</Text>
-          </TouchableOpacity>
+         
 
         </View>
 
         <View style={styles.buttons}>
 
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Cars</Text>
+          <Text style={styles.loginText}>UKC Basketball Society</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Travel</Text>
+          <Text style={styles.loginText}>UKC Women in STEM</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Media</Text>
-          </TouchableOpacity>
+          
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Army</Text>
-          </TouchableOpacity>
+          
         </View>
 
         <View style={styles.buttons}>
 
          <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Meditation</Text>
+         <Text style={styles.loginText}>UKC Yoga Society</Text>
          </TouchableOpacity>
 
          <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Philosophy</Text>
+         <Text style={styles.loginText}>UKC Philosophy Society</Text>
          </TouchableOpacity>
 
-         <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Food</Text>
-         </TouchableOpacity>
+         
 
-         <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Gaming</Text>
-         </TouchableOpacity>
+         
         </View>
 
         <View style={styles.buttons}>
 
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Science</Text>
+          <Text style={styles.loginText}>UKC Tech Society</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Engineering</Text>
+          <Text style={styles.loginText}>UKC Erasmus Society</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Clubbing</Text>
-          </TouchableOpacity>
+          
 
-          <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Humanities</Text>
-          </TouchableOpacity>
+         
         </View>
 
 
         <View style={styles.buttons}>
 
          <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Health</Text>
+         <Text style={styles.loginText}>UKC History Society</Text>
          </TouchableOpacity>
 
          <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Business</Text>
+         <Text style={styles.loginText}>UKC Business Society</Text>
          </TouchableOpacity>
 
-         <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Exploring</Text>
-         </TouchableOpacity>
+         
 
-         <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Gaming</Text>
-         </TouchableOpacity>
+         
         </View>
 
         <View style={styles.buttons}>
 
          <TouchableOpacity style={styles.loginBtn} >
-         <Text style={styles.loginText}>Reading</Text>
+         <Text style={styles.loginText}>UKC Jaoan Society </Text>
          </TouchableOpacity>
 
          <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Poetry</Text>
+         <Text style={styles.loginText}>UKC Poetry Society</Text>
          </TouchableOpacity>
 
-         <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Outdoors</Text>
-         </TouchableOpacity>
-
-         <TouchableOpacity style={styles.loginBtn}>
-         <Text style={styles.loginText}>Religion</Text>
-         </TouchableOpacity>
+         
+         
         </View>
 
       
@@ -192,10 +159,10 @@ const styles = StyleSheet.create({
   buttons: {
     flexDirection: "row",
     justifyContent: "space-around",
-    padding: 16
+    padding: 5
   },
   loginBtn: {
-    width: '20%',
+    width: '45%',
     backgroundColor: 'white',
     borderRadius: 30,
     height: 30,

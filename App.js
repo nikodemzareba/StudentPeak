@@ -29,6 +29,7 @@ import Save from  './components/main/Save'
 
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
+import Recommended from './components/authentication/Recommended'
 
 const Stack = createStackNavigator()
 

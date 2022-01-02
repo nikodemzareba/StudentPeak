@@ -171,7 +171,7 @@ export default function Interests({ navigation }) {
       
 
 
-      <Text style={styles.introTwo}>TheStudentPeak.com</Text>
+      
     </View>
   )
 }

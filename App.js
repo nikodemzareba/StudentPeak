@@ -57,7 +57,7 @@ if (firebase.apps.length === 0) {
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user != null) {
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
@@ -65,10 +65,12 @@ firebase.auth().onAuthStateChanged((user) => {
 
 
   return (
-    <NavigationContainer>
-      {isLoggedIn ? <Stack.Navigator>
-        <Stack.Screen name="PrivateProfile" component={PrivateProfile} options={{ headerShown: false }} />
-      </Stack.Navigator> :
+    <NavigationContainer> 
+      {isLoggedIn ? // if logged in
+      <Stack.Navigator initialRouteName= "Recommended">
+        <Stack.Screen name="Recommended" component={Recommended} options={{ headerShown: false }} />
+      </Stack.Navigator> 
+      : // if not logged in
         <Stack.Navigator initialRouteName= "Welcome">
           <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />

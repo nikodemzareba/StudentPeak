@@ -150,9 +150,11 @@ export class Register extends Component {
               console.log(error)
             })
         })
-    }
+    })
   }
+}
 
+                                  
   render() {
     const { navigation } = this.props
     return (

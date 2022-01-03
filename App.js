@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
+import {connect} from 'react-redux'
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 import { NavigationContainer } from '@react-navigation/native'
@@ -67,18 +68,20 @@ firebase.auth().onAuthStateChanged((user) => {
 
 
   return (
-    <NavigationContainer> 
-      {isLoggedIn ? // if logged in
-      <Stack.Navigator initialRouteName= "Recommended">
-        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
-      </Stack.Navigator> 
-      : // if not logged in
+
+    
+    <Provider store={store}>
+    <NavigationContainer>
+      {isLoggedIn ? <Stack.Navigator>
+        <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
+      </Stack.Navigator> :
         <Stack.Navigator initialRouteName= "Welcome">
           <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
         </Stack.Navigator>}
     </NavigationContainer>
+    </Provider>
   );
 }
 

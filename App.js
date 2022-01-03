@@ -1,7 +1,5 @@
-import firebase from "firebase/app";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import React, { useState } from 'react' // imports React Native Library
+import firebase from 'firebase' // do not move this from first line -- will cause errors.
+import React, { Component, useState } from 'react' // imports React Native Library
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -27,9 +25,13 @@ import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
 import Add from './components/main/Add'
 import Save from  './components/main/Save'
+import Topbar from './components/main/top/Topbar'
 
 
 import Picture from './components/authentication/Picture'
+import Interests from './components/authentication/Interests'
+import Recommended from './components/authentication/Recommended'
+import Chat from './components/main/top/Chat'
 
 const Stack = createStackNavigator()
 
@@ -39,14 +41,14 @@ const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
-    authDomain: "studentpeak-8b306.firebaseapp.com",
-    projectId: "studentpeak-8b306",
-    storageBucket: "studentpeak-8b306.appspot.com",
-    messagingSenderId: "166397144012",
-    appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
-    measurementId: "G-4GN727QJLZ"
-  };
+  apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
+  authDomain: "studentpeak-8b306.firebaseapp.com",
+  projectId: "studentpeak-8b306",
+  storageBucket: "studentpeak-8b306.appspot.com",
+  messagingSenderId: "166397144012",
+  appId: "1:166397144012:web:1956c193cd6c0ca3ec4b69",
+  measurementId: "G-4GN727QJLZ"
+};
 
 if (firebase.apps.length === 0) {
    firebase.initializeApp(firebaseConfig)
@@ -57,7 +59,7 @@ if (firebase.apps.length === 0) {
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user != null) {
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
@@ -65,10 +67,12 @@ firebase.auth().onAuthStateChanged((user) => {
 
 
   return (
-    <NavigationContainer>
-      {isLoggedIn ? <Stack.Navigator>
-        <Stack.Screen name="PrivateProfile" component={PrivateProfile} options={{ headerShown: false }} />
-      </Stack.Navigator> :
+    <NavigationContainer> 
+      {isLoggedIn ? // if logged in
+      <Stack.Navigator initialRouteName= "Recommended">
+        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
+      </Stack.Navigator> 
+      : // if not logged in
         <Stack.Navigator initialRouteName= "Welcome">
           <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />

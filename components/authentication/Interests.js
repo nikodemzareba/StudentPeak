@@ -1,12 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button, TouchableOpacity, useState } from 'react-native'
+
+import { StyleSheet, Text, View, Button, TouchableOpacity, useState, SafeAreaView } from 'react-native'
 import { ScrollView } from "react-native-gesture-handler";
 import FloatingActionButton from "react-native-floating-action-button";
 
 export default function Interests({ navigation }) {
 
 
- 
+
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>StudentPeak</Text>
@@ -168,10 +169,6 @@ export default function Interests({ navigation }) {
          </TouchableOpacity>
         </View>
 
-      
-
-
-      
     </View>
   )
 }
@@ -206,6 +203,7 @@ const styles = StyleSheet.create({
    
   },
 
+
   loginBtnSel: {
     width: '20%',
     backgroundColor: 'green',
@@ -217,6 +215,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
    
   },
+
   loginText: {
     color: 'black',
     fontFamily: 'Montserrat',

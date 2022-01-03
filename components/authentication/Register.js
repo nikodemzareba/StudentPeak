@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 import 'firebase/firestore'
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Component, useState } from 'react'
 import {
@@ -13,14 +13,18 @@ import {
 } from 'react-native'
 
 import { SimpleLineIcons } from '@expo/vector-icons'
-import { string } from 'prop-types';
+import { string } from 'prop-types'
+
+require("firebase/firestore")
+require("firebase/firebase-Storage")
 
 /* - 
 REGISTER CLASS v1.1
-PROBLEMS: 
-- Navigation stack doesn't want to work - further research. 
+Future implementations: 
+ 
 - Add a notification saying that password is too short and firebase won't allow it. 
 - Missing functionality to set passwords to visible. 
+- Add message saying account already exists with given email. 
 
 FIXES: 
 - USER DATA SENT TO FIREBASE
@@ -29,9 +33,6 @@ FIXES:
 */
 
 export class Register extends Component {
-
-
-
   constructor(props) {
     super(props)
 
@@ -39,31 +40,122 @@ export class Register extends Component {
       email: '',
       password: '',
       confirmPassword: '',
+      name: '',
+      surname: '',
+      verifyEmail: '',
+      dob: '',
+      gender: '',
+      anonynoususername: '',
+      username: '',
+      course: '',
+      yearofstudy: '',
+      stage: '',
+      bio: '',
+      topics: '',
+      friends: '',
+      photos: '',
+      messages: '',
+      accomodation: '',
+      stayaround: '',
+      nationality: '',
+      placeofstudy: '',
+      followers: '',
+      following: '',
+      videos: '',
+      likes: '',
+      societies: '',
+      profileimage: '',
     }
 
     this.onSignUp = this.onSignUp.bind(this)
   }
 
   onSignUp() {
-    const { email, password, confirmPassword } = this.state
+    const {
+      email,
+      password,
+      confirmPassword,
+      name,
+      surname,
+      verifyEmail,
+      dob,
+      gender,
+      anonynoususername,
+      username,
+      course,
+      yearofstudy,
+      stage,
+      bio,
+      topics,
+      friends,
+      photos,
+      messages,
+      accomodation,
+      stayaround,
+      nationality,
+      placeofstudy,
+      followers,
+      following,
+      videos,
+      likes,
+      societies,
+      profileimage,
+    } = this.state
+
     if (password !== confirmPassword) {
       alert("Passwords don't match")
     } else {
-      firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
-          firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid)
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((result) => {
+          firebase
+            .firestore()
+            .collection('users')
+            .doc(firebase.auth().currentUser.uid)
             .set({
               email,
+              name,
+              surname,
+              verifyEmail,
+              dob,
+              gender,
+              anonynoususername,
+              username,
+              course,
+              yearofstudy,
+              stage,
+              bio,
+              topics,
+              friends,
+              photos,
+              messages,
+              accomodation,
+              stayaround,
+              nationality,
+              placeofstudy,
+              followers,
+              following,
+              videos,
+              likes,
+              societies,
+              profileimage,
+              createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             })
-          console.log(result)
+            .then(() => {
+              navigation.navigate('Vefify')
+              console.log(`Successfully added user`)
+            })
+            .catch((error) => {
+              console.log(error)
+            })
         })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
   }
+}
 
+                                  
   render() {
-    const { navigation } = this.props;
+    const { navigation } = this.props
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
@@ -252,10 +344,10 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function(props) {
-  const navigation = useNavigation();
+export default function (props) {
+  const navigation = useNavigation()
 
-  return <Register {...props} navigation={navigation} />;
+  return <Register {...props} navigation={navigation} />
 }
 
 // export class Login extends Component {

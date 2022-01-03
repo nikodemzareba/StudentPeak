@@ -17,6 +17,7 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import App from '../../App';
 
 
+
 const ProfileView = () => {
 
 var db = firebase.firestore();
@@ -24,6 +25,7 @@ var db = firebase.firestore();
 
 //const followers = '20';
 //const following = '56';
+
 
 
 
@@ -60,7 +62,9 @@ var db = firebase.firestore();
 // }
 
 const [profileDisplay, setprofileDisplay] = useState();
+
 const [following, setFollowing] = useState(false);
+
 
 
 const user = firebase.auth().currentUser;
@@ -75,6 +79,7 @@ const retrieveProfileInfo = async() => {
   })
 }
 }
+
 
 /*
 const getFollowing
@@ -114,6 +119,7 @@ useEffect(() => {
   retrieveProfileInfo();
  
 });
+
 
 
 // const user = firebase.auth().currentUser;
@@ -214,13 +220,14 @@ useEffect(() => {
             uri: "https://picsum.photos/200/300"
           }}
           />
-
+         
         </View>
       </ScrollView>
     </SafeAreaView>
+    
   );
         };
-      
+
 
 export default ProfileView;
 

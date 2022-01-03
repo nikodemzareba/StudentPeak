@@ -150,7 +150,6 @@ export class Register extends Component {
               console.log(error)
             })
         })
-    })
   }
 }
 

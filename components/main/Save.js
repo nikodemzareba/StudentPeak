@@ -48,7 +48,7 @@ export default function Save(props) {
                     })
                     .then(() => {
                     console.log(`Successfully uploaded file to fire-store`);
-                        props.navigation.navigate("Add3"); // return to camera screen
+                        props.navigation.navigate("Add"); // return to camera screen
                 })
                     .catch((error) => {
                     console.log(`${error} \nError uploading file to fire-store!`);

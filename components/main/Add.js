@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-native';
-import { Camera } from 'expo-camera';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity, Button, Image} from 'react-native';
+import {Camera} from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
-import * as firebase  from 'firebase';
+import * as firebase from 'firebase';
 
 
 export default function Add({navigation}) {
@@ -19,7 +19,7 @@ export default function Add({navigation}) {
 
             setHasCameraPermission(hasCameraPermission.status === 'granted');
 
-            const  galleryStatus  = await ImagePicker.getMediaLibraryPermissionsAsync();
+            const galleryStatus = await ImagePicker.getMediaLibraryPermissionsAsync();
             console.log(galleryStatus.status);
 
             setHasGalleryPermission(galleryStatus.status === 'granted');
@@ -28,13 +28,14 @@ export default function Add({navigation}) {
                 galleryStatus.status !== 'granted' &&
                 hasCameraPermission.status !== 'granted'
             ) {
-                alert('Permission for media access needed.');            }
+                alert('Permission for media access needed.');
+            }
 
         })();
     }, []);
 
     const takePicture = async () => {
-        if(camera){
+        if (camera) {
             const data = await camera.takePictureAsync(null);
             console.log(data.uri)
             setImage(data.uri)
@@ -59,24 +60,24 @@ export default function Add({navigation}) {
 
     //What does this section do?
     if (hasCameraPermission === null || hasGalleryPermission === false) {
-        return <View />;
+        return <View/>;
     }
     if (hasCameraPermission === false || hasGalleryPermission === false) {
         return <Text>No access to camera</Text>;
     }
 
     return (
-        <View style={{flex : 1}}>
+        <View style={{flex: 1}}>
             <View style={styles.cameraContainer}>
                 <Camera
-                    ref = {ref => setCamera(ref)}
+                    ref={ref => setCamera(ref)}
                     style={styles.fixedRatio}
                     type={type}
-                    ratio ={'1:1'} />
+                    ratio={'1:1'}/>
             </View>
 
             <Button
-                title = "Flip Image"
+                title="Flip Image"
                 onPress={() => {
                     setType(
                         type === Camera.Constants.Type.back
@@ -85,21 +86,21 @@ export default function Add({navigation}) {
                     );
                 }}>
             </Button>
-            <Button title="Take Picture" onPress ={() => takePicture()}/>
-            <Button title="Pick Image From Gallery" onPress ={() => pickImage()}/>
-            <Button title="Save" onPress ={() => navigation.navigate('Save', {image})}/>
-            {image && <Image source = {{uri:image}} style = {{flex: 1}} />}  {/* Displays image taken below  */}
+            <Button title="Take Picture" onPress={() => takePicture()}/>
+            <Button title="Pick Image From Gallery" onPress={() => pickImage()}/>
+            <Button title="Save" onPress={() => navigation.navigate('Save', {image})}/>
+            {image && <Image source={{uri: image}} style={{flex: 1}}/>} {/* Displays image taken below  */}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     cameraContainer: {
-        flex:1,
+        flex: 1,
         flexDirection: 'row'
     },
-    fixedRatio:{
-        flex:1,
+    fixedRatio: {
+        flex: 1,
         aspectRatio: 1
     }
 })

@@ -18,6 +18,8 @@ export default function Save(props) {
 
      const uploadImage2 = async () => {
         const childPath2 = `posts/${firebase.auth().currentUser.uid}/${getRandomString(36)}`;
+
+        console.log(`\nNew Path: ${childPath2} ` );
         const response = await fetch(uri); // fetch image
         const blob = await response.blob(); // convert to blob
 
@@ -58,6 +60,15 @@ export default function Save(props) {
             });
     }
 
+   const getRandomString = (length) =>
+   {
+       var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+       var result = '';
+       for (var i = 0; i < length; i++) {
+           result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+       }
+       return result;
+   }
 
     return (
         <View style={{flex: 1}}>
@@ -70,17 +81,5 @@ export default function Save(props) {
             <Button title="Save" onPress={() => uploadImage2()}/>
         </View>
     )
-
-
-
-    function getRandomString(length) {/* Generates random Doc ID for file being uploaded */}
-    {
-        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var result = '';
-        for (var i = 0; i < length; i++) {
-            result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-        }
-        return result;
-    }
 
 }

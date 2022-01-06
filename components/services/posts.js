@@ -40,6 +40,13 @@ export const getFeed = () => new Promise((resolve, reject) => {
                     .where("mediaType", "==", "video")
                     .get()
                     .then(userPost => {
+                        //########################################################################
+                        // Delete later
+                        console.log("\n\nUsersID: " + user.id);
+                        snapshot.forEach((userPost) => {
+                            console.log("PostID : " + userPost.id + " | MediaType: "+ userPost.get("mediaType") + " | Download URL: " + userPost.get("downloadURL"));
+                        })
+                        //########################################################################
                         // Videos
                         let posts = userPost.docs.map((value) => {
                             const id = value.id;

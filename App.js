@@ -34,6 +34,7 @@ import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
 import Chat from './components/main/top/Chat'
+import main from "./components/Main";
 
 const Stack = createStackNavigator()
 
@@ -74,7 +75,7 @@ function App() {
         <Provider store={store}>
             <NavigationContainer>
                 {isLoggedIn ? <Stack.Navigator>
-                        <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
+                        <Stack.Screen name="Main" component={main} options={{headerShown: false}}/>
                         <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
                     </Stack.Navigator> :
                     <Stack.Navigator initialRouteName="Welcome">

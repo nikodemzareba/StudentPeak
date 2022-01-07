@@ -7,6 +7,7 @@ import Text from "react-native-web/dist/vendor/react-native/Animated/components/
 
 
 import {Video, AVPlaybackStatus} from 'expo-av';
+import {TouchableWithoutFeedback} from "react-native-gesture-handler";
 
 export default function Save(props) {
     //console.log(props.route.image)
@@ -105,19 +106,21 @@ export default function Save(props) {
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                 />
-                <View style={styles.buttons}>
-                    <Button
-                        title={status.isPlaying ? 'Pause' : 'Play'}
-                        onPress={() =>
-                            status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                        }
+
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        placeholder="Write a Caption ...."
+                        onChangeText={(caption) => setCaption(caption)}
                     />
                 </View>
+                <Button title="Save" onPress={() => uploadImage2()}/>
+
             </View>
         );
 
     } else {
         return (
+
             <View style={{flex: 1, padding:10}}>
 
                 <Image source={{uri: props.route.params.image}} style={{flex: 1}}/> {/* Displays image taken below  */}
@@ -131,8 +134,6 @@ export default function Save(props) {
             </View>
         )
     }
-
-
 }
 
 const styles = StyleSheet.create({

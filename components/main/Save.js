@@ -18,7 +18,6 @@ export default function Save(props) {
     const [isVideo, setIsVideo] = useState(false)
 
     const video = React.useRef(null);
-    const [status, setStatus] = React.useState({});
 
     useEffect(() => { // checks if user has set permissions to use the camera
         let fileExtension = uri.substr(uri.lastIndexOf('.') + 1);
@@ -99,12 +98,10 @@ export default function Save(props) {
                     ref={video}
                     style={{flex: 1}}
                     source={{
-                        uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                        uri: props.route.params.image,
                     }}
                     useNativeControls
                     resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
                 />
 
                 <View style={styles.inputContainer}>
@@ -120,7 +117,6 @@ export default function Save(props) {
 
     } else {
         return (
-
             <View style={{flex: 1, padding:10}}>
 
                 <Image source={{uri: props.route.params.image}} style={{flex: 1}}/> {/* Displays image taken below  */}

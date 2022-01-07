@@ -1,8 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import {View, TextInput, Image, Button} from 'react-native'
+import {View, TextInput, Image, Button, StyleSheet} from 'react-native'
 
 import firebase from 'firebase'
 import {NavigationContainer} from '@react-navigation/native'
+import Text from "react-native-web/dist/vendor/react-native/Animated/components/AnimatedText";
+
+
+import {Video, AVPlaybackStatus} from 'expo-av';
+import {TouchableWithoutFeedback} from "react-native-gesture-handler";
 
 export default function Save(props) {
     //console.log(props.route.image)
@@ -10,7 +15,9 @@ export default function Save(props) {
     const uri = props.route.params.image;
     const [caption, setCaption] = useState("")
     const [mediaType, setMediaType] = useState("")
+    const [isVideo, setIsVideo] = useState(false)
 
+    const video = React.useRef(null);
 
     useEffect(() => { // checks if user has set permissions to use the camera
         let fileExtension = uri.substr(uri.lastIndexOf('.') + 1);
@@ -22,6 +29,13 @@ export default function Save(props) {
             type.lastIndexOf("/")
         );
         setMediaType(fileType);
+
+        if (fileType === "video") {
+            setIsVideo(true)
+        }
+
+
+        console.log("State = " + isVideo)
     }, []);
 
     const uploadImage2 = async () => {
@@ -77,16 +91,67 @@ export default function Save(props) {
         return result;
     }
 
-    return (
-        <View style={{flex: 1}}>
+    if (isVideo) {
+        return (
+            <View style={styles.container}>
+                <Video
+                    ref={video}
+                    style={{flex: 1}}
+                    source={{
+                        uri: props.route.params.image,
+                    }}
+                    useNativeControls
+                    resizeMode="contain"
+                />
 
-            <Image source={{uri: props.route.params.image}} style={{flex: 1}}/> {/* Displays image taken below  */}
-            <TextInput
-                placeholder="Write a Caption ...."
-                onChangeText={(caption) => setCaption(caption)}
-            />
-            <Button title="Save" onPress={() => uploadImage2()}/>
-        </View>
-    )
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        placeholder="Write a Caption ...."
+                        onChangeText={(caption) => setCaption(caption)}
+                    />
+                </View>
+                <Button title="Save" onPress={() => uploadImage2()}/>
 
+            </View>
+        );
+
+    } else {
+        return (
+            <View style={{flex: 1, padding:10}}>
+
+                <Image source={{uri: props.route.params.image}} style={{flex: 1}}/> {/* Displays image taken below  */}
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        placeholder="Write a Caption ...."
+                        onChangeText={(caption) => setCaption(caption)}
+                    />
+                </View>
+                <Button title="Save" onPress={() => uploadImage2()}/>
+            </View>
+        )
+    }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#ecf0f1',
+    },
+    video: {
+        alignSelf: 'center',
+        width: 320,
+        height: 200,
+    },
+    buttons: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    inputContainer: {
+        borderLeftWidth: 4,
+        borderRightWidth: 4,
+        height: 30,
+        padding:10
+    },
+})

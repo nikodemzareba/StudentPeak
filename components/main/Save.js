@@ -5,8 +5,6 @@ import firebase from 'firebase'
 import {NavigationContainer} from '@react-navigation/native'
 
 
-require("firebase/firestore")
-require("firebase/firebase-Storage")
 
 export default function Save(props) {
     //console.log(props.route.image)

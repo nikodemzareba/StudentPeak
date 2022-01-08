@@ -1,5 +1,7 @@
 import firebase from 'firebase' // do not move this from first line -- will cause errors.
-import React, {Component, useState} from 'react' // imports React Native Library
+require('firebase/firestore');
+import "firebase/auth";
+import React, {useEffect, Component, useState} from 'react' // imports React Native Library
 
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
@@ -17,8 +19,6 @@ import Welcome from './components/authentication/Welcome'
 import Register from './components/authentication/Register'
 import Login from './components/authentication/Login'
 import Main from './components/Main' // Student explore
-import PrivateProfile from './components/main/PrivateProfile'
-import PublicProfile from './components/main/PublicProfile'
 import Verify from './components/authentication/Verify'
 import AboutYou from './components/authentication/AboutYou'
 import ChooseUsername from './components/authentication/ChooseUsername'
@@ -35,12 +35,13 @@ import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
 import Chat from './components/main/top/Chat'
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 function App() {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isRegisterComplete, setIsRegisterComplete] = useState(false);
+    const [user, setUser] = useState (null);
 
     const firebaseConfig = {
         apiKey: "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
@@ -62,10 +63,37 @@ function App() {
     firebase.auth().onAuthStateChanged((user) => {
         if (user != null) {
             setIsLoggedIn(true);
+
+            // not working
+            if(user.registerDone == false){
+                setIsRegisterComplete(false);
+            }else{
+                setIsRegisterComplete(true);
+            }
+            
         } else {
             setIsLoggedIn(false);
         }
     });
+
+ 
+
+
+    // firebase.firestore()
+    //      .collection("users")
+    //      .doc(firebase.auth().user)
+    //      .get()
+    //      .then((snapshot) => {
+    //     if (snapshot.exists) {
+    //      setUser(snapshot.data());
+    //     }
+    //     else {
+    //     console.log('user does not exist')
+    //     }
+    // })
+
+            
+        
 
 
     return (
@@ -73,15 +101,43 @@ function App() {
 
         <Provider store={store}>
             <NavigationContainer>
-                {isLoggedIn ? <Stack.Navigator>
+
+                {isLoggedIn ? 
+                
+                <Stack.Navigator> 
+
+                    {isRegisterComplete ? 
+
+                    // if user has completed registration and has an account.
+                    <Stack.Group initialRouteName="Main"> 
+
                         <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
                         <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
-                    </Stack.Navigator> :
+
+                    </Stack.Group>
+                    
+                    :
+
+                    // If user registration is not complete but account has been made.
+                    <Stack.Group initialRouteName="Verify">
+                    
+                    <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
+
+                    </Stack.Group>}
+                       
+                        
+
+                </Stack.Navigator> 
+                    
+                    :
+
+                    // If user is not logged in.
                     <Stack.Navigator initialRouteName="Welcome">
                         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
                         <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
                         <Stack.Screen name="Register" component={Register} options={{headerShown: false}}/>
                     </Stack.Navigator>}
+
             </NavigationContainer>
         </Provider>
     );

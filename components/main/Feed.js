@@ -4,8 +4,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-
-
 export default function Feed() {
     return (
         <View>

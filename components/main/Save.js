@@ -5,9 +5,9 @@ import firebase from 'firebase'
 import {NavigationContainer} from '@react-navigation/native'
 import Text from "react-native-web/dist/vendor/react-native/Animated/components/AnimatedText";
 
-
 import {Video, AVPlaybackStatus} from 'expo-av';
 import {TouchableWithoutFeedback} from "react-native-gesture-handler";
+
 
 export default function Save(props) {
     //console.log(props.route.image)

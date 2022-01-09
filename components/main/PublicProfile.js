@@ -1,3 +1,6 @@
+import firebase from 'firebase/app';
+import "firebase/auth";
+import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -7,180 +10,244 @@ import {
   Alert,
   Image,
   Button,
-  FlatList,
   TouchableOpacity
 } from "react-native";
-
-import firebase from 'firebase'
-require('firebase/firestore')
-import "firebase/auth";
-import {connect} from 'react-redux'
-
-/*
-import { StatusBar } from "expo-status-bar";
-import { FlatList, RawButton, ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native-gesture-handler";
 import { SimpleLineIcons } from '@expo/vector-icons';
 import App from '../../App';
-*/
 
 
-function PublicProfile(props) {
-  const[userPosts, setUserPosts] = useState ([]);
-  const[user, setUser] = useState (null);
-   const [following, setFollowing] = useState(false);
+const ProfileView = ({}) => {
+
+var db = firebase.firestore();
 
 
-  useEffect(() => {
-    const{currentUser, posts } = props;
-    console.log({currentUser, posts})
 
-    if(props.route.params.uid == firebase.auth().currentUser.uid) {
-      setUser(currentUser)
-      setUserPosts(posts)
+const followers = '2002';
+const following = '99';
+const name = 'Sully Monster';
+const username = '@SullyIsKing321';
+const bio = 'Welcome to Monsters Inc. I am an alien bear.';
 
+
+
+// firebase.auth().onAuthStateChanged(async user => {
+//   if (user) {
+    
+//   setupUI(user);
+
+
+
+//   }
+  
+  
+// });
+
+
+
+// const setupUI = (user) => {
+//   if (user) {
+   
+//     db.collection('users').doc(user.uid).onSnapshot((doc => {
+//       if (doc.exists) {
+//       name = doc.data().name;
+//       username = doc.data().username;
+//       bio = doc.data().bio;
+//       console.log(bio);
+//       const user = firebase.auth().currentUser;
+//       console.log(user.uid);
+      
+//       }
+      
+//     }))
+//   }
+// }
+
+const [profileDisplay, setprofileDisplay] = useState();
+
+
+const user = firebase.auth().currentUser;
+
+// hard coded in a user
+const retrieveProfileInfo = async() => {
+  if (user != null) {
+  await db.collection('users').doc("6O9hi0r7NsfjlT9lNYypV81kONf1").get().then((doc) => {
+    if( doc.exists ) {
+      setprofileDisplay(doc.data());
     }
-    else {
-
-      firebase.firestore()
-            .collection("users")
-            .doc(props.route.params.uid)
-            .get()
-            .then((snapshot) => {
-                if (snapshot.exists) {
-                    setUser(snapshot.data());
-                }
-                else {
-                    console.log('does not exist')
-                }
-            })
-            firebase.firestore()
-            .collection("posts")
-            .doc(props.route.params.uid)
-            .collection("userPosts")
-            .orderBy("creation", "asc")
-            .get()
-            .then((snapshot) =>{
-                    let posts = snapshot.docs.map(doc => {
-                        const data = doc.data();
-                        const id = doc.id;
-                        return{id,...data}
-                    })
-                    setUserPosts(posts)
-
-            })
-
-    }
-
-    if(props.following.indexOf(props.route.params.uid) > -1) {
-      setFollowing(true);
-    }
-      else{
-        setFollowing(false);
-      }
-
-
-  }, [props.route.params.uid, props.following])
-
-
-
-const onFollow = () => {
-    firebase.firestore()
-    .collection("following")
-    .doc(firebase.auth().currentUser.uid)
-    .collection("userFollowing")
-    .doc(props.route.params.uid)
-    .set({})
-  }
-
-const onUnFollow = () => {
-  firebase.firestore()
-  .collection("following")
-  .doc(firebase.auth().currentUser.uid)
-  .collection("userFollowing")
-  .doc(props.route.params.uid)
-  .delete()
-  }
-
-if(user== null) {
-  return <View/>
+  })
 }
+}
+
+useEffect(() => {
+  retrieveProfileInfo();
+});
+
+// const user = firebase.auth().currentUser;
+// if (user != null) {
+// user.reload;
+// }
+
+
+
+//if (user !== null) {
+//  setupUI(user);
+//}
+
 return (
-  <View style={styles.container}>
-    <View style={styles.containerInfo}>
-    <Text>
-      {user.email}</Text>
-
-      {props.route.params.uid != firebase.auth().currentUser.uid ? (
-        <View>
-          {following ?(
-            <Button
-            title="Following"
-            onPress={()=> onUnFollow()}
-
-           />
-          ):
-          (
-            <Button
-            title="Follow"
-            onPress={()=> onFollow()}
-
-           />
-          )}
-          </View>
-
-      ) : null}
-    </View>
-    <View style={styles.containerGallery}>
-      <FlatList
-        numColumns= {3}
-        horizontal = {false}
-        data = {userPosts}
-        renderItem={({item})=>(
-          <View
-            style = {styles.containerImage}>
-          <Image
-          style = {styles.image}
-            source={{uri: item.downloadURL}}
-          />
-          </View>
-        ) }
+  <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
+    <ScrollView style={StyleSheet.container}>
+      <View   style = {styles.usernameBackButton} >
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <SimpleLineIcons
+        style={styles.icon}
+        name="arrow-left"
+        size={20}
+        color="white"
+        
       />
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={styles.userNameTop}>{profileDisplay ? profileDisplay.username : ''}</Text>
+        </TouchableOpacity>
+      </View> 
+      <SafeAreaView style={styles.lines}>
+        <View style={styles.textWrapper}>
+          <Image
+            style={styles.imageStyle}
+            source={{
+                height:100,
+                width:200,
+                uri: 'https://i.pinimg.com/736x/c5/4c/b0/c54cb01760765d678606ab2a10e47ea1--monsters-university-monsters-inc.jpg'
+            }}
+          />
+          <Text style={styles.createText}>{profileDisplay ? profileDisplay.name : ''}</Text>
+        </View>
+        <View style={styles.textWrapper}>
+          <Text style={styles.createText2}>Followers</Text>
+          <Text style={styles.createText2}>       {profileDisplay ? profileDisplay.followers : ''}</Text>
+        </View>
+        <View style={styles.textWrapper}>
+          <Text style={styles.createText2}>Following</Text>
+          <Text style={styles.createText2}>     {profileDisplay ? profileDisplay.following : ''}</Text>
+        </View>
+      </SafeAreaView>
+      <SafeAreaView style={styles.lines}>
+       
+        <View style={styles.buttonWrapper}>
+            <TouchableOpacity style={styles.loginBtn}>
+          <Text style={styles.loginText}>Follow</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonWrapper}>
+            <TouchableOpacity style={styles.loginBtn}>
+          <Text style={styles.loginText}>Message</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+      <View>
+          <Text style = {styles.bioText}>    {profileDisplay ? profileDisplay.bio : ''}</Text>
+      </View>
+      <View>
+        <Image style = {styles.postImages}
+        source={{
+          width: 100,
+          height: 200,
+          uri: "https://picsum.photos/200/300"
+        }}
+        />
 
-    </View>
+      </View>
+    </ScrollView>
+  </SafeAreaView>
+);
+        };
 
-  </View>
+export default ProfileView;
 
-)
-}
 const styles = StyleSheet.create({
-  container : {
+  imageStyle: {
+    height: 50,
+    width: 50,
+    borderRadius: 75,
+  },
+  container: {
     flex: 1,
-    marginTop : 40 
+    backgroundColor: "#fff",
+    padding: 20,
   },
-
-  containerInfo: {
-    margin : 20
-
+  createText: {
+    fontWeight: "bold",
+    fontFamily: "Montserrat",
+    fontSize: 18,
+    color: "white",
+    justifyContent: "center",
+    alignContent: "center",
   },
-
-  containerInfoGallery: {
-    flex : 1
-
+  createText2: {
+    fontWeight: "bold",
+    fontFamily: "Montserrat",
+    fontSize: 10,
+    color: "white",
+    justifyContent: "center",
+    alignContent: "center",
   },
-  image: {
-    flex:1 ,
-    aspectRatio: 1/1 
+  textWrapper: {
+    borderWidth: 2,
+    borderColor: "white",
+    borderRadius: 75,
+    padding: 10,
+    backgroundColor: "grey",
+    margin: 10,
   },
-
-  containerImage: {
-    flex: 1/3
-  }
-})
-
-const mapStateToProps = (store) => ({
-  currentUser: store.userState.currentUser,
-  posts: store.userState.postImages,
-  following: store.userState.following
-})
-
-export default connect (mapStateToProps, null)(PublicProfile);
+  lines: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    top: 20,
+    margin: 20
+  },
+  userNameTop: {
+    fontWeight: "bold",
+    fontFamily: "Montserrat",
+    fontSize: 20,
+    color: "white",
+    justifyContent: "left",
+    alignItems: "left",
+  },
+  loginBtn: {
+      width: '150%',
+      backgroundColor: 'white',
+      borderRadius: 25,
+      height: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
+    
+      left: 20
+    },
+    loginText: {
+      color: 'black',
+      fontFamily: 'Montserrat',
+  },
+  bioText: {
+      color: 'white',
+      fontFamily: 'Montserrat',
+      fontSize: 15,
+  },
+  usernameBackButton: {
+    flex: 0,
+    flexDirection: 'row'
+  },
+  postImages: {
+    margin: 20,
+    left: 20,
+   
+  },
+  buttonWrapper: {
+      
+      padding: 10,
+   
+      margin: 10,
+    },
+});

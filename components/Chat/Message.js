@@ -8,7 +8,6 @@ import {colors} from "../../theme/colors";
 import PropTypes from "prop-types";
 import {Time} from './Time';
 
-
 //TODO: state should get userId from firebase
 const Message = ({message}) => {
   const userID = useSelector(state => state.auth.userID);
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
     topContainer: {
         position: 'relative',
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'flext-start',
         width: '100%',
         marginBottom: 40,
     },

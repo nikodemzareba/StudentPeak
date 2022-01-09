@@ -5,15 +5,14 @@ import {View, StyleSheet} from "react-native";
 import {Messages} from "./Messages";
 import {Input} from "./Input";
 import {colors} from "../../theme/colors";
-import {fetchMessages, postMessage} from "../../redux/actions";
-
+import {fetchMessages} from "../../redux/actions";
 
 const Chat = () => {
     const [userMessage, setUserMessage] = userState('');
     const messages = useSelector(state => state.messages.messages);
-    //TODO: get userId from firestore
+    //TODO: get userId from firebase
     const userID = useSelector(state => state.auth.userId);
-    //TODO: get name from firestore
+    //TODO: get name from firebase
     const userName = useSelector(state => state.auth.name);
     const dispatch = useDispatch();
 

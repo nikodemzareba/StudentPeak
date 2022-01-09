@@ -1,107 +1,24 @@
 import React, { Component } from "react";
-import { View, Text  } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import firebase from 'firebase'
-
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import FeedScreen from "./main/Feed"
-import Add from "./main/Add"
-import TopicScreen from "./main/Topic"
-import SearchScreen from "./main/Search"
-import EventScreen from "./main/Events"
-import PublicProfileScreen from "./main/PublicProfile"
+import { View, Text  } from 'react-native'
 
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
-import { fetchUser, fetchUserPosts, fetchUserFollowing } from "../redux/actions/index";
+import { fetchUser, fetchUserPosts } from "../redux/actions/index";
 
-const Tab = createBottomTabNavigator();
-const TopTab = createMaterialTopTabNavigator();
-
- 
- export class Main extends Component{
+export class Main extends Component{
     componentDidMount(){
-        //first page called whenever a user is logged in
       this.props.fetchUser();
       this.props.fetchUserPosts();
-      this.props.fetchUserFollowing();
     }
     render(){
         return(
-            <Tab.Navigator
-            screenOptions={{
-                tabBarActiveTintColor: 'grey',
-                tabBarInactiveTintColor: 'white',
-                tabBarShowLabel: false,
-                tabBarStyle: {
-                  height: 78,
-                  backgroundColor: 'black',
-                  borderRadius: 15,
-                  left: 5,
-                  right: 5,
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }
-              }}
-              
-            >
-                
-            <Tab.Screen name="Feed" component={FeedScreen}
-            options={{
-                tabBarIcon: ({color, size}) => (
-                    //decide what is inside the Icon
-                    <MaterialCommunityIcons name="school" color={color} size={26}/>
-                ),
-            }}/> 
-            <Tab.Screen name="Search" component={SearchScreen} navigation = {this.props.naviagtion}
-            options={{
-                tabBarIcon: ({color, size}) => (
-                    //decide what is inside the Icon
-                    <MaterialCommunityIcons name="magnify" color={color} size={26}/>
-                ),
-            }}/>
-             <Tab.Screen name="Add" component={Add}
-            options={{
-                tabBarIcon: ({color, size}) => (
-                    //decide what is inside the Icon
-                    <MaterialCommunityIcons name="camera" color={color} size={26}/>
-                ),
-            }}/>
-             <Tab.Screen name="Topic" component={TopicScreen}
-            options={{
-                tabBarIcon: ({color, size}) => (
-                    //decide what is inside the Icon
-                    <MaterialCommunityIcons name="fire" color={color} size={26}/>
-                ),
-            }}/>
-             <Tab.Screen name="Events" component={EventScreen}
-            options={{
-                tabBarIcon: ({color, size}) => (
-                    //decide what is inside the Icon
-                    <MaterialCommunityIcons name="calendar-search" color={color} size={26}/>
-                ),
-            }}/>
-            <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen} 
-                listeners={({ navigation }) => ({
-                    tabPress: event => {
-                        event.preventDefault();
-                        navigation.navigate("PublicProfile", {uid: firebase.auth().currentUser.uid})
-                    }})}
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="account-circle" color={color} size={26} />
-                        ),
-                    }} />
-            </Tab.Navigator>
+            <View style= {{flex:1, justifyContent: 'center'}}>
+            <Text>User is logged in</Text>
+            </View>
         )
     }
-    
 }
 
-const mapStateToProps = (store) => ({
-    currentUser: store.userState.currentUser
-})
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts, fetchUserFollowing}, dispatch)
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchProps)(Main);
+export default connect(null, mapDispatchProps)(Main);

@@ -64,29 +64,83 @@ function App() {
         if (user != null) {
             setIsLoggedIn(true);
 
-firebase.auth().onAuthStateChanged((user) => {
-    if (user != null) {
-      setIsLoggedIn(true)
-    } else {
-      setIsLoggedIn(false);
-    }
-  });
+            // not working
+            if(user.registerDone == false){
+                setIsRegisterComplete(false);
+            }else{
+                setIsRegisterComplete(true);
+            }
+            
+        } else {
+            setIsLoggedIn(false);
+        }
+    });
+
+ 
 
 
-  return (
-    <NavigationContainer>
-      {isLoggedIn ? <Stack.Navigator>
-        <Stack.Screen name="PublicProfile" component={PublicProfile} options={{ headerShown: false }} />
-      </Stack.Navigator> :
-        <Stack.Navigator initialRouteName= "Welcome">
-          <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
-          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-          <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
-        </Stack.Navigator>}
-    </NavigationContainer>
-  );
+    // firebase.firestore()
+    //      .collection("users")
+    //      .doc(firebase.auth().user)
+    //      .get()
+    //      .then((snapshot) => {
+    //     if (snapshot.exists) {
+    //      setUser(snapshot.data());
+    //     }
+    //     else {
+    //     console.log('user does not exist')
+    //     }
+    // })
+
+            
+        
+
+
+    return (
+
+
+        <Provider store={store}>
+            <NavigationContainer>
+
+                {isLoggedIn ? 
+                
+                <Stack.Navigator> 
+
+                    {isRegisterComplete ? 
+
+                    // if user has completed registration and has an account.
+                    <Stack.Group initialRouteName="Main"> 
+
+                        <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
+                        <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
+
+                    </Stack.Group>
+                    
+                    :
+
+                    // If user registration is not complete but account has been made.
+                    <Stack.Group initialRouteName="Verify">
+                    
+                    <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
+
+                    </Stack.Group>}
+                       
+                        
+
+                </Stack.Navigator> 
+                    
+                    :
+
+                    // If user is not logged in.
+                    <Stack.Navigator initialRouteName="Welcome">
+                        <Stack.Screen name="Welcome" component={Welcome} options={{headerShown: false}}/>
+                        <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+                        <Stack.Screen name="Register" component={Register} options={{headerShown: false}}/>
+                    </Stack.Navigator>}
+
+            </NavigationContainer>
+        </Provider>
+    );
 }
 
 export default App;
-
-

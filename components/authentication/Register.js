@@ -15,8 +15,7 @@ import {
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { string } from 'prop-types'
 
-require("firebase/firestore")
-require("firebase/firebase-Storage")
+
 
 /* - 
 REGISTER CLASS v1.1
@@ -140,6 +139,7 @@ export class Register extends Component {
               likes,
               societies,
               profileimage,
+              registerDone : false,
               createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             })
             .then(() => {

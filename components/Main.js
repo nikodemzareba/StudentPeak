@@ -5,12 +5,12 @@ import firebase from 'firebase'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import FeedScreen from "./main/Feed"
+import FeedScreen from "../frontend/screens/feed";
 import Add from "./main/Add"
 import TopicScreen from "./main/Topic"
 import SearchScreen from "./main/Search"
 import EventScreen from "./main/Events"
-import PublicProfileScreen from "./main/PublicProfile"
+import publicProfile from "./main/PublicProfile";
 
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
@@ -82,7 +82,7 @@ const TopTab = createMaterialTopTabNavigator();
                     <MaterialCommunityIcons name="calendar-search" color={color} size={26}/>
                 ),
             }}/>
-            <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen} 
+            <Tab.Screen name ="PublicProfile" component= {publicProfile}
                 listeners={({ navigation }) => ({
                     tabPress: event => {
                         event.preventDefault();

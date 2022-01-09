@@ -56,6 +56,29 @@ export function fetchUserFollowing(){
     })
 }
 
+export function queryUsersByUsername(username) {
+    return ((dispatch, getState) => {
+        return new Promise((resolve, reject) => {
+            if (username.length == 0) {
+                resolve([])
+            }
+            firebase.firestore()
+                .collection('users')
+                .where('username', '>=', username)
+                .limit(10)
+                .get()
+                .then((snapshot) => {
+                    let users = snapshot.docs.map(doc => {
+                        const data = doc.data();
+                        const id = doc.id;
+                        return { id, ...data }
+                    });
+                    resolve(users);
+                })
+        })
+    })
+}
+
 const setMessages = messages => ({
     type: FETCH_MESSAGES,
     payload: {

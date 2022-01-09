@@ -63,8 +63,6 @@ var db = firebase.firestore();
 
 const [profileDisplay, setprofileDisplay] = useState();
 
-const [userPosts, setUserPosts] = useState();
-
 const [following, setFollowing] = useState(false);
 
 
@@ -72,22 +70,11 @@ const [following, setFollowing] = useState(false);
 const user = firebase.auth().currentUser;
 
 
-
 const retrieveProfileInfo = async() => {
   if (user != null) {
   await db.collection('users').doc(user.uid).get().then((doc) => {
     if( doc.exists ) {
       setprofileDisplay(doc.data());
-    }
-  })
-}
-}
-
-const retrieveUserPosts = async() => {
-  if (user != null) {
-  await db.collection('posts').doc(user.uid).get().then((doc) => {
-    if( doc.exists ) {
-      setUserPosts(doc.data());
     }
   })
 }
@@ -130,8 +117,7 @@ const onUnfollow = () => {
 useEffect(() => {
   
   retrieveProfileInfo();
-  retrieveUserPosts();
-  
+ 
 });
 
 
@@ -167,13 +153,10 @@ useEffect(() => {
         </View> 
         <SafeAreaView style={styles.lines}>
           <View style={styles.textWrapper}>
-          <Image    style={styles.imageStyle}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : ''
-          }}
-          />
+            <Image
+              style={styles.imageStyle}
+              source={require("../../assets/ProfilePicture.png")}
+            />
             <Text style={styles.createText}>{profileDisplay ? profileDisplay.name : ''}</Text>
           </View>
           <View style={styles.textWrapper}>
@@ -234,17 +217,7 @@ useEffect(() => {
           source={{
             width: 100,
             height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : ''
-          }}
-          />
-         
-        </View>
-        <View>
-          <Image style = {styles.postImages}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[1] : ''
+            uri: "https://picsum.photos/200/300"
           }}
           />
          
@@ -257,7 +230,6 @@ useEffect(() => {
 
 
 export default ProfileView;
-
 
 const styles = StyleSheet.create({
   imageStyle: {

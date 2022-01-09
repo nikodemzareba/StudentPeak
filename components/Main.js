@@ -11,7 +11,6 @@ import TopicScreen from "./main/Topic"
 import SearchScreen from "./main/Search"
 import EventScreen from "./main/Events"
 import PublicProfileScreen from "./main/PublicProfile"
-import PrivateProfileScreen from "./main/PrivateProfile"
 
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
@@ -83,11 +82,11 @@ const TopTab = createMaterialTopTabNavigator();
                     <MaterialCommunityIcons name="calendar-search" color={color} size={26}/>
                 ),
             }}/>
-            <Tab.Screen name ="PrivateProfile" component= {PrivateProfileScreen} 
+            <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen} 
                 listeners={({ navigation }) => ({
                     tabPress: event => {
                         event.preventDefault();
-                        navigation.navigate("PrivateProfile", {uid: firebase.auth().currentUser.uid})
+                        navigation.navigate("PublicProfile", {uid: firebase.auth().currentUser.uid})
                     }})}
                     options={{
                         tabBarIcon: ({ color, size }) => (

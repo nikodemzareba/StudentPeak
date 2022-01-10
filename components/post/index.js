@@ -1,13 +1,17 @@
-import React, { forwardRef, useImperativeHandle, useRef, useEffect }  from 'react'
+import { Video } from 'expo-av'
+import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
 import { View, Text } from 'react-native'
-import {Video } from 'expo-av'
 import styles from './styles'
 
-
-export const PostSingle = forwardRef(({ item }, parentRef) => {
+/**
+ * This component is responsible for displaying a post and play the
+ * media associated with it.
+ *
+ * The ref is forwarded to this component so that the parent component
+ * can manage the play status of the video.
+ */
+export const PostSingle = forwardRef(({ item }, parentRef ) => {
     const ref = useRef(null);
-
-    //pass functions to parent ref using hooks
     useImperativeHandle(parentRef, () => ({
         play,
         unload,
@@ -19,8 +23,12 @@ export const PostSingle = forwardRef(({ item }, parentRef) => {
     }, [])
 
 
-
-    //destroy video instance in memory not in use
+    /**
+     * Plays the video in the component if the ref
+     * of the video is not null.
+     *
+     * @returns {void}
+     */
     const play = async () => {
         if (ref.current == null) {
             return;
@@ -38,17 +46,18 @@ export const PostSingle = forwardRef(({ item }, parentRef) => {
         }
     }
 
+
     /**
+     * Stops the video in the component if the ref
+     * of the video is not null.
      *
-     * @returns stop the vidoe in the component if the ref
-     * of the video is not null
+     * @returns {void}
      */
     const stop = async () => {
         if (ref.current == null) {
             return;
         }
 
-        // if video is already stopped return
         const status = await ref.current.getStatusAsync();
         if (!status?.isPlaying) {
             return;
@@ -60,18 +69,22 @@ export const PostSingle = forwardRef(({ item }, parentRef) => {
         }
     }
 
-    /**
-     * unload the vid in the component if the ref
-     * of the video is not null
-     * @returns
-     */
 
+    /**
+     * Unloads the video in the component if the ref
+     * of the video is not null.
+     *
+     * This will make sure unnecessary video instances are
+     * not in memory at all times
+     *
+     * @returns {void}
+     */
     const unload = async () => {
         if (ref.current == null) {
             return;
         }
 
-        // if video is already stopped return
+
         try {
             await ref.current.unloadAsync();
         } catch (e) {
@@ -79,25 +92,20 @@ export const PostSingle = forwardRef(({ item }, parentRef) => {
         }
     }
 
-
     return (
         <>
             <Video
+                ref={ref}
                 style={styles.container}
-                resizeMode={Video.RESIZE_MODE_STRETCH}
+                resizeMode={Video.RESIZE_MODE_COVER}
                 shouldPlay={true}
                 isLooping
-               // usePoster
-                //posterSource={{ uri: item.downloadURL }}
-                //posterStyle={{ resizeMode: 'cover', height: '100%' }}
-                //source = {{uri: "https://firebasestorage.googleapis.com/v0/b/studentpeak-8b306.appspot.com/o/Videos%2FUFIhX1f91a4eMFtKFzy8%2FBig_Buck_Bunny_1080_10s_2MB.mp4?alt=media&token=9906cd4e-5614-4e9a-b01c-837bafdc472e"}}
-                //should be the code above but  react is refusing to accept that rn.
-                source = {{uri: item.downloadURL}}
-            />
-            ,
-            /</>
+                usePoster
+                posterSource={{ uri: item.downloadURL }}
+                posterStyle={{ resizeMode: 'cover', height: '100%' }}
+                source={{ uri: item.downloadURL }} />
+        </>
     )
 })
 
 export default PostSingle
-

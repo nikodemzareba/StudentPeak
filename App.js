@@ -9,6 +9,7 @@ import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import {connect} from 'react-redux'
 
+
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 import {NavigationContainer} from '@react-navigation/native'

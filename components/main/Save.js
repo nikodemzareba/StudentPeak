@@ -3,7 +3,6 @@ import { Video } from 'expo-av';
 import firebase from 'firebase';
 import React, { useLayoutEffect, useState } from 'react';
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MentionsTextInput from 'react-native-mentions';
 import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

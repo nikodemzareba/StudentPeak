@@ -2,7 +2,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import CachedImage from 'react-native-expo-cached-image';
+import CachedImage from '../CahcedImage'
 import { Provider } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

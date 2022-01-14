@@ -15,7 +15,7 @@ export default function FeedScreen() {
     }, [])
 
 
-    const onViewableItemsChanged = useRef(({ changed }) => {
+  const onViewableItemsChanged = useRef(({ changed }) => {
         changed.forEach(element => {
             const cell = mediaRefs.current[element.key]
             if (cell) {
@@ -38,7 +38,7 @@ export default function FeedScreen() {
      */
     const renderItem = ({ item, index }) => {
         return (
-            <View style={{ flex: 1, height: Dimensions.get('window').height, backgroundColor: 'black' }}>
+            <View style={{ flex: 1, height: Dimensions.get('screen').height -54, backgroundColor: 'black' }}>
                 <PostSingle item={item} ref={PostSingleRef => (mediaRefs.current[item.id] = PostSingleRef)} />
             </View>
         )
@@ -61,7 +61,7 @@ export default function FeedScreen() {
                 pagingEnabled
                 keyExtractor={item => item.id}
                 decelerationRate={'normal'}
-                onViewableItemsChanged={onViewableItemsChanged.current}
+                //onViewableItemsChanged={onViewableItemsChanged.current}
             />
         </View>
     )

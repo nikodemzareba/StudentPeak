@@ -19,7 +19,7 @@ const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 
 
 
-export default function Add(props) {
+export default function VideoScreen(props) {
     const [hasPermission, setHasPermission] = useState(null);
     const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
     const [isPreview, setIsPreview] = useState(false);
@@ -37,7 +37,7 @@ export default function Add(props) {
     useEffect(() => {
         (async () => {
 
-            const cameraPermissions = await Camera.requestCameraPermissionsAsync();
+            const cameraPermissions = await Camera.requestPermissionsAsync();
             const galleryPermissions = await MediaLibrary.requestPermissionsAsync();
 
             const audioPermissions = await Audio.requestPermissionsAsync();
@@ -360,7 +360,6 @@ const container = StyleSheet.create({
     }
 })
 
-
 const utils = StyleSheet.create({
     centerHorizontal: {
         alignItems: 'center',
@@ -475,7 +474,6 @@ const styles = StyleSheet.create({
         opacity: 0.7,
         zIndex: 2,
     },
-    
     media: {
         ...StyleSheet.absoluteFillObject,
     },

@@ -290,11 +290,12 @@ export function deletePost(item) {
                 .then(() => {
                     resolve();
                 }).catch(() => {
-                reject();
-            })
+                    reject();
+                })
         })
     })
 }
+
 
 
 

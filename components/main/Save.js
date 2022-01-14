@@ -3,12 +3,10 @@ import { Video } from 'expo-av';
 import firebase from 'firebase';
 import React, { useLayoutEffect, useState } from 'react';
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MentionsTextInput from 'react-native-mentions';
 import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUserPosts, sendNotification } from '../../redux/actions/index';
-
 
 
 
@@ -283,9 +281,6 @@ const text = StyleSheet.create({
     whitesmoke: {
         color: 'whitesmoke'
     }
-
-
-
 })
 
 const utils = StyleSheet.create({
@@ -387,8 +382,6 @@ const utils = StyleSheet.create({
         aspectRatio: 1
     }
 })
-
-
 const navbar = StyleSheet.create({
 
     image: {
@@ -408,7 +401,6 @@ const navbar = StyleSheet.create({
         fontSize: 20//'larger',
     }
 })
-
 const container = StyleSheet.create({
     container: {
         flex: 1,

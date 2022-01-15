@@ -12,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "google-search-results-nodejs": "^2.1.0",
     "node-fetch": "^2.6.6",
     "react-native-fetch": "^2.0.0"
   }

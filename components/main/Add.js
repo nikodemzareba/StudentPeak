@@ -1,98 +1,73 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Button, Image} from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Button,
+    Image,
+    SafeAreaView,
+    FlatList,
+    ActivityIndicator,
+    ActivityIndicatorComponent, SafeAreaViewComponent
+} from 'react-native';
 import {Camera} from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import * as firebase from 'firebase';
+import {jsx} from "react/cjs/react-jsx-runtime.production.min";
 
 
 export default function Add({navigation}) {
-    const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
-    const [hasCameraPermission, setHasCameraPermission] = useState(null);
 
-    const [camera, setCamera] = useState(null);
-    const [image, setImage] = useState(null);
-    const [type, setType] = useState(Camera.Constants.Type.back);
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    const [data2, setData2] = useState([]);
+    const API_URL = "https://reactnative.dev/movies.json";
+    const [title, setTitle] =  useState([]);
 
-    useEffect(() => { // checks if user has set permissions to use the camera
-        (async () => {
-            const hasCameraPermission = await Camera.requestPermissionsAsync();
+    useEffect(() => {
+        fetch("https://reactnative.dev/movies.json")
+            .then((response) => response.json())
+            .then((json) => {
+                setData(json);
+                setTitle(json.title);
+                console.log("\n\nResults 1" + json.movies);
+            })
+            .catch((error) => console.error(error))
+            .finally(() => setLoading(false));
 
-            setHasCameraPermission(hasCameraPermission.status === 'granted');
 
-            const galleryStatus = await ImagePicker.getMediaLibraryPermissionsAsync();
-            console.log(galleryStatus.status);
-
-            setHasGalleryPermission(galleryStatus.status === 'granted');
-
-            if (
-                galleryStatus.status !== 'granted' &&
-                hasCameraPermission.status !== 'granted'
-            ) {
-                alert('Permission for media access needed.');
-            }
-
-        })();
+       fetch("http://localhost:3000/")
+           .then((response) => response.json())
+           .then((json) => {
+               setData2(json)
+               console.log("\n\nResults 2" + json.movies);
+           })
+           .catch((error) => console.error(error))
     }, []);
 
-    const takePicture = async () => {
-        if (camera) {
-            const data = await camera.takePictureAsync(null);
-            console.log(data.uri)
-            setImage(data.uri)
-        }
-    }
-
-    const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 1,
-        });
-
-        console.log(result);
-
-        if (!result.cancelled) {
-            setImage(result.uri);
-        }
-    };
-
-
-    //What does this section do?
-    if (hasCameraPermission === null || hasGalleryPermission === false) {
-        return <View/>;
-    }
-    if (hasCameraPermission === false || hasGalleryPermission === false) {
-        return <Text>No access to camera</Text>;
-    }
 
     return (
-        <View style={{flex: 1}}>
-            <View style={styles.cameraContainer}>
-                <Camera
-                    ref={ref => setCamera(ref)}
-                    style={styles.fixedRatio}
-                    type={type}
-                    ratio={'1:1'}/>
-            </View>
 
-            <Button
-                title="Flip Image"
-                onPress={() => {
-                    setType(
-                        type === Camera.Constants.Type.back
-                            ? Camera.Constants.Type.front
-                            : Camera.Constants.Type.back
-                    );
-                }}>
-            </Button>
-            <Button title="Take Picture" onPress={() => takePicture()}/>
-            <Button title="Pick Image From Gallery" onPress={() => pickImage()}/>
-            <Button title="Save" onPress={() => navigation.navigate('Save', {image})}/>
-            {image && <Image source={{uri: image}} style={{flex: 1}}/>} {/* Displays image taken below  */}
-        </View>
+        <SafeAreaView style={{ flex: 1, padding: 24 }}>
+            {isLoading ? ( <ActivityIndicator /> //<Text>Loading...</Text>
+            ):(
+                <View style={{ flex: 1, flexDirection: 'column', justifyContent:  'space-between'}}>
+                    <Text style={styles.title}>{data.title}</Text>
+                    <Text style={{ fontSize: 14, color: 'green', textAlign: 'center', paddingBottom: 10}}>Articles:</Text>
+                    <FlatList
+                        data={data.movies}
+                        keyExtractor={({ id }, index) => id}
+                        renderItem={({ item }) => (
+                            <Text>{item.id + '. ' + item.title}</Text>
+                        )}
+                    />
+                </View>
+            )}
+        </SafeAreaView>
     );
-}
+
+};
 
 const styles = StyleSheet.create({
     cameraContainer: {
@@ -102,5 +77,17 @@ const styles = StyleSheet.create({
     fixedRatio: {
         flex: 1,
         aspectRatio: 1
+    },
+    container:{
+        flex:1,
+        alignItems: "center",
+        marginTop:48,
+    },
+    movieText:{
+        fontSize: 32,
+        fontWeight:"bold"
+    },
+    title:{
+        fontSize:32, fontWeight:"bold"
     }
 })

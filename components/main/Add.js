@@ -56,7 +56,6 @@ export default function Add({navigation}) {
             .then((json) => {
                 setData(json);
                 setTitle(json.title);
-                console.log("\n\nGetting Title From Json \n" + movies1.movies[0].title);
 
             })
             .catch((error) => console.error(error))

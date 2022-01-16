@@ -28,8 +28,6 @@ export default function Add({navigation}) {
     const API_URL = "https://reactnative.dev/movies.json";
     const [title, setTitle] = useState([]);
 
-
-
     /*
     const SerpApi = require('google-search-results-nodejs');
     const search = new SerpApi.GoogleSearch("da7203eb879f74f5c81852618ca7a91c2d35a0c298af3ed1d11d14331eed437b");
@@ -50,7 +48,20 @@ export default function Add({navigation}) {
 
      */
 
+    const eventsDataList = eventsData.events_results;
+    const newData = eventsDataList.map((item,i)=> {return { ...item, key: i}}); // static index, isnt an issue as the list isnt going to be ammended
+
     useEffect(() => {
+
+
+
+
+        console.log("\n\nOther Other Json\n" +  newData[0].title+ "\nKey : " + newData[0].key);
+        console.log("\n\nOther Other Json\n" +  newData[1].title+ "\nKey : " + newData[1].key);
+        console.log("\n\nOther Json\n" + eventsData.events_results[0].title + eventsData.events_results[0].date.start_date);
+
+
+
         fetch("https://reactnative.dev/movies.json")
             .then((response) => response.json())
             .then((json) => {
@@ -60,6 +71,7 @@ export default function Add({navigation}) {
             })
             .catch((error) => console.error(error))
             .finally(() => setLoading(false));
+
 
 
         /*
@@ -73,7 +85,7 @@ export default function Add({navigation}) {
         */
     }, []);
 
-    console.log("\n\nOther Json\n" + eventsData.events_results[0].title + eventsData.events_results[0].date.start_date);
+
 
 
     return (
@@ -81,16 +93,19 @@ export default function Add({navigation}) {
         <SafeAreaView style={{flex: 1, padding: 24}}>
             {isLoading ? (<ActivityIndicator/> //<Text>Loading...</Text>
             ) : (
-                <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}>
-                    <Text style={styles.title}>{eventsData.search_parameters.q}</Text>
-                    <Text
-                        style={{fontSize: 14, color: 'green', textAlign: 'center', paddingBottom: 10}}>Articles:</Text>
+                <View style={styles.container}>
                     <FlatList
-                        data={eventsData.events_results}
-                        keyExtractor={({id}, index) => id}
-                        renderItem={({item}) => (
-                            <Text>{item.title}</Text>
-                        )}
+                        data={newData}
+
+                        renderItem={({item}) =>(
+                            <View>
+                                <Text >
+                                    {item.key} </Text>
+                                <Text> {item.title} </Text>
+                            </View>
+                            )}
+                        numColumns={2}
+
                     />
                 </View>
             )}

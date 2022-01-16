@@ -83,14 +83,14 @@ export default function Add({navigation}) {
             {isLoading ? (<ActivityIndicator/> //<Text>Loading...</Text>
             ) : (
                 <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}>
-                    <Text style={styles.title}>{data.title}</Text>
+                    <Text style={styles.title}>{eventsData.search_parameters.q}</Text>
                     <Text
                         style={{fontSize: 14, color: 'green', textAlign: 'center', paddingBottom: 10}}>Articles:</Text>
                     <FlatList
-                        data={data.movies}
+                        data={eventsData.events_results}
                         keyExtractor={({id}, index) => id}
                         renderItem={({item}) => (
-                            <Text>{item.id + '. ' + item.title}</Text>
+                            <Text>{item.title}</Text>
                         )}
                     />
                 </View>

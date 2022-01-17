@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 import { Component, useState } from 'react'
 import {
   StyleSheet,
@@ -11,21 +12,49 @@ import {
 
 import { SimpleLineIcons } from '@expo/vector-icons'
 
+
 import firebase from 'firebase'
 import 'firebase/firestore'
 
-const Verify = ({ navigation }) => {
-  function navigate() {
-    /* 
-      Add validation with 
-      database and send user to profile.
-      */
-    navigation.navigate('AboutYou')
+
+
+export class Verify extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      verifyEmail: '',
+    }
+
+    this.onVerify = this.onVerify.bind(this)
   }
-  const [selectedValue, setSelectedValue] = useState("University of Kent");
+
+  onVerify() {
+    const { verifyEmail} = this.state
+        firebase.firestore()
+        .collection("users")
+        .set({
+          verifyEmail,
+        })
+        .then(() => {
+        console.log(`Successfully Verified`);
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      }
+    
+      
+  
+    
+
+
+  render(){
+    const { navigation } = this.props;
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <SimpleLineIcons
           style={styles.icon}
           name="arrow-left"
@@ -47,28 +76,30 @@ const Verify = ({ navigation }) => {
           style={styles.inputText}
           placeholder="Email address*"
           placeholderTextColor="black"
-          //onChangeText={(text) => this.setState({ email: text })}
+          onChangeText={(verifyEmail) => this.setState({ verifyEmail })}
         />
       </View>
       <View>
         <Text style={styles.ptextView}>Place of Study</Text>
       </View>
       <View style={styles.passView}>
-        <Picker
+        
+        {/* <Picker
           selectedValue={selectedValue}
           style={{ height:100, width: 260 }}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         >
           <Picker.Item label="University of Kent" value="ukc" />
           <Picker.Item label="Canterbury Christ Church" value="ccu" />
-        </Picker>
+        </Picker> */}
       </View>
 
-      <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
+      <TouchableOpacity style={styles.loginBtn} onPress={this.onVerify}>
         <Text style={styles.loginText}>Verify</Text>
       </TouchableOpacity>
     </View>
   )
+ }
 }
 
 const styles = StyleSheet.create({
@@ -191,4 +222,8 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Verify
+export default function(props) {
+  const navigation = useNavigation();
+
+  return <Verify {...props} navigation={navigation} />;
+}

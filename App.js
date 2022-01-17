@@ -28,8 +28,6 @@ import Bio from './components/authentication/Bio'
 import Add from './components/main/Add'
 import Save from './components/main/Save'
 import Topbar from './components/main/top/Topbar'
-import Chat2 from './components/main/Chat' //temp name for chat function
-import ChatList from './components/main/ChatList'
 
 
 import Picture from './components/authentication/Picture'
@@ -72,13 +70,13 @@ function App() {
             }else{
                 setIsRegisterComplete(true);
             }
-
+            
         } else {
             setIsLoggedIn(false);
         }
     });
 
-
+ 
 
 
     // firebase.firestore()
@@ -94,8 +92,8 @@ function App() {
     //     }
     // })
 
-
-
+            
+        
 
 
     return (
@@ -104,33 +102,33 @@ function App() {
         <Provider store={store}>
             <NavigationContainer>
 
-                {isLoggedIn ?
+                {isLoggedIn ? 
+                
+                <Stack.Navigator> 
 
-                    <Stack.Navigator>
+                    {isRegisterComplete ? 
 
-                        {isRegisterComplete ?
+                    // if user has completed registration and has an account.
+                    <Stack.Group initialRouteName="Main"> 
 
-                            // if user has completed registration and has an account.
-                            <Stack.Group initialRouteName="Main">
+                        <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
+                        <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
 
-                                <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
-                                <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
+                    </Stack.Group>
+                    
+                    :
 
-                            </Stack.Group>
+                    // If user registration is not complete but account has been made.
+                    <Stack.Group initialRouteName="Verify">
+                    
+                    <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
 
-                            :
+                    </Stack.Group>}
+                       
+                        
 
-                            // If user registration is not complete but account has been made.
-                            <Stack.Group initialRouteName="Verify">
-
-                                <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
-
-                            </Stack.Group>}
-
-
-
-                    </Stack.Navigator>
-
+                </Stack.Navigator> 
+                    
                     :
 
                     // If user is not logged in.
@@ -146,4 +144,5 @@ function App() {
 }
 
 export default App;
+
 

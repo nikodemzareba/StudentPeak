@@ -33,7 +33,7 @@ import Topbar from './components/main/top/Topbar'
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
-import Chat from './components/main/top/Chat'
+import Chat from './components/main/ChatList'
 
 const Stack = createStackNavigator();
 

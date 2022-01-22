@@ -178,11 +178,11 @@ useEffect(() => {
           </View>
           <View style={styles.textWrapper}>
             <Text style={styles.createText2}>Followers</Text>
-            <Text style={styles.createText2}>       {profileDisplay ? profileDisplay.followers : ''}</Text>
+            <Text style={styles.createText2}>       {profileDisplay ? profileDisplay.followers : '0'}</Text>
           </View>
           <View style={styles.textWrapper}>
             <Text style={styles.createText2}>Following</Text>
-            <Text style={styles.createText2}>     {profileDisplay ? profileDisplay.following : ''}</Text>
+            <Text style={styles.createText2}>     {profileDisplay ? profileDisplay.following : '0'}</Text>
           </View>
 
           <View style= {styles.container}>

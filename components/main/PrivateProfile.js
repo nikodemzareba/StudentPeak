@@ -65,8 +65,6 @@ const [profileDisplay, setprofileDisplay] = useState();
 
 const [userPosts, setUserPosts] = useState();
 
-const [following, setFollowing] = useState(false);
-
 
 
 const user = firebase.auth().currentUser;
@@ -94,39 +92,12 @@ const retrieveUserPosts = async() => {
 }
 
 
-/*
-const getFollowing
-if(following.indexOf(user.uid) > -1) {
-  setFollowing(true);
-} else {
-  setFollowing(false);
-  }
 
-}, [following];
-*/
 
-const onFollow = () => {
-  if(user!= null) {
-    firebase.firestore()
-    .collection("following")
-    .doc(firebase.auth().currentUser.uid)
-    .collection("userFollowing")
-    .doc(user.uid)
-    .set({})
-  }
-}
 
-const onUnfollow = () => {
-  if(user!= null) {
-    firebase.firestore()
-  .collection("following")
-  .doc(firebase.auth().currentUser.uid)
-  .collection("userFollowing")
-  .doc(user.uid)
-  .delete()
-  }
 
-}
+
+
 useEffect(() => {
   
   retrieveProfileInfo();
@@ -185,35 +156,7 @@ useEffect(() => {
             <Text style={styles.createText2}>     {profileDisplay ? profileDisplay.following : '0'}</Text>
           </View>
 
-          <View style= {styles.container}>
-            <View style= {styles.containerInfo}>
          
-                <View>
-                  {following ?(
-                    <Button 
-                      title = "Following"
-                      onPress = {() => onUnfollow()}
-
-
-                      />
-                  ): 
-                  (
-                    <Button 
-                      title = "Follow"
-                      onPress = {() => onFollow()}
-
-
-                      />
-                  )}
-
-                  </View>
-                 
-                  <Button
-                      title="Logout"
-                      onPress={() => onLogout()}
-                  />
-                  </View>
-                  </View>
        
         </SafeAreaView>
         <View>
@@ -306,7 +249,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat",
     fontSize: 20,
     color: "white",
-    justifyContent: "left",
+    justifyContent: "center",
     alignItems: "left",
   },
   loginBtn: {

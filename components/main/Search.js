@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, FlatList, TouchableOpacity } from 'react-native'
-import Topbar from './top/Topbar';
 
 import firebase from 'firebase';
 require('firebase/firestore');

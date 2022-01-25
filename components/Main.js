@@ -94,6 +94,12 @@ const TopTab = createMaterialTopTabNavigator();
                             <MaterialCommunityIcons name="account-circle" color={color} size={26} />
                         ),
                     }} />
+                     <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen} 
+                     options={() => ({
+                        tabBarButton: () => null,
+                        tabBarVisible:false 
+                      })}
+                />
             </Tab.Navigator>
         )
     }

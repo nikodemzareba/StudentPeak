@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
     justifyContent: "center",
-    alignItems: "left",
+    alignItems: "flex-start",
   },
   loginBtn: {
       width: '20%',

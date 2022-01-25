@@ -33,8 +33,7 @@ import Topbar from './components/main/top/Topbar'
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
-import Chat from './components/main/top/Chat'
-import main from "./components/Main";
+import Chat from './components/main/ChatList'
 
 const Stack = createStackNavigator();
 
@@ -103,7 +102,6 @@ function App() {
         <Provider store={store}>
             <NavigationContainer>
 
-
                 {isLoggedIn ? 
                 
                 <Stack.Navigator> 
@@ -114,7 +112,6 @@ function App() {
                     <Stack.Group initialRouteName="Main"> 
 
                         <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
-
                         <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
 
                     </Stack.Group>

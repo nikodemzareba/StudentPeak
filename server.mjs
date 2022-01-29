@@ -1,12 +1,24 @@
-const express = require("express");
+
+
+import express, {request} from "express";
+
+// Define "require"
+import { createRequire } from "module";
+import * as req from "express";
+import {useState} from "react";
+const require = createRequire(import.meta.url);
+
+
+
+//const express = require("express");
 const app = express();
 //const fetch = require('node-fetch');
 const  cors = require('cors');
 const SerpApi = require("google-search-results-nodejs");
 require('dotenv').config();
 
-//console.log(process.env.PORT);
-//console.log(process.env.API_KEY);
+
+
 
 app.use(
 
@@ -17,6 +29,8 @@ app.use(
 
 const port = process.env.PORT || 3000;
 const API_KEY = process.env.SerAPI_KEY;
+const hostname_hardCoded = process.env.IP;
+
 
 app.get("/api",  (req, res) => {
      res.json({
@@ -25,7 +39,14 @@ app.get("/api",  (req, res) => {
 });
 
 
+app.get("/IP_Address",  (req, res) => {
+     require('dns').lookup(require('os').hostname(), function (err, add, fam) {
 
+         res.json({
+             "IP": add
+         })
+    })
+});
 
 
 // http://localhost:3001/api/googleEvents/Clubbing/Kent
@@ -60,7 +81,19 @@ app.get("/api/googleEvents/:query/:location",  async (req, res) => {
     search.json(params, callback);
 });
 
+const ip = require("ip");
+const ip_Address = ip.address();
+console.dir (ip_Address );
 
-app.listen(port, () => {
+let hostname = "Nothing";
+await require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+    hostname = add;
+    console.log('addr: ' + add);
+})
+
+const ip2 = "192.168.0.31";
+app.listen(port, hostname_hardCoded, () => {
     console.log(`Listening on port ${port}`)
+    console.log(`Server running at http://${ip2}:${port}/`);
+
 })

@@ -2,7 +2,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "devStart": "concurrently \"npm run server\" \"expo start --web\"",
-    "server": "nodemon server.js",
+    "server": "nodemon server.mjs",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -22,6 +22,7 @@
     "@unimodules/core": "^7.1.2",
     "concurrently": "^7.0.0",
     "cors-anywhere": "^0.4.4",
+    "esm": "^3.2.25",
     "expo": "~42.0.1",
     "expo-av": "^10.2.0",
     "expo-camera": "^11.2.2",
@@ -53,6 +54,7 @@
     "react-native-network-info": "^5.2.1",
     "react-native-pager-view": "^5.4.8",
     "react-native-paper": "^4.11.1",
+    "react-native-public-ip": "^1.0.2",
     "react-native-screens": "^3.7.0",
     "react-native-scrollable-tab-view-prop-types": "^0.7.5",
     "react-native-switch-selector": "^2.1.4",
@@ -64,13 +66,15 @@
     "react-style-proptype": "^3.2.2",
     "react-thunk": "^1.0.0",
     "redux": "^4.1.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "request-ip": "^2.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "cors": "^2.8.5",
     "dotenv": "^14.3.2",
     "google-search-results-nodejs": "^2.1.0",
+    "ip": "^1.1.5",
     "nodemon": "^2.0.15",
     "prop-types": "^15.7.2"
   },

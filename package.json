@@ -1,6 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "devStart": "concurrently \"npm run server\" \"expo start --web\"",
+    "server": "nodemon server.js",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",

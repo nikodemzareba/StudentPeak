@@ -17,6 +17,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import Rating from './Objects/Ratings';
 import Tickets from './Objects/Tickets';
 
+
 const {width, height} = Dimensions.get('window');
 const SPACING = 10;
 const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
@@ -70,7 +71,7 @@ export default function Events(dataIncome) {
     return (
         <SafeAreaView style={styles.container}>
             {/* Status Bar*/}
-            <ActivityIndicator size="large"/>
+
             <FlatList
                 showsHorizontalScrollIndicator={false}
                 data={newData}

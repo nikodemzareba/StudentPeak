@@ -7,13 +7,14 @@ import {
     SafeAreaView,
     Modal,
     StyleSheet,
-    TextInput, Button, Image, Dimensions, Alert
+    TextInput, Button, Image, Dimensions, Alert, ActivityIndicator
 } from 'react-native';
 
 import {PORT} from '@env'
 
 import {LocationModalPicker} from "./Objects/LocationModalPicker";
 import {EventsModalPicker} from "./Objects/EventsModalPicker";
+import MyActivityIndicator from "./Objects/MyActivityIndicator";
 
 import {TouchableHighlight} from "react-native-gesture-handler";
 
@@ -114,6 +115,8 @@ export default function Events(props) {
     }
     return (
         <SafeAreaView style={styles.container}>
+
+            {/*<MyActivityIndicator/>*/}
             <Image
                 style={[styles.Image, {width: WIDTH, height: ((HEIGHT / 6) * 4) }]}
                 source={require('./Images/Events2.jpg')}

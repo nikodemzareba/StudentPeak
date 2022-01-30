@@ -94,6 +94,6 @@ await require('dns').lookup(require('os').hostname(), function (err, add, fam) {
 const ip2 = "192.168.0.31";
 app.listen(port, hostname_hardCoded, () => {
     console.log(`Listening on port ${port}`)
-    console.log(`Server running at http://${ip2}:${port}/`);
+    console.log(`Server running at http://${hostname_hardCoded}:${port}/`);
 
 })

@@ -118,6 +118,7 @@ export default function VideoPlayer(props) {
   );
 }
 
+
 const styles = StyleSheet.create({
   video: (width, height) => ({
     alignSelf: 'center',

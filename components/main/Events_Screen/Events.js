@@ -20,7 +20,6 @@ import {TouchableHighlight} from "react-native-gesture-handler";
 
 export default function Events(props) {
 
-    const text = "HELLO";
 
     {/* Run Script when page is first rendered */
     }
@@ -30,7 +29,6 @@ export default function Events(props) {
 
     {/* Variables  */
     }
-    const port = process.env.PORT || 3000;
     const WIDTH = Dimensions.get('window').width;
     const HEIGHT = Dimensions.get('window').height;
 

@@ -10,7 +10,7 @@ import {
     TextInput, Button, Image, Dimensions, Alert, ActivityIndicator
 } from 'react-native';
 
-import {PORT} from '@env'
+import {PORT, IP} from '@env'
 
 import {LocationModalPicker} from "./Objects/LocationModalPicker";
 import {EventsModalPicker} from "./Objects/EventsModalPicker";
@@ -85,6 +85,7 @@ export default function Events(props) {
     }
 
     const searchEvent = async (event, location) => {
+        console.log(`\n\nhttp://${IP}:${PORT}/api/googleEvents/${event}/${location}`);
         fetch(`http://${IP}:${PORT}/api/googleEvents/${event}/${location}`)
             .then(async (response) => response.json())
             .then(async (json) => {

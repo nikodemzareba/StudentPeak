@@ -1,11 +1,9 @@
 
 
-import express, {request} from "express";
+import express from "express";
 
 // Define "require"
 import { createRequire } from "module";
-import * as req from "express";
-import {useState} from "react";
 const require = createRequire(import.meta.url);
 
 
@@ -21,7 +19,6 @@ require('dotenv').config();
 
 
 app.use(
-
     cors({
         origin: "*"
     })
@@ -29,25 +26,12 @@ app.use(
 
 const port = process.env.PORT || 3000;
 const API_KEY = process.env.SerAPI_KEY;
-const hostname_hardCoded = process.env.IP;
-
 
 app.get("/api",  (req, res) => {
      res.json({
-         "hello": ["chriss", "ben"]
+         "hello": ["chris", "ben"]
      })
 });
-
-
-app.get("/IP_Address",  (req, res) => {
-     require('dns').lookup(require('os').hostname(), function (err, add, fam) {
-
-         res.json({
-             "IP": add
-         })
-    })
-});
-
 
 // http://localhost:3001/api/googleEvents/Clubbing/Kent
 app.get("/api/googleEvents/:query/:location",  async (req, res) => {
@@ -69,10 +53,10 @@ app.get("/api/googleEvents/:query/:location",  async (req, res) => {
         num: "100"
     };
     const callback = function (data) {
-        const txtSeperator = "\n#####################################################################################################################";
-        console.log(`\n\n${txtSeperator} \nFetch Results \n${txtSeperator}\n\n`);
+        const txtSeparator = "\n#####################################################################################################################";
+        console.log(`\n\n${txtSeparator} \nFetch Results \n${txtSeparator}\n\n`);
         console.log(data['events_results']);
-        console.log(`\n\n${txtSeperator} \n\n`);
+        console.log(`\n\n${txtSeparator} \n\n`);
 
         res.json(data)
     };
@@ -81,19 +65,12 @@ app.get("/api/googleEvents/:query/:location",  async (req, res) => {
     search.json(params, callback);
 });
 
+const txt_separator = "\n\n###################################################################\n";
 const ip = require("ip");
 const ip_Address = ip.address();
-console.dir (ip_Address );
 
-let hostname = "Nothing";
-await require('dns').lookup(require('os').hostname(), function (err, add, fam) {
-    hostname = add;
-    console.log('addr: ' + add);
-})
+app.listen(port, ip_Address, () => {
 
-const ip2 = "192.168.0.31";
-app.listen(port, hostname_hardCoded, () => {
-    console.log(`Listening on port ${port}`)
-    console.log(`Server running at http://${hostname_hardCoded}:${port}/`);
-
+    console.log(`\n\nListening on port ${port}`)
+    console.log(`Server running at http://${ip_Address}:${port}/ \n${txt_separator}`);
 })

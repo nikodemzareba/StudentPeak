@@ -10,7 +10,7 @@ import {
     TextInput, Button, Image, Dimensions, Alert, ActivityIndicator
 } from 'react-native';
 
-import {PORT, IP} from '@env'
+import {PORT} from '@env'
 
 import {LocationModalPicker} from "./Objects/LocationModalPicker";
 import {EventsModalPicker} from "./Objects/EventsModalPicker";

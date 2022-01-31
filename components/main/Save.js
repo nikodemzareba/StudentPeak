@@ -3,6 +3,7 @@ import { Video } from 'expo-av';
 import firebase from 'firebase';
 import React, { useLayoutEffect, useState } from 'react';
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import MentionsTextInput from 'react-native-mentions';
 import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -191,6 +192,7 @@ function Save(props) {
                                 suggestionRowHeight={45}
                                 horizontal={true}
                                 MaxVisibleRowCount={3}
+                                
                             />
                         </View>
                         <View>
@@ -383,7 +385,7 @@ const utils = StyleSheet.create({
     }
 })
 const navbar = StyleSheet.create({
-
+    
     image: {
         padding: 20
     },
@@ -404,6 +406,7 @@ const navbar = StyleSheet.create({
 const container = StyleSheet.create({
     container: {
         flex: 1,
+        
     },
     camera: {
         flex: 1,
@@ -425,7 +428,8 @@ const container = StyleSheet.create({
     },
     form: {
         flex: 1,
-        margin: 25
+        margin: 25,
+       
     },
     profileInfo: {
         padding: 25,

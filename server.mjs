@@ -69,6 +69,7 @@ app.get("/api/googleEvents/:query/:location",  async (req, res) => {
 const txt_separator = "\n\n###################################################################\n";
 const ip = require("ip");
 const ip_Address = ip.address();
+console.log(`\nSession IP: Client Ip ${ip_Address}`)
 
 //When IP works switch to
 /*

@@ -4,6 +4,7 @@ import express from "express";
 
 // Define "require"
 import { createRequire } from "module";
+import * as req from "express";
 const require = createRequire(import.meta.url);
 
 
@@ -71,6 +72,9 @@ const ip = require("ip");
 const ip_Address = ip.address();
 console.log(`\nSession IP: Client Ip ${ip_Address}`)
 
+
+
+
 //When IP works switch to
 /*
 app.listen(port, ip_Address, () => {
@@ -82,9 +86,8 @@ app.listen(port, ip_Address, () => {
  */
 
 app.listen(port, IP, () => {
-
     console.log(`\n\nListening on port ${port}`)
-    console.log(`Server running at HardCoded http://${IP}:${port}/ \n${txt_separator}`);
+    console.log(`Server running at HardCoded  http://${IP}:${port}/ \n${txt_separator}`);
 })
 
 

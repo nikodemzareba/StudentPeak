@@ -17,9 +17,13 @@ import {EventsModalPicker} from "./Objects/EventsModalPicker";
 import MyActivityIndicator from "./Objects/MyActivityIndicator";
 
 import {TouchableHighlight} from "react-native-gesture-handler";
+import ip from "ip";
 
 export default function Events(props) {
-
+    const txt_separator = "\n\n###################################################################\n";
+    const ip2 = require("ip");
+    const ip_Address = ip2.address();
+    console.log(`\nSession IP: Client Ip ${ip_Address}`)
 
     {/* Run Script when page is first rendered */
     }

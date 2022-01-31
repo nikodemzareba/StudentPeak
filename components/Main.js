@@ -5,12 +5,13 @@ import firebase from 'firebase'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import FeedScreen from "../frontend/screens/feed";
+import FeedScreen from "./main/Feed"
 import Add from "./main/Add"
-import TopicScreen from "./main/Topic"
 import SearchScreen from "./main/Search"
 import EventScreen from "./main/Events"
-import publicProfile from "./main/PublicProfile";
+import PublicProfileScreen from "./main/PublicProfile"
+import PrivateProfileScreen from "./main/PrivateProfile"
+import Match from "./main/match";
 
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
@@ -68,7 +69,7 @@ const TopTab = createMaterialTopTabNavigator();
                     <MaterialCommunityIcons name="camera" color={color} size={26}/>
                 ),
             }}/>
-             <Tab.Screen name="Topic" component={TopicScreen}
+             <Tab.Screen name="Match" component={Match}
             options={{
                 tabBarIcon: ({color, size}) => (
                     //decide what is inside the Icon
@@ -82,17 +83,23 @@ const TopTab = createMaterialTopTabNavigator();
                     <MaterialCommunityIcons name="calendar-search" color={color} size={26}/>
                 ),
             }}/>
-            <Tab.Screen name ="PublicProfile" component= {publicProfile}
+            <Tab.Screen name ="PrivateProfile" component= {PrivateProfileScreen} 
                 listeners={({ navigation }) => ({
                     tabPress: event => {
                         event.preventDefault();
-                        navigation.navigate("PublicProfile", {uid: firebase.auth().currentUser.uid})
+                        navigation.navigate("PrivateProfile", {uid: firebase.auth().currentUser.uid})
                     }})}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="account-circle" color={color} size={26} />
                         ),
                     }} />
+                     <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen} 
+                     options={() => ({
+                        tabBarButton: () => null,
+                        tabBarVisible:false 
+                      })}
+                />
             </Tab.Navigator>
         )
     }

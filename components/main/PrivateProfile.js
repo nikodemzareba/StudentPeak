@@ -13,7 +13,19 @@ import {
   TouchableOpacity
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { SimpleLineIcons } from '@expo/vector-icons'
+import { SimpleLineIcons } from '@expo/vector-icons';
+import App from '../../App';
+
+
+
+const ProfileView = () => {
+
+var db = firebase.firestore();
+
+
+//const followers = '20';
+//const following = '56';
+
 
 const followers = '20';
 const following = '56';
@@ -99,7 +111,7 @@ export default function PrivateProfile() {
     postImages: {
       margin: 20,
       left: 20,
-     
+
     }
   });
 
@@ -113,13 +125,13 @@ export default function PrivateProfile() {
           name="arrow-left"
           size={20}
           color="white"
-          
+
         />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.userNameTop}>{username}</Text>
           </TouchableOpacity>
-        </View> 
+        </View>
         <SafeAreaView style={styles.lines}>
           <View style={styles.textWrapper}>
             <Image

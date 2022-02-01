@@ -10,7 +10,7 @@ import {
     TextInput, Button, Image, Dimensions, Alert, ActivityIndicator
 } from 'react-native';
 
-import {PORT, IP} from '@env'
+import {PORT} from '@env'
 
 import {LocationModalPicker} from "./Objects/LocationModalPicker";
 import {EventsModalPicker} from "./Objects/EventsModalPicker";
@@ -18,13 +18,22 @@ import MyActivityIndicator from "./Objects/MyActivityIndicator";
 
 import {TouchableHighlight} from "react-native-gesture-handler";
 
+import * as Network from 'expo-network';
 export default function Events(props) {
 
+    //https://soufiane-oucherrou.medium.com/how-to-get-react-native-ip-address-1adc191895e0
+    const [ipAddress, setIPAddress] = useState(null)
+    const displayIP = async () => {
+        const ip = await Network.getIpAddressAsync();
+        setIPAddress(ip)
+        console.log(`\n\nIP Address: ${ip}`)
+        console.log(`\n\nIP Address Var: ${ipAddress}`)
+    }
 
     {/* Run Script when page is first rendered */
     }
     useEffect(() => {
-
+           displayIP();
     }, []);
 
     {/* Variables  */
@@ -85,8 +94,8 @@ export default function Events(props) {
     }
 
     const searchEvent = async (event, location) => {
-        console.log(`\n\nhttp://${IP}:${PORT}/api/googleEvents/${event}/${location}`);
-        fetch(`http://${IP}:${PORT}/api/googleEvents/${event}/${location}`)
+        console.log(`\n\nhttp://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`);
+        fetch(`http://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`)
             .then(async (response) => response.json())
             .then(async (json) => {
                 setQueryData(json);

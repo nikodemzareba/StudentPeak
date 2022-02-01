@@ -26,7 +26,6 @@ app.use(
 
 const port = process.env.PORT || 3000;
 const API_KEY = process.env.SerAPI_KEY;
-const IP = process.env.IP;
 
 app.get("/api",  (req, res) => {
      res.json({
@@ -34,7 +33,7 @@ app.get("/api",  (req, res) => {
      })
 });
 
-// http://localhost:3001/api/googleEvents/Clubbing/Kent
+/* /api/googleEvents/Clubbing/Kent */
 app.get("/api/googleEvents/:query/:location",  async (req, res) => {
 
     //#######################################################
@@ -71,20 +70,20 @@ const ip = require("ip");
 const ip_Address = ip.address();
 console.log(`\nSession IP: Client Ip ${ip_Address}`)
 
+
 //When IP works switch to
-/*
 app.listen(port, ip_Address, () => {
 
     console.log(`\n\nListening on port ${port}`)
-    console.log(`Server running at http://${ip_Address}:${port}/ \n${txt_separator}`);
+    console.log(`Server running at http://${ip_Address}:${port} \n${txt_separator}`);
 })
 
- */
 
-app.listen(port, IP, () => {
 
-    console.log(`\n\nListening on port ${port}`)
-    console.log(`Server running at HardCoded http://${IP}:${port}/ \n${txt_separator}`);
-})
+// app.listen(port, IP, () => {
+//
+//     console.log(`\n\nListening on port ${port}`)
+//     console.log(`Server running at HardCoded http://${IP}:${port}/ \n${txt_separator}`);
+// })
 
 

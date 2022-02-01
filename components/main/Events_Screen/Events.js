@@ -114,7 +114,7 @@ export default function Events(props) {
 
             })
             .catch((error) => {
-                alertMsg('Error Fetching Data!', 'Error Fetching Data')
+                alertMsg('Error Fetching Data!', `Error Fetching Data \n\n${error}`)
                 console.log("\n\n"+ error)
             });
     }

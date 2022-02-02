@@ -95,7 +95,8 @@ export default function Events(props) {
 
     const searchEvent = async (event, location) => {
 
-        const URL = `\n\nEvents Page \nhttp://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`;
+        const URL = `http://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`;
+
         console.log(URL);
 
         fetch(URL)

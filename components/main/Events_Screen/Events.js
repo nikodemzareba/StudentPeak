@@ -94,8 +94,11 @@ export default function Events(props) {
     }
 
     const searchEvent = async (event, location) => {
-        console.log(`\n\nhttp://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`);
-        fetch(`http://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`)
+
+        const URL = `\n\nEvents Page \nhttp://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`;
+        console.log(URL);
+
+        fetch(URL)
             .then(async (response) => response.json())
             .then(async (json) => {
                 setQueryData(json);

@@ -6,7 +6,10 @@ import VideoPlayer from "./feedControl/components/VideoPlayer";
 
 
 const { height, width } = Dimensions.get('window');
-const DATA = require("./feedControl/data.json");
+const DATA = require("./feedControl/data.json").videos;
+const videosData = DATA.map((item, i) => {
+    return {...item, key: i}
+});
 
 
 
@@ -46,8 +49,7 @@ class FeedScreen extends Component{
                 <FlatList
                     style={{ flex:1 }}
                     contentContainerStyle={{paddingTop:25}}
-                    keyExtractor={(_, index) => index}
-                    data={DATA.videos}
+                    data={videosData}
                     renderItem={this.renderPosts}
                     horizontal={false}
                     scrollEventThrottle={20}

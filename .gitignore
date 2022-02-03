@@ -12,3 +12,8 @@ web-build/
 # macOS
 .DS_Store
 Casey/
+/.idea/.gitignore
+/components/main/Events_Screen/Links/[JS] Automatically run `adb reverse tcp-8081 tcp-8081` when starting packager · Issue #8309 · facebook-react-native · GitHub.url
+/.idea/modules.xml
+/.idea/NEW.iml
+/.idea/vcs.xml

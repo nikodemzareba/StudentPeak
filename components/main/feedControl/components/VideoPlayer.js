@@ -64,7 +64,7 @@ export default function VideoPlayer(props) {
 
 
   const updatePlaybackCallback = (status) => {
-    console.log(status, 'status');
+    //console.log(status, 'status');
     if (status.isLoaded) {
       setPlaybackInstanceInfo({
         ...playbackInstanceInfo,
@@ -77,7 +77,7 @@ export default function VideoPlayer(props) {
     } else {
       if (status.isLoaded === false && status.error) {
         const errorMsg = `Encountered a fatal error during playback: ${status.error}`;
-        console.log(errorMsg, 'error')
+        //console.log(errorMsg, 'error')
         // setErrorMessage(errorMsg)
       }
     }

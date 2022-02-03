@@ -1,39 +1,49 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Alert} from 'react-native';
+import {View, Text, StyleSheet, Alert, Platform} from 'react-native';
 import {Linking} from 'react-native';
+import async from "async";
 
 export default function Tickets({tickets}) {
 
-    const areYouSure = (link) => {
+    const areYouSure = async (link) => {
         const msg = "Are you sure you want to open the third party link, the safety of this link is unknown?";
-        let activated = false;
+        let activated = null;
 
-        alert(msg);
-        Alert.alert('Error', msg, [
-            {
-                text: 'Cancel',
-                onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel',
-            },
+        if (Platform.OS === 'web') {
+            alert(msg);
+           await Linking.openURL(link);
+            return
+        }
+
+        Alert.alert('Are you sure you want to open this third-party link?', msg, [
             {
                 text: 'OK', onPress: () => {
                     console.log('OK Pressed');
-                    Linking.openURL(link);
                     activated = true;
+                    Linking.openURL(link);
                 }
+            },
+            {
+                text: 'Cancel',
+                onPress: () => {
+                    console.log('Cancel Pressed')
+                    activated = true
+                },
+                style: 'cancel',
             },
         ]);
 
         {/*
         Option alerts don't exist on web so just open the link
         If the link has already been opened, exit
-        */}
-        if(activated)
-        {
-            return;
+        */
         }
-
-        Linking.openURL(link);
+        await async()
+        {
+            if (!activated) {
+                Linking.openURL(link);
+            }
+        }
     }
 
     return (
@@ -42,7 +52,7 @@ export default function Tickets({tickets}) {
             {tickets.map((ticket, i) => {
                 return (
                     <View key={ticket.source} style={styles.ticket}>
-                        <Text style={styles.ticketText} onPress={() =>areYouSure(ticket.link)}>
+                        <Text style={styles.ticketText} onPress={() => areYouSure(ticket.link)}>
                             {ticket.source}
                         </Text>
                     </View>

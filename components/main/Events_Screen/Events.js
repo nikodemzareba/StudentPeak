@@ -96,10 +96,12 @@ export default function Events(props) {
     const searchEvent = async (event, location) => {
 
         const URL = `http://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`;
+        const URL2 = `http://localhost:${PORT}/api/googleEvents/${event}/${location}`;
 
-        console.log(URL);
 
-        fetch(URL)
+        console.log(URL2);
+
+        fetch(URL2)
             .then(async (response) => response.json())
             .then(async (json) => {
                 setQueryData(json);
@@ -118,7 +120,7 @@ export default function Events(props) {
 
             })
             .catch((error) => {
-                alertMsg('Error Fetching Data!', `Error Fetching Data \n\n${error}`)
+                alertMsg('Error', `Error Fetching Data \n\n${error}`)
                 console.log("\n\n"+ error)
             });
     }

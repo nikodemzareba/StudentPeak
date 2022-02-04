@@ -97,7 +97,7 @@ class FeedScreen extends Component {
 
 
 
-    renderPosts = ({item, index}) => {
+    renderPosts = ({item}) => {
         return <VideoPlayer
             height={height / 1.6}
             width={width}

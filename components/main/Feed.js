@@ -78,7 +78,7 @@ class FeedScreen extends Component {
                             createdAt,
                             downloadURL,
                         });
-                        console.log(`\n\nUserID: ${user.id} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                        console.log(`\nPostID : " + userPost.id \nUserID: ${user.id} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                         console.log("\nPostID : " + userPost.id + " | MediaType: " + userPost.get("mediaType") + " | Download URL: " + userPost.get("downloadURL"));
                     })
 
@@ -94,8 +94,6 @@ class FeedScreen extends Component {
             isLoading: false
         });
     }
-
-
 
     renderPosts = ({item}) => {
         return <VideoPlayer

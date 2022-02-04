@@ -8,23 +8,15 @@ import ListItem from "react-native-paper/src/components/List/ListItem";
 
 
 const {height, width} = Dimensions.get('window');
-const DATA = require("./feedControl/data.json").videos;
+
+const DATA = require("./feedControl/data.json").videos;//REMOVE
 const videosData = DATA.map((item, i) => {
     return {...item, key: i}
-});
+});//REMOVE
 
-const data2 = [
-    {
-        ty: "Hello"
-    },
-    {
-        ty: "Hello"
-    }
-];
 
 const separator = "####################################################################################";
-console.log(`\n\n${separator} \n\nData2${data2} \n\n${separator}`);
-console.log(`\n\n${separator} \n\nData2 ${data2[0].ty} \n\n${separator}`);
+
 
 class FeedScreen extends Component {
 
@@ -91,7 +83,7 @@ class FeedScreen extends Component {
         this.setState({
             outOfBoundItems: [],
             dataFetched,
-            isLoading: true
+            isLoading: false
         });
     }
 
@@ -128,24 +120,6 @@ class FeedScreen extends Component {
 
         return (
             <View style={{flex:1}}>
-                <Button
-                    title="Press me"
-                    color="#f194ff"
-                    onPress={() => {
-                        console.log(`\n\n${separator}`);
-
-                        console.log(`\n\nData Fetched OBJECT: ${this.state.dataFetched}`);
-
-                        console.log(`\n\nFirst Object Data`);
-                        console.log(`\nKey: ${this.state.dataFetched[0].key}`);
-                        console.log(`\nuserID: ${this.state.dataFetched[0].userID}`);
-                        console.log(`\nCaption: ${this.state.dataFetched[0].caption}`);
-                        console.log(`\nCreatedAt: ${this.state.dataFetched[0].createdAt}`);
-                        console.log(`\ndownloadURL: ${this.state.dataFetched[0].downloadURL}`);
-
-                        console.log(`\n\n${separator}`);
-                    }}
-                />
                 <FlatList
                     style={{ flex:1 }}
                     contentContainerStyle={{paddingTop:25}}

@@ -65,7 +65,8 @@ class FeedScreen extends Component {
                         const {caption, createdAt, downloadURL, mediaType} = userPost.data();
                         dataFetched.push({
                             key: userPost.id,
-                            userID: user.id,
+                            name:  user.id,
+                            profile: "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/0/00/Thunder_Breathing_%28Zenshuchuten%29.png/revision/latest?cb=20200524144723",
                             caption,
                             createdAt,
                             downloadURL,
@@ -73,7 +74,6 @@ class FeedScreen extends Component {
                         console.log(`\nPostID : " + userPost.id \nUserID: ${user.id} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                         console.log("\nPostID : " + userPost.id + " | MediaType: " + userPost.get("mediaType") + " | Download URL: " + userPost.get("downloadURL"));
                     })
-
 
                 })
                 .catch((error) => {
@@ -86,16 +86,6 @@ class FeedScreen extends Component {
             isLoading: false
         });
     }
-
-    renderPosts = ({item}) => {
-        return <VideoPlayer
-            height={height / 1.6}
-            width={width}
-            videoUri={item.video}
-            item={item}
-            outOfBoundItems={this.state.outOfBoundItems}
-        />
-    }// REMOVE
 
     renderUserFollowingPosts = ({item}) => {
         return <VideoPlayer
@@ -132,19 +122,7 @@ class FeedScreen extends Component {
                     viewabilityConfig={{itemVisiblePercentThreshold: 30,  waitForInteraction: true}}
                     overScrollMode="never"
                 />
-                {/* REMOVE*/ }
-                {/*<FlatList*/}
-                {/*    style={{ flex:1 }}*/}
-                {/*    contentContainerStyle={{paddingTop:25}}*/}
-                {/*    data={videosData}*/}
-                {/*    renderItem={this.renderPosts}*/}
-                {/*    horizontal={false}*/}
-                {/*    scrollEventThrottle={20}*/}
-                {/*    showsVerticalScrollIndicator={false}*/}
-                {/*    onViewableItemsChanged={this.handleViewableItemsChanged}*/}
-                {/*    viewabilityConfig={{itemVisiblePercentThreshold: 30,  waitForInteraction: true}}*/}
-                {/*    overScrollMode="never"*/}
-                {/*/>*/}
+
             </View>
         );
     }

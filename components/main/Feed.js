@@ -73,8 +73,8 @@ class FeedScreen extends Component {
                                 const {caption, createdAt, downloadURL, mediaType} = userPost.data();
                                 dataFetched.push({
                                     key: userPost.id,
-                                    name: userPost.get("username"),
-                                    profile: "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/0/00/Thunder_Breathing_%28Zenshuchuten%29.png/revision/latest?cb=20200524144723",
+                                    name: userDetails.get("username"),
+                                    profile: userDetails.get("profilePicture"),
                                     caption,
                                     createdAt,
                                     downloadURL,

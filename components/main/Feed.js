@@ -107,6 +107,16 @@ class FeedScreen extends Component {
         />
     }
 
+    renderUserFollowingPosts = ({item}) => {
+        return <VideoPlayer
+            height={height / 1.6}
+            width={width}
+            videoUri={item.downloadURL}
+            item={item}
+            outOfBoundItems={this.state.outOfBoundItems}
+        />
+    }
+
 
     render() {
         if (this.state.isLoading) {
@@ -117,7 +127,6 @@ class FeedScreen extends Component {
                 </View>
             )
         }
-
 
         return (
             <View style={{flex:1}}>
@@ -142,8 +151,8 @@ class FeedScreen extends Component {
                 <FlatList
                     style={{ flex:1 }}
                     contentContainerStyle={{paddingTop:25}}
-                    data={videosData}
-                    renderItem={this.renderPosts}
+                    data={this.state.dataFetched}
+                    renderItem={this.renderUserFollowingPosts}
                     horizontal={false}
                     scrollEventThrottle={20}
                     showsVerticalScrollIndicator={false}
@@ -151,6 +160,19 @@ class FeedScreen extends Component {
                     viewabilityConfig={{itemVisiblePercentThreshold: 30,  waitForInteraction: true}}
                     overScrollMode="never"
                 />
+
+                {/*<FlatList*/}
+                {/*    style={{ flex:1 }}*/}
+                {/*    contentContainerStyle={{paddingTop:25}}*/}
+                {/*    data={videosData}*/}
+                {/*    renderItem={this.renderPosts}*/}
+                {/*    horizontal={false}*/}
+                {/*    scrollEventThrottle={20}*/}
+                {/*    showsVerticalScrollIndicator={false}*/}
+                {/*    onViewableItemsChanged={this.handleViewableItemsChanged}*/}
+                {/*    viewabilityConfig={{itemVisiblePercentThreshold: 30,  waitForInteraction: true}}*/}
+                {/*    overScrollMode="never"*/}
+                {/*/>*/}
             </View>
         );
     }

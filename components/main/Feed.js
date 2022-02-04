@@ -20,7 +20,6 @@ const separator = "#############################################################
 
 class FeedScreen extends Component {
 
-
     constructor(props) {
         super(props);
         this.docs = firebase.firestore()
@@ -59,19 +58,29 @@ class FeedScreen extends Component {
                 .get()
                 .then(usersFollowingPosts => {
 
-                    usersFollowingPosts.forEach((userPost) => {
-                        const {caption, createdAt, downloadURL, mediaType} = userPost.data();
-                        dataFetched.push({
-                            key: userPost.id,
-                            name:  user.id,
-                            profile: "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/0/00/Thunder_Breathing_%28Zenshuchuten%29.png/revision/latest?cb=20200524144723",
-                            caption,
-                            createdAt,
-                            downloadURL,
-                        });
-                        console.log(`\nPostID : " + userPost.id \nUserID: ${user.id} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
-                        console.log("\nPostID : " + userPost.id + " | MediaType: " + userPost.get("mediaType") + " | Download URL: " + userPost.get("downloadURL"));
-                    })
+                    // Get UserName & Profile
+                    firebase.firestore()
+                        .collection('users')
+                        .doc(user.id)
+                        .get()
+                        .then(userDetails => {
+                            console.log(`\n\n${separator}`)
+                            usersFollowingPosts.forEach((userPost) => {
+                                const {caption, createdAt, downloadURL, mediaType} = userPost.data();
+                                dataFetched.push({
+                                    key: userPost.id,
+                                    name:"zenitsu_agatsuma", //userDetails.get("username"),
+                                    profile:  "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/0/00/Thunder_Breathing_%28Zenshuchuten%29.png/revision/latest?cb=20200524144723", //  userDetails.get("profilePicture"),
+                                    caption,
+                                    createdAt,
+                                    downloadURL,
+                                });
+                                console.log(`\n\nUserName: ${userDetails.get("username")} \nProfile Picture Link: ${userDetails.get("profilePicture")}`);
+                                console.log(`\nUserID:  ${user.id}  \nPostID : ${userPost.id} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                console.log(`\n\n${separator}`)
+                            })
+                        })
+                    console.log(`\n\n${separator}`)
 
                 })
                 .catch((error) => {

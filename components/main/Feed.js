@@ -95,7 +95,7 @@ class FeedScreen extends Component {
             item={item}
             outOfBoundItems={this.state.outOfBoundItems}
         />
-    }
+    }// REMOVE
 
     renderUserFollowingPosts = ({item}) => {
         return <VideoPlayer
@@ -132,7 +132,7 @@ class FeedScreen extends Component {
                     viewabilityConfig={{itemVisiblePercentThreshold: 30,  waitForInteraction: true}}
                     overScrollMode="never"
                 />
-
+                {/* REMOVE*/ }
                 {/*<FlatList*/}
                 {/*    style={{ flex:1 }}*/}
                 {/*    contentContainerStyle={{paddingTop:25}}*/}

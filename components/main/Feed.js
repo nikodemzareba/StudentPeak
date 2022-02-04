@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react'
-import {View, Dimensions, FlatList, Text, ActivityIndicator, ScrollView, Button} from 'react-native';
+import {View, Dimensions, FlatList, Text, ActivityIndicator, ScrollView, Button, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import VideoPlayer from "./feedControl/components/VideoPlayer";
@@ -91,7 +91,7 @@ class FeedScreen extends Component {
         this.setState({
             outOfBoundItems: [],
             dataFetched,
-            isLoading: false
+            isLoading: true
         });
     }
 
@@ -120,7 +120,7 @@ class FeedScreen extends Component {
         if (this.state.isLoading) {
             console.log(`\n\n${separator} \n\nData Fetched ${this.state.dataFetched} \n\n${separator}`);
             return (
-                <View >
+                <View style={styles.loading} >
                     <ActivityIndicator size="large" color="red"/>
                 </View>
             )
@@ -174,8 +174,17 @@ class FeedScreen extends Component {
             </View>
         );
     }
-
 }
-
+const styles = StyleSheet.create({
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+})
 
 export default FeedScreen;

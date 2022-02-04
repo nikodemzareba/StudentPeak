@@ -46,13 +46,11 @@ class FeedScreen extends Component {
 
     componentDidMount() {
         this.unsubscribe = this.docs.onSnapshot(this.getData);
-        console.log("\n\nHERE")
     }
 
     getData = (querySnapshot) => {
         const dataFetched = [];
         querySnapshot.forEach((user) => {
-            console.log(`\n\nUsersID: ${user.id}`);
             firebase.firestore()
                 .collection('posts')
                 .doc(user.id)
@@ -100,26 +98,25 @@ class FeedScreen extends Component {
 
     render() {
         if (this.state.isLoading) {
-            console.log(`\n\n${separator} \n\nData Fetched ${this.state.dataFetched} \n\n${separator}`);
             return (
-                <View style={styles.loading} >
+                <View style={styles.loading}>
                     <ActivityIndicator size="large" color="red"/>
                 </View>
             )
         }
 
         return (
-            <View style={{flex:1}}>
+            <View style={{flex: 1}}>
                 <FlatList
-                    style={{ flex:1 }}
-                    contentContainerStyle={{paddingTop:25}}
+                    style={{flex: 1}}
+                    contentContainerStyle={{paddingTop: 25}}
                     data={this.state.dataFetched}
                     renderItem={this.renderUserFollowingPosts}
                     horizontal={false}
                     scrollEventThrottle={20}
                     showsVerticalScrollIndicator={false}
                     onViewableItemsChanged={this.handleViewableItemsChanged}
-                    viewabilityConfig={{itemVisiblePercentThreshold: 30,  waitForInteraction: true}}
+                    viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
                     overScrollMode="never"
                 />
 
@@ -127,6 +124,7 @@ class FeedScreen extends Component {
         );
     }
 }
+
 const styles = StyleSheet.create({
     loading: {
         position: 'absolute',

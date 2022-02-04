@@ -50,29 +50,42 @@ class FeedScreen extends Component {
 
     getData = (querySnapshot) => {
         const dataFetched = [];
+
+        // Got users Following info
         querySnapshot.forEach((user) => {
+
+            // Get the user we are following userName & userProfilePhoto
             firebase.firestore()
-                .collection('posts')
+                .collection('users')
                 .doc(user.id)
-                .collection('userPosts')
-                .where("mediaType", "==", "video")
                 .get()
-                .then(usersFollowingPosts => {
+                .then(userDetails => {
 
-                    usersFollowingPosts.forEach((userPost) => {
-                        const {caption, createdAt, downloadURL, mediaType} = userPost.data();
-                        dataFetched.push({
-                            key: userPost.id,
-                            name: user.id,
-                            profile: "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/0/00/Thunder_Breathing_%28Zenshuchuten%29.png/revision/latest?cb=20200524144723",
-                            caption,
-                            createdAt,
-                            downloadURL,
-                        });
-                        console.log(`\nUserID: ${user.id} \nPostID : ${userPost.id}  \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
-                    })
+                    firebase.firestore()
+                        .collection('posts')
+                        .doc(user.id)
+                        .collection('userPosts')
+                        .where("mediaType", "==", "video")
+                        .get()
+                        .then(usersFollowingPosts => {
 
+                            usersFollowingPosts.forEach((userPost) => {
+                                const {caption, createdAt, downloadURL, mediaType} = userPost.data();
+                                dataFetched.push({
+                                    key: userPost.id,
+                                    name: userPost.get("username"),
+                                    profile: "https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/0/00/Thunder_Breathing_%28Zenshuchuten%29.png/revision/latest?cb=20200524144723",
+                                    caption,
+                                    createdAt,
+                                    downloadURL,
+                                });
+                                console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id}  \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                            })
+
+                        })
                 })
+
+
                 .catch((error) => {
                     console.log(`${error} \nUnable to get Users following posts!`);
                 });

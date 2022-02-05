@@ -51,14 +51,15 @@ class FeedScreen extends Component {
     getData = async (querySnapshot) => {
         const dataFetched = [];
 
+        let expectedFollowingUsersCount = querySnapshot.size;
+        console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
 
         let processedFollowingUsers = 0;
 
         // Got users Following info
         console.log("\nGot Users Following Data")
         await querySnapshot.forEach((user) => {
-            let expectedFollowingUsersCount = querySnapshot.length;
-            console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
+
 
             // Get the user we are following userName & userProfilePhoto
 
@@ -91,19 +92,17 @@ class FeedScreen extends Component {
                                 });
                                 processedFollowingUsers ++;
                                 console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id}  \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
-
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
-                                // if(processedFollowingUsers === 2)
-                                //     //expectedFollowingUsersCount-1)
-                                // {
+                                if(processedFollowingUsers === expectedFollowingUsersCount)
+                                {
                                     console.log("\nSetting Data To Variable")
                                     this.setState({
                                         outOfBoundItems: [],
                                         dataFetched,
                                         isLoading: false
                                     });
-                                // }
+                                }
                             })
                         })
                 })

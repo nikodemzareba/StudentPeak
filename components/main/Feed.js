@@ -68,7 +68,6 @@ class FeedScreen extends Component {
                 .get()
                 .then(userDetails => {
 
-
                     console.log("\nGot Users Following Details etc: username, profilePicture")
 
                     firebase.firestore()
@@ -95,16 +94,16 @@ class FeedScreen extends Component {
 
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
-                                if(processedFollowingUsers === 2)
-                                    //expectedFollowingUsersCount-1)
-                                {
+                                // if(processedFollowingUsers === 2)
+                                //     //expectedFollowingUsersCount-1)
+                                // {
                                     console.log("\nSetting Data To Variable")
                                     this.setState({
                                         outOfBoundItems: [],
                                         dataFetched,
                                         isLoading: false
                                     });
-                                }
+                                // }
                             })
                         })
                 })

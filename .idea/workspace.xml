@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44130a1b-c6e4-416c-80ef-abb2ca4c735f" name="Changes" comment="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it">
-      <change beforePath="$PROJECT_DIR$/components/main/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feed.js" afterDir="false" />
+    <list default="true" id="44130a1b-c6e4-416c-80ef-abb2ca4c735f" name="Changes" comment="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +48,35 @@
       <option name="project" value="LOCAL" />
       <updated>1643951270574</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Just did:&#10;Changed Fonts&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched">
+      <created>1644081965165</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644081965165</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched">
+      <created>1644082261176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644082261176</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched">
+      <created>1644082386077</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644082386077</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted">
+      <created>1644084869004</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1644084869004</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -59,7 +87,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Isreal-3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -68,6 +108,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it" />
+    <MESSAGE value="Just did:&#10;Changed Fonts&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
+    <MESSAGE value="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
+    <MESSAGE value="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted" />
   </component>
 </project>

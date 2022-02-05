@@ -48,18 +48,28 @@ class FeedScreen extends Component {
         this.unsubscribe = this.docs.onSnapshot(this.getData);
     }
 
-    getData = (querySnapshot) => {
+    getData = async (querySnapshot) => {
         const dataFetched = [];
 
+
+        let processedFollowingUsers = 0;
+
         // Got users Following info
-        querySnapshot.forEach((user) => {
+        console.log("\nGot Users Following Data")
+        await querySnapshot.forEach((user) => {
+            let expectedFollowingUsersCount = querySnapshot.length;
+            console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
 
             // Get the user we are following userName & userProfilePhoto
+
             firebase.firestore()
                 .collection('users')
                 .doc(user.id)
                 .get()
                 .then(userDetails => {
+
+
+                    console.log("\nGot Users Following Details etc: username, profilePicture")
 
                     firebase.firestore()
                         .collection('posts')
@@ -68,6 +78,7 @@ class FeedScreen extends Component {
                         .where("mediaType", "==", "video")
                         .get()
                         .then(usersFollowingPosts => {
+                            console.log("\nGot Posts Of Users i am Following")
 
                             usersFollowingPosts.forEach((userPost) => {
                                 const {caption, createdAt, downloadURL, mediaType} = userPost.data();
@@ -79,9 +90,22 @@ class FeedScreen extends Component {
                                     createdAt,
                                     downloadURL,
                                 });
+                                processedFollowingUsers ++;
                                 console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id}  \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
-                            })
 
+                                console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+
+                                if(processedFollowingUsers === 2)
+                                    //expectedFollowingUsersCount-1)
+                                {
+                                    console.log("\nSetting Data To Variable")
+                                    this.setState({
+                                        outOfBoundItems: [],
+                                        dataFetched,
+                                        isLoading: false
+                                    });
+                                }
+                            })
                         })
                 })
 
@@ -90,11 +114,6 @@ class FeedScreen extends Component {
                     console.log(`${error} \nUnable to get Users following posts!`);
                 });
         })
-        this.setState({
-            outOfBoundItems: [],
-            dataFetched,
-            isLoading: false
-        });
     }
 
     renderUserFollowingPosts = ({item}) => {

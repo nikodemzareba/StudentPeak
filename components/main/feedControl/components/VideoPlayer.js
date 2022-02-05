@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import {View, Image, StyleSheet, Text, Button} from 'react-native';
 import { Video } from 'expo-av';
 import { Feather } from "react-native-vector-icons";
 
@@ -86,10 +86,11 @@ export default function VideoPlayer(props) {
 
   return (
     <View style={{flex:1, marginBottom:20}}>
+
         <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between', paddingHorizontal:10, marginBottom:10}}>
             <View style={{flexDirection:'row', alignItems:'center'}}>
                 <Image style={{height:30, width:30, borderRadius:30}} source={{uri: item.profile}}/>
-                <Text style={{marginLeft:10, color:'#fff', fontSize:15, fontWeight:'bold'}}>
+                <Text style={{marginLeft:10, color:'#000000', fontSize:15, fontWeight:'bold'}}>
                     {item.name}
                 </Text>
             </View>

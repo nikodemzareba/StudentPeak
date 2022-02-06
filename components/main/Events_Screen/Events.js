@@ -19,6 +19,7 @@ import MyActivityIndicator from "./Objects/MyActivityIndicator";
 import {TouchableHighlight} from "react-native-gesture-handler";
 
 import * as Network from 'expo-network';
+
 export default function Events(props) {
 
     //https://soufiane-oucherrou.medium.com/how-to-get-react-native-ip-address-1adc191895e0
@@ -97,8 +98,6 @@ export default function Events(props) {
 
         const URL = `http://${ipAddress}:${PORT}/api/googleEvents/${event}/${location}`;
         const URL2 = `http://localhost:${PORT}/api/googleEvents/${event}/${location}`;
-
-
         console.log(URL2);
 
         fetch(URL2)

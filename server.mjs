@@ -72,10 +72,10 @@ console.log(`\nSession IP: Client Ip ${ip_Address}`)
 
 
 //When IP works switch to
-app.listen(port, "0.0.0.0", () => {
+app.listen(port,  () => {
 
     console.log(`\n\nListening on port ${port}`)
-    console.log(`Server running at http://${ip_Address}:${port} \n${txt_separator}`);
+    console.log(`Server running at http://localhost:${port}`);
 })
 
 

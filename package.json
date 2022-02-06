@@ -1,10 +1,11 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "devStart": "concurrently \"npm run server\" \"npm run adbCommand\"  \"expo start --web\"",
+    "start": "concurrently \"npm run server\" \"npm run adbCommand\" \"npm run adbCommand2\" \"expo start --web\"",
     "adbCommand":"adb reverse tcp:3001 tcp:3001",
+    "adbCommand2":"adb -s emulator-5554 reverse tcp:3000 tcp:3000",
     "server": "nodemon server.mjs",
-    "start": "expo start",
+    "start2": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",

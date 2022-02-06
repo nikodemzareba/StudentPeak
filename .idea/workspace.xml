@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44130a1b-c6e4-416c-80ef-abb2ca4c735f" name="Changes" comment="Updates:&#10;Currently server setup runs on localhost and uses adb commands which allows for a physical mobile and emulator to connect to the webservers port.&#10;&#10;Issues:&#10;Because ADB command is ran on PC the phone or emulator needs to be turned on/plugged into the pc when the command npm run start2 is executed" />
+    <list default="true" id="44130a1b-c6e4-416c-80ef-abb2ca4c735f" name="Changes" comment="&#10;Just Did:&#10;Refactored firebase Query to store pictures and video posts in different variables.&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/feedControl/components/VideoPlayer.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +83,28 @@
       <option name="project" value="LOCAL" />
       <updated>1644084869004</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="&#10;Just Did:&#10;Added Slider for images and videos feed&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
+      <created>1644115765878</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1644115765878</updated>
+    </task>
+    <task id="LOCAL-00007" summary="&#10;Just Did:&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
+      <created>1644116119710</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1644116119710</updated>
+    </task>
+    <task id="LOCAL-00008" summary="&#10;Just Did:&#10;Refactored firebase Query to store pictures and video posts in different variables.&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
+      <created>1644116564235</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1644116564235</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +139,26 @@
     <MESSAGE value="Just did:&#10;Changed Fonts&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
     <MESSAGE value="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
     <MESSAGE value="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted" />
+    <MESSAGE value="&#10;Just Did:&#10;Added Slider for images and videos feed&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
+    <MESSAGE value="&#10;Just Did:&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
+    <MESSAGE value="&#10;Just Did:&#10;Refactored firebase Query to store pictures and video posts in different variables.&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;Just Did:&#10;Refactored firebase Query to store pictures and video posts in different variables.&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feed.js</url>
+          <line>153</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feed.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -83,7 +83,7 @@ export default function VideoPlayer(props) {
     }
 
   }
-
+  const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
   return (
     <View style={{flex:1, marginBottom:20}}>
 
@@ -115,6 +115,13 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
+      <Text style={{
+        marginLeft: 10,
+        color: '#000000',
+        fontSize: 15,
+        fontWeight: 'plain'
+      }}> <B>{item.name}: </B>  "{item.caption}" </Text>
+
     </View>
   );
 }

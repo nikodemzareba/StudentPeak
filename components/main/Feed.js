@@ -92,7 +92,7 @@ class FeedScreen extends Component {
                 .then(userDetails => {
 
                     console.log("\nGot Users Following Details etc: username, profilePicture")
-
+//HELLO Might cause an error if there are no posts from the user
                     firebase.firestore()
                         .collection('posts')
                         .doc(user.id)

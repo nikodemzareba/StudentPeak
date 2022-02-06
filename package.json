@@ -48,6 +48,8 @@
     "react-native-paper": "^4.11.1",
     "react-native-screens": "^3.7.0",
     "react-native-scrollable-tab-view-prop-types": "^0.7.5",
+    "react-native-slider": "^0.11.0",
+    "react-native-svg": "^12.1.1",
     "react-native-switch-selector": "^2.1.4",
     "react-native-tab-view": "github:react-navigation/react-native-tab-view",
     "react-native-unimodules": "^0.14.10",

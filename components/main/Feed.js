@@ -1,22 +1,28 @@
 import React, {Component, useState} from 'react'
-import {View, Dimensions, FlatList, Text, ActivityIndicator, ScrollView, Button, StyleSheet} from 'react-native';
+import {
+    View,
+    Dimensions,
+    FlatList,
+    Text,
+    ActivityIndicator,
+    ScrollView,
+    Button,
+    StyleSheet,
+    SafeAreaView
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import VideoPlayer from "./feedControl/components/VideoPlayer";
 import firebase from "firebase";
-import ListItem from "react-native-paper/src/components/List/ListItem";
+
+import {StatusBar} from "expo-status-bar";
 
 
 const {height, width} = Dimensions.get('window');
 
-const DATA = require("./feedControl/data.json").videos;//REMOVE
-const videosData = DATA.map((item, i) => {
-    return {...item, key: i}
-});//REMOVE
 
 
-const separator = "####################################################################################";
-
+const separator = "###################################################################################";
 
 class FeedScreen extends Component {
 
@@ -124,33 +130,53 @@ class FeedScreen extends Component {
         />
     }
 
-
     render() {
-        if (this.state.isLoading) {
-            return (
-                <View style={styles.loading}>
-                    <ActivityIndicator size="large" color="red"/>
-                </View>
-            )
-        }
 
         return (
-            <View style={{flex: 1}}>
-                <FlatList
-                    style={{flex: 1}}
-                    contentContainerStyle={{paddingTop: 25}}
-                    data={this.state.dataFetched}
-                    renderItem={this.renderUserFollowingPosts}
-                    horizontal={false}
-                    scrollEventThrottle={20}
-                    showsVerticalScrollIndicator={false}
-                    onViewableItemsChanged={this.handleViewableItemsChanged}
-                    viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
-                    overScrollMode="never"
-                />
+            <>
+                <StatusBar barStyle="dark-content" />
+                <SafeAreaView style={{ flex: 1 }}>
+                    <ScrollView
+                        style={{ flex: 1 }}
+                        horizontal={true}
+                        scrollEventThrottle={16}
+                        pagingEnabled={true}
+                    >
+                        <View style={{ width, height }}>
 
-            </View>
+                            {this.state.isLoading
+                                ?
+                                <View style={styles.loading}>
+                                    <ActivityIndicator size="large" color="red"/>
+                                </View>
+                                :
+                                <View style={{flex: 1}}>
+                                    <FlatList
+                                        style={{flex: 1}}
+                                        contentContainerStyle={{paddingTop: 25}}
+                                        data={this.state.dataFetched}
+                                        renderItem={this.renderUserFollowingPosts}
+                                        horizontal={false}
+                                        scrollEventThrottle={20}
+                                        showsVerticalScrollIndicator={false}
+                                        onViewableItemsChanged={this.handleViewableItemsChanged}
+                                        viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
+                                        overScrollMode="never"
+                                    />
+
+                                </View>
+                            }
+
+                        </View>
+
+                        <View style={{ width, height }}>
+                            <Text>Screen 2</Text>
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
+            </>
         );
+
     }
 }
 

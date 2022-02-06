@@ -26,36 +26,39 @@ const separator = "#############################################################
 
 class FeedScreen extends Component {
 
-
     constructor(props) {
         super(props);
-        this.docs = firebase.firestore()
+        this.usersFollowingRef = firebase.firestore()
             .collection('following')
             .doc(firebase.auth().currentUser.uid)
             .collection('userFollowing')
         this.state = {
-            outOfBoundItems: [],
-            dataFetched: [],
-            isLoading: true
+            videosOutOfBoundItems: [],
+            videosDataFetched: [],
+            videosIsLoading: true,
+
+            picturesOutOfBoundItems: [],
+            picturesDataFetched: [],
+            picturesIsLoading: true
         };
     }
 
     handleViewableItemsChanged = ({changed}) => {
 
-        const outOfBoundItems = changed;
+        const videosOutOfBoundItems = changed;
 
-        if (outOfBoundItems.length !== 0) {
-            this.setState({outOfBoundItems});
+        if (videosOutOfBoundItems.length !== 0) {
+            this.setState({videosOutOfBoundItems});
         }
 
     };
 
     componentDidMount() {
-        this.unsubscribe = this.docs.onSnapshot(this.getData);
+        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
     }
 
     getData = async (querySnapshot) => {
-        const dataFetched = [];
+        const videosDataFetched = [];
 
         let expectedFollowingUsersCount = querySnapshot.size;
         console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
@@ -88,7 +91,7 @@ class FeedScreen extends Component {
 
                             usersFollowingPosts.forEach((userPost) => {
                                 const {caption, createdAt, downloadURL, mediaType} = userPost.data();
-                                dataFetched.push({
+                                videosDataFetched.push({
                                     key: userPost.id,
                                     name: userDetails.get("username"),
                                     profile: userDetails.get("profilePicture"),
@@ -104,9 +107,9 @@ class FeedScreen extends Component {
                                 {
                                     console.log("\nSetting Data To Variable")
                                     this.setState({
-                                        outOfBoundItems: [],
-                                        dataFetched,
-                                        isLoading: false
+                                        videosOutOfBoundItems: [],
+                                        videosDataFetched,
+                                        videosIsLoading: false
                                     });
                                 }
                             })
@@ -126,7 +129,7 @@ class FeedScreen extends Component {
             width={width}
             videoUri={item.downloadURL}
             item={item}
-            outOfBoundItems={this.state.outOfBoundItems}
+            videosOutOfBoundItems={this.state.videosOutOfBoundItems}
         />
     }
 
@@ -144,7 +147,7 @@ class FeedScreen extends Component {
                     >
                         <View style={{ width, height }}>
 
-                            {this.state.isLoading
+                            {this.state.videosIsLoading
                                 ?
                                 <View style={styles.loading}>
                                     <ActivityIndicator size="large" color="red"/>
@@ -154,7 +157,7 @@ class FeedScreen extends Component {
                                     <FlatList
                                         style={{flex: 1}}
                                         contentContainerStyle={{paddingTop: 25}}
-                                        data={this.state.dataFetched}
+                                        data={this.state.videosDataFetched}
                                         renderItem={this.renderUserFollowingPosts}
                                         horizontal={false}
                                         scrollEventThrottle={20}

@@ -59,6 +59,7 @@ class FeedScreen extends Component {
 
     getData = async (querySnapshot) => {
         const videosDataFetched = [];
+        const picturesDataFetched = [];
 
         let expectedFollowingUsersCount = querySnapshot.size;
         console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
@@ -84,23 +85,38 @@ class FeedScreen extends Component {
                         .collection('posts')
                         .doc(user.id)
                         .collection('userPosts')
-                        .where("mediaType", "==", "video")
+                        //.where("mediaType", "==", "video")
                         .get()
                         .then(usersFollowingPosts => {
                             console.log("\nGot Posts Of Users i am Following")
 
                             usersFollowingPosts.forEach((userPost) => {
                                 const {caption, createdAt, downloadURL, mediaType} = userPost.data();
-                                videosDataFetched.push({
-                                    key: userPost.id,
-                                    name: userDetails.get("username"),
-                                    profile: userDetails.get("profilePicture"),
-                                    caption,
-                                    createdAt,
-                                    downloadURL,
-                                });
+                                if(mediaType === "video")
+                                {
+                                    videosDataFetched.push({
+                                        key: userPost.id,
+                                        name: userDetails.get("username"),
+                                        profile: userDetails.get("profilePicture"),
+                                        caption,
+                                        createdAt,
+                                        downloadURL,
+                                    });
+                                }
+                               else if(mediaType === "picture")
+                                {
+                                    picturesDataFetched.push({
+                                        key: userPost.id,
+                                        name: userDetails.get("username"),
+                                        profile: userDetails.get("profilePicture"),
+                                        caption,
+                                        createdAt,
+                                        downloadURL,
+                                    });
+                                }
+
                                 processedFollowingUsers ++;
-                                console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id}  \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                 if(processedFollowingUsers === expectedFollowingUsersCount)
@@ -109,7 +125,11 @@ class FeedScreen extends Component {
                                     this.setState({
                                         videosOutOfBoundItems: [],
                                         videosDataFetched,
-                                        videosIsLoading: false
+                                        videosIsLoading: false,
+
+                                        picturesOutOfBoundItems: [],
+                                        picturesDataFetched,
+                                        picturesIsLoading: false,
                                     });
                                 }
                             })

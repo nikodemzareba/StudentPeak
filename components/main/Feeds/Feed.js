@@ -12,13 +12,13 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import VideoPlayer from "./VideosFeed/feedControl/components/VideoPlayer";
+import VideoPlayer from "./VideosFeed_Objects/feedControl/components/VideoPlayer";
 import firebase from "firebase";
 
 import {StatusBar} from "expo-status-bar";
 import {Feather} from "@expo/vector-icons";
 import {Video} from "expo-av";
-import VideoControls from "./VideosFeed/feedControl/components/VideoControls";
+import VideoControls from "./VideosFeed_Objects/feedControl/components/VideoControls";
 import {B} from "./Shared_Objects/Bold";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";

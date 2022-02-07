@@ -1,6 +1,6 @@
 import {Dimensions, FlatList, View} from "react-native";
 import React, {useState} from "react";
-import VideoPlayer from "./VideosFeed/feedControl/components/VideoPlayer";
+import VideoPlayer from "./VideosFeed_Objects/feedControl/components/VideoPlayer";
 const {height, width} = Dimensions.get('window');
 
 export default function VideoFeed(props) {
@@ -21,7 +21,7 @@ export default function VideoFeed(props) {
         console.log(viewableItems)
         // Use viewable items in state or as intended
     })
-    
+
     const handleVideosViewableItemsChanged = ({changed}) => {
 
         const videosOutOfBoundItems = changed;

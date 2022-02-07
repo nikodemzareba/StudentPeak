@@ -23,6 +23,7 @@ import {B} from "./Shared_Objects/Bold";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
 import PictureFeed from "./PictureFeed";
+import VideoFeed from "./VideoFeed";
 
 
 const {height, width} = Dimensions.get('window');
@@ -184,21 +185,22 @@ class FeedScreen extends Component {
                                     <ActivityIndicator size="large" color="red"/>
                                 </View>
                                 :
-                                <View style={{flex: 1}}>
-                                    <FlatList
-                                        style={{flex: 1}}
-                                        contentContainerStyle={{paddingTop: 25}}
-                                        data={this.state.videosDataFetched}
-                                        renderItem={this.renderUserFollowingVideoPosts}
-                                        horizontal={false}
-                                        scrollEventThrottle={20}
-                                        showsVerticalScrollIndicator={false}
-                                        onViewableItemsChanged={this.handleVideosViewableItemsChanged}
-                                        viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
-                                        overScrollMode="never"
-                                    />
-
-                                </View>
+                                <VideoFeed data={this.state.videosDataFetched} />
+                                // <View style={{flex: 1}}>
+                                //     <FlatList
+                                //         style={{flex: 1}}
+                                //         contentContainerStyle={{paddingTop: 25}}
+                                //         data={this.state.videosDataFetched}
+                                //         renderItem={this.renderUserFollowingVideoPosts}
+                                //         horizontal={false}
+                                //         scrollEventThrottle={20}
+                                //         showsVerticalScrollIndicator={false}
+                                //         onViewableItemsChanged={this.handleVideosViewableItemsChanged}
+                                //         viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
+                                //         overScrollMode="never"
+                                //     />
+                                //
+                                // </View>
                             }
 
                         </View>

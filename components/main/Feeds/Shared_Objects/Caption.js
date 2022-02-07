@@ -9,7 +9,7 @@ return(
         marginLeft: 10,
         color: '#000000',
         fontSize: 15,
-        fontWeight: 'plain'
+        fontWeight: 'normal'
     }}><B>{props.name}: </B> "{props.caption}" </Text>
 )
 }

@@ -225,37 +225,15 @@ class FeedScreen extends Component {
                                         return (
                                             <View style={{flex: 1, marginBottom: 20}}>
                                                 <ProfileTitle name={item.name} profilePicture={item.profile}/>
-                                                {/*<View style={{*/}
-                                                {/*    flexDirection: 'row',*/}
-                                                {/*    alignItems: 'center',*/}
-                                                {/*    justifyContent: 'space-between',*/}
-                                                {/*    paddingHorizontal: 10,*/}
-                                                {/*    marginBottom: 10*/}
-                                                {/*}}>*/}
-                                                {/*    <View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-                                                {/*        <Image style={{height: 30, width: 30, borderRadius: 30}}*/}
-                                                {/*               source={{uri: item.profile}}/>*/}
-                                                {/*        <Text style={{*/}
-                                                {/*            marginLeft: 10,*/}
-                                                {/*            color: '#000000',*/}
-                                                {/*            fontSize: 15,*/}
-                                                {/*            fontWeight: 'bold'*/}
-                                                {/*        }}>*/}
-                                                {/*            {item.name}*/}
-                                                {/*        </Text>*/}
-                                                {/*    </View>*/}
-                                                {/*    <View>*/}
-                                                {/*        <Feather name="more-vertical" color="#000000" size={18}/>*/}
-                                                {/*    </View>*/}
-                                                {/*</View>*/}
 
-                                                <Image  source={{uri: item.downloadURL}}    style={styles.picture(width, height)}/>
+                                                <Image source={{uri: item.downloadURL}}
+                                                       style={styles.picture(width, height)}/>
                                                 <Text style={{
                                                     marginLeft: 10,
                                                     color: '#000000',
                                                     fontSize: 15,
                                                     fontWeight: 'plain'
-                                                }}> <B>{item.name}: </B>  "{item.caption}" </Text>
+                                                }}> <B>{item.name}: </B> "{item.caption}" </Text>
 
 
                                             </View>

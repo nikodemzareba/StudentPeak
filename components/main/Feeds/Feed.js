@@ -96,7 +96,7 @@ class FeedScreen extends Component {
                 .then(userDetails => {
 
                     console.log("\nGot Users Following Details etc: username, profilePicture")
-
+                    processedFollowingUsers++;
                     firebase.firestore()
                         .collection('posts')
                         .doc(user.id)
@@ -128,7 +128,7 @@ class FeedScreen extends Component {
                                     });
                                 }
 
-                                processedFollowingUsers++;
+
                                 console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 

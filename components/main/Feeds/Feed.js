@@ -21,6 +21,7 @@ import {Video} from "expo-av";
 import VideoControls from "./VideosFeed/feedControl/components/VideoControls";
 import {B} from "./Shared_Objects/Bold";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
+import Caption from "./Shared_Objects/Caption";
 
 
 const {height, width} = Dimensions.get('window');
@@ -83,7 +84,6 @@ class FeedScreen extends Component {
         // Got users Following info
         console.log("\nGot Users Following Data")
         await querySnapshot.forEach((user) => {
-
 
             // Get the user we are following userName & userProfilePhoto
 
@@ -228,13 +228,8 @@ class FeedScreen extends Component {
 
                                                 <Image source={{uri: item.downloadURL}}
                                                        style={styles.picture(width, height)}/>
-                                                <Text style={{
-                                                    marginLeft: 10,
-                                                    color: '#000000',
-                                                    fontSize: 15,
-                                                    fontWeight: 'plain'
-                                                }}> <B>{item.name}: </B> "{item.caption}" </Text>
 
+                                                <Caption  name={item.name} caption={item.caption}  />
 
                                             </View>
                                         )

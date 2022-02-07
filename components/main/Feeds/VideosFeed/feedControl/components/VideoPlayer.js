@@ -6,6 +6,7 @@ import {Feather} from "@expo/vector-icons";
 import VideoControls from './VideoControls';
 import {B} from "../../../Shared_Objects/Bold";
 import  ProfileTitle from "../../../Shared_Objects/ProfileTitle"
+import Caption from "../../../Shared_Objects/Caption";
 
 export default function VideoPlayer(props) {
 
@@ -105,12 +106,7 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
-      <Text style={{
-        marginLeft: 10,
-        color: '#000000',
-        fontSize: 15,
-        fontWeight: 'plain'
-      }}> <B>{item.name}: </B>  "{item.caption}" </Text>
+      <Caption  name={item.name} caption={item.caption}  />
 
     </View>
   );

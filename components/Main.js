@@ -5,7 +5,7 @@ import firebase from 'firebase'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import FeedScreen from "./main/Feed"
+import FeedScreen from "./main/Feeds/Feed"
 import Add from "./main/Add"
 import SearchScreen from "./main/Search"
 import EventScreen from "./main/Events"

@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {View, Image, StyleSheet, Text, Button} from 'react-native';
 import { Video } from 'expo-av';
-import { Feather } from "react-native-vector-icons";
+import {Feather} from "@expo/vector-icons";
 
 import VideoControls from './VideoControls';
-
+import {B} from "../../../Shared_Objects/Bold";
+import {ProfileTitle} from "../../../Shared_Objects/ProfileTitle"
 
 export default function VideoPlayer(props) {
 
@@ -83,7 +84,7 @@ export default function VideoPlayer(props) {
     }
 
   }
-  const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+
   return (
     <View style={{flex:1, marginBottom:20}}>
 

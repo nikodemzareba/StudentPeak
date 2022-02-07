@@ -12,20 +12,22 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import VideoPlayer from "./feedControl/components/VideoPlayer";
+import VideoPlayer from "./VideosFeed/feedControl/components/VideoPlayer";
 import firebase from "firebase";
 
 import {StatusBar} from "expo-status-bar";
-import {Feather} from "react-native-vector-icons";
+import {Feather} from "@expo/vector-icons";
 import {Video} from "expo-av";
-import VideoControls from "./feedControl/components/VideoControls";
+import VideoControls from "./VideosFeed/feedControl/components/VideoControls";
+import {B} from "./Shared_Objects/Bold";
+import ProfileTitle from "./Shared_Objects/ProfileTitle";
 
 
 const {height, width} = Dimensions.get('window');
 
 
 const separator = "##########################################################################################";
-const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+
 class FeedScreen extends Component {
 
     constructor(props) {
@@ -222,29 +224,30 @@ class FeedScreen extends Component {
                                     renderItem={({item}) => {
                                         return (
                                             <View style={{flex: 1, marginBottom: 20}}>
-                                                <View style={{
-                                                    flexDirection: 'row',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'space-between',
-                                                    paddingHorizontal: 10,
-                                                    marginBottom: 10
-                                                }}>
-                                                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                                        <Image style={{height: 30, width: 30, borderRadius: 30}}
-                                                               source={{uri: item.profile}}/>
-                                                        <Text style={{
-                                                            marginLeft: 10,
-                                                            color: '#000000',
-                                                            fontSize: 15,
-                                                            fontWeight: 'bold'
-                                                        }}>
-                                                            {item.name}
-                                                        </Text>
-                                                    </View>
-                                                    <View>
-                                                        <Feather name="more-vertical" color="#000000" size={18}/>
-                                                    </View>
-                                                </View>
+                                                <ProfileTitle name={item.name} profilePicture={item.profile}/>
+                                                {/*<View style={{*/}
+                                                {/*    flexDirection: 'row',*/}
+                                                {/*    alignItems: 'center',*/}
+                                                {/*    justifyContent: 'space-between',*/}
+                                                {/*    paddingHorizontal: 10,*/}
+                                                {/*    marginBottom: 10*/}
+                                                {/*}}>*/}
+                                                {/*    <View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+                                                {/*        <Image style={{height: 30, width: 30, borderRadius: 30}}*/}
+                                                {/*               source={{uri: item.profile}}/>*/}
+                                                {/*        <Text style={{*/}
+                                                {/*            marginLeft: 10,*/}
+                                                {/*            color: '#000000',*/}
+                                                {/*            fontSize: 15,*/}
+                                                {/*            fontWeight: 'bold'*/}
+                                                {/*        }}>*/}
+                                                {/*            {item.name}*/}
+                                                {/*        </Text>*/}
+                                                {/*    </View>*/}
+                                                {/*    <View>*/}
+                                                {/*        <Feather name="more-vertical" color="#000000" size={18}/>*/}
+                                                {/*    </View>*/}
+                                                {/*</View>*/}
 
                                                 <Image  source={{uri: item.downloadURL}}    style={styles.picture(width, height)}/>
                                                 <Text style={{

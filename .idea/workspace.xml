@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44130a1b-c6e4-416c-80ef-abb2ca4c735f" name="Changes" comment="&#10;Just Did:&#10;Refactored firebase Query to store pictures and video posts in different variables.&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
+    <list default="true" id="44130a1b-c6e4-416c-80ef-abb2ca4c735f" name="Changes" comment="This Update:&#10;Refactoring&#10;&#10;feather  Import icon isnt recognised no more = commented out&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Bold.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/ProfileTitle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/feedControl/components/VideoPlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/feedControl/components/VideoControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed/feedControl/components/VideoControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed/feedControl/components/VideoPlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/feedControl/components/svgComponents.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed/feedControl/components/svgComponents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/feedControl/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/feedControl/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed/feedControl/styles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -34,8 +48,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/main" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\VideosFeed" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feed" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -47,6 +72,7 @@
       <updated>1643534167879</updated>
       <workItem from="1643534169739" duration="2705000" />
       <workItem from="1643537862695" duration="1392000" />
+      <workItem from="1644196074266" duration="4214000" />
     </task>
     <task id="LOCAL-00001" summary="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it">
       <created>1643951270574</created>
@@ -148,14 +174,12 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feed.js</url>
+          <url>file://$PROJECT_DIR$/components/main/Feed/Feed.js</url>
           <line>153</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feed.js</url>
-          <properties lambdaOrdinal="-1" />
+          <url>file://$PROJECT_DIR$/components/main/Feed/Feed.js</url>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

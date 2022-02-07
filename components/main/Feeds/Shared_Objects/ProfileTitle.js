@@ -19,7 +19,7 @@ export default function ProfileTitle(props) {
                 </Text>
             </View>
             <View>
-                {/*<Feather name="more-vertical" color="#000000" size={18}/>*/}
+                <Feather name="more-vertical" color="#000000" size={18}/>
             </View>
         </View>
     )

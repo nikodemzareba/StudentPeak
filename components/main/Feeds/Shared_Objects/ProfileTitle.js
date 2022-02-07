@@ -13,7 +13,7 @@ export default function ProfileTitle(props) {
             marginBottom: 10
         }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                {/*<Image style={{height: 30, width: 30, borderRadius: 30}} source={{uri: {profilePicture}}}/>*/}
+                <Image style={{height: 30, width: 30, borderRadius: 30}}  source={{uri: props.profilePicture}}/>
                 <Text style={{marginLeft: 10, color: '#000000', fontSize: 15, fontWeight: 'bold'}}>
                     {props.name}
                 </Text>

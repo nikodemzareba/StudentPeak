@@ -107,7 +107,7 @@ class FeedScreen extends Component {
                             console.log("\nGot Posts Of Users i am Following")
 
                             usersFollowingPosts.forEach((userPost) => {
-                                const {caption, createdAt, downloadURL, mediaType} = userPost.data();
+                                const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
                                 if (mediaType === "video") {
                                     videosDataFetched.push({
                                         key: userPost.id,
@@ -116,6 +116,7 @@ class FeedScreen extends Component {
                                         caption,
                                         createdAt,
                                         downloadURL,
+                                        commentsCount
                                     });
                                 } else if (mediaType === "picture") {
                                     picturesDataFetched.push({
@@ -125,11 +126,12 @@ class FeedScreen extends Component {
                                         caption,
                                         createdAt,
                                         downloadURL,
+                                        commentsCount
                                     });
                                 }
 
 
-                                console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`) ;
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                 if (processedFollowingUsers === expectedFollowingUsersCount) {

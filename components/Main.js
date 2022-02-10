@@ -16,6 +16,7 @@ import Match from "./main/match";
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
 import { fetchUser, fetchUserPosts, fetchUserFollowing } from "../redux/actions/index";
+import Modal from "./main/Feeds/Shared_Objects/modal";
 
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -31,6 +32,7 @@ const TopTab = createMaterialTopTabNavigator();
     render(){
         return(
             <Tab.Navigator
+                tabBar={() => <Modal />}
             screenOptions={{
                 tabBarActiveTintColor: 'grey',
                 tabBarInactiveTintColor: 'white',
@@ -100,6 +102,7 @@ const TopTab = createMaterialTopTabNavigator();
                         tabBarVisible:false 
                       })}
                 />
+
             </Tab.Navigator>
         )
     }

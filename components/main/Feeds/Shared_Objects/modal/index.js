@@ -7,7 +7,7 @@ const Modal = () => {
     return(
         <BottomSheet
             snapPoints={["50%"]}
-            index={0}
+            index={-1}
             handleHeight={40}
             enablePanDownToClose>
         </BottomSheet>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text  } from 'react-native';
+import {View, Text, Button} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import firebase from 'firebase'
 
@@ -32,7 +32,6 @@ const TopTab = createMaterialTopTabNavigator();
     render(){
         return(
             <Tab.Navigator
-                tabBar={() => <Modal />}
             screenOptions={{
                 tabBarActiveTintColor: 'grey',
                 tabBarInactiveTintColor: 'white',
@@ -51,7 +50,17 @@ const TopTab = createMaterialTopTabNavigator();
             >
                 
             <Tab.Screen name="Feed" component={FeedScreen}
+                        tabBar={() => <Modal />}
+
             options={{
+                headerRight: () => (
+                    <Button
+                        title="Setting"
+                        onPress={() => alert('ProfileScreenEdit')}
+                        backgroundColor="rgba(0,0,0,0)"
+                        color="rgba(0,122,255,1)"
+                    />
+                ),
                 tabBarIcon: ({color, size}) => (
                     //decide what is inside the Icon
                     <MaterialCommunityIcons name="school" color={color} size={26}/>
@@ -96,7 +105,8 @@ const TopTab = createMaterialTopTabNavigator();
                             <MaterialCommunityIcons name="account-circle" color={color} size={26} />
                         ),
                     }} />
-                     <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen} 
+                     <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen}
+
                      options={() => ({
                         tabBarButton: () => null,
                         tabBarVisible:false 

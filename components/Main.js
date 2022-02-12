@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, Image, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import firebase from 'firebase'
 
@@ -53,13 +53,19 @@ const TopTab = createMaterialTopTabNavigator();
                         tabBar={() => <Modal />}
 
             options={{
+                headerLeft: () => (
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate(EventScreen)}>
+                        <Image
+                            source={{uri : 'https://thumbs.dreamstime.com/b/flat-male-avatar-image-beard-hairstyle-businessman-profile-icon-vector-179285629.jpg'}}
+                            style={{ width: 40, height: 40, borderRadius: 40/2, marginLeft : 15 }} />
+                    </TouchableOpacity>
+                ),
                 headerRight: () => (
-                    <Button
-                        title="Setting"
-                        onPress={() => alert('ProfileScreenEdit')}
-                        backgroundColor="rgba(0,0,0,0)"
-                        color="rgba(0,122,255,1)"
-                    />
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate(EventScreen)}>
+                        <Image
+                            source={{uri : 'https://static.thenounproject.com/png/162379-200.png'}}
+                            style={{ width: 40, height: 40, borderRadius: 40/2, marginLeft : 15 }} />
+                    </TouchableOpacity>
                 ),
                 tabBarIcon: ({color, size}) => (
                     //decide what is inside the Icon
@@ -106,7 +112,6 @@ const TopTab = createMaterialTopTabNavigator();
                         ),
                     }} />
                      <Tab.Screen name ="PublicProfile" component= {PublicProfileScreen}
-
                      options={() => ({
                         tabBarButton: () => null,
                         tabBarVisible:false 

@@ -12,6 +12,7 @@ import EventScreen from "./main/Events"
 import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
 import Match from "./main/match";
+import Chat from "./main/Chat";
 
 import {connect} from 'react-redux'
 import { bindActionCreators } from "redux";
@@ -54,14 +55,14 @@ const TopTab = createMaterialTopTabNavigator();
 
             options={{
                 headerLeft: () => (
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate(EventScreen)}>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate("PrivateProfile")}>
                         <Image
                             source={{uri : 'https://thumbs.dreamstime.com/b/flat-male-avatar-image-beard-hairstyle-businessman-profile-icon-vector-179285629.jpg'}}
                             style={{ width: 40, height: 40, borderRadius: 40/2, marginLeft : 15 }} />
                     </TouchableOpacity>
                 ),
                 headerRight: () => (
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate(EventScreen)}>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate(Chat)}>
                         <Image
                             source={{uri : 'https://static.thenounproject.com/png/162379-200.png'}}
                             style={{ width: 40, height: 40, borderRadius: 40/2, marginLeft : 15 }} />
@@ -72,7 +73,7 @@ const TopTab = createMaterialTopTabNavigator();
                     <MaterialCommunityIcons name="school" color={color} size={26}/>
                 ),
             }}/> 
-            <Tab.Screen name="Search" component={SearchScreen} navigation = {this.props.naviagtion}
+            <Tab.Screen name="Search" component={SearchScreen} navigation = {this.props.navigation}
             options={{
                 tabBarIcon: ({color, size}) => (
                     //decide what is inside the Icon
@@ -100,7 +101,7 @@ const TopTab = createMaterialTopTabNavigator();
                     <MaterialCommunityIcons name="calendar-search" color={color} size={26}/>
                 ),
             }}/>
-            <Tab.Screen name ="PrivateProfile" component= {PrivateProfileScreen} 
+            <Tab.Screen name ="PrivateProfile" component= {PrivateProfileScreen}
                 listeners={({ navigation }) => ({
                     tabPress: event => {
                         event.preventDefault();

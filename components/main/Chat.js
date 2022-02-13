@@ -1,3 +1,4 @@
+/*
 import { FontAwesome5 } from '@expo/vector-icons';
 import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
@@ -266,4 +267,16 @@ const mapStateToProps = (store) => ({
 })
 const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUserChats, sendNotification, fetchFeedPosts }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchProps)(Chat);
+export default connect(mapStateToProps, mapDispatchProps)(Chat);*/
+
+
+import React from 'react'
+import { View, Text } from 'react-native'
+
+export default function Meet() {
+    return (
+        <View>
+            <Text>One To One Chat</Text>
+        </View>
+    )
+}

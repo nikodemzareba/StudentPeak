@@ -3,7 +3,7 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run adbCommand\" \"npm run adbCommand2\" \"expo start --web\"",
     "adbCommand":"adb reverse tcp:3001 tcp:3001",
-    "adbCommand2":"adb -s emulator-5554 reverse tcp:3000 tcp:3000",
+    "adbCommand2":"adb -s emulator-5554 reverse tcp:3001 tcp:3001",
     "server": "nodemon server.mjs",
     "start2": "expo start",
     "android": "expo start --android",

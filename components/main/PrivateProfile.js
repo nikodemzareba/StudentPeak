@@ -72,7 +72,7 @@ export default function PrivateProfile() {
             fontSize: 20,
             color: "white",
             //justifyContent: "left",
-            //alignItems: "left",
+            // alignItems: "left",
         },
         loginBtn: {
             width: '20%',

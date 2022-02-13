@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, Button, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Button, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import firebase from 'firebase'
 
@@ -18,6 +18,8 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";
 import Modal from "./main/Feeds/Shared_Objects/modal";
+import VideoFeed from "./main/Feeds/VideoFeed";
+import {users} from "../redux/reducers/users";
 
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -25,8 +27,14 @@ const TopTab = createMaterialTopTabNavigator();
 
 export class Main extends Component {
 
-
-    // Get user profileIcon for topBar
+    constructor(props) {
+        super(props);
+        this.state = {
+            profilePictureLoaded: false,
+            profilePicture: "",
+            userId: firebase.auth().currentUser.uid
+        };
+    }
 
 
     componentDidMount() {
@@ -34,6 +42,26 @@ export class Main extends Component {
         this.props.fetchUser();
         this.props.fetchUserPosts();
         this.props.fetchUserFollowing();
+        this.getProfileImage()
+    }
+
+    getProfileImage()
+    {
+        firebase.firestore()
+            .collection('users')
+            .doc(this.state.userId)
+            .get()
+            .then(userDetails => {
+                console.log(`\n\nUserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
+                if(userDetails.get("profileimage") !== "" )
+                {
+                    console.log(`\n\n Has Profile Image`);
+
+                    this.setState({
+                    profilePicture: userDetails.get("profileimage"),
+                    profilePictureLoaded: true,
+                });}
+            })
     }
 
     render() {
@@ -62,9 +90,18 @@ export class Main extends Component {
                             options={{
                                 headerLeft: () => (
                                     <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
-                                        <Image
-                                            source={{uri: 'https://thumbs.dreamstime.com/b/flat-male-avatar-image-beard-hairstyle-businessman-profile-icon-vector-179285629.jpg'}}
-                                            style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}/>
+                                        {this.state.profilePictureLoaded
+                                            ?
+                                            <Image
+                                                source={{uri: `${this.state.profilePicture}`}}
+                                                style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
+                                            />
+                                            :
+                                            <Image
+                                                source={require('./System_Images/Profile_Image_Icon.png')}
+                                                style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
+                                            />
+                                        }
                                     </TouchableOpacity>
                                 ),
                                 headerRight: () => (

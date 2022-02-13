@@ -40,6 +40,14 @@ class FeedScreen extends Component {
             .doc(firebase.auth().currentUser.uid)
             .collection('userFollowing')
         this.state = {
+            requestProcessed: false,
+
+            picturesReceived: 0,
+            loadPictures: false,
+
+            videosReceived: 0,
+            loadVideos: false,
+
             videosOutOfBoundItems: [],
             videosDataFetched: [],
             videosIsLoading: true,
@@ -85,21 +93,21 @@ class FeedScreen extends Component {
 
         // Got users Following info
         console.log("\nGot Users Following Data")
-        await querySnapshot.forEach((user) => {
+        await querySnapshot.forEach((userFollowing) => {
 
             // Get the user we are following userName & userProfilePhoto
 
             firebase.firestore()
                 .collection('users')
-                .doc(user.id)
+                .doc(userFollowing.id)
                 .get()
                 .then(userDetails => {
 
-                    console.log("\nGot Users Following Details etc: username, profilePicture")
+                    console.log("\nGot Users Following Details etc: username, profileimage")
                     processedFollowingUsers++;
                     firebase.firestore()
                         .collection('posts')
-                        .doc(user.id)
+                        .doc(userFollowing.id)
                         .collection('userPosts')
                         //.where("mediaType", "==", "video")
                         .get()
@@ -107,54 +115,98 @@ class FeedScreen extends Component {
                             console.log("\nGot Posts Of Users i am Following")
 
                             usersFollowingPosts.forEach((userPost) => {
-                                const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+                              //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+                                
+                                const profileImage = userDetails.get("profileimage");
+                                const username = userDetails.get("username");
+                                
+                                const caption = userPost.get("caption");
+                                const createdAt = userPost.get("createdAt");
+                                const downloadURL = userPost.get("downloadURL");
+                                const mediaType = userPost.get("mediaType");
+                                const commentsCount= userPost.get("commentsCount");
+
                                 if (mediaType === "video") {
+
+                                    this.setState({
+                                        videosReceived: this.state.videosReceived + 1
+                                    });
+
                                     videosDataFetched.push({
                                         key: userPost.id,
-                                        name: userDetails.get("username"),
-                                        profile: userDetails.get("profilePicture"),
-                                        caption,
-                                        createdAt,
-                                        downloadURL,
-                                        commentsCount
+                                        name: username,
+                                        profile: profileImage,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        commentsCount: commentsCount
                                     });
                                 } else if (mediaType === "picture") {
+
+                                    this.setState({
+                                        picturesReceived: this.state.picturesReceived + 1
+                                    });
+
                                     picturesDataFetched.push({
                                         key: userPost.id,
-                                        name: userDetails.get("username"),
-                                        profile: userDetails.get("profilePicture"),
-                                        caption,
-                                        createdAt,
-                                        downloadURL,
-                                        commentsCount
+                                        name: username,
+                                        profile: profileImage,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        commentsCount: commentsCount
                                     });
                                 }
 
-
-                                console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profilePicture")}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`) ;
+                                console.log(`\nUserID: ${userFollowing.id} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                 if (processedFollowingUsers === expectedFollowingUsersCount) {
                                     console.log("\nSetting Data To Variable")
                                     this.setState({
-                                        videosOutOfBoundItems: [],
-                                        videosDataFetched,
-                                        videosIsLoading: false,
-
-                                        picturesOutOfBoundItems: [],
-                                        picturesDataFetched,
-                                        picturesIsLoading: false,
+                                        videosDataFetched: videosDataFetched,
+                                        picturesDataFetched: picturesDataFetched,
+                                    }, () => {
+                                        this.setStatesForLoadingFeed()
                                     });
                                 }
                             })
                         })
                 })
+                .then(() => {
 
 
+                })
                 .catch((error) => {
                     console.log(`${error} \nUnable to get Users following posts!`);
                 });
         })
+
+        if(expectedFollowingUsersCount === 0)
+        {
+            this.setStatesForLoadingFeed();
+        }
+    }
+
+    setStatesForLoadingFeed() {
+        console.log("\nLoad Pictures & Videos")
+        if (this.state.videosReceived > 0) {
+            this.setState({
+                loadVideos: true
+            });
+        }
+
+        if (this.state.picturesReceived > 0) {
+            this.setState({
+                loadPictures: true
+            });
+        }
+
+        this.setState({
+                videosIsLoading: false,
+                picturesIsLoading: false
+            });
+
     }
 
     renderUserFollowingVideoPosts = ({item}) => {
@@ -187,22 +239,17 @@ class FeedScreen extends Component {
                                     <ActivityIndicator size="large" color="red"/>
                                 </View>
                                 :
-                                <VideoFeed data={this.state.videosDataFetched} />
-                                // <View style={{flex: 1}}>
-                                //     <FlatList
-                                //         style={{flex: 1}}
-                                //         contentContainerStyle={{paddingTop: 25}}
-                                //         data={this.state.videosDataFetched}
-                                //         renderItem={this.renderUserFollowingVideoPosts}
-                                //         horizontal={false}
-                                //         scrollEventThrottle={20}
-                                //         showsVerticalScrollIndicator={false}
-                                //         onViewableItemsChanged={this.handleVideosViewableItemsChanged}
-                                //         viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
-                                //         overScrollMode="never"
-                                //     />
-                                //
-                                // </View>
+                                <>
+                                    {this.state.loadVideos
+                                        ?
+                                        <VideoFeed data={this.state.videosDataFetched}/>
+                                        :
+                                        <View style={{flex: 1}}>
+
+                                        </View>
+                                    }
+
+                                </>
                             }
 
                         </View>
@@ -214,7 +261,18 @@ class FeedScreen extends Component {
                                 <ActivityIndicator size="large" color="red"/>
                             </View>
                             :
-                            <PictureFeed data={this.state.picturesDataFetched} />
+
+                            <>
+                                {this.state.loadPictures
+                                    ?
+                                    <PictureFeed data={this.state.picturesDataFetched}/>
+                                    :
+                                    <View style={{flex: 1}}>
+
+                                    </View>
+                                }
+                            </>
+
                         }
                     </ScrollView>
                 </SafeAreaView>

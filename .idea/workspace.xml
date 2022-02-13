@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Refactoring&#10;Try to get feed-page to return an image if no feed data has been returned.&#10;&#10;Previous Update:&#10;Typo Error- updated&#10;Profile Image on the feed is now the profile image associated with the user&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+    <list default="true" id="70af5061-5612-467c-a8c9-c4517628ff7b" name="Changes" comment="Package updates &amp;  un-versioned commits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644786995623</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Package updates &amp;  un-versioned commits">
+      <created>1644788066520</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1644788066520</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +275,8 @@
     <MESSAGE value="In this update:&#10;Profile Image on the feed is now the profile image associated with the user&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
     <MESSAGE value="In this update:&#10;Try to get feed-page to return an image if no feed data has been returned.&#10;&#10;Previous Update:&#10;Typo Error- updated&#10;Profile Image on the feed is now the profile image associated with the user&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
     <MESSAGE value="In this update:&#10;Refactoring&#10;Try to get feed-page to return an image if no feed data has been returned.&#10;&#10;Previous Update:&#10;Typo Error- updated&#10;Profile Image on the feed is now the profile image associated with the user&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Refactoring&#10;Try to get feed-page to return an image if no feed data has been returned.&#10;&#10;Previous Update:&#10;Typo Error- updated&#10;Profile Image on the feed is now the profile image associated with the user&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <MESSAGE value="Package updates &amp;  un-versioned commits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Package updates &amp;  un-versioned commits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

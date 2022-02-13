@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
-      <change beforePath="$PROJECT_DIR$/.idea/StudentPeak.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="This Update:&#10;Chat image for top feed bar comes from local file as opposed to on the web&#10;&#10;&#10;&#10;Recent updates:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +37,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644767170380</updated>
-      <workItem from="1644767172975" duration="5349000" />
+      <workItem from="1644767172975" duration="7192000" />
     </task>
     <task id="LOCAL-00001" summary="In this update:&#10;Fixed typo error&#10;Top Bar profile icon now goes to private profile when clicked">
       <created>1644770365949</created>
@@ -56,7 +53,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644771602562</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="This Update:&#10;Chat image for top feed bar comes from local file as opposed to on the web&#10;&#10;&#10;&#10;Recent updates:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+      <created>1644772828618</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644772828618</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,6 +80,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="In this update:&#10;Fixed typo error&#10;Top Bar profile icon now goes to private profile when clicked" />
     <MESSAGE value="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <MESSAGE value="This Update:&#10;Chat image for top feed bar comes from local file as opposed to on the web&#10;&#10;&#10;&#10;Recent updates:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;Chat image for top feed bar comes from local file as opposed to on the web&#10;&#10;&#10;&#10;Recent updates:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
   </component>
 </project>

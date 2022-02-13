@@ -71,8 +71,8 @@ export default function PrivateProfile() {
             fontFamily: "Montserrat",
             fontSize: 20,
             color: "white",
-            justifyContent: "left",
-            alignItems: "left",
+            //justifyContent: "left",
+            //alignItems: "left",
         },
         loginBtn: {
             width: '20%',

@@ -1,46 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6eed75ff-960c-49e1-b0a3-01674d6fbecb" name="Changes" comment="">
+    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+      <change beforePath="$PROJECT_DIR$/.idea/StudentPeak.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Events.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Events.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="Ty-5" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="24PZQhHUd59eNpGt1HewaLWPax6" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="253saQjDJJvGYp5G1FEBegrB47A" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -49,149 +24,39 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/main" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/0.) University/4).) Uni - Work/Year 3/COMP6000 - Group Project/Webstorm Code" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\VideosFeed" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feed" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6eed75ff-960c-49e1-b0a3-01674d6fbecb" name="Changes" comment="added new packages for comment section" />
-      <created>1643534167879</created>
+      <changelist id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="" />
+      <created>1644767170380</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1643534167879</updated>
-      <workItem from="1643534169739" duration="2705000" />
-      <workItem from="1643537862695" duration="1392000" />
-      <workItem from="1644196074266" duration="10388000" />
-      <workItem from="1644406589449" duration="8094000" />
-      <workItem from="1644430517137" duration="2230000" />
-      <workItem from="1644508094017" duration="348000" />
+      <updated>1644767170380</updated>
+      <workItem from="1644767172975" duration="5349000" />
     </task>
-    <task id="LOCAL-00001" summary="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it">
-      <created>1643951270574</created>
+    <task id="LOCAL-00001" summary="In this update:&#10;Fixed typo error&#10;Top Bar profile icon now goes to private profile when clicked">
+      <created>1644770365949</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1643951270574</updated>
+      <updated>1644770365949</updated>
     </task>
-    <task id="LOCAL-00002" summary="Just did:&#10;Changed Fonts&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched">
-      <created>1644081965165</created>
+    <task id="LOCAL-00002" summary="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+      <created>1644771602562</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1644081965165</updated>
+      <updated>1644771602562</updated>
     </task>
-    <task id="LOCAL-00003" summary="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched">
-      <created>1644082261176</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1644082261176</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched">
-      <created>1644082386077</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1644082386077</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted">
-      <created>1644084869004</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1644084869004</updated>
-    </task>
-    <task id="LOCAL-00006" summary="&#10;Just Did:&#10;Added Slider for images and videos feed&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644115765878</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1644115765878</updated>
-    </task>
-    <task id="LOCAL-00007" summary="&#10;Just Did:&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644116119710</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1644116119710</updated>
-    </task>
-    <task id="LOCAL-00008" summary="&#10;Just Did:&#10;Refactored firebase Query to store pictures and video posts in different variables.&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644116564235</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1644116564235</updated>
-    </task>
-    <task id="LOCAL-00009" summary="This Update:&#10;Refactoring&#10;Try to create ProfileTitle.js - currently username works need icon to work&#10;&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644200556596</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1644200556596</updated>
-    </task>
-    <task id="LOCAL-00010" summary="This Update:&#10;Refactoring&#10;Profile Bar Object now works&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644200984423</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1644200984423</updated>
-    </task>
-    <task id="LOCAL-00011" summary="This Update:&#10;Refactoring&#10;Profile Bar Object now works&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644201010395</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1644201010395</updated>
-    </task>
-    <task id="LOCAL-00012" summary="This Update:&#10;Implemented Profile Bar everywhere&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644201317298</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1644201317298</updated>
-    </task>
-    <task id="LOCAL-00013" summary="This Update:&#10;Caption Object Created&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644202223703</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1644202223703</updated>
-    </task>
-    <task id="LOCAL-00014" summary="This Update:&#10;PictureFeed.js seperated into component&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644203218153</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1644203218153</updated>
-    </task>
-    <task id="LOCAL-00015" summary="This Update:&#10;Fully Refactored feed Screen &#10;However, there might be some minor warnings&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644205394970</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1644205394970</updated>
-    </task>
-    <task id="LOCAL-00016" summary="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works">
-      <created>1644206321600</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1644206321600</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,54 +67,15 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Isreal-3" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it" />
-    <MESSAGE value="Just did:&#10;Changed Fonts&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
-    <MESSAGE value="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
-    <MESSAGE value="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted" />
-    <MESSAGE value="&#10;Just Did:&#10;Added Slider for images and videos feed&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="&#10;Just Did:&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="&#10;Just Did:&#10;Refactored firebase Query to store pictures and video posts in different variables.&#10;Refactoring&#10;Added Slider for images and videos feed&#10;&#10;Need To do:&#10;Add Pictures Screen&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="This Update:&#10;Refactoring&#10;Try to create ProfileTitle.js - currently username works need icon to work&#10;&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="This Update:&#10;Refactoring&#10;Profile Bar Object now works&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="This Update:&#10;Implemented Profile Bar everywhere&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="This Update:&#10;Caption Object Created&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="This Update:&#10;PictureFeed.js seperated into component&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="This Update:&#10;Fully Refactored feed Screen &#10;However, there might be some minor warnings&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <MESSAGE value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feed/Feed.js</url>
-          <line>153</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feed/Feed.js</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="In this update:&#10;Fixed typo error&#10;Top Bar profile icon now goes to private profile when clicked" />
+    <MESSAGE value="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
   </component>
 </project>

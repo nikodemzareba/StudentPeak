@@ -70,8 +70,9 @@ export class Main extends Component {
                                 headerRight: () => (
                                     <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
                                         <Image
-                                            source={{uri: 'https://static.thenounproject.com/png/162379-200.png'}}
-                                            style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}/>
+                                            source={require('./System_Images/Chat_Nav_Icon.png')}
+                                            style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
+                                        />
                                     </TouchableOpacity>
                                 ),
                                 tabBarIcon: ({color, size}) => (

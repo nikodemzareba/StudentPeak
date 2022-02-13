@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, FlatList, TouchableOpacity } from 'react-native'
-import TopBar from './top/Topbar';
+import Topbar from './top/Topbar';
+import { connect } from 'redux';
 
+
+//import from firebase
 import firebase from 'firebase';
 require('firebase/firestore');
 
@@ -12,7 +15,7 @@ export default function Search(props) {
     const fetchUsers = (search) =>{
         firebase.firestore()
         .collection('users')
-        .where('name', '>=', search)
+        .where('email', '>=', search)
         .get()
         .then((snapshot) => {
             let users = snapshot.docs.map(doc => {
@@ -26,7 +29,7 @@ export default function Search(props) {
     return (
         <View>
         <TextInput 
-            placeholder= "Search" onChangeText ={(search) => fetchUsers (search) }/>
+            placeholder= "Search" onChangeText ={(search) => fetchUsers (search) } />
         <FlatList
         numColumns={1}
         horizontal={false}
@@ -43,3 +46,4 @@ export default function Search(props) {
 
     )
 }
+

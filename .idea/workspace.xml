@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed Typo Error in PrivateProfile.js&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/PrivateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/PrivateProfile.js" afterDir="false" />
-    </list>
+    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="Package updates &amp;  un-versioned commits" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

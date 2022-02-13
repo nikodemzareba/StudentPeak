@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/ChatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/ChatList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="Commented out chat to fix errors for now." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644206321600</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Commented out chat to fix errors for now.">
+      <created>1644778082923</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1644778082923</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +238,8 @@
     <MESSAGE value="This Update:&#10;PictureFeed.js seperated into component&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
     <MESSAGE value="This Update:&#10;Fully Refactored feed Screen &#10;However, there might be some minor warnings&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
     <MESSAGE value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
+    <MESSAGE value="Commented out chat to fix errors for now." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commented out chat to fix errors for now." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Package Updates&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
-      <change afterPath="$PROJECT_DIR$/components/System_Images/Profile_Image_Icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-    </list>
+    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Profile Image on the feed is now the profile image associated with the user&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644780904091</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="In this update:&#10;Profile Image on the feed is now the profile image associated with the user&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+      <created>1644783088941</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1644783088941</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +242,8 @@
     <MESSAGE value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
     <MESSAGE value="In this update:&#10;Fixed Typo Error in PrivateProfile.js&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
     <MESSAGE value="In this update:&#10;Package Updates&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Package Updates&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <MESSAGE value="In this update:&#10;Profile Image on the feed is now the profile image associated with the user&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Profile Image on the feed is now the profile image associated with the user&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

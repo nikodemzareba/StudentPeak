@@ -85,9 +85,6 @@ export class Main extends Component {
                             options={{
                                 headerLeft: () => (
                                     <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
-
-
-
                                         {this.state.profilePictureLoaded
                                             ?
                                             <Image
@@ -100,8 +97,6 @@ export class Main extends Component {
                                                 style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
                                             />
                                         }
-
-
                                     </TouchableOpacity>
                                 ),
                                 headerRight: () => (

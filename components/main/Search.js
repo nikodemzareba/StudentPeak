@@ -4,6 +4,7 @@ import Topbar from './top/Topbar';
 import { connect } from 'redux';
 
 
+//import from firebase
 import firebase from 'firebase';
 require('firebase/firestore');
 

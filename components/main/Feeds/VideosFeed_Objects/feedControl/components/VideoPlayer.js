@@ -95,6 +95,9 @@ export default function VideoPlayer(props) {
           source={{ uri:videoUri }}
           resizeMode="cover"
           isLooping
+          //useNativeControls
+          //volume={5.0}
+          //muted={true}
           onPlaybackStatusUpdate={updatePlaybackCallback}
         />
       <View style={styles.controlsContainer}>

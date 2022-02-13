@@ -3,6 +3,7 @@ import {Feather} from "@expo/vector-icons";
 import React from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
+import Comment from "./Shared_Objects/Comment";
 const {height, width} = Dimensions.get('window');
 export default function PictureFeed(props) {
     return (
@@ -27,7 +28,7 @@ export default function PictureFeed(props) {
                                    style={styles.picture(width, height)}/>
 
                             <Caption  name={item.name} caption={item.caption}  />
-
+                            <Comment></Comment>
                         </View>
                     )
                 }}

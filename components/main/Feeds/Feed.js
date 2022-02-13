@@ -93,13 +93,13 @@ class FeedScreen extends Component {
 
         // Got users Following info
         console.log("\nGot Users Following Data")
-        await querySnapshot.forEach((user) => {
+        await querySnapshot.forEach((userFollowing) => {
 
             // Get the user we are following userName & userProfilePhoto
 
-           firebase.firestore()
+            firebase.firestore()
                 .collection('users')
-                .doc(user.id)
+                .doc(userFollowing.id)
                 .get()
                 .then(userDetails => {
 
@@ -107,7 +107,7 @@ class FeedScreen extends Component {
                     processedFollowingUsers++;
                     firebase.firestore()
                         .collection('posts')
-                        .doc(user.id)
+                        .doc(userFollowing.id)
                         .collection('userPosts')
                         //.where("mediaType", "==", "video")
                         .get()
@@ -115,7 +115,17 @@ class FeedScreen extends Component {
                             console.log("\nGot Posts Of Users i am Following")
 
                             usersFollowingPosts.forEach((userPost) => {
-                                const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+                              //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+                                
+                                const profileImage = userDetails.get("profileimage");
+                                const username = userDetails.get("username");
+                                
+                                const caption = userPost.get("caption");
+                                const createdAt = userPost.get("createdAt");
+                                const downloadURL = userPost.get("downloadURL");
+                                const mediaType = userPost.get("mediaType");
+                                const commentsCount= userPost.get("commentsCount");
+
                                 if (mediaType === "video") {
 
                                     this.setState({
@@ -124,12 +134,12 @@ class FeedScreen extends Component {
 
                                     videosDataFetched.push({
                                         key: userPost.id,
-                                        name: userDetails.get("username"),
-                                        profile: userDetails.get("profileimage"),
-                                        caption,
-                                        createdAt,
-                                        downloadURL,
-                                        commentsCount
+                                        name: username,
+                                        profile: profileImage,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        commentsCount: commentsCount
                                     });
                                 } else if (mediaType === "picture") {
 
@@ -139,28 +149,25 @@ class FeedScreen extends Component {
 
                                     picturesDataFetched.push({
                                         key: userPost.id,
-                                        name: userDetails.get("username"),
-                                        profile: userDetails.get("profileimage"),
-                                        caption,
-                                        createdAt,
-                                        downloadURL,
-                                        commentsCount
+                                        name: username,
+                                        profile: profileImage,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        commentsCount: commentsCount
                                     });
                                 }
 
-                                console.log(`\nUserID: ${user.id} \nUserName: ${userDetails.get("username")} \nProfile Picture: ${userDetails.get("profileimage")}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                console.log(`\nUserID: ${userFollowing.id} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                 if (processedFollowingUsers === expectedFollowingUsersCount) {
                                     console.log("\nSetting Data To Variable")
                                     this.setState({
-                                        videosOutOfBoundItems: [],
-                                        videosDataFetched,
-                                        // videosIsLoading: false,
-
-                                        picturesOutOfBoundItems: [],
-                                        picturesDataFetched,
-                                        //picturesIsLoading: false,
+                                        videosDataFetched: videosDataFetched,
+                                        picturesDataFetched: picturesDataFetched,
+                                    }, () => {
+                                        this.setStatesForLoadingFeed()
                                     });
                                 }
                             })
@@ -168,31 +175,33 @@ class FeedScreen extends Component {
                 })
                 .then(() => {
 
-                    if (processedFollowingUsers === expectedFollowingUsersCount) {
-                        console.log("\nLoad Pictures & Videos")
-                        if (this.state.videosReceived > 0) {
-                            this.setState({
-                                loadVideos: true
-                            });
-                        }
-
-                        if (this.state.picturesReceived > 0) {
-                            this.setState({
-                                loadVideos: true
-                            });
-                        }
-
-                        this.setState({
-                            videosIsLoading: false,
-                            picturesIsLoading: false
-                        });
-                    }
 
                 })
                 .catch((error) => {
                     console.log(`${error} \nUnable to get Users following posts!`);
                 });
         })
+    }
+
+    setStatesForLoadingFeed() {
+        console.log("\nLoad Pictures & Videos")
+        if (this.state.videosReceived > 0) {
+            this.setState({
+                loadVideos: true
+            });
+        }
+
+        if (this.state.picturesReceived > 0) {
+            this.setState({
+                loadPictures: true
+            });
+        }
+
+        this.setState({
+                videosIsLoading: false,
+                picturesIsLoading: false
+            });
+
     }
 
     renderUserFollowingVideoPosts = ({item}) => {
@@ -225,8 +234,17 @@ class FeedScreen extends Component {
                                     <ActivityIndicator size="large" color="red"/>
                                 </View>
                                 :
-                                <VideoFeed data={this.state.videosDataFetched} />
+                                <>
+                                    {this.state.loadVideos
+                                        ?
+                                        <VideoFeed data={this.state.videosDataFetched}/>
+                                        :
+                                        <View style={{flex: 1}}>
 
+                                        </View>
+                                    }
+
+                                </>
                             }
 
                         </View>
@@ -238,7 +256,18 @@ class FeedScreen extends Component {
                                 <ActivityIndicator size="large" color="red"/>
                             </View>
                             :
-                            <PictureFeed data={this.state.picturesDataFetched}/>
+
+                            <>
+                                {this.state.loadPictures
+                                    ?
+                                    <PictureFeed data={this.state.picturesDataFetched}/>
+                                    :
+                                    <View style={{flex: 1}}>
+
+                                    </View>
+                                }
+                            </>
+
                         }
                     </ScrollView>
                 </SafeAreaView>

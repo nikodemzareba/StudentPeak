@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="Package updates &amp;  un-versioned commits" />
+    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Package Updates&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+      <change afterPath="$PROJECT_DIR$/components/System_Images/Profile_Image_Icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +19,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="Isreal-3" />
+    <option name="BRANCH" value="G2" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -42,6 +46,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/components/main" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -49,6 +54,7 @@
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\System_Images" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\VideosFeed" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feed" />
@@ -179,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644206321600</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="In this update:&#10;Package Updates&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+      <created>1644780904091</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1644780904091</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +238,8 @@
     <MESSAGE value="This Update:&#10;Fully Refactored feed Screen &#10;However, there might be some minor warnings&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
     <MESSAGE value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
     <MESSAGE value="In this update:&#10;Fixed Typo Error in PrivateProfile.js&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Fixed Typo Error in PrivateProfile.js&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <MESSAGE value="In this update:&#10;Package Updates&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Package Updates&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

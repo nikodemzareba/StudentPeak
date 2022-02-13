@@ -8,7 +8,7 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import FeedScreen from "./main/Feeds/Feed"
 import Add from "./main/Add"
 import SearchScreen from "./main/Search"
-import EventScreen from "./main/Events"
+import EventScreen from "./main/Events_Screen/Events"
 import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
 import Match from "./main/match";
@@ -24,7 +24,7 @@ const TopTab = createMaterialTopTabNavigator();
 
 
 export class Main extends Component {
-    con
+
 
     // Get user profileIcon for topBar
 
@@ -138,11 +138,9 @@ export class Main extends Component {
                                 tabBarVisible: false
                             })}
                 />
-
             </Tab.Navigator>
         )
     }
-
 }
 
 const mapStateToProps = (store) => ({

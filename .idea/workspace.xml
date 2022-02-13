@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <list default="true" id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed Typo Error in PrivateProfile.js&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/PrivateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/PrivateProfile.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +60,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="44130a1b-c6e4-416c-80ef-abb2ca4c735f" name="Changes" comment="" />
+      <changelist id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
       <created>1643534167879</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -65,6 +68,7 @@
       <workItem from="1643534169739" duration="2705000" />
       <workItem from="1643537862695" duration="1392000" />
       <workItem from="1644196074266" duration="10388000" />
+      <workItem from="1644777156594" duration="1566000" />
     </task>
     <task id="LOCAL-00001" summary="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it">
       <created>1643951270574</created>
@@ -223,7 +227,8 @@
     <MESSAGE value="This Update:&#10;PictureFeed.js seperated into component&#10;&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
     <MESSAGE value="This Update:&#10;Fully Refactored feed Screen &#10;However, there might be some minor warnings&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
     <MESSAGE value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
-    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;Potential error fixed - fetching error when user followed hasn't posted anything = messed up count (deadlock)&#10;&#10;&#10;Just Did:&#10;Feeds are fully implemented, sizing is an issue&#10;&#10;Last Major Update:&#10;Feed Screen for videos fully works" />
+    <MESSAGE value="In this update:&#10;Fixed Typo Error in PrivateProfile.js&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this update:&#10;Fixed Typo Error in PrivateProfile.js&#10;&#10;Previous Update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

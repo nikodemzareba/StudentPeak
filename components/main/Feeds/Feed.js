@@ -181,6 +181,11 @@ class FeedScreen extends Component {
                     console.log(`${error} \nUnable to get Users following posts!`);
                 });
         })
+
+        if(expectedFollowingUsersCount === 0)
+        {
+            this.setStatesForLoadingFeed();
+        }
     }
 
     setStatesForLoadingFeed() {

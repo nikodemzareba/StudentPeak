@@ -19,6 +19,7 @@ import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";
 import Modal from "./main/Feeds/Shared_Objects/modal";
 import VideoFeed from "./main/Feeds/VideoFeed";
+import {users} from "../redux/reducers/users";
 
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -51,11 +52,15 @@ export class Main extends Component {
             .doc(this.state.userId)
             .get()
             .then(userDetails => {
-                console.log(`\`${userDetails.get("profileimage")}\``)
-                this.setState({
+                console.log(`\n\nUserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
+                if(userDetails.get("profileimage") !== "" )
+                {
+                    console.log(`\n\n Has Profile Image`);
+
+                    this.setState({
                     profilePicture: userDetails.get("profileimage"),
                     profilePictureLoaded: true,
-                });
+                });}
             })
     }
 

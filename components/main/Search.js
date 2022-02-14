@@ -14,7 +14,7 @@ export default function Search(props) {
     const fetchUsers = (search) =>{
         firebase.firestore()
         .collection('users')
-        .where('email', '>=', search)
+        .where('username', '>=', search)
         .get()
         .then((snapshot) => {
             let users = snapshot.docs.map(doc => {
@@ -36,7 +36,7 @@ export default function Search(props) {
         renderItem={({item})=>(
             <TouchableOpacity
             onPress={()=> props.navigation.navigate("PublicProfile", {uid: item.id})}>
-              < Text>{item.email}</Text> 
+              < Text>{item.username}</Text>
             </TouchableOpacity>
            
         ) }

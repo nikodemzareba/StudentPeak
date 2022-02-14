@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c546380-e31f-4d4d-99d6-ddc30f650bdc" name="Changes" comment="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/ProfileTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/ProfileTitle.js" afterDir="false" />
+    <list default="true" id="6c546380-e31f-4d4d-99d6-ddc30f650bdc" name="Changes" comment="This Update:&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post">
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +70,7 @@
       <workItem from="1643537862695" duration="1392000" />
       <workItem from="1644196074266" duration="10388000" />
       <workItem from="1644777156594" duration="1566000" />
-      <workItem from="1644794706306" duration="6437000" />
+      <workItem from="1644794706306" duration="6771000" />
     </task>
     <task id="LOCAL-00001" summary="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it">
       <created>1643951270574</created>
@@ -251,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644801267709</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="This Update:&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post">
+      <created>1644802182397</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1644802182397</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +308,8 @@
     <MESSAGE value="storing userId in field post" />
     <MESSAGE value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;storing userId in field post" />
     <MESSAGE value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
-    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
+    <MESSAGE value="This Update:&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
+    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

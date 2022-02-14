@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c546380-e31f-4d4d-99d6-ddc30f650bdc" name="Changes" comment="This Update:&#10;name Label in feed now navigates you to the public profile page of that user&#10;&#10;&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
+    <list default="true" id="70af5061-5612-467c-a8c9-c4517628ff7b" name="Changes" comment="Package updates &amp;  un-versioned commits">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/ProfileTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/ProfileTitle.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,12 +18,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="G2" />
+    <option name="BRANCH" value="origin/G2" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Ty-5" />
+        <entry key="$PROJECT_DIR$" value="Deji" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

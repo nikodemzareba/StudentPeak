@@ -24,6 +24,8 @@ import {users} from "../redux/reducers/users";
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Setting a timer']);
 
 export class Main extends Component {
 

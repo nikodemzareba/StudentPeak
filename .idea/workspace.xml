@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70af5061-5612-467c-a8c9-c4517628ff7b" name="Changes" comment="Package updates &amp;  un-versioned commits">
+    <list default="true" id="6c546380-e31f-4d4d-99d6-ddc30f650bdc" name="Changes" comment="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/ProfileTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/ProfileTitle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +65,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8ec7c3be-9293-475f-b06c-8d5085ff3271" name="Changes" comment="In this update:&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
+      <changelist id="6c546380-e31f-4d4d-99d6-ddc30f650bdc" name="Changes" comment="Package updates &amp;  un-versioned commits" />
       <created>1643534167879</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -70,6 +74,7 @@
       <workItem from="1643537862695" duration="1392000" />
       <workItem from="1644196074266" duration="10388000" />
       <workItem from="1644777156594" duration="1566000" />
+      <workItem from="1644794706306" duration="6437000" />
     </task>
     <task id="LOCAL-00001" summary="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it">
       <created>1643951270574</created>
@@ -225,7 +230,28 @@
       <option name="project" value="LOCAL" />
       <updated>1644788066520</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="storing userId in field post">
+      <created>1644799321989</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1644799321989</updated>
+    </task>
+    <task id="LOCAL-00024" summary="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;storing userId in field post">
+      <created>1644799880350</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1644799880350</updated>
+    </task>
+    <task id="LOCAL-00025" summary="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post">
+      <created>1644801267709</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1644801267709</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +268,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Isreal-3" />
+                        <option value="Ty-5" />
                       </list>
                     </value>
                   </entry>
@@ -276,7 +302,10 @@
     <MESSAGE value="In this update:&#10;Try to get feed-page to return an image if no feed data has been returned.&#10;&#10;Previous Update:&#10;Typo Error- updated&#10;Profile Image on the feed is now the profile image associated with the user&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
     <MESSAGE value="In this update:&#10;Refactoring&#10;Try to get feed-page to return an image if no feed data has been returned.&#10;&#10;Previous Update:&#10;Typo Error- updated&#10;Profile Image on the feed is now the profile image associated with the user&#10;Fixed typo error&#10;Top Bar chat  icon now goes to chat screen when clicked.&#10;Top Bar profile icon now goes to private profile when clicked.&#10;&#10;Issues:&#10;Error when chat screen is clicked, don't think its to do with the nav code but, the chat code" />
     <MESSAGE value="Package updates &amp;  un-versioned commits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Package updates &amp;  un-versioned commits" />
+    <MESSAGE value="storing userId in field post" />
+    <MESSAGE value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;storing userId in field post" />
+    <MESSAGE value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
+    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

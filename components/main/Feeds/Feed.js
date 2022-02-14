@@ -55,7 +55,7 @@ class FeedScreen extends Component {
             picturesOutOfBoundItems: [],
             picturesDataFetched: [],
             picturesIsLoading: true
-        };
+        }
     }
 
     handleVideosViewableItemsChanged = ({changed}) => {
@@ -245,7 +245,7 @@ class FeedScreen extends Component {
                                 <>
                                     {this.state.loadVideos
                                         ?
-                                        <VideoFeed data={this.state.videosDataFetched}/>
+                                        <VideoFeed data={this.state.videosDataFetched} navigation={this.props.route.params.navigation}/>
                                         :
                                         <View style={{flex: 1}}>
 
@@ -268,7 +268,7 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadPictures
                                     ?
-                                    <PictureFeed data={this.state.picturesDataFetched}/>
+                                    <PictureFeed data={this.state.picturesDataFetched} navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1}}>
 

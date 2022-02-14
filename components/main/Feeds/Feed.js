@@ -119,6 +119,7 @@ class FeedScreen extends Component {
                                 
                                 const profileImage = userDetails.get("profileimage");
                                 const username = userDetails.get("username");
+                                const userID = userFollowing.id;
                                 
                                 const caption = userPost.get("caption");
                                 const createdAt = userPost.get("createdAt");
@@ -134,6 +135,7 @@ class FeedScreen extends Component {
 
                                     videosDataFetched.push({
                                         key: userPost.id,
+                                        userID: userID,
                                         name: username,
                                         profile: profileImage,
                                         caption: caption,
@@ -149,6 +151,7 @@ class FeedScreen extends Component {
 
                                     picturesDataFetched.push({
                                         key: userPost.id,
+                                        userID: userID,
                                         name: username,
                                         profile: profileImage,
                                         caption: caption,
@@ -158,7 +161,7 @@ class FeedScreen extends Component {
                                     });
                                 }
 
-                                console.log(`\nUserID: ${userFollowing.id} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                 if (processedFollowingUsers === expectedFollowingUsersCount) {

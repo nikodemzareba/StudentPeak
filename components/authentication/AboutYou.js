@@ -13,6 +13,7 @@ import { SimpleLineIcons } from '@expo/vector-icons'
 import firebase from 'firebase'
 import 'firebase/firestore'
 
+
 const AboutYou = ({ navigation }) => {
   function navigate() {
     /* 
@@ -30,7 +31,7 @@ const AboutYou = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <View>
-        <Text style={styles.etextView}></Text>
+        <Text style={styles.textView}></Text>
         </View>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <SimpleLineIcons
@@ -48,7 +49,7 @@ const AboutYou = ({ navigation }) => {
         <Text style={styles.createText}>About You</Text>
       </View>
       <View>
-        <Text style={styles.etextView}>First Name</Text>
+        <Text style={styles.textView}>First Name</Text>
       </View>
       <View style={styles.emailView}>
         <TextInput
@@ -59,7 +60,7 @@ const AboutYou = ({ navigation }) => {
         />
       </View>
       <View>
-        <Text style={styles.etextView}>Last Name</Text>
+        <Text style={styles.textView}>Last Name</Text>
       </View>
       <View style={styles.emailView}>
         <TextInput
@@ -70,7 +71,7 @@ const AboutYou = ({ navigation }) => {
         />
       </View>
       <View>
-      <Text style={styles.etextView}>{'   Date of Birth'}</Text>
+      <Text style={styles.textView}>{'   Date of Birth'}</Text>
       </View>
       <View style = {{flex: 1, flexDirection: 'row'}}>
       <View style={styles.dobView}>
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
     borderRadius: 20,
   },
-  etextView: {
+  textView: {
     height: 30,
     marginRight: 160,
     fontSize: 20,

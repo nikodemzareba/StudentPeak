@@ -8,9 +8,8 @@ import { connect } from 'redux';
 import firebase from 'firebase';
 require('firebase/firestore');
 
-
 export default function Search(props) {
-    const[users, setUsers] = useState([])
+    const[users, setUsers] = useState(undefined)
 
     const fetchUsers = (search) =>{
         firebase.firestore()

@@ -209,7 +209,7 @@ export default function VideoScreen(props) {
                         <Feather style={{ padding: 10 }} name={"camera"} size={20} color="white" />
                     </TouchableOpacity>
                 </View>
-                <View style={{ flex: 1 }, [utils.borderTopGray]}>
+                <View style={{ flex: 1 } [utils.borderTopGray]}>
 
                     <FlatList
                         numColumns={3}
@@ -518,7 +518,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         height: captureSize,
         width: captureSize,
-        borderRadius: Math.floor(captureSize / 2),
+        //borderRadius: Math.floor(captureSize / 2),
         marginHorizontal: 31,
     },
     capturePicture: {
@@ -528,7 +528,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         height: captureSize,
         width: captureSize,
-        borderRadius: Math.floor(captureSize / 2),
+        //borderRadius: Math.floor(captureSize / 2),
         marginHorizontal: 31,
     },
 });

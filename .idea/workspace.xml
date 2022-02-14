@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c546380-e31f-4d4d-99d6-ddc30f650bdc" name="Changes" comment="This Update:&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post">
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" afterDir="false" />
-    </list>
+    <list default="true" id="6c546380-e31f-4d4d-99d6-ddc30f650bdc" name="Changes" comment="This Update:&#10;name Label in feed now navigates you to the public profile page of that user&#10;&#10;&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +68,7 @@
       <workItem from="1643537862695" duration="1392000" />
       <workItem from="1644196074266" duration="10388000" />
       <workItem from="1644777156594" duration="1566000" />
-      <workItem from="1644794706306" duration="6771000" />
+      <workItem from="1644794706306" duration="7159000" />
     </task>
     <task id="LOCAL-00001" summary="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it">
       <created>1643951270574</created>
@@ -254,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644802182397</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="This Update:&#10;name Label in feed now navigates you to the public profile page of that user&#10;&#10;&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post">
+      <created>1644802532642</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1644802532642</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +290,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Just did:&#10;Removed un-necessary variable&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;However, the video data now just needs to be plugged into the current format to display it" />
     <MESSAGE value="Just did:&#10;Changed Fonts&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
     <MESSAGE value="Just did:&#10;Waits for data of all the users to come in before it sets the data. &#10;&#10;Issues:&#10;the length of the data needs to automatically calculated as this rn is hardcoded.&#10;&#10;Recent Update:&#10;Feed Screen is able to store and process video data from firebase and integrate this into an  object which the data can be fetched from.&#10;&#10;To do:&#10;Timing Out issues flatList is processed before data is fetched" />
     <MESSAGE value="Just did:&#10;Videos Feed page should fully work&#10;&#10;However, the userName and profilePicture fields should be agreed on as we created our own temp fields for these values &#10;&#10;Need To do:&#10;   add likes and commments &#10;   get queries from last 24 horus as opposed to, all the posts the user has posted" />
@@ -309,7 +313,9 @@
     <MESSAGE value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;storing userId in field post" />
     <MESSAGE value="This Update:&#10;Passing userID field to ProfileTitle.js&#10;&#10;Previous Updates:&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
     <MESSAGE value="This Update:&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
-    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
+    <MESSAGE value="This Update:&#10;name Label now allows u to click on the profile&#10;&#10;&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
+    <MESSAGE value="This Update:&#10;name Label in feed now navigates you to the public profile page of that user&#10;&#10;&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
+    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;name Label in feed now navigates you to the public profile page of that user&#10;&#10;&#10;&#10;Now view users profile from feed by clicking on their icon from picturesFeed.js.&#10;&#10;Need to Do:&#10;same features on video screen&#10;&#10;&#10;Previous Updates:&#10;Passing userID field to ProfileTitle.js&#10;Search now goes through usernames instead of  email.&#10;storing userId in field post" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

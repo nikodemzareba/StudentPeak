@@ -5,6 +5,7 @@ import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
 import Comment from "./Shared_Objects/Comment";
 const {height, width} = Dimensions.get('window');
+
 export default function PictureFeed(props) {
     return (
         <View style={{flex: 1}}>
@@ -22,7 +23,11 @@ export default function PictureFeed(props) {
                 renderItem={({item}) => {
                     return (
                         <View style={{flex: 1, marginBottom: 20}}>
-                            <ProfileTitle name={item.name} profilePicture={item.profile}/>
+                            <ProfileTitle name={item.name}
+                                          profilePicture={item.profile}
+                                          userID ={item.userID}
+                                          navigation={props.navigation}
+                            />
 
                             <Image source={{uri: item.downloadURL}}
                                    style={styles.picture(width, height)}/>

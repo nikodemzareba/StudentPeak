@@ -84,7 +84,7 @@ export class Main extends Component {
 
             >
 
-                <Tab.Screen name="Feed" component={FeedScreen}
+                <Tab.Screen name="Feed" component={FeedScreen} initialParams={{ navigation: this.props.navigation}}
                             tabBar={() => <Modal/>}
 
                             options={{

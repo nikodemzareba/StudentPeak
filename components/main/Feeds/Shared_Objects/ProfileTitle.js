@@ -14,7 +14,13 @@ export default function ProfileTitle(props) {
         }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Image style={{height: 30, width: 30, borderRadius: 30}}  source={{uri: props.profilePicture}}/>
-                <Text style={{marginLeft: 10, color: '#000000', fontSize: 15, fontWeight: 'bold'}}>
+                <Text style={{marginLeft: 10, color: '#000000', fontSize: 15, fontWeight: 'bold'}}
+                      onPress={() => {
+                          console.log(`\n\n${props.userID}`)
+                          props.navigation.navigate("PublicProfile", {uid: props.userID})
+                          // props.navigation.navigate("Events")
+                      }
+                }>
                     {props.name}
                 </Text>
             </View>

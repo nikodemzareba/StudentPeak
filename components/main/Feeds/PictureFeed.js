@@ -22,7 +22,7 @@ export default function PictureFeed(props) {
                 renderItem={({item}) => {
                     return (
                         <View style={{flex: 1, marginBottom: 20}}>
-                            <ProfileTitle name={item.name} profilePicture={item.profile}/>
+                            <ProfileTitle name={item.name} profilePicture={item.profile} userID ={item.userID}/>
 
                             <Image source={{uri: item.downloadURL}}
                                    style={styles.picture(width, height)}/>

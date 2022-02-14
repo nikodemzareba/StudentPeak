@@ -31,6 +31,9 @@ const {height, width} = Dimensions.get('window');
 
 const separator = "##########################################################################################";
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Setting a timer']);
+
 class FeedScreen extends Component {
 
     constructor(props) {

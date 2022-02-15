@@ -332,6 +332,7 @@ class FeedScreen extends Component {
                     </>
                     :
                     <>
+                        {/* Video Feed */}
                         {this.state.videosIsLoading
                             ?
                             <View style={styles.loading}>

@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, {Component, useRef, useState} from 'react'
 import {
     View,
     Dimensions,
@@ -262,99 +262,99 @@ class FeedScreen extends Component {
         />
     }
 
+
     render() {
 
         return (
-            <SafeAreaView style={{flex: 1}}>
+            <ScrollView style={{flex: 1}}>
                 {/* Slider (Picture / Videos) */}
-                <View style={{flex: 1}}>
 
-                    <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
-                            {this.state.profilePictureLoaded
-                                ?
-                                <Image
-                                    source={{uri: `${this.state.profilePicture}`}}
-                                    style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
-                                />
-                                :
-                                <Image
-                                    source={require('./System_Images/Profile_Image_Icon.png')}
-                                    style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
-                                />
-                            }
-                        </TouchableOpacity>
-
-
-                        <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
-                            <SwitchSelector options={options} initial={this.state.chosenOption}
-                                            buttonColor={"#000000"}
-                                            buttonColor={"#000000"}
-                                            textColor={"#000000"}
-
-                                            onPress={value => this.setState({chosenOption: value})}
-                            />
-                        </View>
-
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
+                        {this.state.profilePictureLoaded
+                            ?
                             <Image
-                                source={require('./System_Images/Chat_Nav_Icon.png')}
+                                source={{uri: `${this.state.profilePicture}`}}
                                 style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
                             />
-                        </TouchableOpacity>
+                            :
+                            <Image
+                                source={require('./System_Images/Profile_Image_Icon.png')}
+                                style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                            />
+                        }
+                    </TouchableOpacity>
+
+
+                    <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
+                        <SwitchSelector options={options} initial={this.state.chosenOption}
+                                        buttonColor={"#000000"}
+                                        buttonColor={"#000000"}
+                                        textColor={"#000000"}
+
+                                        onPress={value => this.setState({chosenOption: value})}
+                        />
                     </View>
 
-                    {/* Logic for which view is visible*/}
-                    {this.state.chosenOption === 0
-                        ?
-                        <>
-                            {/* Pictures Feed */}
-                            {this.state.picturesIsLoading
-                                ?
-                                <View style={styles.loading}>
-                                    <ActivityIndicator size="large" color="red"/>
-                                </View>
-                                :
-
-                                <>
-                                    {this.state.loadPictures
-                                        ?
-                                        <PictureFeed data={this.state.picturesDataFetched}
-                                                     navigation={this.props.route.params.navigation}/>
-                                        :
-                                        <View style={{flex: 1}}>
-
-                                        </View>
-                                    }
-                                </>
-
-                            }
-                        </>
-                        :
-                        <>
-                            {this.state.videosIsLoading
-                                ?
-                                <View style={styles.loading}>
-                                    <ActivityIndicator size="large" color="red"/>
-                                </View>
-                                :
-                                <>
-                                    {this.state.loadVideos
-                                        ?
-                                        <VideoFeed data={this.state.videosDataFetched}
-                                                   navigation={this.props.route.params.navigation}/>
-                                        :
-                                        <View style={{flex: 1}}>
-
-                                        </View>
-                                    }
-                                </>
-                            }
-                        </>
-                    }
-
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
+                        <Image
+                            source={require('./System_Images/Chat_Nav_Icon.png')}
+                            style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                        />
+                    </TouchableOpacity>
                 </View>
-            </SafeAreaView>
+
+                {/* Logic for which view is visible*/}
+                {this.state.chosenOption === 0
+                    ?
+                    <>
+                        {/* Pictures Feed */}
+                        {this.state.picturesIsLoading
+                            ?
+                            <View style={styles.loading}>
+                                <ActivityIndicator size="large" color="red"/>
+                            </View>
+                            :
+
+                            <>
+                                {this.state.loadPictures
+                                    ?
+                                    <PictureFeed data={this.state.picturesDataFetched}
+                                                 navigation={this.props.route.params.navigation}/>
+                                    :
+                                    <View style={{flex: 1}}>
+
+                                    </View>
+                                }
+                            </>
+
+                        }
+                    </>
+                    :
+                    <>
+                        {this.state.videosIsLoading
+                            ?
+                            <View style={styles.loading}>
+                                <ActivityIndicator size="large" color="red"/>
+                            </View>
+                            :
+                            <>
+                                {this.state.loadVideos
+                                    ?
+                                    <VideoFeed data={this.state.videosDataFetched}
+                                               navigation={this.props.route.params.navigation}/>
+                                    :
+                                    <View style={{flex: 1}}>
+
+                                    </View>
+                                }
+                            </>
+                        }
+                    </>
+                }
+
+
+            </ScrollView>
         );
 
     }

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="In this Update:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
+    <list default="true" id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly">
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +102,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644897812790</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="In this Update:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly">
+      <created>1644897870607</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1644897870607</updated>
+    </task>
+    <task id="LOCAL-00007" summary="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly">
+      <created>1644898048636</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1644898048636</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,7 +140,8 @@
     <MESSAGE value="In this Update:&#10;Added View All Comments Objects &amp; Navigational Features&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.&#10;&#10;&#10;Need to DO:&#10;DB Field COmmentsCount is pulling undefined values" />
     <MESSAGE value="In this Update:&#10;Switch Works to an extent&#10;&#10;&#10;Need to DO:" />
     <MESSAGE value="In this Update:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
+    <MESSAGE value="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

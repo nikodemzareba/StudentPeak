@@ -100,22 +100,21 @@ class FeedScreen extends Component {
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
     }
 
-    getProfileImage()
-    {
+    getProfileImage() {
         firebase.firestore()
             .collection('users')
             .doc(this.state.userId)
             .get()
             .then(userDetails => {
                 console.log(`\n\nUserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
-                if(userDetails.get("profileimage") !== "" )
-                {
+                if (userDetails.get("profileimage") !== "") {
                     console.log(`\n\n Has Profile Image`);
 
                     this.setState({
                         profilePicture: userDetails.get("profileimage"),
                         profilePictureLoaded: true,
-                    });}
+                    });
+                }
             })
     }
 
@@ -266,76 +265,73 @@ class FeedScreen extends Component {
     render() {
 
         return (
-            <View style={{}}>
+            <SafeAreaView style={{flex: 1}}>
+                {/* Slider (Picture / Videos) */}
+                <View style={{flex: 1}}>
 
-                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
-                        {this.state.profilePictureLoaded
-                            ?
+                    <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
+                            {this.state.profilePictureLoaded
+                                ?
+                                <Image
+                                    source={{uri: `${this.state.profilePicture}`}}
+                                    style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                                />
+                                :
+                                <Image
+                                    source={require('./System_Images/Profile_Image_Icon.png')}
+                                    style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                                />
+                            }
+                        </TouchableOpacity>
+
+
+                        <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
+                            <SwitchSelector options={options} initial={this.state.chosenOption}
+                                            buttonColor={"#000000"}
+                                            buttonColor={"#000000"}
+                                            textColor={"#000000"}
+
+                                            onPress={value => this.setState({chosenOption: value})}
+                            />
+                        </View>
+
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
                             <Image
-                                source={{uri: `${this.state.profilePicture}`}}
+                                source={require('./System_Images/Chat_Nav_Icon.png')}
                                 style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
                             />
-                            :
-                            <Image
-                                source={require('./System_Images/Profile_Image_Icon.png')}
-                                style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
-                            />
-                        }
-                    </TouchableOpacity>
-
-
-
-                    <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
-                        <SwitchSelector options={options} initial={this.state.chosenOption}
-                                        buttonColor={"#000000"}
-                                        buttonColor={"#000000"}
-                                        textColor={"#000000"}
-
-                                        onPress={value => this.setState({chosenOption: value})}
-                        />
+                        </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
-                        <Image
-                            source={require('./System_Images/Chat_Nav_Icon.png')}
-                            style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
-                        />
-                    </TouchableOpacity>
-                </View>
+                    {/* Logic for which view is visible*/}
+                    {this.state.chosenOption === 0
+                        ?
+                        <>
+                            {/* Pictures Feed */}
+                            {this.state.picturesIsLoading
+                                ?
+                                <View style={styles.loading}>
+                                    <ActivityIndicator size="large" color="red"/>
+                                </View>
+                                :
 
+                                <>
+                                    {this.state.loadPictures
+                                        ?
+                                        <PictureFeed data={this.state.picturesDataFetched}
+                                                     navigation={this.props.route.params.navigation}/>
+                                        :
+                                        <View style={{flex: 1}}>
 
-                {this.state.chosenOption === 0
-                    ?
-                    <View style={{width, height}}>
-                        {/* Pictures Feed */}
-                        {this.state.picturesIsLoading
-                            ?
-                            <View style={styles.loading}>
-                                <ActivityIndicator size="large" color="red"/>
-                            </View>
-                            :
+                                        </View>
+                                    }
+                                </>
 
-                            <>
-                                {this.state.loadPictures
-                                    ?
-                                    <PictureFeed data={this.state.picturesDataFetched}
-                                                 navigation={this.props.route.params.navigation}/>
-                                    :
-                                    <View style={{flex: 1}}>
-
-                                    </View>
-                                }
-                            </>
-
-                        }
-                  </View>
-                    :
-                    <>
-
-
-                        <View style={{width, height}}>
-
+                            }
+                        </>
+                        :
+                        <>
                             {this.state.videosIsLoading
                                 ?
                                 <View style={styles.loading}>
@@ -352,15 +348,13 @@ class FeedScreen extends Component {
 
                                         </View>
                                     }
-
                                 </>
                             }
+                        </>
+                    }
 
-                        </View>
-                    </>
-                }
-
-            </View>
+                </View>
+            </SafeAreaView>
         );
 
     }

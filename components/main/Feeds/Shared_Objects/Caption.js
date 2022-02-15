@@ -7,7 +7,7 @@ import Username_Link_Txt from "./Username_Link_Txt";
 export default function Caption(props) {
     return (
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Username_Link_Txt name={props.name} userID={props.userID} navigation={props.navigation} />
+            <Username_Link_Txt name={props.name}  userID={props.userID} fontSize={15}  fontWeight={'bold'} navigation={props.navigation} />
 
             <Text style={{
                 marginLeft: 10,

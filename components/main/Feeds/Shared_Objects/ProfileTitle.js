@@ -18,7 +18,7 @@ export default function ProfileTitle(props) {
 
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Profile_Icon userID={props.userID} width={30} height ={30} borderRadius={30} profilePicture={props.profilePicture} navigation={props.navigation}/>
-                <Username_Link_Txt name={props.name} userID={props.userID} navigation={props.navigation} />
+                <Username_Link_Txt name={props.name} userID={props.userID} fontSize={15}   fontWeight={'bold'}  navigation={props.navigation} />
             </View>
             <View>
                 <Feather name="more-vertical" color="#000000" size={18}/>

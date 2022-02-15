@@ -55,6 +55,9 @@ class FeedScreen extends Component {
         this.state = {
             requestProcessed: false,
             chosenOption: 0,
+            profilePictureLoaded: false,
+            profilePicture: "",
+            userId: firebase.auth().currentUser.uid,
 
             picturesReceived: 0,
             loadPictures: false,
@@ -93,7 +96,27 @@ class FeedScreen extends Component {
     };
 
     componentDidMount() {
+        this.getProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+    }
+
+    getProfileImage()
+    {
+        firebase.firestore()
+            .collection('users')
+            .doc(this.state.userId)
+            .get()
+            .then(userDetails => {
+                console.log(`\n\nUserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
+                if(userDetails.get("profileimage") !== "" )
+                {
+                    console.log(`\n\n Has Profile Image`);
+
+                    this.setState({
+                        profilePicture: userDetails.get("profileimage"),
+                        profilePictureLoaded: true,
+                    });}
+            })
     }
 
     getData = async (querySnapshot) => {
@@ -246,10 +269,19 @@ class FeedScreen extends Component {
             <View style={{}}>
 
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <TouchableOpacity
-                        onPress={() => this.setState({chosenOption: value})}>
-                        <Image style={{height: 50, width: 50, borderRadius: 30}}
-                               source={{uri: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"}}/>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
+                        {this.state.profilePictureLoaded
+                            ?
+                            <Image
+                                source={{uri: `${this.state.profilePicture}`}}
+                                style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                            />
+                            :
+                            <Image
+                                source={require('./System_Images/Profile_Image_Icon.png')}
+                                style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                            />
+                        }
                     </TouchableOpacity>
 
 
@@ -264,10 +296,11 @@ class FeedScreen extends Component {
                         />
                     </View>
 
-                    <TouchableOpacity
-                        onPress={() => props.navigation.navigate("PublicProfile", {uid: "upb6UG9eM0VWzRo8tGke3xK9p953"})}>
-                        <Image style={{height: 50, width: 50, borderRadius: 30}}
-                               source={require('./Chat_Nav_Icon.png')}/>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
+                        <Image
+                            source={require('./System_Images/Chat_Nav_Icon.png')}
+                            style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
+                        />
                     </TouchableOpacity>
                 </View>
 

@@ -58,8 +58,8 @@ class FeedScreen extends Component {
         this.state = {
             requestProcessed: false,
             chosenOption: 0,
-            profilePictureLoaded: false,
-            profilePicture: "",
+            profileImageLoaded: false,
+            profileImage: "",
             userId: firebase.auth().currentUser.uid,
 
             picturesReceived: 0,
@@ -114,8 +114,8 @@ class FeedScreen extends Component {
                     console.log(`\n\n Has Profile Image`);
 
                     this.setState({
-                        profilePicture: userDetails.get("profileimage"),
-                        profilePictureLoaded: true,
+                        profileImage: userDetails.get("profileimage"),
+                        profileImageLoaded: true,
                     });
                 }
             })
@@ -274,10 +274,10 @@ class FeedScreen extends Component {
 
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
-                        {this.state.profilePictureLoaded
+                        {this.state.profileImageLoaded
                             ?
                             <Image
-                                source={{uri: `${this.state.profilePicture}`}}
+                                source={{uri: `${this.state.profileImage}`}}
                                 style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
                             />
                             :

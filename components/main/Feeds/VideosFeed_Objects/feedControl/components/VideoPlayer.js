@@ -91,7 +91,7 @@ export default function VideoPlayer(props) {
 
   return (
     <View style={{flex:1, marginBottom:20}}>
-      <ProfileTitle name={item.name} profilePicture={item.profile} userID ={item.userID} navigation={navigation}  />
+      <ProfileTitle name={item.name} profileImage={item.profile} userID ={item.userID} navigation={navigation}  />
         <Video
           ref={playbackInstance}
           style={styles.video(width, height)}

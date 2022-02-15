@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
-    </list>
+    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;&#10;Previous Updates:&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +30,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644963623980</updated>
-      <workItem from="1644963633339" duration="1161000" />
+      <workItem from="1644963633339" duration="1506000" />
     </task>
     <task id="LOCAL-00001" summary="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
       <created>1644964031276</created>
@@ -42,7 +39,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644964031276</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="In this Update: &#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;&#10;Previous Updates:&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <created>1644965125514</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644965125514</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -61,6 +65,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
+    <MESSAGE value="In this Update: &#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;&#10;Previous Updates:&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;&#10;Previous Updates:&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
   </component>
 </project>

@@ -9,6 +9,7 @@ import View_All_Comments from "./Shared_Objects/View_All_Comments";
 const {height, width} = Dimensions.get('window');
 
 export default function PictureFeed(props) {
+    console.log("\n\nHEWEREE")
     return (
         <View style={{flex: 1}}>
 
@@ -24,6 +25,7 @@ export default function PictureFeed(props) {
                 overScrollMode="never"
                 renderItem={({item}) => {
                     return (
+
                         <View style={{flex: 1, marginBottom: 20}}>
                             <ProfileTitle name={item.name}
                                           profilePicture={item.profile}

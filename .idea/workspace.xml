@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.">
-      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/View_All_Comments.js" afterDir="false" />
+    <list default="true" id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="In this Update:&#10;Added View All Comments Objects &amp; Navigational Features&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.&#10;&#10;&#10;Need to DO:&#10;DB Field COmmentsCount is pulling undefined values">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Chat_Nav_Icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +48,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NEW" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/main/Feeds" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\Student Peak\components\main\Feeds" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,7 +66,7 @@
       <updated>1644838805140</updated>
       <workItem from="1644838808253" duration="145000" />
       <workItem from="1644845975596" duration="603000" />
-      <workItem from="1644882989581" duration="6780000" />
+      <workItem from="1644882989581" duration="12413000" />
     </task>
     <task id="LOCAL-00001" summary="In this Update:&#10;Added navigational features to username in caption and caption.">
       <created>1644885834489</created>
@@ -77,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644888827146</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="In this Update:&#10;Added View All Comments Objects &amp; Navigational Features&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.&#10;&#10;&#10;Need to DO:&#10;DB Field COmmentsCount is pulling undefined values">
+      <created>1644890290682</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644890290682</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,7 +110,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="In this Update:&#10;Added navigational features to username in caption and caption." />
     <MESSAGE value="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption." />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption." />
+    <MESSAGE value="In this Update:&#10;Added View All Comments Objects &amp; Navigational Features&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.&#10;&#10;&#10;Need to DO:&#10;DB Field COmmentsCount is pulling undefined values" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Added View All Comments Objects &amp; Navigational Features&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.&#10;&#10;&#10;Need to DO:&#10;DB Field COmmentsCount is pulling undefined values" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,7 +8,7 @@ import {
     ScrollView,
     Button,
     StyleSheet,
-    SafeAreaView, Image
+    SafeAreaView, Image, TouchableOpacity
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -31,8 +31,18 @@ const {height, width} = Dimensions.get('window');
 
 const separator = "##########################################################################################";
 
-import { LogBox } from 'react-native';
+import {LogBox} from 'react-native';
+import SwitchSelector from "react-native-switch-selector";
+import Profile_Icon from "./Shared_Objects/Profile_Icon";
+
 LogBox.ignoreLogs(['Setting a timer']);
+
+
+const options = [
+    {label: 'Pictures', value: 0},
+    {label: 'Videos', value: 1},
+
+];
 
 class FeedScreen extends Component {
 
@@ -44,6 +54,7 @@ class FeedScreen extends Component {
             .collection('userFollowing')
         this.state = {
             requestProcessed: false,
+            chosenOption: 0,
 
             picturesReceived: 0,
             loadPictures: false,
@@ -118,20 +129,20 @@ class FeedScreen extends Component {
                             console.log("\nGot Posts Of Users i am Following")
 
                             usersFollowingPosts.forEach((userPost) => {
-                              //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
-                                
+                                //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+
                                 const profileImage = userDetails.get("profileimage");
                                 const username = userDetails.get("username");
                                 const userID = userFollowing.id;
-                                
+
                                 const caption = userPost.get("caption");
                                 const createdAt = userPost.get("createdAt");
                                 const downloadURL = userPost.get("downloadURL");
                                 const mediaType = userPost.get("mediaType");
                                 const commentsCount = 0
-                                // userPost.get("commentsCount")
+                                    // userPost.get("commentsCount")
                                 ;
-                                const likesCount= userPost.get("likesCount");
+                                const likesCount = userPost.get("likesCount");
 
                                 if (mediaType === "video") {
 
@@ -193,8 +204,7 @@ class FeedScreen extends Component {
                 });
         })
 
-        if(expectedFollowingUsersCount === 0)
-        {
+        if (expectedFollowingUsersCount === 0) {
             this.setStatesForLoadingFeed();
         }
     }
@@ -214,9 +224,9 @@ class FeedScreen extends Component {
         }
 
         this.setState({
-                videosIsLoading: false,
-                picturesIsLoading: false
-            });
+            videosIsLoading: false,
+            picturesIsLoading: false
+        });
 
     }
 
@@ -233,61 +243,89 @@ class FeedScreen extends Component {
     render() {
 
         return (
-            <>
-                <StatusBar barStyle="dark-content"/>
-                <SafeAreaView style={{flex: 1}}>
-                    <ScrollView
-                        style={{flex: 1}}
-                        horizontal={true}
-                        scrollEventThrottle={16}
-                        pagingEnabled={true}
-                    >
-                        <View style={{width, height}}>
+            <View style={{}}>
 
-                            {this.state.videosIsLoading
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <TouchableOpacity
+                        onPress={() => this.setState({chosenOption: value})}>
+                        <Image style={{height: 50, width: 50, borderRadius: 30}}
+                               source={{uri: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"}}/>
+                    </TouchableOpacity>
+
+                    <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
+                        <SwitchSelector options={options} initial={this.state.chosenOption}
+                                        buttonColor={"#000000"}
+                                        buttonColor={"#000000"}
+                                        textColor={"#000000"}
+
+                                        onPress={value => console.log(`Call onPress with value: ${value}`)}
+                        />
+                    </View>
+
+                    <TouchableOpacity
+                        onPress={() => props.navigation.navigate("PublicProfile", {uid: "upb6UG9eM0VWzRo8tGke3xK9p953"})}>
+                        <Image style={{height: 50, width: 50, borderRadius: 30}}
+                               source={require('./Chat_Nav_Icon.png')}/>
+                    </TouchableOpacity>
+                </View>
+
+                <>
+                    {this.state.chosenOption === 0
+                        ?
+                        <>
+                            {/* Pictures Feed */}
+                            {this.state.picturesIsLoading
                                 ?
                                 <View style={styles.loading}>
                                     <ActivityIndicator size="large" color="red"/>
                                 </View>
                                 :
+
                                 <>
-                                    {this.state.loadVideos
+                                    {this.state.loadPictures
                                         ?
-                                        <VideoFeed data={this.state.videosDataFetched} navigation={this.props.route.params.navigation}/>
+                                        <PictureFeed data={this.state.picturesDataFetched}
+                                                     navigation={this.props.route.params.navigation}/>
                                         :
                                         <View style={{flex: 1}}>
 
                                         </View>
                                     }
-
                                 </>
+
                             }
+                        </>
+                        :
+                        <>
 
-                        </View>
 
-                        {/* Pictures Feed */}
-                        {this.state.picturesIsLoading
-                            ?
-                            <View style={styles.loading}>
-                                <ActivityIndicator size="large" color="red"/>
-                            </View>
-                            :
+                            <View style={{width, height}}>
 
-                            <>
-                                {this.state.loadPictures
+                                {this.state.videosIsLoading
                                     ?
-                                    <PictureFeed data={this.state.picturesDataFetched} navigation={this.props.route.params.navigation}/>
-                                    :
-                                    <View style={{flex: 1}}>
-
+                                    <View style={styles.loading}>
+                                        <ActivityIndicator size="large" color="red"/>
                                     </View>
-                                }
-                            </>
+                                    :
+                                    <>
+                                        {this.state.loadVideos
+                                            ?
+                                            <VideoFeed data={this.state.videosDataFetched}
+                                                       navigation={this.props.route.params.navigation}/>
+                                            :
+                                            <View style={{flex: 1}}>
 
-                        }
-                    </ScrollView>
-                </SafeAreaView>
-            </>
+                                            </View>
+                                        }
+
+                                    </>
+                                }
+
+                            </View>
+                        </>
+                    }
+                </>
+            </View>
         );
 
     }

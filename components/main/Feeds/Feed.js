@@ -34,6 +34,8 @@ const separator = "#############################################################
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
+import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
+import View_All_Comments from "./Shared_Objects/View_All_Comments";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -43,6 +45,15 @@ const options = [
     {label: 'Videos', value: 1},
 
 ];
+
+
+const storyData = [
+    {
+        key:"upb6UG9eM0VWzRo8tGke3xK9p953",
+        profilePicture: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
+    }
+]
+
 
 class FeedScreen extends Component {
 
@@ -303,6 +314,25 @@ class FeedScreen extends Component {
                         />
                     </TouchableOpacity>
                 </View>
+
+                {/*<ScrollView style={{flex: 1}}>*/}
+                <FlatList
+                    showsHorizontalScrollIndicator={false}
+                    data={storyData}
+                    horizontal
+                    contentContainerStyle={{
+                        alignItems: 'center'
+                    }}
+                    renderItem={({item}) => {
+                        return (
+                            <Profile_Icon userID={item.key} profilePicture={item.profilePicture}
+                                          width={30} height ={30} borderRadius={30}
+                                          navigation={this.props.route.params.navigation}/>
+                        )
+                    }}
+                />
+                {/*</ScrollView>*/}
+
 
                 {/* Logic for which view is visible*/}
                 {this.state.chosenOption === 0

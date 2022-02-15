@@ -109,7 +109,7 @@ class FeedScreen extends Component {
             .doc(this.state.userId)
             .get()
             .then(userDetails => {
-                console.log(`\n\nUserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
+                console.log(`\n\nCurrent UserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
                 if (userDetails.get("profileimage") !== "") {
                     console.log(`\n\n Has Profile Image`);
 

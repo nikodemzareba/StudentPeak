@@ -7,6 +7,7 @@ import Comment from "./Shared_Objects/Comment";
 import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
 import View_All_Comments from "./Shared_Objects/View_All_Comments";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
+import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 
 const {height, width} = Dimensions.get('window');
 
@@ -99,9 +100,10 @@ export default function PictureFeed(props) {
                             <Profile_Icon userID={item.key} profilePicture={item.profilePicture}
                                           width={35} height={35} borderRadius={35}
                                           navigation={props.navigation}
+                                          style ={{padding:18}}
                             />
 
-                            {/*<Username_Link_Txt name={item.username} userID={item.key} fontSize={1} fontWeight={'normal'} navigation={this.props.route.params.navigation} />*/}
+                            <Username_Link_Txt name={item.username} userID={item.key} fontSize={8} fontWeight={'normal'} navigation={props.navigation} />
 
                         </View>
                     )

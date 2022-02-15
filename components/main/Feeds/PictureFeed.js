@@ -16,18 +16,18 @@ const storyData = [
     {
         key: "upb6UG9eM0VWzRo8tGke3xK9p953",
         profilePicture: "https://media.istockphoto.com/photos/smiling-indian-business-man-working-on-laptop-at-home-office-young-picture-id1307615661?b=1&k=20&m=1307615661&s=170667a&w=0&h=Zp9_27RVS_UdlIm2k8sa8PuutX9K3HTs8xdK0UfKmYk=",
-        username: "User1"
+        username: "User1888899"
     }
     ,
     {
         key: "upb6UG9eM0VWzRo8tGke3xK9p9531",
         profilePicture: "https://media.istockphoto.com/photos/excited-woman-wearing-rainbow-cardigan-picture-id1327495437?b=1&k=20&m=1327495437&s=170667a&w=0&h=Vbl-XLyAnBoTkyGXXi-X1CFzuSHlNcn-dqB-sCosxFo=",
-        username: "User2"
+        username: "User2eeee"
     },
     {
         key: "upb6UG9eM0VWzRo8tGke3xK9p9532",
         profilePicture: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
-        username: "User3"
+        username: "User3eeeeee"
     }
     ,
     {
@@ -80,7 +80,14 @@ const storyData = [
 
 
 ]
-
+const maxUsernameLengthForDisplay = 8;
+const isUserNameTooLong =(username) => {
+    if(username.length > maxUsernameLengthForDisplay)
+    {
+          return username.slice(0, maxUsernameLengthForDisplay) + "..."
+    }
+    return username;
+}
 export default function PictureFeed(props) {
 
     return (
@@ -96,14 +103,21 @@ export default function PictureFeed(props) {
                 }}
                 renderItem={({item}) => {
                     return (
-                        <View style={{marginBottom: 20, width:50, height:40}}>
+
+                            <View style={{
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                paddingHorizontal: 0,
+                                marginBottom: 10,
+                                width:60, height:60
+                            }}>
                             <Profile_Icon userID={item.key} profilePicture={item.profilePicture}
                                           width={35} height={35} borderRadius={35}
                                           navigation={props.navigation}
-                                          style ={{padding:18}}
+
                             />
 
-                            <Username_Link_Txt name={item.username} userID={item.key} fontSize={8} fontWeight={'normal'} navigation={props.navigation} />
+                            <Username_Link_Txt name={isUserNameTooLong(item.username)} userID={item.key} fontSize={9} fontWeight={'normal'} navigation={props.navigation} />
 
                         </View>
                     )

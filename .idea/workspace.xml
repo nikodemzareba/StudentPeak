@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="">
+    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Username_Link_Txt.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Username_Link_Txt.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +33,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644963623980</updated>
-      <workItem from="1644963633339" duration="312000" />
+      <workItem from="1644963633339" duration="1161000" />
     </task>
+    <task id="LOCAL-00001" summary="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <created>1644964031276</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644964031276</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
   </component>
 </project>

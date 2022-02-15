@@ -24,19 +24,11 @@ import {users} from "../redux/reducers/users";
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
 
-import { LogBox } from 'react-native';
+import {LogBox} from 'react-native';
+
 LogBox.ignoreLogs(['Setting a timer']);
 
 export class Main extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            profilePictureLoaded: false,
-            profilePicture: "",
-            userId: firebase.auth().currentUser.uid
-        };
-    }
 
 
     componentDidMount() {
@@ -44,26 +36,6 @@ export class Main extends Component {
         this.props.fetchUser();
         this.props.fetchUserPosts();
         this.props.fetchUserFollowing();
-        this.getProfileImage()
-    }
-
-    getProfileImage()
-    {
-        firebase.firestore()
-            .collection('users')
-            .doc(this.state.userId)
-            .get()
-            .then(userDetails => {
-                console.log(`\n\nUserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
-                if(userDetails.get("profileimage") !== "" )
-                {
-                    console.log(`\n\n Has Profile Image`);
-
-                    this.setState({
-                    profilePicture: userDetails.get("profileimage"),
-                    profilePictureLoaded: true,
-                });}
-            })
     }
 
     render() {
@@ -86,34 +58,14 @@ export class Main extends Component {
 
             >
 
-                <Tab.Screen name="Feed" component={FeedScreen} initialParams={{ navigation: this.props.navigation}}
+                <Tab.Screen name="Feed" component={FeedScreen} initialParams={{navigation: this.props.navigation}}
                             tabBar={() => <Modal/>}
 
                             options={{
-                                headerLeft: () => (
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
-                                        {this.state.profilePictureLoaded
-                                            ?
-                                            <Image
-                                                source={{uri: `${this.state.profilePicture}`}}
-                                                style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
-                                            />
-                                            :
-                                            <Image
-                                                source={require('./System_Images/Profile_Image_Icon.png')}
-                                                style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
-                                            />
-                                        }
-                                    </TouchableOpacity>
-                                ),
-                                headerRight: () => (
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
-                                        <Image
-                                            source={require('./System_Images/Chat_Nav_Icon.png')}
-                                            style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
-                                        />
-                                    </TouchableOpacity>
-                                ),
+                                header: () => null,
+                                tabBarVisible: false,
+
+
                                 tabBarIcon: ({color, size}) => (
                                     //decide what is inside the Icon
                                     <MaterialCommunityIcons name="school" color={color} size={26}/>

@@ -7,6 +7,8 @@ import VideoControls from './VideoControls';
 import {B} from "../../../Shared_Objects/Bold";
 import  ProfileTitle from "../../../Shared_Objects/ProfileTitle"
 import Caption from "../../../Shared_Objects/Caption";
+import Likes_Count_Txt from "../../../Shared_Objects/Likes_Count_Txt";
+import View_All_Comments from "../../../Shared_Objects/View_All_Comments";
 
 export default function VideoPlayer(props) {
 
@@ -89,7 +91,7 @@ export default function VideoPlayer(props) {
 
   return (
     <View style={{flex:1, marginBottom:20}}>
-      <ProfileTitle name={item.name} profilePicture={item.profile} userID ={item.userID}  navigation={navigation}  />
+      <ProfileTitle name={item.name} profilePicture={item.profile} userID ={item.userID} navigation={navigation}  />
         <Video
           ref={playbackInstance}
           style={styles.video(width, height)}
@@ -110,7 +112,10 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
-      <Caption  name={item.name} caption={item.caption}  />
+
+      <Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation} />
+      <Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>
+      <View_All_Comments  commentsCount={item.commentsCount} navigation={props.navigation}/>
 
     </View>
   );
@@ -129,7 +134,8 @@ const styles = StyleSheet.create({
   },
   controlsContainer: {
     position:'absolute',
-    bottom:10
+    bottom:10,
+    padding:30,
   }
 });
 

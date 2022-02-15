@@ -8,7 +8,7 @@ import {
     ScrollView,
     Button,
     StyleSheet,
-    SafeAreaView, Image
+    SafeAreaView, Image, TouchableOpacity
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -31,8 +31,18 @@ const {height, width} = Dimensions.get('window');
 
 const separator = "##########################################################################################";
 
-import { LogBox } from 'react-native';
+import {LogBox} from 'react-native';
+import SwitchSelector from "react-native-switch-selector";
+import Profile_Icon from "./Shared_Objects/Profile_Icon";
+
 LogBox.ignoreLogs(['Setting a timer']);
+
+
+const options = [
+    {label: 'Pictures', value: 0},
+    {label: 'Videos', value: 1},
+
+];
 
 class FeedScreen extends Component {
 
@@ -44,6 +54,10 @@ class FeedScreen extends Component {
             .collection('userFollowing')
         this.state = {
             requestProcessed: false,
+            chosenOption: 0,
+            profilePictureLoaded: false,
+            profilePicture: "",
+            userId: firebase.auth().currentUser.uid,
 
             picturesReceived: 0,
             loadPictures: false,
@@ -82,7 +96,26 @@ class FeedScreen extends Component {
     };
 
     componentDidMount() {
+        this.getProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+    }
+
+    getProfileImage() {
+        firebase.firestore()
+            .collection('users')
+            .doc(this.state.userId)
+            .get()
+            .then(userDetails => {
+                console.log(`\n\nUserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
+                if (userDetails.get("profileimage") !== "") {
+                    console.log(`\n\n Has Profile Image`);
+
+                    this.setState({
+                        profilePicture: userDetails.get("profileimage"),
+                        profilePictureLoaded: true,
+                    });
+                }
+            })
     }
 
     getData = async (querySnapshot) => {
@@ -118,17 +151,20 @@ class FeedScreen extends Component {
                             console.log("\nGot Posts Of Users i am Following")
 
                             usersFollowingPosts.forEach((userPost) => {
-                              //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
-                                
+                                //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+
                                 const profileImage = userDetails.get("profileimage");
                                 const username = userDetails.get("username");
                                 const userID = userFollowing.id;
-                                
+
                                 const caption = userPost.get("caption");
                                 const createdAt = userPost.get("createdAt");
                                 const downloadURL = userPost.get("downloadURL");
                                 const mediaType = userPost.get("mediaType");
-                                const commentsCount= userPost.get("commentsCount");
+                                const commentsCount = 0
+                                    // userPost.get("commentsCount")
+                                ;
+                                const likesCount = userPost.get("likesCount");
 
                                 if (mediaType === "video") {
 
@@ -144,7 +180,8 @@ class FeedScreen extends Component {
                                         caption: caption,
                                         createdAt: createdAt,
                                         downloadURL: downloadURL,
-                                        commentsCount: commentsCount
+                                        commentsCount: commentsCount,
+                                        likesCount: likesCount
                                     });
                                 } else if (mediaType === "picture") {
 
@@ -160,11 +197,12 @@ class FeedScreen extends Component {
                                         caption: caption,
                                         createdAt: createdAt,
                                         downloadURL: downloadURL,
-                                        commentsCount: commentsCount
+                                        commentsCount: commentsCount,
+                                        likesCount: likesCount
                                     });
                                 }
 
-                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount}`);
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                 if (processedFollowingUsers === expectedFollowingUsersCount) {
@@ -188,8 +226,7 @@ class FeedScreen extends Component {
                 });
         })
 
-        if(expectedFollowingUsersCount === 0)
-        {
+        if (expectedFollowingUsersCount === 0) {
             this.setStatesForLoadingFeed();
         }
     }
@@ -209,9 +246,9 @@ class FeedScreen extends Component {
         }
 
         this.setState({
-                videosIsLoading: false,
-                picturesIsLoading: false
-            });
+            videosIsLoading: false,
+            picturesIsLoading: false
+        });
 
     }
 
@@ -228,17 +265,73 @@ class FeedScreen extends Component {
     render() {
 
         return (
-            <>
-                <StatusBar barStyle="dark-content"/>
-                <SafeAreaView style={{flex: 1}}>
-                    <ScrollView
-                        style={{flex: 1}}
-                        horizontal={true}
-                        scrollEventThrottle={16}
-                        pagingEnabled={true}
-                    >
-                        <View style={{width, height}}>
+            <SafeAreaView style={{flex: 1}}>
+                {/* Slider (Picture / Videos) */}
+                <View style={{flex: 1}}>
 
+                    <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
+                            {this.state.profilePictureLoaded
+                                ?
+                                <Image
+                                    source={{uri: `${this.state.profilePicture}`}}
+                                    style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                                />
+                                :
+                                <Image
+                                    source={require('./System_Images/Profile_Image_Icon.png')}
+                                    style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                                />
+                            }
+                        </TouchableOpacity>
+
+
+                        <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
+                            <SwitchSelector options={options} initial={this.state.chosenOption}
+                                            buttonColor={"#000000"}
+                                            buttonColor={"#000000"}
+                                            textColor={"#000000"}
+
+                                            onPress={value => this.setState({chosenOption: value})}
+                            />
+                        </View>
+
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
+                            <Image
+                                source={require('./System_Images/Chat_Nav_Icon.png')}
+                                style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Logic for which view is visible*/}
+                    {this.state.chosenOption === 0
+                        ?
+                        <>
+                            {/* Pictures Feed */}
+                            {this.state.picturesIsLoading
+                                ?
+                                <View style={styles.loading}>
+                                    <ActivityIndicator size="large" color="red"/>
+                                </View>
+                                :
+
+                                <>
+                                    {this.state.loadPictures
+                                        ?
+                                        <PictureFeed data={this.state.picturesDataFetched}
+                                                     navigation={this.props.route.params.navigation}/>
+                                        :
+                                        <View style={{flex: 1}}>
+
+                                        </View>
+                                    }
+                                </>
+
+                            }
+                        </>
+                        :
+                        <>
                             {this.state.videosIsLoading
                                 ?
                                 <View style={styles.loading}>
@@ -248,41 +341,20 @@ class FeedScreen extends Component {
                                 <>
                                     {this.state.loadVideos
                                         ?
-                                        <VideoFeed data={this.state.videosDataFetched} navigation={this.props.route.params.navigation}/>
+                                        <VideoFeed data={this.state.videosDataFetched}
+                                                   navigation={this.props.route.params.navigation}/>
                                         :
                                         <View style={{flex: 1}}>
 
                                         </View>
                                     }
-
                                 </>
                             }
+                        </>
+                    }
 
-                        </View>
-
-                        {/* Pictures Feed */}
-                        {this.state.picturesIsLoading
-                            ?
-                            <View style={styles.loading}>
-                                <ActivityIndicator size="large" color="red"/>
-                            </View>
-                            :
-
-                            <>
-                                {this.state.loadPictures
-                                    ?
-                                    <PictureFeed data={this.state.picturesDataFetched} navigation={this.props.route.params.navigation}/>
-                                    :
-                                    <View style={{flex: 1}}>
-
-                                    </View>
-                                }
-                            </>
-
-                        }
-                    </ScrollView>
-                </SafeAreaView>
-            </>
+                </View>
+            </SafeAreaView>
         );
 
     }

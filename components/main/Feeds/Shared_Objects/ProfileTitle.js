@@ -2,6 +2,8 @@ import {Image, Text, View, TouchableOpacity} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import React from "react";
 import TouchableHighlight from "@gorhom/bottom-sheet";
+import Profile_Icon from "./Profile_Icon";
+import Username_Link_Txt from "./Username_Link_Txt";
 
 
 export default function ProfileTitle(props) {
@@ -15,17 +17,8 @@ export default function ProfileTitle(props) {
         }}>
 
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <TouchableOpacity onPress={() => props.navigation.navigate("PublicProfile", {uid: props.userID})}>
-                    <Image style={{height: 30, width: 30, borderRadius: 30}} source={{uri: props.profilePicture}}/>
-                </TouchableOpacity>
-                <Text style={{marginLeft: 10, color: '#000000', fontSize: 15, fontWeight: 'bold'}}
-                      onPress={() => {
-                          console.log(`\n\n${props.userID}`)
-                          props.navigation.navigate("PublicProfile", {uid: props.userID})
-                      }
-                      }>
-                    {props.name}
-                </Text>
+                <Profile_Icon userID={props.userID} profilePicture={props.profilePicture} navigation={props.navigation}/>
+                <Username_Link_Txt name={props.name} userID={props.userID} navigation={props.navigation} />
             </View>
             <View>
                 <Feather name="more-vertical" color="#000000" size={18}/>

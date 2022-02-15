@@ -299,7 +299,7 @@ class FeedScreen extends Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
                         <Image
                             source={require('./System_Images/Chat_Nav_Icon.png')}
-                            style={{width: 40, height: 40, borderRadius: 40 / 2, marginLeft: 15}}
+                            style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
                         />
                     </TouchableOpacity>
                 </View>

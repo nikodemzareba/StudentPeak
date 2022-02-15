@@ -252,13 +252,15 @@ class FeedScreen extends Component {
                                source={{uri: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"}}/>
                     </TouchableOpacity>
 
+
+
                     <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
                         <SwitchSelector options={options} initial={this.state.chosenOption}
                                         buttonColor={"#000000"}
                                         buttonColor={"#000000"}
                                         textColor={"#000000"}
 
-                                        onPress={value => console.log(`Call onPress with value: ${value}`)}
+                                        onPress={value => this.setState({chosenOption: value})}
                         />
                     </View>
 
@@ -269,62 +271,62 @@ class FeedScreen extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <>
-                    {this.state.chosenOption === 0
-                        ?
-                        <>
-                            {/* Pictures Feed */}
-                            {this.state.picturesIsLoading
+
+                {this.state.chosenOption === 0
+                    ?
+                    <View style={{width, height}}>
+                        {/* Pictures Feed */}
+                        {this.state.picturesIsLoading
+                            ?
+                            <View style={styles.loading}>
+                                <ActivityIndicator size="large" color="red"/>
+                            </View>
+                            :
+
+                            <>
+                                {this.state.loadPictures
+                                    ?
+                                    <PictureFeed data={this.state.picturesDataFetched}
+                                                 navigation={this.props.route.params.navigation}/>
+                                    :
+                                    <View style={{flex: 1}}>
+
+                                    </View>
+                                }
+                            </>
+
+                        }
+                  </View>
+                    :
+                    <>
+
+
+                        <View style={{width, height}}>
+
+                            {this.state.videosIsLoading
                                 ?
                                 <View style={styles.loading}>
                                     <ActivityIndicator size="large" color="red"/>
                                 </View>
                                 :
-
                                 <>
-                                    {this.state.loadPictures
+                                    {this.state.loadVideos
                                         ?
-                                        <PictureFeed data={this.state.picturesDataFetched}
-                                                     navigation={this.props.route.params.navigation}/>
+                                        <VideoFeed data={this.state.videosDataFetched}
+                                                   navigation={this.props.route.params.navigation}/>
                                         :
                                         <View style={{flex: 1}}>
 
                                         </View>
                                     }
+
                                 </>
-
                             }
-                        </>
-                        :
-                        <>
 
+                        </View>
+                    </>
+                }
 
-                            <View style={{width, height}}>
-
-                                {this.state.videosIsLoading
-                                    ?
-                                    <View style={styles.loading}>
-                                        <ActivityIndicator size="large" color="red"/>
-                                    </View>
-                                    :
-                                    <>
-                                        {this.state.loadVideos
-                                            ?
-                                            <VideoFeed data={this.state.videosDataFetched}
-                                                       navigation={this.props.route.params.navigation}/>
-                                            :
-                                            <View style={{flex: 1}}>
-
-                                            </View>
-                                        }
-
-                                    </>
-                                }
-
-                            </View>
-                        </>
-                    }
-                </>
             </View>
         );
 

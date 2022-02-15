@@ -17,10 +17,10 @@ export default function Caption(props) {
             }}
                   onPress={() => {
                       console.log(`\n\nGo to Comments Screen`)
+                      // props.navigation.navigate("PublicProfile", {uid: props.userID})
 
                   }}
-            >
-                "{props.caption}"
+            >:  {props.caption}
             </Text>
 
 

@@ -7,6 +7,7 @@ import VideoControls from './VideoControls';
 import {B} from "../../../Shared_Objects/Bold";
 import  ProfileTitle from "../../../Shared_Objects/ProfileTitle"
 import Caption from "../../../Shared_Objects/Caption";
+import Likes_Count_Txt from "../../../Shared_Objects/Likes_Count_Txt";
 
 export default function VideoPlayer(props) {
 
@@ -110,6 +111,8 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
+
+      <Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation} />
       <Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>
 
     </View>
@@ -129,7 +132,8 @@ const styles = StyleSheet.create({
   },
   controlsContainer: {
     position:'absolute',
-    bottom:10
+    bottom:10,
+    padding:30,
   }
 });
 

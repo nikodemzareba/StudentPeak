@@ -4,6 +4,7 @@ import React from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
 import Comment from "./Shared_Objects/Comment";
+import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
 const {height, width} = Dimensions.get('window');
 
 export default function PictureFeed(props) {
@@ -31,6 +32,8 @@ export default function PictureFeed(props) {
 
                             <Image source={{uri: item.downloadURL}}
                                    style={styles.picture(width, height)}/>
+
+                            <Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation} />
 
                             <Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>
                         </View>

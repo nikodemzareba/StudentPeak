@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b008ce2a-fb4c-4496-85f2-b7261f516e7b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="b008ce2a-fb4c-4496-85f2-b7261f516e7b" name="Changes" comment="This Update:&#10;Comments&#10;&#10;&#10;Previous Updates:&#10;Feed.js switcher now moves  inside the feedscreen when the user scrolls instead of always being at the top.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/System_Images/Chat_Nav_Icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/System_Images/Profile_Image_Icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +33,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644955282493</updated>
-      <workItem from="1644955285379" duration="624000" />
+      <workItem from="1644955285379" duration="2477000" />
     </task>
+    <task id="LOCAL-00001" summary="Refactoring Updates">
+      <created>1644956240220</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644956240220</updated>
+    </task>
+    <task id="LOCAL-00002" summary="In this Update:&#10;Feed.js switcher now moves  inside the feedscreen when the user scrolls instead of always being at the top.">
+      <created>1644956893590</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644956893590</updated>
+    </task>
+    <task id="LOCAL-00003" summary="This Update:&#10;Comments&#10;&#10;&#10;Previous Updates:&#10;Feed.js switcher now moves  inside the feedscreen when the user scrolls instead of always being at the top.">
+      <created>1644957625830</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644957625830</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -53,5 +72,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactoring Updates" />
+    <MESSAGE value="In this Update:&#10;Feed.js switcher now moves  inside the feedscreen when the user scrolls instead of always being at the top." />
+    <MESSAGE value="This Update:&#10;Comments&#10;&#10;&#10;Previous Updates:&#10;Feed.js switcher now moves  inside the feedscreen when the user scrolls instead of always being at the top." />
+    <option name="LAST_COMMIT_MESSAGE" value="This Update:&#10;Comments&#10;&#10;&#10;Previous Updates:&#10;Feed.js switcher now moves  inside the feedscreen when the user scrolls instead of always being at the top." />
   </component>
 </project>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="In this Update:&#10;Added navigational features to username in caption and caption.">
-      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_Count_Txt.js" afterDir="false" />
+    <list default="true" id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/View_All_Comments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Caption.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +27,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="256DmW7nRvWvec8pbMYWMChCui8" />
   <component name="ProjectLevelVcsManager">
@@ -54,7 +61,7 @@
       <updated>1644838805140</updated>
       <workItem from="1644838808253" duration="145000" />
       <workItem from="1644845975596" duration="603000" />
-      <workItem from="1644882989581" duration="5474000" />
+      <workItem from="1644882989581" duration="6780000" />
     </task>
     <task id="LOCAL-00001" summary="In this Update:&#10;Added navigational features to username in caption and caption.">
       <created>1644885834489</created>
@@ -63,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644885834489</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.">
+      <created>1644888827146</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644888827146</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,7 +97,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="In this Update:&#10;Added navigational features to username in caption and caption." />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Added navigational features to username in caption and caption." />
+    <MESSAGE value="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption." />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

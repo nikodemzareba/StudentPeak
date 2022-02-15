@@ -128,7 +128,9 @@ class FeedScreen extends Component {
                                 const createdAt = userPost.get("createdAt");
                                 const downloadURL = userPost.get("downloadURL");
                                 const mediaType = userPost.get("mediaType");
-                                const commentsCount= userPost.get("commentsCount");
+                                const commentsCount = 0
+                                // userPost.get("commentsCount")
+                                ;
                                 const likesCount= userPost.get("likesCount");
 
                                 if (mediaType === "video") {
@@ -167,7 +169,7 @@ class FeedScreen extends Component {
                                     });
                                 }
 
-                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount}`);
+                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount}`);
                                 console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                 if (processedFollowingUsers === expectedFollowingUsersCount) {

@@ -5,6 +5,7 @@ import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
 import Comment from "./Shared_Objects/Comment";
 import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
+import View_All_Comments from "./Shared_Objects/View_All_Comments";
 const {height, width} = Dimensions.get('window');
 
 export default function PictureFeed(props) {
@@ -36,6 +37,7 @@ export default function PictureFeed(props) {
                             <Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation} />
 
                             <Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>
+                            <View_All_Comments  commentsCount={item.commentsCount} navigation={props.navigation}/>
                         </View>
                     )
                 }}

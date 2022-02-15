@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly">
+    <list default="true" id="b008ce2a-fb4c-4496-85f2-b7261f516e7b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/System_Images/Chat_Nav_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/System_Images/Profile_Image_Icon.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -9,33 +13,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="Nicole" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="256DmW7nRvWvec8pbMYWMChCui8" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="25A1rhf6vMsfLMuyEaoRoFTTVG7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -44,79 +25,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/main/Feeds" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../gp" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\Student Peak\components\main\Feeds" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\Student Peak\components\main\Feeds\System_Images" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="925fb885-5721-4abf-937b-727c1bfe766d" name="Changes" comment="" />
-      <created>1644838805140</created>
+      <changelist id="b008ce2a-fb4c-4496-85f2-b7261f516e7b" name="Changes" comment="" />
+      <created>1644955282493</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1644838805140</updated>
-      <workItem from="1644838808253" duration="145000" />
-      <workItem from="1644845975596" duration="603000" />
-      <workItem from="1644882989581" duration="12413000" />
+      <updated>1644955282493</updated>
+      <workItem from="1644955285379" duration="624000" />
     </task>
-    <task id="LOCAL-00001" summary="In this Update:&#10;Added navigational features to username in caption and caption.">
-      <created>1644885834489</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1644885834489</updated>
-    </task>
-    <task id="LOCAL-00002" summary="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.">
-      <created>1644888827146</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1644888827146</updated>
-    </task>
-    <task id="LOCAL-00003" summary="In this Update:&#10;Added View All Comments Objects &amp; Navigational Features&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.&#10;&#10;&#10;Need to DO:&#10;DB Field COmmentsCount is pulling undefined values">
-      <created>1644890290682</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1644890290682</updated>
-    </task>
-    <task id="LOCAL-00004" summary="In this Update:&#10;Switch Works to an extent&#10;&#10;&#10;Need to DO:">
-      <created>1644896476795</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1644896476795</updated>
-    </task>
-    <task id="LOCAL-00005" summary="In this Update:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly">
-      <created>1644897812790</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1644897812790</updated>
-    </task>
-    <task id="LOCAL-00006" summary="In this Update:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly">
-      <created>1644897870607</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1644897870607</updated>
-    </task>
-    <task id="LOCAL-00007" summary="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly">
-      <created>1644898048636</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1644898048636</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,30 +53,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update:&#10;Added navigational features to username in caption and caption." />
-    <MESSAGE value="In this Update:&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption." />
-    <MESSAGE value="In this Update:&#10;Added View All Comments Objects &amp; Navigational Features&#10;Added Likes Txt &amp; Navigational Features&#10;Added navigational features to username in caption and caption.&#10;&#10;&#10;Need to DO:&#10;DB Field COmmentsCount is pulling undefined values" />
-    <MESSAGE value="In this Update:&#10;Switch Works to an extent&#10;&#10;&#10;Need to DO:" />
-    <MESSAGE value="In this Update:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
-    <MESSAGE value="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Icon Size change&#10;&#10;Previous Updates:&#10;Switch Works fully&#10;Got rid of feed navigation title &#10;&#10;&#10;Need to Do:&#10;Make screens fit properly" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feed/Feed.js</url>
-          <line>153</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feed/Feed.js</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -9,10 +9,8 @@ import View_All_Comments from "./Shared_Objects/View_All_Comments";
 const {height, width} = Dimensions.get('window');
 
 export default function PictureFeed(props) {
-    console.log("\n\nHEWEREE")
-    return (
-        <View style={{flex: 1}}>
 
+    return (
             <FlatList
                 style={{flex: 1}}
                 contentContainerStyle={{paddingTop: 25}}
@@ -44,8 +42,6 @@ export default function PictureFeed(props) {
                     )
                 }}
             />
-
-        </View>
     )
 }
 

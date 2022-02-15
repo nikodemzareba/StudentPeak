@@ -20,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Deji" />
+        <entry key="$PROJECT_DIR$" value="G2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -290,7 +290,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Ty-5" />
+                        <option value="origin/G2" />
                       </list>
                     </value>
                   </entry>

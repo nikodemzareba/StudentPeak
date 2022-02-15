@@ -89,7 +89,7 @@ export default function VideoPlayer(props) {
 
   return (
     <View style={{flex:1, marginBottom:20}}>
-      <ProfileTitle name={item.name} profilePicture={item.profile} userID ={item.userID}  navigation={navigation}  />
+      <ProfileTitle name={item.name} profilePicture={item.profile} userID ={item.userID} navigation={navigation}  />
         <Video
           ref={playbackInstance}
           style={styles.video(width, height)}
@@ -110,7 +110,7 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
-      <Caption  name={item.name} caption={item.caption}  />
+      <Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>
 
     </View>
   );

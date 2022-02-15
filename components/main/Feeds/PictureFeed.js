@@ -32,8 +32,7 @@ export default function PictureFeed(props) {
                             <Image source={{uri: item.downloadURL}}
                                    style={styles.picture(width, height)}/>
 
-                            <Caption  name={item.name} caption={item.caption}  />
-                            <Comment></Comment>
+                            <Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>
                         </View>
                     )
                 }}

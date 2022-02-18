@@ -1,4 +1,4 @@
-import {Dimensions, FlatList, Image, StyleSheet, Text, View} from "react-native";
+import {Button, Dimensions, FlatList, Image, StyleSheet, Text, View} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import React from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
@@ -65,7 +65,6 @@ export default function PictureFeed(props) {
                 horizontal={false}
                 scrollEventThrottle={20}
                 showsVerticalScrollIndicator={false}
-                // onViewableItemsChanged={this.handlePicturesViewableItemsChanged}
                 viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
                 overScrollMode="never"
                 renderItem={({item}) => {
@@ -87,6 +86,9 @@ export default function PictureFeed(props) {
 
                             <Caption name={item.name} userID={item.userID} navigation={props.navigation}
                                      caption={item.caption}/>
+
+
+                            <Comment />
                             <View_All_Comments commentsCount={item.commentsCount} navigation={props.navigation}/>
                         </View>
                     )

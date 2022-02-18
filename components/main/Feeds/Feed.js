@@ -57,10 +57,10 @@ class FeedScreen extends Component {
             .collection('following')
             .doc(firebase.auth().currentUser.uid)
             .collection('userFollowing')
-        
+
         this.state = {
 
-            storiesData:[],
+            storiesData: [],
             storiesDataLoaded: false,
 
             initialViewVideosOrPictureFeed: 0,
@@ -73,7 +73,7 @@ class FeedScreen extends Component {
             videosIsLoading: true,
             videosReceived: 0,
             loadVideos: false,
-            
+
             picturesDataFetched: [],
             picturesIsLoading: true,
             picturesReceived: 0,
@@ -248,9 +248,10 @@ class FeedScreen extends Component {
 
         return (
             <ScrollView style={{flex: 1}}>
-                {/* Slider (Picture / Videos) */}
 
+                {/* Top Bar  */}
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                    {/* Profile Icon */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
                         {this.state.profileImageLoaded
                             ?
@@ -266,9 +267,10 @@ class FeedScreen extends Component {
                         }
                     </TouchableOpacity>
 
-
+                    {/* Slider (Picture / Videos) */}
                     <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
-                        <SwitchSelector options={videosOrPicturesSelectedToView} initial={this.state.initialViewVideosOrPictureFeed}
+                        <SwitchSelector options={videosOrPicturesSelectedToView}
+                                        initial={this.state.initialViewVideosOrPictureFeed}
                                         buttonColor={"#000000"}
                                         buttonColor={"#000000"}
                                         textColor={"#000000"}
@@ -277,6 +279,7 @@ class FeedScreen extends Component {
                         />
                     </View>
 
+                    {/* Chat BTN */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
                         <Image
                             source={require('./System_Images/Chat_Nav_Icon.png')}
@@ -301,7 +304,8 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
-                                    <PictureFeed data={this.state.picturesDataFetched} storyData = {this.state.storiesData}
+                                    <PictureFeed data={this.state.picturesDataFetched}
+                                                 storyData={this.state.storiesData}
                                                  navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1}}>

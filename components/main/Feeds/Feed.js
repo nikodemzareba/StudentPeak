@@ -41,11 +41,14 @@ import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 LogBox.ignoreLogs(['Setting a timer']);
 
 
-const options = [
+const videosOrPicturesSelectedToView = [
     {label: 'Pictures', value: 0},
     {label: 'Videos', value: 1},
 
 ];
+
+import {storyData} from "./PicturesFeedObjects/TempStoryData";
+
 
 class FeedScreen extends Component {
 
@@ -55,52 +58,39 @@ class FeedScreen extends Component {
             .collection('following')
             .doc(firebase.auth().currentUser.uid)
             .collection('userFollowing')
+        
         this.state = {
-            requestProcessed: false,
-            chosenOption: 0,
+
+            storiesData:[],
+            storiesDataLoaded: false,
+
+            initialViewVideosOrPictureFeed: 0,
+
             profileImageLoaded: false,
             profileImage: "",
             userId: firebase.auth().currentUser.uid,
 
-            picturesReceived: 0,
-            loadPictures: false,
-
-            videosReceived: 0,
-            loadVideos: false,
-
-            videosOutOfBoundItems: [],
             videosDataFetched: [],
             videosIsLoading: true,
-
-            picturesOutOfBoundItems: [],
+            videosReceived: 0,
+            loadVideos: false,
+            
             picturesDataFetched: [],
-            picturesIsLoading: true
+            picturesIsLoading: true,
+            picturesReceived: 0,
+            loadPictures: false,
         }
     }
-
-    handleVideosViewableItemsChanged = ({changed}) => {
-
-        const videosOutOfBoundItems = changed;
-
-        if (videosOutOfBoundItems.length !== 0) {
-            this.setState({videosOutOfBoundItems});
-        }
-
-    };
-
-    handlePicturesViewableItemsChanged = ({changed}) => {
-
-        const picturesOutOfBoundItems = changed;
-
-        if (picturesOutOfBoundItems.length !== 0) {
-            this.setState({picturesOutOfBoundItems});
-        }
-
-    };
 
     componentDidMount() {
         this.getProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+
+        //HELLO DELETE Later
+        this.setState({
+            storiesDataLoaded: true,
+            storiesData: storyData
+        });
     }
 
     getProfileImage() {
@@ -290,12 +280,12 @@ class FeedScreen extends Component {
 
 
                     <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
-                        <SwitchSelector options={options} initial={this.state.chosenOption}
+                        <SwitchSelector options={videosOrPicturesSelectedToView} initial={this.state.initialViewVideosOrPictureFeed}
                                         buttonColor={"#000000"}
                                         buttonColor={"#000000"}
                                         textColor={"#000000"}
 
-                                        onPress={value => this.setState({chosenOption: value})}
+                                        onPress={value => this.setState({initialViewVideosOrPictureFeed: value})}
                         />
                     </View>
 
@@ -309,7 +299,7 @@ class FeedScreen extends Component {
 
 
                 {/* Logic for which view is visible*/}
-                {this.state.chosenOption === 0
+                {this.state.initialViewVideosOrPictureFeed === 0
                     ?
                     <>
                         {/* Pictures Feed */}
@@ -323,7 +313,7 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadPictures
                                     ?
-                                    <PictureFeed data={this.state.picturesDataFetched}
+                                    <PictureFeed data={this.state.picturesDataFetched} storyData = {this.state.storiesData}
                                                  navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1}}>

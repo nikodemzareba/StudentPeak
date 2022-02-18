@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Renamed variables from profilePicture to profileImage to match DB&#10;&#10;Previous Updates:&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/PicturesFeedObjects/TempStoryData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -11,10 +11,28 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Ty-6" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Isreal-3" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="25AIlwpXWDSEMY6oAhTXaKhaFpB" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -24,6 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../gp" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -35,6 +54,10 @@
       <option name="presentableId" value="Default" />
       <updated>1644963623980</updated>
       <workItem from="1644963633339" duration="2256000" />
+      <workItem from="1645036321032" duration="17000" />
+      <workItem from="1645036351293" duration="1147000" />
+      <workItem from="1645038085708" duration="166000" />
+      <workItem from="1645143540776" duration="2732000" />
     </task>
     <task id="LOCAL-00001" summary="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
       <created>1644964031276</created>
@@ -73,6 +96,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />

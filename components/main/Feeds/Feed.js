@@ -245,17 +245,6 @@ class FeedScreen extends Component {
 
     }
 
-    renderUserFollowingVideoPosts = ({item}) => {
-        return <VideoPlayer
-            height={height / 1.6}
-            width={width}
-            videoUri={item.downloadURL}
-            item={item}
-            videosOutOfBoundItems={this.state.videosOutOfBoundItems}
-        />
-    }
-
-
     render() {
 
         return (
@@ -311,7 +300,7 @@ class FeedScreen extends Component {
                             :
 
                             <>
-                                {this.state.loadPictures
+                                {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
                                     <PictureFeed data={this.state.picturesDataFetched} storyData = {this.state.storiesData}
                                                  navigation={this.props.route.params.navigation}/>

@@ -1,4 +1,4 @@
-import {Button, Dimensions, FlatList, Image, StyleSheet, Text, View} from "react-native";
+import {Button, Dimensions, FlatList, Image, ImageBackground, StyleSheet, Text, View} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import React from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
@@ -8,6 +8,7 @@ import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
 import View_All_Comments from "./Shared_Objects/View_All_Comments";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
+import LikeBTN from "./Shared_Objects/LikeBTN";
 
 const {height, width} = Dimensions.get('window');
 
@@ -77,18 +78,21 @@ export default function PictureFeed(props) {
                                           navigation={props.navigation}
                             />
 
-                            <Image source={{uri: item.downloadURL}}
+                            <ImageBackground source={{uri: item.downloadURL}}
                                    style={{ width: '100%',
                                        height: undefined,
                                        aspectRatio: 1,}}/>
 
-                            <Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>
 
-                            <Caption name={item.name} userID={item.userID} navigation={props.navigation}
-                                     caption={item.caption}/>
+                            <LikeBTN />
+
+                            {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>*/}
+
+                            {/*<Caption name={item.name} userID={item.userID} navigation={props.navigation}*/}
+                            {/*         caption={item.caption}/>*/}
 
 
-                            <Comment />
+
                             <View_All_Comments commentsCount={item.commentsCount} navigation={props.navigation}/>
                         </View>
                     )

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Renamed variables from profilePicture to profileImage to match DB&#10;&#10;Previous Updates:&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
-      <change afterPath="$PROJECT_DIR$/components/main/Feeds/PicturesFeedObjects/TempStoryData.js" afterDir="false" />
+    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/LikeBTN.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_Count_Txt.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_Count_Txt.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,8 @@
       <workItem from="1645036321032" duration="17000" />
       <workItem from="1645036351293" duration="1147000" />
       <workItem from="1645038085708" duration="166000" />
-      <workItem from="1645143540776" duration="2732000" />
+      <workItem from="1645143540776" duration="3123000" />
+      <workItem from="1645146925415" duration="7032000" />
     </task>
     <task id="LOCAL-00001" summary="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
       <created>1644964031276</created>
@@ -80,7 +82,42 @@
       <option name="project" value="LOCAL" />
       <updated>1644965380088</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <created>1645146683390</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645146683390</updated>
+    </task>
+    <task id="LOCAL-00005" summary="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <created>1645147397694</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645147397694</updated>
+    </task>
+    <task id="LOCAL-00006" summary="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <created>1645147625488</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645147625488</updated>
+    </task>
+    <task id="LOCAL-00007" summary="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <created>1645147831362</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645147831362</updated>
+    </task>
+    <task id="LOCAL-00008" summary="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
+      <created>1645148264098</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645148264098</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +139,7 @@
     <MESSAGE value="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;&#10;Previous Updates:&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;Renamed variables from profilePicture to profileImage to match DB&#10;&#10;Previous Updates:&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;Renamed variables from profilePicture to profileImage to match DB&#10;&#10;Previous Updates:&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
+    <MESSAGE value="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
   </component>
 </project>

@@ -44,7 +44,6 @@ LogBox.ignoreLogs(['Setting a timer']);
 const videosOrPicturesSelectedToView = [
     {label: 'Pictures', value: 0},
     {label: 'Videos', value: 1},
-
 ];
 
 import {storyData} from "./PicturesFeedObjects/TempStoryData";

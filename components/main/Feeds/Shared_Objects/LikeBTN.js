@@ -20,6 +20,8 @@ export default function LikeBTN(props) {
         }
 
         setLikeState(!likeState)
+        setCurrentLikes(currentLikes+1)
+
 
     }
 

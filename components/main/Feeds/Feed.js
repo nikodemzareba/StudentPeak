@@ -54,10 +54,7 @@ class FeedScreen extends Component {
 
     constructor(props) {
         super(props);
-        this.usersFollowingRef = firebase.firestore()
-            .collection('following')
-            .doc(firebase.auth().currentUser.uid)
-            .collection('userFollowing')
+
 
         this.state = {
 
@@ -68,7 +65,8 @@ class FeedScreen extends Component {
 
             profileImageLoaded: false,
             profileImage: "",
-            userId: firebase.auth().currentUser.uid,
+            userId: "upb6UG9eM0VWzRo8tGke3xK9p953",
+            //firebase.auth().currentUser.uid,
 
             videosDataFetched: [],
             videosIsLoading: true,
@@ -80,6 +78,10 @@ class FeedScreen extends Component {
             picturesReceived: 0,
             loadPictures: false,
         }
+        this.usersFollowingRef = firebase.firestore()
+            .collection('following')
+            .doc(this.state.userId)
+            .collection('userFollowing')
     }
 
     componentDidMount() {
@@ -99,7 +101,7 @@ class FeedScreen extends Component {
             .doc(this.state.userId)
             .get()
             .then(userDetails => {
-                console.log(`\n\nCurrent UserID: ${firebase.auth().currentUser.uid} \nProfile Image URL: ${userDetails.get("profileimage")}`)
+                console.log(`\n\nCurrent UserID: ${this.state.userId} \nProfile Image URL: ${userDetails.get("profileimage")}`)
                 if (userDetails.get("profileimage") !== "") {
                     console.log(`\n\n Has Profile Image`);
 
@@ -141,72 +143,79 @@ class FeedScreen extends Component {
                         //.where("mediaType", "==", "video")
                         .get()
                         .then(usersFollowingPosts => {
-                            console.log("\nGot Posts Of Users i am Following")
+                            console.log("\nGot Posts Of Users i am Following!")
 
                             usersFollowingPosts.forEach((userPost) => {
+
+                                firebase.firestore()
+                                    .collection('postData')
+                                    .doc(userPost.id)
+                                    .get()
+                                    .then((postCommentsAndLikes => {
+
+                                        const profileImage = userDetails.get("profileimage");
+                                        const username = userDetails.get("username");
+                                        const userID = userFollowing.id;
+
+                                        const caption = userPost.get("caption");
+                                        const createdAt = userPost.get("createdAt");
+                                        const downloadURL = userPost.get("downloadURL");
+                                        const mediaType = userPost.get("mediaType");
+
+                                        const commentsCount = postCommentsAndLikes.get("commentsCount");
+                                        const likesCount = postCommentsAndLikes.get("likesCount");
+
+                                        if (mediaType === "video") {
+
+                                            this.setState({
+                                                videosReceived: this.state.videosReceived + 1
+                                            });
+
+                                            videosDataFetched.push({
+                                                key: userPost.id,
+                                                userID: userID,
+                                                name: username,
+                                                profile: profileImage,
+                                                caption: caption,
+                                                createdAt: createdAt,
+                                                downloadURL: downloadURL,
+                                                commentsCount: commentsCount,
+                                                likesCount: likesCount
+                                            });
+                                        } else if (mediaType === "picture") {
+
+                                            this.setState({
+                                                picturesReceived: this.state.picturesReceived + 1
+                                            });
+
+                                            picturesDataFetched.push({
+                                                key: userPost.id,
+                                                userID: userID,
+                                                name: username,
+                                                profile: profileImage,
+                                                caption: caption,
+                                                createdAt: createdAt,
+                                                downloadURL: downloadURL,
+                                                commentsCount: commentsCount,
+                                                likesCount: likesCount
+                                            });
+                                        }
+
+                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount}`);
+                                        console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+
+                                        if (processedFollowingUsers === expectedFollowingUsersCount) {
+                                            console.log("\nSetting Data To Variable")
+                                            this.setState({
+                                                videosDataFetched: videosDataFetched,
+                                                picturesDataFetched: picturesDataFetched,
+                                            }, () => {
+                                                this.setStatesForLoadingFeed()
+                                            });
+                                        }
+
+                                    }))
                                 //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
-
-                                const profileImage = userDetails.get("profileimage");
-                                const username = userDetails.get("username");
-                                const userID = userFollowing.id;
-
-                                const caption = userPost.get("caption");
-                                const createdAt = userPost.get("createdAt");
-                                const downloadURL = userPost.get("downloadURL");
-                                const mediaType = userPost.get("mediaType");
-                                const commentsCount = 0
-                                    // userPost.get("commentsCount")
-                                ;
-                                const likesCount = userPost.get("likesCount");
-
-                                if (mediaType === "video") {
-
-                                    this.setState({
-                                        videosReceived: this.state.videosReceived + 1
-                                    });
-
-                                    videosDataFetched.push({
-                                        key: userPost.id,
-                                        userID: userID,
-                                        name: username,
-                                        profile: profileImage,
-                                        caption: caption,
-                                        createdAt: createdAt,
-                                        downloadURL: downloadURL,
-                                        commentsCount: commentsCount,
-                                        likesCount: likesCount
-                                    });
-                                } else if (mediaType === "picture") {
-
-                                    this.setState({
-                                        picturesReceived: this.state.picturesReceived + 1
-                                    });
-
-                                    picturesDataFetched.push({
-                                        key: userPost.id,
-                                        userID: userID,
-                                        name: username,
-                                        profile: profileImage,
-                                        caption: caption,
-                                        createdAt: createdAt,
-                                        downloadURL: downloadURL,
-                                        commentsCount: commentsCount,
-                                        likesCount: likesCount
-                                    });
-                                }
-
-                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount}`);
-                                console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
-
-                                if (processedFollowingUsers === expectedFollowingUsersCount) {
-                                    console.log("\nSetting Data To Variable")
-                                    this.setState({
-                                        videosDataFetched: videosDataFetched,
-                                        picturesDataFetched: picturesDataFetched,
-                                    }, () => {
-                                        this.setStatesForLoadingFeed()
-                                    });
-                                }
                             })
                         })
                 })
@@ -248,10 +257,15 @@ class FeedScreen extends Component {
     render() {
 
         return (
-            <ScrollView style={{flex: 1, backgroundColor: "black"}}>
+            <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
 
                 {/* Top Bar  */}
-                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor:"black"}}>
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    backgroundColor: "black"
+                }}>
                     {/* Profile Icon */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
                         {this.state.profileImageLoaded

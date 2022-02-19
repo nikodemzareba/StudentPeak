@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
   video: (width, height) => ({
     alignSelf: 'center',
     width: width,
-    height: height
+    height: undefined,
+    aspectRatio: 1,
   }),
   container: {
     flex: 1,

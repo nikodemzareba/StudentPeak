@@ -248,7 +248,7 @@ class FeedScreen extends Component {
     render() {
 
         return (
-            <ScrollView style={{flex: 1}}>
+            <ScrollView style={{flex: 1, backgroundColor: "black"}}>
 
                 {/* Top Bar  */}
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor:"black"}}>

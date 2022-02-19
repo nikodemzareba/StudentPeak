@@ -85,7 +85,7 @@ export default function PictureFeed(props) {
                                              }}/>
 
 
-                           <LikesAndCommentsDisplay likesCount={item.likesCount}    commentsCount={item.commentsCount} navigation={props.navigation}/>
+                           <LikesAndCommentsDisplay postID={item.key} likesCount={item.likesCount}    commentsCount={item.commentsCount} navigation={props.navigation}/>
 
                             {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>*/}
 

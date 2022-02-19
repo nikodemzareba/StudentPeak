@@ -86,6 +86,7 @@ export default function PictureFeed(props) {
                             <ImageBackground source={{uri: item.downloadURL}}
                                    style={{ width: '100%',
                                        height: undefined,
+
                                        aspectRatio: 1,}}/>
 
 
@@ -98,7 +99,7 @@ export default function PictureFeed(props) {
 
 
 
-                            <View_All_Comments commentsCount={item.commentsCount} navigation={props.navigation}/>
+                            {/*<View_All_Comments commentsCount={item.commentsCount} navigation={props.navigation}/>*/}
                         </View>
                     )
                 }}

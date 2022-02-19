@@ -7,10 +7,11 @@ import VideoControls from './VideoControls';
 import {B} from "../../../Shared_Objects/Bold";
 import  ProfileTitle from "../../../Shared_Objects/ProfileTitle"
 import Caption from "../../../Shared_Objects/Caption";
-import Likes_Count_Txt from "../../../Shared_Objects/Likes_Count_Txt";
+import Likes_And_Comments_Count_Txt  from "../../../Shared_Objects/Likes_Count_Txt";
 import View_All_Comments from "../../../Shared_Objects/View_All_Comments";
 import {feedStyles} from "../../../Shared_Objects/Styles";
 import LikeBTN from "../../../Shared_Objects/LikeBTN";
+import LikesAndCommentsDisplay from "../../../Shared_Objects/LikesAndCommentsDisplay";
 
 export default function VideoPlayer(props) {
 
@@ -114,7 +115,8 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
-      <LikeBTN likesCount={item.likesCount} navigation={props.navigation}/>
+      <LikesAndCommentsDisplay likesCount={item.likesCount}    commentsCount={item.commentsCount} navigation={props.navigation}/>
+
       {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation} />*/}
       {/*<Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>*/}
       {/*<View_All_Comments  commentsCount={item.commentsCount} navigation={props.navigation}/>*/}

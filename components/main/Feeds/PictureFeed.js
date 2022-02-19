@@ -4,12 +4,13 @@ import React from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
 import Comment from "./Shared_Objects/Comment";
-import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
+import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_Count_Txt";
 import View_All_Comments from "./Shared_Objects/View_All_Comments";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 import LikeBTN from "./Shared_Objects/LikeBTN";
 import {feedStyles} from "./Shared_Objects/Styles";
+import LikesAndCommentsDisplay from "./Shared_Objects/LikesAndCommentsDisplay";
 
 
 const {height, width} = Dimensions.get('window');
@@ -84,7 +85,7 @@ export default function PictureFeed(props) {
                                              }}/>
 
 
-                            <LikeBTN likesCount={item.likesCount} navigation={props.navigation}/>
+                           <LikesAndCommentsDisplay likesCount={item.likesCount}    commentsCount={item.commentsCount} navigation={props.navigation}/>
 
                             {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>*/}
 

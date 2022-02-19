@@ -34,7 +34,7 @@ const separator = "#############################################################
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
-import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
+
 import View_All_Comments from "./Shared_Objects/View_All_Comments";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 
@@ -47,6 +47,7 @@ const videosOrPicturesSelectedToView = [
 ];
 
 import {storyData} from "./PicturesFeedObjects/TempStoryData";
+import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
 
 
 class FeedScreen extends Component {

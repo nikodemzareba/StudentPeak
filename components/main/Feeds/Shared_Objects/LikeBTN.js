@@ -2,10 +2,10 @@ import {Ionicons} from "@expo/vector-icons";
 import React, {useState} from "react";
 import {Image, TouchableOpacity, View, StyleSheet} from "react-native";
 import firebase from "firebase";
-import Likes_Count_Txt from "./Likes_Count_Txt";
-import { Octicons } from '@expo/vector-icons';
 
-
+import {Octicons} from '@expo/vector-icons';
+import {feedStyles} from "./Styles";
+import Likes_And_Comments_Count_Txt from "./Likes_Count_Txt";
 
 const styles = StyleSheet.create({
     tvScreenMain: {
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 150,
         height: 40,
-
 
 
         textAlign: 'center',
@@ -56,27 +55,23 @@ export default function LikeBTN(props) {
 
     return (
 
+        <View style={feedStyles.likeAndCommentsBTN_View}>
+            <TouchableOpacity
+                onPress={() => {
+                    BTN_Event();
+                }}
+            >
+                {likeState === true
+                    ?
 
-            <View style={styles.tvScreenMain}>
+                    <Ionicons name="ios-heart-sharp" size={24} color="red"/>
 
-                <TouchableOpacity
-                    onPress={() => {
-                        BTN_Event();
-                    }}
-                >
-                    {likeState === true
-                        ?
-
-                        <Ionicons name="ios-heart-sharp" size={24} color="red"/>
-
-                        :
-                        <Octicons name="heart" size={24} color="white" />
-                    }
-                </TouchableOpacity>
-                <Likes_Count_Txt likesCount={currentLikes}/>
-
-            </View>
-
+                    :
+                    <Octicons name="heart" size={24} color="white"/>
+                }
+            </TouchableOpacity>
+            <Likes_And_Comments_Count_Txt count={currentLikes}/>
+        </View>
     )
 }
 

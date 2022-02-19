@@ -9,23 +9,25 @@ import View_All_Comments from "./Shared_Objects/View_All_Comments";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 import LikeBTN from "./Shared_Objects/LikeBTN";
+import {feedStyles} from "./Shared_Objects/Styles";
+
 
 const {height, width} = Dimensions.get('window');
 
 
-
 const maxUsernameLengthForDisplay = 8;
-const isUserNameTooLong =(username) => {
-    if(username.length > maxUsernameLengthForDisplay)
-    {
-          return username.slice(0, maxUsernameLengthForDisplay) + "..."
+const isUserNameTooLong = (username) => {
+    if (username.length > maxUsernameLengthForDisplay) {
+        return username.slice(0, maxUsernameLengthForDisplay) + "..."
     }
     return username;
 }
+
+
 export default function PictureFeed(props) {
 
     return (
-        <View style={{flex: 1, marginBottom: 20,backgroundColor:"black" }}>
+        <View style={feedStyles.screenBackground}>
 
             {/*Profile Stories */}
             <FlatList
@@ -38,20 +40,15 @@ export default function PictureFeed(props) {
                 renderItem={({item}) => {
                     return (
 
-                            <View style={{
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                paddingHorizontal: 0,
-                                marginBottom: 10,
-                                width:60, height:60
-                            }}>
+                        <View style={styles.stories}>
                             <Profile_Icon userID={item.key} profileImage={item.profileImage}
                                           width={45} height={45} borderRadius={45}
                                           navigation={props.navigation}
 
                             />
 
-                            <Username_Link_Txt name={isUserNameTooLong(item.username)} userID={item.key} fontSize={9} fontWeight={'normal'} navigation={props.navigation} />
+                            <Username_Link_Txt name={isUserNameTooLong(item.username)} userID={item.key} fontSize={9}
+                                               fontWeight={'normal'} navigation={props.navigation}/>
 
                         </View>
                     )
@@ -71,12 +68,7 @@ export default function PictureFeed(props) {
                 renderItem={({item}) => {
                     return (
 
-                        <View style={{flex: 1, marginBottom: 20,
-                            borderTopLeftRadius: 15,
-                            borderTopRightRadius: 15,
-                            borderBottomRightRadius: 15,
-                            borderBottomLeftRadius: 15,
-                            backgroundColor: 'rgba(52, 52, 52, 0.8)'}}>
+                        <View style={feedStyles.post}>
                             <ProfileTitle name={item.name}
                                           profileImage={item.profile}
                                           userID={item.userID}
@@ -84,10 +76,12 @@ export default function PictureFeed(props) {
                             />
 
                             <ImageBackground source={{uri: item.downloadURL}}
-                                   style={{ width: '100%',
-                                       height: undefined,
+                                             style={{
+                                                 width: '100%',
+                                                 height: undefined,
 
-                                       aspectRatio: 1,}}/>
+                                                 aspectRatio: 1,
+                                             }}/>
 
 
                             <LikeBTN likesCount={item.likesCount} navigation={props.navigation}/>
@@ -96,7 +90,6 @@ export default function PictureFeed(props) {
 
                             {/*<Caption name={item.name} userID={item.userID} navigation={props.navigation}*/}
                             {/*         caption={item.caption}/>*/}
-
 
 
                             {/*<View_All_Comments commentsCount={item.commentsCount} navigation={props.navigation}/>*/}
@@ -122,5 +115,12 @@ const styles = StyleSheet.create({
     controlsContainer: {
         position: 'absolute',
         bottom: 10
+    },
+    stories: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingHorizontal: 0,
+        marginBottom: 10,
+        width: 60, height: 60
     }
 })

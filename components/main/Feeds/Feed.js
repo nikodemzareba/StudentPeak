@@ -250,7 +250,7 @@ class FeedScreen extends Component {
             <ScrollView style={{flex: 1}}>
 
                 {/* Top Bar  */}
-                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor:"black"}}>
                     {/* Profile Icon */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
                         {this.state.profileImageLoaded

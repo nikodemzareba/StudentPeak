@@ -25,7 +25,7 @@ const isUserNameTooLong =(username) => {
 export default function PictureFeed(props) {
 
     return (
-        <View style={{flex: 1, marginBottom: 20}}>
+        <View style={{flex: 1, marginBottom: 20,backgroundColor:"black" }}>
 
             {/*Profile Stories */}
             <FlatList
@@ -46,7 +46,7 @@ export default function PictureFeed(props) {
                                 width:60, height:60
                             }}>
                             <Profile_Icon userID={item.key} profileImage={item.profileImage}
-                                          width={35} height={35} borderRadius={35}
+                                          width={45} height={45} borderRadius={45}
                                           navigation={props.navigation}
 
                             />
@@ -71,7 +71,12 @@ export default function PictureFeed(props) {
                 renderItem={({item}) => {
                     return (
 
-                        <View style={{flex: 1, marginBottom: 20}}>
+                        <View style={{flex: 1, marginBottom: 20,
+                            borderTopLeftRadius: 15,
+                            borderTopRightRadius: 15,
+                            borderBottomRightRadius: 15,
+                            borderBottomLeftRadius: 15,
+                            backgroundColor: 'rgba(52, 52, 52, 0.8)'}}>
                             <ProfileTitle name={item.name}
                                           profileImage={item.profile}
                                           userID={item.userID}

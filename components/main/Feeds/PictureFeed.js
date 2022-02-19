@@ -84,7 +84,7 @@ export default function PictureFeed(props) {
                                        aspectRatio: 1,}}/>
 
 
-                            <LikeBTN />
+                            <LikeBTN likesCount={item.likesCount} navigation={props.navigation}/>
 
                             {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>*/}
 

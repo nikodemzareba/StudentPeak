@@ -34,18 +34,21 @@ const separator = "#############################################################
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
-import Likes_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
+
 import View_All_Comments from "./Shared_Objects/View_All_Comments";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
 
-const options = [
+const videosOrPicturesSelectedToView = [
     {label: 'Pictures', value: 0},
     {label: 'Videos', value: 1},
-
 ];
+
+import {storyData} from "./PicturesFeedObjects/TempStoryData";
+import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
+
 
 class FeedScreen extends Component {
 
@@ -55,52 +58,39 @@ class FeedScreen extends Component {
             .collection('following')
             .doc(firebase.auth().currentUser.uid)
             .collection('userFollowing')
+
         this.state = {
-            requestProcessed: false,
-            chosenOption: 0,
+
+            storiesData: [],
+            storiesDataLoaded: false,
+
+            initialViewVideosOrPictureFeed: 0,
+
             profileImageLoaded: false,
             profileImage: "",
             userId: firebase.auth().currentUser.uid,
 
-            picturesReceived: 0,
-            loadPictures: false,
-
+            videosDataFetched: [],
+            videosIsLoading: true,
             videosReceived: 0,
             loadVideos: false,
 
-            videosOutOfBoundItems: [],
-            videosDataFetched: [],
-            videosIsLoading: true,
-
-            picturesOutOfBoundItems: [],
             picturesDataFetched: [],
-            picturesIsLoading: true
+            picturesIsLoading: true,
+            picturesReceived: 0,
+            loadPictures: false,
         }
     }
-
-    handleVideosViewableItemsChanged = ({changed}) => {
-
-        const videosOutOfBoundItems = changed;
-
-        if (videosOutOfBoundItems.length !== 0) {
-            this.setState({videosOutOfBoundItems});
-        }
-
-    };
-
-    handlePicturesViewableItemsChanged = ({changed}) => {
-
-        const picturesOutOfBoundItems = changed;
-
-        if (picturesOutOfBoundItems.length !== 0) {
-            this.setState({picturesOutOfBoundItems});
-        }
-
-    };
 
     componentDidMount() {
         this.getProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+
+        //HELLO DELETE Later
+        this.setState({
+            storiesDataLoaded: true,
+            storiesData: storyData
+        });
     }
 
     getProfileImage() {
@@ -255,24 +245,14 @@ class FeedScreen extends Component {
 
     }
 
-    renderUserFollowingVideoPosts = ({item}) => {
-        return <VideoPlayer
-            height={height / 1.6}
-            width={width}
-            videoUri={item.downloadURL}
-            item={item}
-            videosOutOfBoundItems={this.state.videosOutOfBoundItems}
-        />
-    }
-
-
     render() {
 
         return (
-            <ScrollView style={{flex: 1}}>
-                {/* Slider (Picture / Videos) */}
+            <ScrollView style={{flex: 1, backgroundColor: "black"}}>
 
-                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                {/* Top Bar  */}
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor:"black"}}>
+                    {/* Profile Icon */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
                         {this.state.profileImageLoaded
                             ?
@@ -288,17 +268,19 @@ class FeedScreen extends Component {
                         }
                     </TouchableOpacity>
 
-
+                    {/* Slider (Picture / Videos) */}
                     <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
-                        <SwitchSelector options={options} initial={this.state.chosenOption}
+                        <SwitchSelector options={videosOrPicturesSelectedToView}
+                                        initial={this.state.initialViewVideosOrPictureFeed}
                                         buttonColor={"#000000"}
                                         buttonColor={"#000000"}
                                         textColor={"#000000"}
 
-                                        onPress={value => this.setState({chosenOption: value})}
+                                        onPress={value => this.setState({initialViewVideosOrPictureFeed: value})}
                         />
                     </View>
 
+                    {/* Chat BTN */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
                         <Image
                             source={require('./System_Images/Chat_Nav_Icon.png')}
@@ -309,7 +291,7 @@ class FeedScreen extends Component {
 
 
                 {/* Logic for which view is visible*/}
-                {this.state.chosenOption === 0
+                {this.state.initialViewVideosOrPictureFeed === 0
                     ?
                     <>
                         {/* Pictures Feed */}
@@ -321,9 +303,10 @@ class FeedScreen extends Component {
                             :
 
                             <>
-                                {this.state.loadPictures
+                                {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
                                     <PictureFeed data={this.state.picturesDataFetched}
+                                                 storyData={this.state.storiesData}
                                                  navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1}}>

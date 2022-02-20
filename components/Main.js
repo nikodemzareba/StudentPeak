@@ -14,6 +14,7 @@ import PrivateProfileScreen from "./main/PrivateProfile"
 import Match from "./main/match";
 import Chat from "./main/Chat";
 
+
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";

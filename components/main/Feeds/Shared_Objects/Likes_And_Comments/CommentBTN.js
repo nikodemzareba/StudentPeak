@@ -1,26 +1,30 @@
-import {B} from "./Bold";
+import {B} from "../Bold";
 import {Text, TouchableOpacity, View} from "react-native";
-import React from "react";
+import React, {useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
 import { Dimensions, StyleSheet } from 'react-native'
+import {feedStyles} from "../Styles";
+import Likes_And_Comments_Count_Txt from "./Likes_And_Comments_Count_Txt";
 
 
-export default function Comment(props) {
+export default function CommentBTN(props) {
+
+    const [currentCommentsCount, setCurrentCommentsCount] = useState(props.commentsCount);
+
     return(
-    <View style = {styles.container}>
+    <View style = {feedStyles.likeAndCommentsBTN_View}>
         <TouchableOpacity
             style={styles.actionButton}
             //onPress={() => dispatch(openCommentModal(true, post))}
         >
             <Ionicons
                 color="#FFFFFF"
-                size={30}
+                size={24}
                 name={"chatbubble"}
             />
-            <Text style={styles.actionButtonText}>
-                {1}
-            </Text>
+
         </TouchableOpacity>
+        <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>
     </View>
 
     )

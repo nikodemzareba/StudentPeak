@@ -7,7 +7,7 @@ import VideoControls from './VideoControls';
 import {B} from "../../../Shared_Objects/Bold";
 import  ProfileTitle from "../../../Shared_Objects/ProfileTitle"
 import Caption from "../../../Shared_Objects/Caption";
-import Likes_And_Comments_Count_Txt  from "../../../Shared_Objects/Likes_And_Comments/Likes_Count_Txt";
+import Likes_And_Comments_Count_Txt  from "../../../Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
 import View_All_Comments from "../../../Shared_Objects/Likes_And_Comments/View_All_Comments";
 import {feedStyles} from "../../../Shared_Objects/Styles";
 import LikeBTN from "../../../Shared_Objects/Likes_And_Comments/LikeBTN";

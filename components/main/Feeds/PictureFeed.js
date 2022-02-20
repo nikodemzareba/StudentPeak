@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
 
-import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_And_Comments/Likes_Count_Txt";
+import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
 import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";

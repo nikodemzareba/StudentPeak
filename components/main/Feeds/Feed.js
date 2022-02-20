@@ -37,7 +37,7 @@ const videosOrPicturesSelectedToView = [
 ];
 
 import {storyData} from "./PicturesFeedObjects/TempStoryData";
-import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_Count_Txt";
+import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
 
 
 class FeedScreen extends Component {

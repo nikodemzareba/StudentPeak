@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
 import { Dimensions, StyleSheet } from 'react-native'
 import {feedStyles} from "../Styles";
-import Likes_And_Comments_Count_Txt from "./Likes_Count_Txt";
+import Likes_And_Comments_Count_Txt from "./Likes_And_Comments_Count_Txt";
 
 
 export default function Comment(props) {

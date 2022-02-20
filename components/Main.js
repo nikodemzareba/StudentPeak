@@ -13,6 +13,7 @@ import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
 import Match from "./main/match";
 import Chat from "./main/Chat";
+import UsersLikedPost from "./main/Feeds/Shared_Objects/Likes_And_Comments/UsersLikedPost";
 
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
@@ -124,6 +125,13 @@ export class Main extends Component {
                             })}
                 />
                 <Tab.Screen name="Chat" component={Chat}
+                            options={() => ({
+                                tabBarButton: () => null,
+                                tabBarVisible: false
+                            })}
+                />
+
+                <Tab.Screen name="UsersLikedPost" component={UsersLikedPost}
                             options={() => ({
                                 tabBarButton: () => null,
                                 tabBarVisible: false

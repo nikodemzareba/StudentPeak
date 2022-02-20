@@ -10,7 +10,7 @@ export default function LikesAndCommentsDisplay(props) {
         <View style={feedStyles.commentsAndLikesCircle}>
 
             <LikeBTN  userID={props.userID} postID={props.postID} userLikedPost={props.userLikedPost} likesCount={props.likesCount} navigation={props.navigation}/>
-            <CommentBTN userID={props.userID} postID={props.postID} commentsCount={props.commentsCount}/>
+            <CommentBTN userID={props.userID} postID={props.postID} commentsCount={props.commentsCount} navigation={props.navigation}/>
         </View>
     )
 }

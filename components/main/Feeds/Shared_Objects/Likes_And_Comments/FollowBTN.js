@@ -7,7 +7,7 @@ export default function FollowBTN(props) {
 
     const [followingUser, setFollowing] = useState(props.followingUser);
    let followingTxt = followingUser ? "Unfollow": "Follow";
-   console.log(`UserID: ${props.userID} \nOtherUserID ${props.otherUserID}\nFollowingState ${props.followingUser}`)
+   console.log(`\n\nFollowBTN() CurrentUserID: ${props.userID} \nOtherUserID: ${props.otherUserID}\nFollowingState ${props.followingUser}`)
 
 
     const dbRef = firebase.firestore()

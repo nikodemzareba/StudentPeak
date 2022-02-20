@@ -9,8 +9,6 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
     const splitNumberByCommas = (value) => {
 
-        console.log(`\nLikePost Value: ${value}`)
-
         const stringVal = `${value}`;
         const txt_Split = Array.from(stringVal);
         const txtLength = txt_Split.length;
@@ -32,30 +30,27 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
     const getPostLikeData = async () => {
 
-        console.log(`\ngetPostLikeData()`)
         // Get Users who liked the post
-        const tempData = [];
+        const postLikeData = [];
 
         firebase.firestore()
             .collection('postData')
             .doc(props.postID)
             .collection("likes")
             .get()
-            .then((usersLiked) => {
+            .then(async (usersLiked) => {
 
                 // Get Users Profile Pics and names
                 const expectedUsers = usersLiked.size;
                 let processedUsers = 0;
 
-                usersLiked.forEach((user) => {
-
+                await usersLiked.forEach((user) => {
                     processedUsers++;
                     firebase.firestore()
                         .collection('users')
                         .doc(user.id)
                         .get()
                         .then(userDetails => {
-                            let following = false;
                             firebase.firestore()
                                 .collection('following')
                                 .doc(props.userID)
@@ -63,6 +58,8 @@ export default function Likes_And_Comments_Count_Txt(props) {
                                 .doc(userDetails.id)
                                 .get()
                                 .then(followingUser => {
+
+                                    let following = false;
                                     if (followingUser.exists) {
                                         following = true;
                                     }
@@ -70,7 +67,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
                                     const username = userDetails.get("username");
                                     const profileImage = userDetails.get("profileimage");
 
-                                    tempData.push({
+                                    postLikeData.push({
                                         key: userID,
                                         username: username,
                                         following: following,
@@ -78,26 +75,27 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
                                     });
 
-                                    if (expectedUsers === processedUsers) {
-                                        //  setPostLikeData(tempData);
-                                        console.log(`\n\nGoing to Likes Count Page`)
-                                        //props.navigation.navigate("PublicProfile", {uid: props.userID})
+                                    console.log(`\n\ngetPostLikeData():  Data Fetch \npostID: ${props.postID} \nOurUSerID: ${props.userID} \nUserWhoLikedPostID: ${userID} \nUsername: ${username}\nProfileImage: ${profileImage}`);
 
+                                    console.log(`\n\nCurrentCount ${expectedUsers} \nExpectedCount: ${processedUsers}`);
+
+                                    if (expectedUsers === processedUsers) {
+
+                                        // const postLikeData = r;
                                         const userID = props.userID;
                                         const postID = props.postID;
-                                        const postLikeData = tempData;
 
-                                        console.log(`\n\nShowing liked results ${postLikeData} tempData ${tempData}`)
-                                        props.navigation.navigate("UsersLikedPost",{userID, postID, postLikeData})
+                                        console.log(`\n\n#######################################################################`);
+                                        console.log(`\n\ngetPostLikeData():  Going to UsersLikedPost() \nUserID: ${userID} \nUsername: ${username}\nPostLikeData: ${postLikeData}`);
+                                        props.navigation.navigate("UsersLikedPost", {userID, postID, postLikeData});
+
+                                        // return postLikeData;
                                     }
-
-                                    console.log(`\n\nUserID: ${userID} \nUsername: ${username}\nProfileImage: ${profileImage}}`);
                                 })
                                 .catch((exception) => {
                                     alert(`\nError seeing if you follow user \n\n${exception}`);
                                     console.log(`\nError seeing if you follow user \n\n${exception}`);
                                 })
-
 
                         })
                         .catch((exception) => {
@@ -118,15 +116,17 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
                   // props.navigation.navigate("PublicProfile", {uid: props.userID})
                   if (props.use === "like") {
-                      console.log(`\n\nGo to Likes Count Page`)
+                      console.log(`\n\nLikes BTN Function Requested`)
 
-                      //getPostLikeData();
+                      getPostLikeData();
 
-                      const userID = props.userID;
-                      const postID = props.postID;
-                      const postLikeData = [];
 
-                      props.navigation.navigate("UsersLikedPost",{userID, postID, postLikeData})
+                      //
+                      // const userID = props.userID;
+                      // const postID = props.postID;
+                      // const postLikeData = [];
+                      //
+                      // props.navigation.navigate("UsersLikedPost",{userID, postID, postLikeData})
 
                   } else if (props.use === "comment") {
                       console.log(`\n\nGo to Likes Comments Page`)

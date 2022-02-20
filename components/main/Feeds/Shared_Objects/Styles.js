@@ -42,7 +42,7 @@ export const feedStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'flex-start',
         position: 'absolute',
-        width: 150,
+        //width: 150,
         height: 40,
 
 
@@ -56,6 +56,7 @@ export const feedStyles = StyleSheet.create({
     likeAndCommentsBTN_View:{
         flexDirection: 'row',
         alignItems: 'flex-start',
+        padding:4
     },
 
 });

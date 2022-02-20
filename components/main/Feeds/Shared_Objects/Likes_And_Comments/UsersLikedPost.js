@@ -1,25 +1,15 @@
-import React, {Component, useEffect, useRef, useState} from 'react'
+import React from 'react'
 import {
     View,
-    Dimensions,
     FlatList,
-    Text,
-    ActivityIndicator,
-    ScrollView,
-    Button,
-    StyleSheet,
-    SafeAreaView, Image, TouchableOpacity, ImageBackground
 } from 'react-native';
+
 import {feedStyles} from "../Styles";
-import ProfileTitle from "../ProfileTitle";
-import LikesAndCommentsDisplay from "./LikesAndCommentsDisplay";
+
 import Profile_Icon from "../Profile_Icon";
 import Username_Link_Txt from "../Username_Link_Txt";
-import {Feather} from "@expo/vector-icons";
-import VideoFeed from "../../VideoFeed";
-import firebase from "firebase";
+
 import {isUserNameTooLong} from "../FunctionsAndMethods/isUserNameTooLong";
-// import {postLikeData} from "../../FakeJSONData/TempUsersLikedPost";
 import FollowBTN from "./FollowBTN";
 
 
@@ -27,14 +17,12 @@ export default function UsersLikedPost(props) {
 
     console.log(`\n\nUsersLikedPost() \nUserID: ${props.route.params.userID} \nPostID: ${props.route.params.postID} \nData: ${props.route.params.postLikeData}`)
 
-   //setDataLoading(false)
     return (
         <View style={feedStyles.screenBackground}>
 
                 <FlatList
                     style={{flex: 1}}
                     contentContainerStyle={{paddingTop: 25}}
-                    // data={postLikeData}
                     data={props.route.params.postLikeData}
                     horizontal={false}
                     scrollEventThrottle={20}
@@ -90,15 +78,3 @@ export default function UsersLikedPost(props) {
     )
 
 }
-
-const styles = StyleSheet.create({
-    loading: {
-
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-})

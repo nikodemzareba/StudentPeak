@@ -19,6 +19,9 @@ import {Feather} from "@expo/vector-icons";
 import VideoFeed from "../../VideoFeed";
 import firebase from "firebase";
 import {isUserNameTooLong} from "../FunctionsAndMethods/isUserNameTooLong";
+import {postLikeData} from "../../FakeJSONData/TempUsersLikedPost";
+
+
 
 export default function UsersLikedPost(props) {
     const [loading, setLoading] = useState(true);
@@ -26,58 +29,7 @@ export default function UsersLikedPost(props) {
     const userID = props.route.params.userID;
     const postID = props.route.params.postID;
 
-    const postLikeData = [
-        {
-            userID: "nyAEgVGWoLNAeN3kJnAd472knmj1",
-            username: "OOH_YEA_BABY",
-            profileImage: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
-        },
-        {
-            userID: "upb6UG9eM0VWzRo8tGke3xK9p953",
-            username: "MUD_WARRIOR",
-            profileImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
-        }, {
-            userID: "nyAEgVGWoLNAeN3kJnAd472knmj11",
-            username: "OOH_YEA_BABY",
-            profileImage: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
-        },
-        {
-            userID: "upb6UG9eM0VWzRo8tGke3xK9p9532",
-            username: "MUD_WARRIOR",
-            profileImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
-        }
-        , {
-            userID: "nyAEgVGWoLNAeN3kJnAd472knmj13",
-            username: "OOH_YEA_BABY",
-            profileImage: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
-        },
-        {
-            userID: "upb6UG9eM0VWzRo8tGke3xK9p9534",
-            username: "MUD_WARRIOR",
-            profileImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
-        }
-        , {
-            userID: "nyAEgVGWoLNAeN3kJnAd472knmj15",
-            username: "OOH_YEA_BABY",
-            profileImage: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
-        },
-        {
-            userID: "upb6UG9eM0VWzRo8tGke3xK9p9536",
-            username: "MUD_WARRIOR",
-            profileImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
-        }
-        , {
-            userID: "nyAEgVGWoLNAeN3kJnAd472knmj17",
-            username: "OOH_YEA_BABY",
-            profileImage: "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
-        },
-        {
-            userID: "upb6UG9eM0VWzRo8tGke3xK9p9538",
-            username: "MUD_WARRIOR",
-            profileImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
-        }
 
-    ]
 
     useEffect(() => {
         console.log(`\n\nUserID: ${props.route.params.userID} \nPostID: ${postID}`)
@@ -108,18 +60,35 @@ export default function UsersLikedPost(props) {
                         .doc(user.id)
                         .get()
                         .then(userDetails => {
+                            let following = false;
+                            firebase.firestore()
+                                .collection('following')
+                                .doc(userID)
+                                .collection('userFollowing')
+                                .doc(userDetails.id)
+                                .get()
+                                .then(followingUser => {
+                                    if (followingUser.exists) {
+                                        following = true;
+                                    }
+                                    const userID = userDetails.id;
+                                    const username = userDetails.get("username");
+                                    const profileImage = userDetails.get("profileimage");
 
-                            const userID = userDetails.id;
-                            const username = userDetails.get("username");
-                            const profileImage = userDetails.get("profileimage");
+                                    tempData.push({
+                                        key: userID,
+                                        name: username,
+                                        profileImage: profileImage,
+                                        followingUser: following,
+                                    });
 
-                            tempData.push({
-                                key: userID,
-                                name: username,
-                                profileImage: profileImage,
-                            });
+                                    console.log(`\n\nUserID: ${userID} \nUsername: ${username}\nProfileImage: ${profileImage}}`);
+                                })
+                                .catch((exception) => {
+                                    alert(`\nError seeing if you follow user \n\n${exception}`);
+                                    console.log(`\nError seeing if you follow user \n\n${exception}`);
+                                })
 
-                            console.log(`\n\nUserID: ${userID} \nUsername: ${username}\nProfileImage: ${profileImage}}`);
 
                         })
                         .catch((exception) => {
@@ -140,7 +109,6 @@ export default function UsersLikedPost(props) {
             })
 
     }
-
 
     return (
         <View style={feedStyles.screenBackground}>
@@ -178,14 +146,35 @@ export default function UsersLikedPost(props) {
                                                   profileImage={item.profileImage} navigation={props.navigation}/>
                                 </View>
                                 <View style={{alignItems: 'flex-start'}}>
-                                    <Username_Link_Txt name={isUserNameTooLong(item.username, 28)} userID={item.userID} fontSize={15}
+                                    <Username_Link_Txt name={isUserNameTooLong(item.username, 28)} userID={item.userID}
+                                                       fontSize={15}
                                                        fontWeight={'bold'} navigation={props.navigation}/>
                                 </View>
                                 <View style={{width: 100, height: 40}}>
+
                                     {userID !== item.userID ?
-                                        <Button title={"Follow"}/>
-                                    :
-                                         <View></View>
+
+                                        <>
+                                            {item.following === true?
+
+                                                <Button
+                                                    title="Unfollow"
+                                               // onPress={onPressLearnMore}
+                                                 />
+
+                                                :
+                                                <Button
+                                                    title="Follow"
+                                                    // onPress={onPressLearnMore}
+                                                />
+
+                                            }
+                                        </>
+                                        :
+                                        <View>
+
+                                        </View>
+
                                     }
 
                                 </View>

@@ -36,7 +36,7 @@ const videosOrPicturesSelectedToView = [
     {label: 'Videos', value: 1},
 ];
 
-import {storyData} from "./PicturesFeedObjects/TempStoryData";
+import {storyData} from "./FakeJSONData/TempStoryData";
 import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
 
 

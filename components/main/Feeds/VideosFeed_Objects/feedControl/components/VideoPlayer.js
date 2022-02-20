@@ -116,9 +116,6 @@ export default function VideoPlayer(props) {
         />
       </View>
       <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
-      {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation} />*/}
-      {/*<Caption  name={item.name}  userID={item.userID}  navigation={props.navigation}  caption={item.caption}/>*/}
-      {/*<View_All_Comments  commentsCount={item.commentsCount} navigation={props.navigation}/>*/}
 
     </View>
   );

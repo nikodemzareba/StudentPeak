@@ -114,7 +114,7 @@ export default function LikeBTN(props) {
                     <Octicons name="heart" size={24} color="white"/>
                 }
             </TouchableOpacity>
-            <Likes_And_Comments_Count_Txt count={currentLikes}/>
+            <Likes_And_Comments_Count_Txt  userID={props.userID} postID={props.postID} use={"like"} count={currentLikes} navigation={props.navigation}/>
         </View>
     )
 }

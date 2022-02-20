@@ -16,6 +16,7 @@ export default function VideoFeed(props) {
             videoUri={item.downloadURL}
             item={item}
             videosOutOfBoundItems={videosOutOfBoundItems}
+            userID={props.userID}
             navigation={props.navigation}
         />
     }

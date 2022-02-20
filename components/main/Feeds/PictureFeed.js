@@ -11,18 +11,13 @@ import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 import LikeBTN from "./Shared_Objects/Likes_And_Comments/LikeBTN";
 import {feedStyles} from "./Shared_Objects/Styles";
 import LikesAndCommentsDisplay from "./Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
-
+import {isUserNameTooLong} from "./Shared_Objects/FunctionsAndMethods/isUserNameTooLong";
 
 const {height, width} = Dimensions.get('window');
 
 
-const maxUsernameLengthForDisplay = 8;
-const isUserNameTooLong = (username) => {
-    if (username.length > maxUsernameLengthForDisplay) {
-        return username.slice(0, maxUsernameLengthForDisplay) + "..."
-    }
-    return username;
-}
+
+
 
 
 export default function PictureFeed(props) {
@@ -49,7 +44,7 @@ export default function PictureFeed(props) {
 
                             />
 
-                            <Username_Link_Txt name={isUserNameTooLong(item.username)} userID={item.key} fontSize={9}
+                            <Username_Link_Txt name={isUserNameTooLong(item.username, 8)} userID={item.key} fontSize={9}
                                                fontWeight={'normal'} navigation={props.navigation}/>
 
                         </View>
@@ -89,13 +84,6 @@ export default function PictureFeed(props) {
 
                            <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
 
-                            {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>*/}
-
-                            {/*<Caption name={item.name} userID={item.userID} navigation={props.navigation}*/}
-                            {/*         caption={item.caption}/>*/}
-
-
-                            {/*<View_All_Comments commentsCount={item.commentsCount} navigation={props.navigation}/>*/}
                         </View>
                     )
                 }}

@@ -18,7 +18,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
         for (let i = txtLength-1; i >= 0; i--) {
 
             console.log(`\nChar: ${txt_Split[i]}`)
-            if(count!= 0 && count % 3 === 0)
+            if(count!== 0 && count % 3 === 0)
             {
                 result = "," +result;
             }
@@ -30,9 +30,16 @@ export default function Likes_And_Comments_Count_Txt(props) {
     return (
         <Text style={{marginLeft: 10, color: 'white', fontSize: 15, fontWeight: 'bold', paddingRight:10}}
               onPress={() => {
-                  console.log(`\n\nGo to Likes Count Page`)
-                  // props.navigation.navigate("PublicProfile", {uid: props.userID})
-
+                  if(props.use === "like")
+                  {
+                      console.log(`\n\nGo to Likes Count Page`)
+                      // props.navigation.navigate("PublicProfile", {uid: props.userID})
+                  }
+                  else if(props.use === "comment")
+                  {
+                      console.log(`\n\nGo to Likes Comments Page`)
+                      // props.navigation.navigate("PublicProfile", {uid: props.userID})
+                  }
               }
               }>
            <B>{splitNumberByCommas(props.count)}</B></Text>

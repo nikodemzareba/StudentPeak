@@ -7,7 +7,7 @@ import {feedStyles} from "../Styles";
 import Likes_And_Comments_Count_Txt from "./Likes_And_Comments_Count_Txt";
 
 
-export default function Comment(props) {
+export default function CommentBTN(props) {
 
     const [currentCommentsCount, setCurrentCommentsCount] = useState(props.commentsCount);
 
@@ -24,7 +24,7 @@ export default function Comment(props) {
             />
 
         </TouchableOpacity>
-        <Likes_And_Comments_Count_Txt count={currentCommentsCount}/>
+        <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>
     </View>
 
     )

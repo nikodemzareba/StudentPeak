@@ -2,7 +2,7 @@ import {View} from "react-native";
 import {feedStyles} from "../Styles";
 import LikeBTN from "./LikeBTN";
 import React from "react";
-import Comment from "./Comment";
+import CommentBTN from "./CommentBTN";
 
 
 export default function LikesAndCommentsDisplay(props) {
@@ -10,7 +10,7 @@ export default function LikesAndCommentsDisplay(props) {
         <View style={feedStyles.commentsAndLikesCircle}>
 
             <LikeBTN  userID={props.userID} postID={props.postID} userLikedPost={props.userLikedPost} likesCount={props.likesCount} navigation={props.navigation}/>
-            <Comment userID={props.userID}  postID={props.postID} commentsCount={props.commentsCount}/>
+            <CommentBTN userID={props.userID} postID={props.postID} commentsCount={props.commentsCount}/>
         </View>
     )
 }

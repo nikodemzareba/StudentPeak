@@ -45,7 +45,6 @@ class FeedScreen extends Component {
     constructor(props) {
         super(props);
 
-
         this.state = {
 
             storiesData: [],
@@ -55,8 +54,9 @@ class FeedScreen extends Component {
 
             profileImageLoaded: false,
             profileImage: "",
-            userId: "upb6UG9eM0VWzRo8tGke3xK9p953",
-            //firebase.auth().currentUser.uid,
+            userId:
+                // "upb6UG9eM0VWzRo8tGke3xK9p953",
+            firebase.auth().currentUser.uid,
 
             videosDataFetched: [],
             videosIsLoading: true,

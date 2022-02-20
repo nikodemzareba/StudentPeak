@@ -38,6 +38,7 @@ const videosOrPicturesSelectedToView = [
 
 import {storyData} from "./FakeJSONData/TempStoryData";
 import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
+import {B} from "./Shared_Objects/Bold";
 
 
 class FeedScreen extends Component {
@@ -55,8 +56,8 @@ class FeedScreen extends Component {
             profileImageLoaded: false,
             profileImage: "",
             userId:
-                 // "upb6UG9eM0VWzRo8tGke3xK9p953",
-           firebase.auth().currentUser.uid,
+                "upb6UG9eM0VWzRo8tGke3xK9p953",
+            // firebase.auth().currentUser.uid,
 
             videosDataFetched: [],
             videosIsLoading: true,
@@ -336,8 +337,8 @@ class FeedScreen extends Component {
                                         storyData={this.state.storiesData}
                                         navigation={this.props.route.params.navigation}/>
                                     :
-                                    <View style={{flex: 1}}>
-
+                                    <View style={{flex: 1, padding:10}}>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
                                     </View>
                                 }
                             </>
@@ -361,8 +362,8 @@ class FeedScreen extends Component {
                                         data={this.state.videosDataFetched}
                                         navigation={this.props.route.params.navigation}/>
                                     :
-                                    <View style={{flex: 1}}>
-
+                                    <View style={{flex: 1, padding:10}}>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
                                     </View>
                                 }
                             </>

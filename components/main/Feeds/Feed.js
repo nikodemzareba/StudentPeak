@@ -25,7 +25,7 @@ import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
 
-import View_All_Comments from "./Shared_Objects/View_All_Comments";
+import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 
 LogBox.ignoreLogs(['Setting a timer']);
@@ -37,7 +37,7 @@ const videosOrPicturesSelectedToView = [
 ];
 
 import {storyData} from "./PicturesFeedObjects/TempStoryData";
-import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_Count_Txt";
+import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_Count_Txt";
 
 
 class FeedScreen extends Component {

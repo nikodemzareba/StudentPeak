@@ -1,9 +1,9 @@
-import {B} from "./Bold";
+import {B} from "../Bold";
 import {Text, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
 import { Dimensions, StyleSheet } from 'react-native'
-import {feedStyles} from "./Styles";
+import {feedStyles} from "../Styles";
 import Likes_And_Comments_Count_Txt from "./Likes_Count_Txt";
 
 

@@ -1,6 +1,6 @@
 import {Text} from "react-native";
 import React from "react";
-import {B} from "./Bold";
+import {B} from "../Bold";
 
 export default function Likes_And_Comments_Count_Txt(props) {
     return (

@@ -3,14 +3,14 @@ import {Feather} from "@expo/vector-icons";
 import React, {useState} from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
-import Comment from "./Shared_Objects/Comment";
-import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_Count_Txt";
-import View_All_Comments from "./Shared_Objects/View_All_Comments";
+
+import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_And_Comments/Likes_Count_Txt";
+import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
-import LikeBTN from "./Shared_Objects/LikeBTN";
+import LikeBTN from "./Shared_Objects/Likes_And_Comments/LikeBTN";
 import {feedStyles} from "./Shared_Objects/Styles";
-import LikesAndCommentsDisplay from "./Shared_Objects/LikesAndCommentsDisplay";
+import LikesAndCommentsDisplay from "./Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
 
 
 const {height, width} = Dimensions.get('window');

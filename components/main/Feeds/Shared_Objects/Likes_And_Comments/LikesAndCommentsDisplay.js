@@ -1,5 +1,5 @@
 import {View} from "react-native";
-import {feedStyles} from "./Styles";
+import {feedStyles} from "../Styles";
 import LikeBTN from "./LikeBTN";
 import React from "react";
 import Comment from "./Comment";

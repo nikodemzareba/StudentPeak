@@ -4,7 +4,7 @@ import {Image, TouchableOpacity, View, StyleSheet} from "react-native";
 import firebase from "firebase";
 
 import {Octicons} from '@expo/vector-icons';
-import {feedStyles} from "./Styles";
+import {feedStyles} from "../Styles";
 import Likes_And_Comments_Count_Txt from "./Likes_Count_Txt";
 
 export default function LikeBTN(props) {

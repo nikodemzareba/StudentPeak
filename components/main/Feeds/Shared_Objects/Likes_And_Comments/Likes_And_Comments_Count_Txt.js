@@ -111,30 +111,26 @@ export default function Likes_And_Comments_Count_Txt(props) {
             })
     }
     return (
-        <Text style={{marginLeft: 10, color: 'white', fontSize: 15, fontWeight: 'bold', paddingRight:10}}
-              onPress={() => {
 
-                  // props.navigation.navigate("PublicProfile", {uid: props.userID})
-                  if (props.use === "like") {
-                      console.log(`\n\nLikes BTN Function Requested`)
+        <TouchableOpacity
+            onPress={() => {
 
-                      getPostLikeData();
+                // props.navigation.navigate("PublicProfile", {uid: props.userID})
+                if (props.use === "like") {
+                    console.log(`\n\nLikes BTN Function Requested`)
 
+                    getPostLikeData();
 
-                      //
-                      // const userID = props.userID;
-                      // const postID = props.postID;
-                      // const postLikeData = [];
-                      //
-                      // props.navigation.navigate("UsersLikedPost",{userID, postID, postLikeData})
+                } else if (props.use === "comment") {
+                    console.log(`\n\nGo to Likes Comments Page`)
+                    // props.navigation.navigate("PublicProfile", {uid: props.userID})
+                }
 
-                  } else if (props.use === "comment") {
-                      console.log(`\n\nGo to Likes Comments Page`)
-                      // props.navigation.navigate("PublicProfile", {uid: props.userID})
-                  }
-
-              }
-              }>
-           <B>{splitNumberByCommas(props.count)}</B></Text>
+            }}
+        >
+            <Text style={{marginLeft: 10, color: 'white', fontSize: 15, fontWeight: 'bold', paddingRight: 10}}>
+                <B>{splitNumberByCommas(props.count)}</B>
+            </Text>
+        </TouchableOpacity>
     )
 }

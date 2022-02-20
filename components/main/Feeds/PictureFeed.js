@@ -1,15 +1,58 @@
-import {Dimensions, FlatList, Image, StyleSheet, Text, View} from "react-native";
+import {Button, Dimensions, FlatList, Image, ImageBackground, StyleSheet, Text, View} from "react-native";
 import {Feather} from "@expo/vector-icons";
-import React from "react";
+import React, {useState} from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
-import Comment from "./Shared_Objects/Comment";
+
+import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
+import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
+import Profile_Icon from "./Shared_Objects/Profile_Icon";
+import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
+import LikeBTN from "./Shared_Objects/Likes_And_Comments/LikeBTN";
+import {feedStyles} from "./Shared_Objects/Styles";
+import LikesAndCommentsDisplay from "./Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
+import {isUserNameTooLong} from "./Shared_Objects/FunctionsAndMethods/isUserNameTooLong";
+
 const {height, width} = Dimensions.get('window');
 
-export default function PictureFeed(props) {
-    return (
-        <View style={{flex: 1}}>
 
+
+
+
+
+export default function PictureFeed(props) {
+
+    const [refresh, setRefresh] = useState(false);
+    return (
+        <View style={feedStyles.screenBackground}>
+
+            {/*Profile Stories */}
+            <FlatList
+                showsHorizontalScrollIndicator={false}
+                data={props.storyData}
+                horizontal
+                contentContainerStyle={{
+                    alignItems: 'center'
+                }}
+                renderItem={({item}) => {
+                    return (
+
+                        <View style={styles.stories}>
+                            <Profile_Icon userID={item.key} profileImage={item.profileImage}
+                                          width={45} height={45} borderRadius={45}
+                                          navigation={props.navigation}
+
+                            />
+
+                            <Username_Link_Txt name={isUserNameTooLong(item.username, 8)} userID={item.key} fontSize={9}
+                                               fontWeight={'normal'} navigation={props.navigation}/>
+
+                        </View>
+                    )
+                }}
+            />
+
+            {/*Picture Feed Posts */}
             <FlatList
                 style={{flex: 1}}
                 contentContainerStyle={{paddingTop: 25}}
@@ -17,28 +60,34 @@ export default function PictureFeed(props) {
                 horizontal={false}
                 scrollEventThrottle={20}
                 showsVerticalScrollIndicator={false}
-               // onViewableItemsChanged={this.handlePicturesViewableItemsChanged}
                 viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
                 overScrollMode="never"
+                extraData={refresh}
                 renderItem={({item}) => {
                     return (
-                        <View style={{flex: 1, marginBottom: 20}}>
+
+                        <View style={feedStyles.post}>
                             <ProfileTitle name={item.name}
-                                          profilePicture={item.profile}
-                                          userID ={item.userID}
+                                          profileImage={item.profile}
+                                          userID={item.userID}
                                           navigation={props.navigation}
                             />
 
-                            <Image source={{uri: item.downloadURL}}
-                                   style={styles.picture(width, height)}/>
+                            <ImageBackground source={{uri: item.downloadURL}}
+                                             style={{
+                                                 width: '100%',
+                                                 height: undefined,
 
-                            <Caption  name={item.name} caption={item.caption}  />
-                            <Comment></Comment>
+                                                 aspectRatio: 1,
+                                             }}
+                            />
+
+                           <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
+
                         </View>
                     )
                 }}
             />
-
         </View>
     )
 }
@@ -57,5 +106,12 @@ const styles = StyleSheet.create({
     controlsContainer: {
         position: 'absolute',
         bottom: 10
+    },
+    stories: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingHorizontal: 0,
+        marginBottom: 10,
+        width: 60, height: 60
     }
 })

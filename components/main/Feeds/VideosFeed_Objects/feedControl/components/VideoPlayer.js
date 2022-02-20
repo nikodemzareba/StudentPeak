@@ -7,6 +7,11 @@ import VideoControls from './VideoControls';
 import {B} from "../../../Shared_Objects/Bold";
 import  ProfileTitle from "../../../Shared_Objects/ProfileTitle"
 import Caption from "../../../Shared_Objects/Caption";
+import Likes_And_Comments_Count_Txt  from "../../../Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
+import View_All_Comments from "../../../Shared_Objects/Likes_And_Comments/View_All_Comments";
+import {feedStyles} from "../../../Shared_Objects/Styles";
+import LikeBTN from "../../../Shared_Objects/Likes_And_Comments/LikeBTN";
+import LikesAndCommentsDisplay from "../../../Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
 
 export default function VideoPlayer(props) {
 
@@ -88,8 +93,8 @@ export default function VideoPlayer(props) {
   }
 
   return (
-    <View style={{flex:1, marginBottom:20}}>
-      <ProfileTitle name={item.name} profilePicture={item.profile} userID ={item.userID}  navigation={navigation}  />
+    <View style={feedStyles.post}>
+      <ProfileTitle name={item.name} profileImage={item.profile} userID ={item.userID} navigation={navigation}  />
         <Video
           ref={playbackInstance}
           style={styles.video(width, height)}
@@ -110,7 +115,7 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
-      <Caption  name={item.name} caption={item.caption}  />
+      <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
 
     </View>
   );
@@ -121,7 +126,8 @@ const styles = StyleSheet.create({
   video: (width, height) => ({
     alignSelf: 'center',
     width: width,
-    height: height
+    height: undefined,
+    aspectRatio: 1,
   }),
   container: {
     flex: 1,
@@ -129,7 +135,8 @@ const styles = StyleSheet.create({
   },
   controlsContainer: {
     position:'absolute',
-    bottom:10
+    bottom:10,
+    padding:30,
   }
 });
 

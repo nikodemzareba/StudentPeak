@@ -1,6 +1,6 @@
 import {Button, Dimensions, FlatList, Image, ImageBackground, StyleSheet, Text, View} from "react-native";
 import {Feather} from "@expo/vector-icons";
-import React from "react";
+import React, {useState} from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
 import Comment from "./Shared_Objects/Comment";
@@ -27,6 +27,7 @@ const isUserNameTooLong = (username) => {
 
 export default function PictureFeed(props) {
 
+    const [refresh, setRefresh] = useState(false);
     return (
         <View style={feedStyles.screenBackground}>
 
@@ -66,6 +67,7 @@ export default function PictureFeed(props) {
                 showsVerticalScrollIndicator={false}
                 viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
                 overScrollMode="never"
+                extraData={refresh}
                 renderItem={({item}) => {
                     return (
 
@@ -82,10 +84,10 @@ export default function PictureFeed(props) {
                                                  height: undefined,
 
                                                  aspectRatio: 1,
-                                             }}/>
+                                             }}
+                            />
 
-
-                           <LikesAndCommentsDisplay postID={item.key} likesCount={item.likesCount}    commentsCount={item.commentsCount} navigation={props.navigation}/>
+                           <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
 
                             {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>*/}
 

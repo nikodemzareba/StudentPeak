@@ -10,18 +10,8 @@ import {
     StyleSheet,
     SafeAreaView, Image, TouchableOpacity
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import VideoPlayer from "./VideosFeed_Objects/feedControl/components/VideoPlayer";
 import firebase from "firebase";
-
-import {StatusBar} from "expo-status-bar";
-import {Feather} from "@expo/vector-icons";
-import {Video} from "expo-av";
-import VideoControls from "./VideosFeed_Objects/feedControl/components/VideoControls";
-import {B} from "./Shared_Objects/Bold";
-import ProfileTitle from "./Shared_Objects/ProfileTitle";
-import Caption from "./Shared_Objects/Caption";
 import PictureFeed from "./PictureFeed";
 import VideoFeed from "./VideoFeed";
 
@@ -153,67 +143,88 @@ class FeedScreen extends Component {
                                     .get()
                                     .then((postCommentsAndLikes => {
 
-                                        const profileImage = userDetails.get("profileimage");
-                                        const username = userDetails.get("username");
-                                        const userID = userFollowing.id;
+                                        let userLikedPost = false;
+                                        firebase.firestore()
+                                            .collection('postData')
+                                            .doc(userPost.id)
+                                            .collection("likes")
+                                            .doc(this.state.userId)
+                                            .get()
+                                            .then(documentSnapshot => {
+                                                if (documentSnapshot.exists) {
+                                                    userLikedPost = true;
+                                                }
+                                            })
+                                            .then(() => {
 
-                                        const caption = userPost.get("caption");
-                                        const createdAt = userPost.get("createdAt");
-                                        const downloadURL = userPost.get("downloadURL");
-                                        const mediaType = userPost.get("mediaType");
+                                                const profileImage = userDetails.get("profileimage");
+                                                const username = userDetails.get("username");
+                                                const userID = userFollowing.id;
 
-                                        const commentsCount = postCommentsAndLikes.get("commentsCount");
-                                        const likesCount = postCommentsAndLikes.get("likesCount");
+                                                const caption = userPost.get("caption");
+                                                const createdAt = userPost.get("createdAt");
+                                                const downloadURL = userPost.get("downloadURL");
+                                                const mediaType = userPost.get("mediaType");
 
-                                        if (mediaType === "video") {
+                                                const commentsCount = postCommentsAndLikes.get("commentsCount");
+                                                const likesCount = postCommentsAndLikes.get("likesCount");
 
-                                            this.setState({
-                                                videosReceived: this.state.videosReceived + 1
-                                            });
 
-                                            videosDataFetched.push({
-                                                key: userPost.id,
-                                                userID: userID,
-                                                name: username,
-                                                profile: profileImage,
-                                                caption: caption,
-                                                createdAt: createdAt,
-                                                downloadURL: downloadURL,
-                                                commentsCount: commentsCount,
-                                                likesCount: likesCount
-                                            });
-                                        } else if (mediaType === "picture") {
+                                                if (mediaType === "video") {
 
-                                            this.setState({
-                                                picturesReceived: this.state.picturesReceived + 1
-                                            });
+                                                    this.setState({
+                                                        videosReceived: this.state.videosReceived + 1
+                                                    });
 
-                                            picturesDataFetched.push({
-                                                key: userPost.id,
-                                                userID: userID,
-                                                name: username,
-                                                profile: profileImage,
-                                                caption: caption,
-                                                createdAt: createdAt,
-                                                downloadURL: downloadURL,
-                                                commentsCount: commentsCount,
-                                                likesCount: likesCount
-                                            });
-                                        }
+                                                    videosDataFetched.push({
+                                                        key: userPost.id,
+                                                        userID: userID,
+                                                        name: username,
+                                                        profile: profileImage,
+                                                        caption: caption,
+                                                        createdAt: createdAt,
+                                                        downloadURL: downloadURL,
+                                                        commentsCount: commentsCount,
+                                                        likesCount: likesCount,
+                                                        userLikedPost: userLikedPost
+                                                    });
+                                                } else if (mediaType === "picture") {
 
-                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount}`);
-                                        console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+                                                    this.setState({
+                                                        picturesReceived: this.state.picturesReceived + 1
+                                                    });
 
-                                        if (processedFollowingUsers === expectedFollowingUsersCount) {
-                                            console.log("\nSetting Data To Variable")
-                                            this.setState({
-                                                videosDataFetched: videosDataFetched,
-                                                picturesDataFetched: picturesDataFetched,
-                                            }, () => {
-                                                this.setStatesForLoadingFeed()
-                                            });
-                                        }
+                                                    picturesDataFetched.push({
+                                                        key: userPost.id,
+                                                        userID: userID,
+                                                        name: username,
+                                                        profile: profileImage,
+                                                        caption: caption,
+                                                        createdAt: createdAt,
+                                                        downloadURL: downloadURL,
+                                                        commentsCount: commentsCount,
+                                                        likesCount: likesCount,
+                                                        userLikedPost: userLikedPost
+                                                    });
+                                                }
 
+                                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount} \nUserLikedPost: ${userLikedPost}`);
+                                                console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+
+                                                if (processedFollowingUsers === expectedFollowingUsersCount) {
+                                                    console.log("\nSetting Data To Variable")
+                                                    this.setState({
+                                                        videosDataFetched: videosDataFetched,
+                                                        picturesDataFetched: picturesDataFetched,
+                                                    }, () => {
+                                                        this.setStatesForLoadingFeed()
+                                                    });
+                                                }
+                                            })
+                                            .catch((exception) => {
+                                                console.log(`\nUnable to get Post Likes \n\n${exception}`);
+
+                                            })
                                     }))
                                 //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
                             })
@@ -319,9 +330,11 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
-                                    <PictureFeed data={this.state.picturesDataFetched}
-                                                 storyData={this.state.storiesData}
-                                                 navigation={this.props.route.params.navigation}/>
+                                    <PictureFeed
+                                        userID={this.state.userId}
+                                        data={this.state.picturesDataFetched}
+                                        storyData={this.state.storiesData}
+                                        navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1}}>
 
@@ -343,8 +356,10 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadVideos
                                     ?
-                                    <VideoFeed data={this.state.videosDataFetched}
-                                               navigation={this.props.route.params.navigation}/>
+                                    <VideoFeed
+                                        userID={this.state.userId}
+                                        data={this.state.videosDataFetched}
+                                        navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1}}>
 

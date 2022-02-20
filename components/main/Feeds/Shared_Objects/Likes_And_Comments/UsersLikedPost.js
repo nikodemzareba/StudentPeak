@@ -182,7 +182,12 @@ export default function UsersLikedPost(props) {
                                                        fontWeight={'bold'} navigation={props.navigation}/>
                                 </View>
                                 <View style={{width: 100, height: 40}}>
-                                    <Button title={"Follow"}/>
+                                    {userID !== item.userID ?
+                                        <Button title={"Follow"}/>
+                                    :
+                                         <View></View>
+                                    }
+
                                 </View>
 
                             </View>

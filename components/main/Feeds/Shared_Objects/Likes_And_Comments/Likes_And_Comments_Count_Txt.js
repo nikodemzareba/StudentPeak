@@ -34,7 +34,10 @@ export default function Likes_And_Comments_Count_Txt(props) {
                   {
                       console.log(`\n\nGo to Likes Count Page`)
                       //props.navigation.navigate("PublicProfile", {uid: props.userID})
-                      props.navigation.navigate("UsersLikedPost",{userID: props.userID, postID: props.postID})
+
+                      const userID = props.userID;
+                      const postID = props.postID;
+                      props.navigation.navigate("UsersLikedPost",{userID, postID})
                   }
                   else if(props.use === "comment")
                   {

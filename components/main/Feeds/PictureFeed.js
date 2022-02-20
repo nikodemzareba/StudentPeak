@@ -1,16 +1,16 @@
 import {Button, Dimensions, FlatList, Image, ImageBackground, StyleSheet, Text, View} from "react-native";
 import {Feather} from "@expo/vector-icons";
-import React from "react";
+import React, {useState} from "react";
 import ProfileTitle from "./Shared_Objects/ProfileTitle";
 import Caption from "./Shared_Objects/Caption";
-import Comment from "./Shared_Objects/Comment";
-import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_Count_Txt";
-import View_All_Comments from "./Shared_Objects/View_All_Comments";
+
+import Likes_And_Comments_Count_Txt  from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
+import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
 import Profile_Icon from "./Shared_Objects/Profile_Icon";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
-import LikeBTN from "./Shared_Objects/LikeBTN";
+import LikeBTN from "./Shared_Objects/Likes_And_Comments/LikeBTN";
 import {feedStyles} from "./Shared_Objects/Styles";
-import LikesAndCommentsDisplay from "./Shared_Objects/LikesAndCommentsDisplay";
+import LikesAndCommentsDisplay from "./Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
 
 
 const {height, width} = Dimensions.get('window');
@@ -27,6 +27,7 @@ const isUserNameTooLong = (username) => {
 
 export default function PictureFeed(props) {
 
+    const [refresh, setRefresh] = useState(false);
     return (
         <View style={feedStyles.screenBackground}>
 
@@ -66,6 +67,7 @@ export default function PictureFeed(props) {
                 showsVerticalScrollIndicator={false}
                 viewabilityConfig={{itemVisiblePercentThreshold: 30, waitForInteraction: true}}
                 overScrollMode="never"
+                extraData={refresh}
                 renderItem={({item}) => {
                     return (
 
@@ -82,10 +84,10 @@ export default function PictureFeed(props) {
                                                  height: undefined,
 
                                                  aspectRatio: 1,
-                                             }}/>
+                                             }}
+                            />
 
-
-                           <LikesAndCommentsDisplay postID={item.key} likesCount={item.likesCount}    commentsCount={item.commentsCount} navigation={props.navigation}/>
+                           <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
 
                             {/*<Likes_Count_Txt likesCount={item.likesCount} navigation={props.navigation}/>*/}
 

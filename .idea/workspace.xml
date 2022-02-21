@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Refactoring&#10;.Likes works on Videos page">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Typo for userID when testing&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +26,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -35,6 +35,15 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="25AIlwpXWDSEMY6oAhTXaKhaFpB" />
   <component name="ProjectLevelVcsManager">
@@ -305,7 +314,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Ty-6" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

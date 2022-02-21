@@ -10,7 +10,7 @@ import Likes_And_Comments_Count_Txt from "./Likes_And_Comments_Count_Txt";
 export default function CommentBTN(props) {
 
     const [currentCommentsCount, setCurrentCommentsCount] = useState(props.commentsCount);
-
+    const postID = useState(props.Post_ID)
     return(
     <View style = {feedStyles.likeAndCommentsBTN_View}>
         <TouchableOpacity

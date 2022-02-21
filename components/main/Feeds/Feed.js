@@ -19,7 +19,7 @@ import VideoFeed from "./VideoFeed";
 const {height, width} = Dimensions.get('window');
 
 
-const separator = "##########################################################################################";
+const separator = "###########################################################################################";
 
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
@@ -309,8 +309,8 @@ class FeedScreen extends Component {
                     {/* Chat BTN */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
                         <Image
-                            source={require('./System_Images/Chat_Nav_Icon.png')}
-                            style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                            source={require('./System_Images/Chat_Nav_Icon2.png')}
+                            style={{width: 40, height: 40,  marginLeft: 15}}
                         />
                     </TouchableOpacity>
                 </View>

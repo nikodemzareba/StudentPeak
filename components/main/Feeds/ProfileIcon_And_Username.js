@@ -3,32 +3,43 @@ import Profile_Icon from "./Shared_Objects/Profile_Icon";
 import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 import {isUserNameTooLong} from "./Shared_Objects/FunctionsAndMethods/isUserNameTooLong";
 import React from "react";
+import firebase from "firebase";
 
 export default function ProfileIcon_And_Username(props) {
 
-    return(
-        <View style={{
+    return (
+        <TouchableOpacity style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
             paddingHorizontal: 10,
+        }}
 
+                          onPress={() => {
+                              console.log(`\n\nProfileIcon_And_Username ${props.userID}`)
 
-        }}>
-            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', paddingRight:40}}>
+                              if (props.userID === firebase.auth().currentUser.uid) {
+                                  props.navigation.navigate("PrivateProfile");
+                                  return;
+                              }
+                              props.navigation.navigate("PublicProfile", {uid: props.userID})
+                          }
+                          }
+        >
+            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', paddingRight: 40}}>
                 <Profile_Icon userID={props.userID} width={50} height={50} borderRadius={50}
                               profileImage={props.profileImage} navigation={props.navigation}/>
             </TouchableOpacity>
             <TouchableOpacity style={{alignItems: 'flex-start'}}>
                 <Username_Link_Txt
                     name={isUserNameTooLong(props.name, 28)}
-                    userID={props.key}
+                    userID={props.userID}
                     fontSize={15}
                     fontWeight={'bold'} navigation={props.navigation}
                 />
             </TouchableOpacity>
 
-        </View>
+        </TouchableOpacity>
     )
 
 }

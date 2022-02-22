@@ -11,6 +11,7 @@ import Username_Link_Txt from "../Username_Link_Txt";
 
 import {isUserNameTooLong} from "../FunctionsAndMethods/isUserNameTooLong";
 import FollowBTN from "./FollowBTN";
+import ProfileIcon_And_Username from "../../ProfileIcon_And_Username";
 
 
 export default function UsersLikedPost(props) {
@@ -40,18 +41,13 @@ export default function UsersLikedPost(props) {
                                 padding: 10
                             }}>
 
-                                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                    <Profile_Icon userID={item.key} width={50} height={50} borderRadius={50}
-                                                  profileImage={item.profileImage} navigation={props.navigation}/>
-                                </View>
-                                <View style={{alignItems: 'flex-start'}}>
-                                    <Username_Link_Txt
-                                        name={isUserNameTooLong(item.username, 28)}
-                                        userID={item.key}
-                                        fontSize={15}
-                                        fontWeight={'bold'} navigation={props.navigation}
-                                    />
-                                </View>
+                                <ProfileIcon_And_Username
+                                    userID={item.key}
+                                    profileImage={item.profileImage}
+                                    navigation={props.navigation}
+                                    name={item.username}
+                                />
+
                                 <View style={{width: 100, height: 40}}>
 
                                     {props.route.params.userID !== item.key ?

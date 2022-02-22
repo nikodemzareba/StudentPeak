@@ -13,6 +13,7 @@ import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
 import Match from "./main/match";
 import Chat from "./main/Chat";
+import TrendingFeeds from "./main/Feeds/TrendingFeeds";
 
 
 import {connect} from 'react-redux'
@@ -73,7 +74,7 @@ export class Main extends Component {
                                 ),
                             }}
                 />
-                <Tab.Screen name="Search" component={SearchScreen} navigation={this.props.navigation}
+                <Tab.Screen name="TrendingFeeds" component={TrendingFeeds} initialParams={{navigation: this.props.navigation}}
                             options={{
                                 tabBarIcon: ({color, size}) => (
                                     //decide what is inside the Icon

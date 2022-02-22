@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Refactoring&#10;.Likes works on Videos page">
+    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/ProfileIcon_And_Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/ProfileIcon_And_Username.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +28,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -35,6 +37,15 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="25AIlwpXWDSEMY6oAhTXaKhaFpB" />
   <component name="ProjectLevelVcsManager">
@@ -294,7 +305,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645380202981</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="In this Update: &#10;Fixed Bug - Chat Nav Icon disappeared&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <created>1645460491615</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1645460491615</updated>
+    </task>
+    <task id="LOCAL-00033" summary="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <created>1645492933075</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1645492933075</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +330,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Ty-6" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -313,9 +350,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <MESSAGE value="In this Update: &#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;&#10;Previous Updates:&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <MESSAGE value="In this Update: &#10;Renamed variables from profilePicture to profileImage to match DB&#10;&#10;Previous Updates:&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;Like BTN Basics implemented&#10;&#10;&#10;Need To work On:&#10;Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;&#10;&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;&#10;&#10;Need To work On:&#10;Positioning&#10;&#10;&#10;&#10;&#10;Previous Updates:&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
@@ -338,6 +372,9 @@
     <MESSAGE value="In this Update: &#10;.Fixed - Issues with fetching async data and passing it to another screen&#10;. Fixed - Follow Button on the likes view&#10;Showing Users who Liked a post&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Can navigate to UsersLikedPost.js&#10;.Refactoring&#10;.Follow button now sets its text based on if u follow and unfollow&#10;.Bugs if you click on your Profile_Icon.js or Username_Link_Txt.js would bring you to the privateprofile of your own account = error&#10;.Refactoring&#10;.Posts allow you to see who liked each post&#10;.Can navigate to UsersLikedPost from liked page.&#10;implement likes system on videos feed&#10;&#10;.Expanding view for comments and likes when the count is big&#10;Likes &amp; comment count number into csv &#10;.&#10;Refactoring&#10;.&#10;Like button works for liking and unliking posts for PictureFeed.js&#10;Passing postID to comments &amp; Likes BTN Objects&#10;Feed page implemented new DB for postData&#10;Implemented global styles sheet for feed&#10;Done - Need to implement GUi on videosFeed &#10;GUI looks how it needs to for PictureFeed.js&#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;.Refactoring&#10;.Likes works on Videos page&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Fixed - Issues with fetching async data and passing it to another screen&#10;. Fixed - Follow Button on the likes view&#10;Showing Users who Liked a post&#10;Can navigate to UsersLikedPost.js&#10;.Refactoring&#10;.Follow button now sets its text based on if u follow and unfollow&#10;.Bugs if you click on your Profile_Icon.js or Username_Link_Txt.js would bring you to the privateprofile of your own account = error&#10;.Refactoring&#10;.Posts allow you to see who liked each post&#10;.Can navigate to UsersLikedPost from liked page.&#10;implement likes system on videos feed&#10;&#10;.Expanding view for comments and likes when the count is big&#10;Likes &amp; comment count number into csv &#10;.&#10;Refactoring&#10;.&#10;Like button works for liking and unliking posts for PictureFeed.js&#10;Passing postID to comments &amp; Likes BTN Objects&#10;Feed page implemented new DB for postData&#10;Implemented global styles sheet for feed&#10;Done - Need to implement GUi on videosFeed &#10;GUI looks how it needs to for PictureFeed.js&#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Refactoring&#10;.Likes works on Videos page" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;Fixed Bug - Chat Nav Icon disappeared&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;Integrated Search.js into new app design &#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
   </component>
 </project>

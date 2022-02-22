@@ -39,6 +39,7 @@ const videosOrPicturesSelectedToView = [
 import {storyData} from "./FakeJSONData/TempStoryData";
 import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
 import {B} from "./Shared_Objects/Bold";
+import Chat_BTN from "./Shared_Objects/Chat_BTN";
 
 
 class FeedScreen extends Component {
@@ -187,7 +188,8 @@ class FeedScreen extends Component {
                                                         downloadURL: downloadURL,
                                                         commentsCount: commentsCount,
                                                         likesCount: likesCount,
-                                                        userLikedPost: userLikedPost
+                                                        userLikedPost: userLikedPost,
+                                                        mediaType: mediaType
                                                     });
                                                 } else if (mediaType === "picture") {
 
@@ -205,7 +207,8 @@ class FeedScreen extends Component {
                                                         downloadURL: downloadURL,
                                                         commentsCount: commentsCount,
                                                         likesCount: likesCount,
-                                                        userLikedPost: userLikedPost
+                                                        userLikedPost: userLikedPost,
+                                                        mediaType: mediaType
                                                     });
                                                 }
 
@@ -307,12 +310,7 @@ class FeedScreen extends Component {
                     </View>
 
                     {/* Chat BTN */}
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
-                        <Image
-                            source={require('./System_Images/Chat_Nav_Icon2.png')}
-                            style={{width: 40, height: 40,  marginLeft: 15}}
-                        />
-                    </TouchableOpacity>
+                    <Chat_BTN   navigation={this.props.navigation}/>
                 </View>
 
 

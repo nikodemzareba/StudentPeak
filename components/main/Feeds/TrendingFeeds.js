@@ -39,6 +39,7 @@ const videosOrPicturesSelectedToView = [
 import {storyData} from "./FakeJSONData/TempStoryData";
 import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
 import {B} from "./Shared_Objects/Bold";
+import Chat_BTN from "./Shared_Objects/Chat_BTN";
 
 
 class TrendingFeeds extends Component {
@@ -181,13 +182,8 @@ class TrendingFeeds extends Component {
                         />
                     </TouchableOpacity>
 
-                    {/* Chat BTN */}
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Chat")}>
-                        <Image
-                            source={require('./System_Images/Chat_Nav_Icon3.png')}
-                            style={{width: 35, height: 35, marginRight:10}}
-                        />
-                    </TouchableOpacity>
+
+                    <Chat_BTN   navigation={this.props.navigation}/>
 
                 </View>
 

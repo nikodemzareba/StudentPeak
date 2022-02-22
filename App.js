@@ -30,6 +30,7 @@ import Save from './components/main/Save'
 import Topbar from './components/main/top/Topbar'
 import ShowEventsResults from './components/main/Events_Screen/ShowEventsResults'
 import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/UsersLikedPost";
+import Search from "./components/main/Search";
 
 
 import Picture from './components/authentication/Picture'
@@ -117,6 +118,7 @@ function App() {
                                 <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="UsersLikedPost" component={UsersLikedPost} options={{headerShown: false}}/>
+                                <Stack.Screen name="Search" component={Search} options={{headerShown: false}}/>
 
                             </Stack.Group>
 

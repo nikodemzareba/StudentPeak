@@ -3,9 +3,15 @@ import React from 'react'
 import { StyleSheet, Text, View, Button, TouchableOpacity, useState, SafeAreaView } from 'react-native'
 import { ScrollView } from "react-native-gesture-handler";
 import FloatingActionButton from "react-native-floating-action-button";
+import firebase from 'firebase';
+require('firebase/firestore')
+import { doc, setDoc } from "firebase/firestore";
 
 export default function Interests({ navigation }) {
 
+const onSelect = () => {firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid)
+.set({interests: "sports"})
+ }
 
 
   return (
@@ -18,10 +24,12 @@ export default function Interests({ navigation }) {
         
           <TouchableOpacity style={styles.loginBtn}>
           <Text style={styles.loginText}>Art</Text>
+          
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>
           <Text style={styles.loginText}>Sports</Text>
+          onPress={()=> onSelect()}
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>

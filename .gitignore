@@ -12,3 +12,7 @@ web-build/
 # macOS
 .DS_Store
 Casey/
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/Student Peak.iml
+/.idea/vcs.xml

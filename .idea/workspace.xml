@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-    <list default="true" id="87b63959-126a-4573-9bbd-2a18976900cf" name="Changes" comment="In this Update: &#10;Refactoring&#10;&#10;&#10;&#10;Need To work On:&#10;.Pulling max data  of 25 and then querying more when reached the bottom.&#10;. Refreshing Screens Data&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Created Stories Object&#10;.Integrated new SearchScreenResults.js&#10;.Fixed issue with UserLikedPost.js typo error - as users could unfollow themselves (wrong parameters passed to userID field).&#10;&#10;. LikeBTN now adds/ removes the postID of the post the user has un/liked  to a collection called: /postData/UserID/likes&#10;&#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="TaskManager">
-    <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/gp" />
   </component>
 </project>

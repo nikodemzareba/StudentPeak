@@ -108,7 +108,7 @@ return (
   <View style={styles.container}>
     <View style={styles.containerInfo}>
     <Text>
-      {user.email}</Text>
+      {user.username}</Text>
 
       {props.route.params.uid != firebase.auth().currentUser.uid ? (
         <View>

@@ -11,7 +11,7 @@ import Username_Link_Txt from "../Username_Link_Txt";
 
 import {isUserNameTooLong} from "../FunctionsAndMethods/isUserNameTooLong";
 import FollowBTN from "./FollowBTN";
-import ProfileIcon_And_Username from "../../ProfileIcon_And_Username";
+import ProfileIcon_And_Username from "../ProfileIcon_And_Username";
 
 
 export default function UsersLikedPost(props) {

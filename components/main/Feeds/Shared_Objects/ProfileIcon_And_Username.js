@@ -1,7 +1,7 @@
 import {TouchableOpacity, View} from "react-native";
-import Profile_Icon from "./Shared_Objects/Profile_Icon";
-import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
-import {isUserNameTooLong} from "./Shared_Objects/FunctionsAndMethods/isUserNameTooLong";
+import Profile_Icon from "./Profile_Icon";
+import Username_Link_Txt from "./Username_Link_Txt";
+import {isUserNameTooLong} from "./FunctionsAndMethods/isUserNameTooLong";
 import React from "react";
 import firebase from "firebase";
 

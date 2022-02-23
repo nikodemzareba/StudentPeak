@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+    <list default="true" id="a5896d90-7b73-4bb1-bc30-f6155ea4ac11" name="Changes" comment="In this Update: &#10;.Created Stories Object&#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Fixed issue with UserLikedPost.js typo error - as users could unfollow themselves (wrong parameters passed to userID field).&#10;&#10;. LikeBTN now adds/ removes the postID of the post the user has un/liked  to a collection called: /postData/UserID/likes&#10;&#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <change afterPath="$PROJECT_DIR$/components/main/Search/SearchScreenResults.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/ProfileIcon_And_Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/ProfileIcon_And_Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Chat_BTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Chat_BTN.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search/Search.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +44,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
@@ -65,6 +68,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Search" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\FunctionsAndMethods" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Likes_And_Comments" />
     </key>
@@ -87,6 +92,9 @@
       <workItem from="1645288773749" duration="10998000" />
       <workItem from="1645313665157" duration="26710000" />
       <workItem from="1645368922799" duration="11120000" />
+      <workItem from="1645556479421" duration="1253000" />
+      <workItem from="1645564216733" duration="1892000" />
+      <workItem from="1645566394815" duration="9391000" />
     </task>
     <task id="LOCAL-00001" summary="In this Update: &#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;">
       <created>1644964031276</created>
@@ -319,7 +327,42 @@
       <option name="project" value="LOCAL" />
       <updated>1645492933075</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <created>1645495173727</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1645495173727</updated>
+    </task>
+    <task id="LOCAL-00035" summary="In this Update: &#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <created>1645569411271</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1645569411271</updated>
+    </task>
+    <task id="LOCAL-00036" summary="In this Update: &#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <created>1645569961126</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1645569961126</updated>
+    </task>
+    <task id="LOCAL-00037" summary="In this Update: &#10;.Fixed issue with UserLikedPost.js typo error - as users could unfollow themselves (wrong parameters passed to userID field).&#10;&#10;. LikeBTN now adds/ removes the postID of the post the user has un/liked  to a collection called: /postData/UserID/likes&#10;&#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <created>1645572362605</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1645572362605</updated>
+    </task>
+    <task id="LOCAL-00038" summary="In this Update: &#10;.Created Stories Object&#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Fixed issue with UserLikedPost.js typo error - as users could unfollow themselves (wrong parameters passed to userID field).&#10;&#10;. LikeBTN now adds/ removes the postID of the post the user has un/liked  to a collection called: /postData/UserID/likes&#10;&#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page">
+      <created>1645594598095</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1645594598095</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,11 +393,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update: &#10;Refactoring&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <MESSAGE value="In this Update: &#10;Like BTN Basics implemented&#10;&#10;&#10;Need To work On:&#10;Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;&#10;&#10;&#10;Previous Updates:&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <MESSAGE value="In this Update: &#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;&#10;&#10;Need To work On:&#10;Positioning&#10;&#10;&#10;&#10;&#10;Previous Updates:&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <MESSAGE value="In this Update: &#10;GUI Updates&#10;&#10;&#10;Need To work On:&#10;Need to implement GUi on videosFeed &#10;&#10;&#10;&#10;&#10;Previous Updates:&#10;GUI looks how it needs to for PictureFeed.js&#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
-    <MESSAGE value="In this Update: &#10;GUI Updates&#10;Done - Need to implement GUi on videosFeed &#10;&#10;&#10;Need To work On:&#10;&#10;&#10;&#10;&#10;&#10;Previous Updates:&#10;GUI looks how it needs to for PictureFeed.js&#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;GUI Updates&#10;Implemented global styles sheet for feed&#10;Done - Need to implement GUi on videosFeed &#10;&#10;&#10;Need To work On:&#10;&#10;&#10;&#10;&#10;&#10;Previous Updates:&#10;GUI looks how it needs to for PictureFeed.js&#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;Feed page implemented new DB for postData&#10;&#10;&#10;&#10;Need To work On:&#10;&#10;&#10;&#10;&#10;&#10;Previous Updates:&#10;Implemented global styles sheet for feed&#10;Done - Need to implement GUi on videosFeed &#10;GUI looks how it needs to for PictureFeed.js&#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
     <MESSAGE value="In this Update: &#10;Passing postID to comments &amp; Likes BTN Objects&#10;&#10;&#10;&#10;Need To work On:&#10;&#10;&#10;&#10;&#10;&#10;Previous Updates:&#10;Feed page implemented new DB for postData&#10;Implemented global styles sheet for feed&#10;Done - Need to implement GUi on videosFeed &#10;GUI looks how it needs to for PictureFeed.js&#10;Done - Configuring viewable BTN &amp; TXT based on image background as its hard to see white Like txt on a white background.&#10;Like BTN Basics implemented&#10;Renamed variables from profilePicture to profileImage to match DB&#10;USernames added to userstories &#10;Usernames are also shortened if they are too long&#10;Username added to stories in feed&#10;Font size typo error in  &lt;Username_Link_Txt&gt;" />
@@ -375,6 +413,23 @@
     <MESSAGE value="In this Update: &#10;Fixed Bug - Chat Nav Icon disappeared&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
     <MESSAGE value="In this Update: &#10;Integrated Search.js into new app design &#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
     <MESSAGE value="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;.Fixed issue with UserLikedPost.js typo error - as users could unfollow themselves (wrong parameters passed to userID field).&#10;&#10;. LikeBTN now adds/ removes the postID of the post the user has un/liked  to a collection called: /postData/UserID/likes&#10;&#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <MESSAGE value="In this Update: &#10;.Created Stories Object&#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Fixed issue with UserLikedPost.js typo error - as users could unfollow themselves (wrong parameters passed to userID field).&#10;&#10;. LikeBTN now adds/ removes the postID of the post the user has un/liked  to a collection called: /postData/UserID/likes&#10;&#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update: &#10;.Created Stories Object&#10;&#10;&#10;&#10;Need To work On:&#10;.Switch (pictures / videos) overlaps topnotch of camera with certain phones&#10;&#10;&#10;Previous Updates:&#10;.Fixed issue with UserLikedPost.js typo error - as users could unfollow themselves (wrong parameters passed to userID field).&#10;&#10;. LikeBTN now adds/ removes the postID of the post the user has un/liked  to a collection called: /postData/UserID/likes&#10;&#10;.Fixed typo error in props when clicking on username in searchbar and the data passed to this object didn't receive the userID from Search Screen which navigated the user to blank profile page. &#10;&#10;.Created Post object which is universal for pictures and videos &#10;.Created chatBTN&#10;&#10;.Integrated Search.js into new app design &#10;.Created New ProfileIcon_And_Username.js&#10;.Created Trending feeds basic page&#10;.Updated search screen to include profile icons and text&#10;Fixed Bug - Chat Nav Icon disappeared&#10;Shows message on feed instead of blank screen if the user isnt following anyone.&#10;.Refactoring&#10;.Likes works on Videos page" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js</url>
+          <line>55</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

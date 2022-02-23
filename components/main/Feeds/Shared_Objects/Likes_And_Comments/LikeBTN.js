@@ -11,8 +11,9 @@ export default function LikeBTN(props) {
 
     const [likeState, setLikeState] = useState(props.userLikedPost);
     const [currentLikes, setCurrentLikes] = useState(props.likesCount);
+    const userLoggedIn = firebase.auth().currentUser.uid;
 
-    console.log(`\n\nPostID: ${props.postID} \ncurrentUserID: ${props.userID} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
+    console.log(`\n\nPostID: ${props.postID} \nCurrentUserID: ${userLoggedIn} \nUserIDRelatedToPost: ${props.userID} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
 
 
     const addUserInLikesRef =
@@ -26,6 +27,11 @@ export default function LikeBTN(props) {
             .collection('postData')
             .doc(props.postID)
 
+    const storePostInUsersLiked =
+        firebase.firestore()
+            .collection('posts')
+            .doc(userLoggedIn)
+            .collection("postsUserHasLiked")
 
     const BTN_Event = () => {
         try {
@@ -38,13 +44,27 @@ export default function LikeBTN(props) {
             {
                 // add users id to likes db
                 addUserInLikesRef
-                    .doc(props.userID)
+                    .doc(userLoggedIn)
                     .set({
 
                     })
                     .then(() => {
-                        changeLikesState(addOrMinusLike, newState);
+
                         console.log(`\n\nAdded usersName to likes Collection ${props.postID}`);
+                        storePostInUsersLiked
+                            .doc(props.postID)
+                            .set({
+
+                            })
+                            .then(() => {
+                                console.log(`\n\nAdded PostID to  users likes Collection ${props.postID}`);
+                                changeLikesState(addOrMinusLike, newState);
+                            })
+                            .catch((exception) => {
+                                alert(`\nError Adding PostID to  users likes Collection \n\n${exception}`);
+                                console.log(`\n\nError Adding PostID to  users likes Collection ${props.postID} \n\n${props.postID}`);
+                            })
+
                     })
                     .catch((exception) => {
                         alert(`\nError liking post \n\n${exception}`);
@@ -53,10 +73,20 @@ export default function LikeBTN(props) {
             } else // remove likes
             {
                 // remove users id from likes db
-                addUserInLikesRef.doc(props.userID).delete()
+                addUserInLikesRef.doc(userLoggedIn).delete()
                     .then(() => {
-                        changeLikesState(addOrMinusLike, newState);
-                        console.log(`\n\nRemoved usersName to likes Collection ${props.postID}`);
+                      console.log(`\n\nRemoved usersName to likes Collection ${props.postID}`);
+
+                        // remove users id from likes db
+                        storePostInUsersLiked.doc(props.postID).delete()
+                            .then(() => {
+                                console.log(`\n\nRemoved PostID to  users likes Collection ${props.postID}`);
+                                changeLikesState(addOrMinusLike, newState);
+                            })
+                            .catch((exception) => {
+                                alert(`\nError Removing PostID to  users likes Collection\n\n${exception}`);
+                                console.log(`\n\nError Removing PostID to  users likes Collection ${props.postID} \n\n${props.postID}`);
+                            })
                     })
                     .catch((exception) => {
                         alert(`\nError unliking post \n\n${exception}`);
@@ -87,7 +117,7 @@ export default function LikeBTN(props) {
                     setLikeState(newState);
 
                     console.log(`\n\nSetting Local states for like BTN`);
-                    console.log(`\n\nPostID: ${props.postID} \ncurrentUserID: ${props.userID} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
+                    console.log(`\n\nPostID: ${props.postID} \ncurrentUserID: ${userLoggedIn} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
                 })
             })
             .catch((exception) => {
@@ -114,7 +144,7 @@ export default function LikeBTN(props) {
                     <Octicons name="heart" size={24} color="white"/>
                 }
             </TouchableOpacity>
-            <Likes_And_Comments_Count_Txt  userID={props.userID} postID={props.postID} use={"like"} count={currentLikes} navigation={props.navigation}/>
+            <Likes_And_Comments_Count_Txt  userID={userLoggedIn} postID={props.postID} use={"like"} count={currentLikes} navigation={props.navigation}/>
         </View>
     )
 }

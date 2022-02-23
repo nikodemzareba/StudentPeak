@@ -112,7 +112,7 @@ function App() {
                     <Stack.Group initialRouteName="Main"> 
 
                         <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
-                        <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
+                        <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
 
                     </Stack.Group>
                     

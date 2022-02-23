@@ -1,6 +1,14 @@
 import {StyleSheet} from "react-native"
 
 export const feedStyles = StyleSheet.create({
+
+    stories: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingHorizontal: 0,
+        marginBottom: 10,
+        width: 60, height: 60
+    },
     video: (width, height) => ({
         alignSelf: 'center',
         width: width,

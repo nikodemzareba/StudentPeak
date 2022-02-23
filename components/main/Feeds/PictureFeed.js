@@ -13,6 +13,7 @@ import {feedStyles} from "./Shared_Objects/Styles";
 import LikesAndCommentsDisplay from "./Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
 import {isUserNameTooLong} from "./Shared_Objects/FunctionsAndMethods/isUserNameTooLong";
 import Pictures_And_Videos_Post_Object from "./Shared_Objects/Likes_And_Comments/Pictures_And_Videos_Post_Object";
+import StoriesObject from "./Shared_Objects/StoriesObject";
 
 const {height, width} = Dimensions.get('window');
 
@@ -34,17 +35,17 @@ export default function PictureFeed(props) {
                 renderItem={({item}) => {
                     return (
 
-                        <View style={styles.stories}>
-                            <Profile_Icon userID={item.key} profileImage={item.profileImage}
-                                          width={45} height={45} borderRadius={45}
-                                          navigation={props.navigation}
-
-                            />
-
-                            <Username_Link_Txt name={isUserNameTooLong(item.username, 8)} userID={item.key} fontSize={9}
-                                               fontWeight={'normal'} navigation={props.navigation}/>
-
-                        </View>
+                        <StoriesObject 
+                            userID={item.key}
+                            profileImage={item.profileImage}
+                            width={45}
+                            height={45}
+                            borderRadius={45}
+                            username={item.username}
+                            maxUsernameLength={8}
+                            fontSize={9}
+                            navigation={props.navigation}
+                        />
                     )
                 }}
             />
@@ -105,11 +106,5 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10
     },
-    stories: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        paddingHorizontal: 0,
-        marginBottom: 10,
-        width: 60, height: 60
-    }
+    
 })

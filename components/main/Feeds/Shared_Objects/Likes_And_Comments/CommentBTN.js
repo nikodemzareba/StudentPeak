@@ -5,17 +5,23 @@ import {Ionicons} from "@expo/vector-icons";
 import { Dimensions, StyleSheet } from 'react-native'
 import {feedStyles} from "../Styles";
 import Likes_And_Comments_Count_Txt from "./Likes_And_Comments_Count_Txt";
+import commentModal from "./commentModal";
+import  { useRef } from "react";
+import {SafeAreaView} from "react-native";
+import BottomSheet from "react-native-gesture-bottom-sheet";
 
 
 export default function CommentBTN(props) {
 
     const [currentCommentsCount, setCurrentCommentsCount] = useState(props.commentsCount);
-    const postID = useState(props.Post_ID)
+    //const postID = useState(props.Post_ID)
+    const bottomSheet = useRef();
+
     return(
     <View style = {feedStyles.likeAndCommentsBTN_View}>
         <TouchableOpacity
-            style={styles.actionButton}
-            //onPress={() => dispatch(openCommentModal(true, post))}
+            style={styles.button}
+            onPress={() => bottomSheet.current.show()}
         >
             <Ionicons
                 color="#FFFFFF"
@@ -24,6 +30,15 @@ export default function CommentBTN(props) {
             />
 
         </TouchableOpacity>
+        <BottomSheet
+            draggable={true}
+            hasDraggableIcon
+            ref={bottomSheet}
+            height={450}>
+            <View>
+                <Text>Test</Text>
+            </View>
+        </BottomSheet>
         <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>
     </View>
 

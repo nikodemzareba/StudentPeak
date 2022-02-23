@@ -1,6 +1,8 @@
 import {Dimensions, FlatList, View} from "react-native";
 import React, {useState} from "react";
 import VideoPlayer from "./VideosFeed_Objects/feedControl/components/VideoPlayer";
+import {feedStyles} from "./Shared_Objects/Styles";
+
 const {height, width} = Dimensions.get('window');
 
 export default function VideoFeed(props) {
@@ -14,6 +16,7 @@ export default function VideoFeed(props) {
             videoUri={item.downloadURL}
             item={item}
             videosOutOfBoundItems={videosOutOfBoundItems}
+            userID={props.userID}
             navigation={props.navigation}
         />
     }
@@ -34,7 +37,7 @@ export default function VideoFeed(props) {
     };
 
     return (
-        <View style={{flex: 1}}>
+        <View style={feedStyles.screenBackground}>
             <FlatList
                 style={{flex: 1}}
                 contentContainerStyle={{paddingTop: 25}}

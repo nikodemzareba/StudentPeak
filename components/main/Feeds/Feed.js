@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, {Component, useRef, useState} from 'react'
 import {
     View,
     Dimensions,
@@ -8,20 +8,10 @@ import {
     ScrollView,
     Button,
     StyleSheet,
-    SafeAreaView, Image
+    SafeAreaView, Image, TouchableOpacity
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import VideoPlayer from "./VideosFeed_Objects/feedControl/components/VideoPlayer";
 import firebase from "firebase";
-
-import {StatusBar} from "expo-status-bar";
-import {Feather} from "@expo/vector-icons";
-import {Video} from "expo-av";
-import VideoControls from "./VideosFeed_Objects/feedControl/components/VideoControls";
-import {B} from "./Shared_Objects/Bold";
-import ProfileTitle from "./Shared_Objects/ProfileTitle";
-import Caption from "./Shared_Objects/Caption";
 import PictureFeed from "./PictureFeed";
 import VideoFeed from "./VideoFeed";
 
@@ -29,60 +19,90 @@ import VideoFeed from "./VideoFeed";
 const {height, width} = Dimensions.get('window');
 
 
-const separator = "##########################################################################################";
+const separator = "###########################################################################################";
 
-import { LogBox } from 'react-native';
+import {LogBox} from 'react-native';
+import SwitchSelector from "react-native-switch-selector";
+import Profile_Icon from "./Shared_Objects/Profile_Icon";
+
+import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
+import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
+
 LogBox.ignoreLogs(['Setting a timer']);
+
+
+const videosOrPicturesSelectedToView = [
+    {label: 'Pictures', value: 0},
+    {label: 'Videos', value: 1},
+];
+
+import {storyData} from "./FakeJSONData/TempStoryData";
+import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
+import {B} from "./Shared_Objects/Bold";
+import Chat_BTN from "./Shared_Objects/Chat_BTN";
+
 
 class FeedScreen extends Component {
 
     constructor(props) {
         super(props);
-        this.usersFollowingRef = firebase.firestore()
-            .collection('following')
-            .doc(firebase.auth().currentUser.uid)
-            .collection('userFollowing')
+
         this.state = {
-            requestProcessed: false,
 
-            picturesReceived: 0,
-            loadPictures: false,
+            storiesData: [],
+            storiesDataLoaded: false,
 
+            initialViewVideosOrPictureFeed: 0,
+
+            profileImageLoaded: false,
+            profileImage: "",
+            userId:
+                // "upb6UG9eM0VWzRo8tGke3xK9p953",
+            firebase.auth().currentUser.uid,
+
+            videosDataFetched: [],
+            videosIsLoading: true,
             videosReceived: 0,
             loadVideos: false,
 
-            videosOutOfBoundItems: [],
-            videosDataFetched: [],
-            videosIsLoading: true,
-
-            picturesOutOfBoundItems: [],
             picturesDataFetched: [],
-            picturesIsLoading: true
+            picturesIsLoading: true,
+            picturesReceived: 0,
+            loadPictures: false,
         }
+        this.usersFollowingRef = firebase.firestore()
+            .collection('following')
+            .doc(this.state.userId)
+            .collection('userFollowing')
     }
 
-    handleVideosViewableItemsChanged = ({changed}) => {
-
-        const videosOutOfBoundItems = changed;
-
-        if (videosOutOfBoundItems.length !== 0) {
-            this.setState({videosOutOfBoundItems});
-        }
-
-    };
-
-    handlePicturesViewableItemsChanged = ({changed}) => {
-
-        const picturesOutOfBoundItems = changed;
-
-        if (picturesOutOfBoundItems.length !== 0) {
-            this.setState({picturesOutOfBoundItems});
-        }
-
-    };
-
     componentDidMount() {
+        this.getProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+
+        //HELLO DELETE Later
+        this.setState({
+            storiesDataLoaded: true,
+            storiesData: storyData
+        });
+    }
+
+    getProfileImage() {
+        firebase.firestore()
+            .collection('users')
+            .doc(this.state.userId)
+            .get()
+            .then(userDetails => {
+                console.log(`\n\nCurrent UserID: ${this.state.userId} \nProfile Image URL: ${userDetails.get("profileimage")}`)
+                if (userDetails.get("profileimage") !== "") {
+                    console.log(`\n\n Has Profile Image`);
+
+                    this.setState({
+                        profileImage: userDetails.get("profileimage"),
+                        profileImageLoaded: true,
+                    });
+                }
+            })
     }
 
     getData = async (querySnapshot) => {
@@ -115,67 +135,102 @@ class FeedScreen extends Component {
                         //.where("mediaType", "==", "video")
                         .get()
                         .then(usersFollowingPosts => {
-                            console.log("\nGot Posts Of Users i am Following")
+                            console.log("\nGot Posts Of Users i am Following!")
 
                             usersFollowingPosts.forEach((userPost) => {
-                              //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
-                                
-                                const profileImage = userDetails.get("profileimage");
-                                const username = userDetails.get("username");
-                                const userID = userFollowing.id;
-                                
-                                const caption = userPost.get("caption");
-                                const createdAt = userPost.get("createdAt");
-                                const downloadURL = userPost.get("downloadURL");
-                                const mediaType = userPost.get("mediaType");
-                                const commentsCount= userPost.get("commentsCount");
 
-                                if (mediaType === "video") {
+                                firebase.firestore()
+                                    .collection('postData')
+                                    .doc(userPost.id)
+                                    .get()
+                                    .then((postCommentsAndLikes => {
 
-                                    this.setState({
-                                        videosReceived: this.state.videosReceived + 1
-                                    });
+                                        let userLikedPost = false;
+                                        firebase.firestore()
+                                            .collection('postData')
+                                            .doc(userPost.id)
+                                            .collection("likes")
+                                            .doc(this.state.userId)
+                                            .get()
+                                            .then(documentSnapshot => {
+                                                if (documentSnapshot.exists) {
+                                                    userLikedPost = true;
+                                                }
+                                            })
+                                            .then(() => {
 
-                                    videosDataFetched.push({
-                                        key: userPost.id,
-                                        userID: userID,
-                                        name: username,
-                                        profile: profileImage,
-                                        caption: caption,
-                                        createdAt: createdAt,
-                                        downloadURL: downloadURL,
-                                        commentsCount: commentsCount
-                                    });
-                                } else if (mediaType === "picture") {
+                                                const profileImage = userDetails.get("profileimage");
+                                                const username = userDetails.get("username");
+                                                const userID = userFollowing.id;
 
-                                    this.setState({
-                                        picturesReceived: this.state.picturesReceived + 1
-                                    });
+                                                const caption = userPost.get("caption");
+                                                const createdAt = userPost.get("createdAt");
+                                                const downloadURL = userPost.get("downloadURL");
+                                                const mediaType = userPost.get("mediaType");
 
-                                    picturesDataFetched.push({
-                                        key: userPost.id,
-                                        userID: userID,
-                                        name: username,
-                                        profile: profileImage,
-                                        caption: caption,
-                                        createdAt: createdAt,
-                                        downloadURL: downloadURL,
-                                        commentsCount: commentsCount
-                                    });
-                                }
+                                                const commentsCount = postCommentsAndLikes.get("commentsCount");
+                                                const likesCount = postCommentsAndLikes.get("likesCount");
 
-                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${commentsCount} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
-                                console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
-                                if (processedFollowingUsers === expectedFollowingUsersCount) {
-                                    console.log("\nSetting Data To Variable")
-                                    this.setState({
-                                        videosDataFetched: videosDataFetched,
-                                        picturesDataFetched: picturesDataFetched,
-                                    }, () => {
-                                        this.setStatesForLoadingFeed()
-                                    });
-                                }
+                                                if (mediaType === "video") {
+
+                                                    this.setState({
+                                                        videosReceived: this.state.videosReceived + 1
+                                                    });
+
+                                                    videosDataFetched.push({
+                                                        key: userPost.id,
+                                                        userID: userID,
+                                                        name: username,
+                                                        profile: profileImage,
+                                                        caption: caption,
+                                                        createdAt: createdAt,
+                                                        downloadURL: downloadURL,
+                                                        commentsCount: commentsCount,
+                                                        likesCount: likesCount,
+                                                        userLikedPost: userLikedPost,
+                                                        mediaType: mediaType
+                                                    });
+                                                } else if (mediaType === "picture") {
+
+                                                    this.setState({
+                                                        picturesReceived: this.state.picturesReceived + 1
+                                                    });
+
+                                                    picturesDataFetched.push({
+                                                        key: userPost.id,
+                                                        userID: userID,
+                                                        name: username,
+                                                        profile: profileImage,
+                                                        caption: caption,
+                                                        createdAt: createdAt,
+                                                        downloadURL: downloadURL,
+                                                        commentsCount: commentsCount,
+                                                        likesCount: likesCount,
+                                                        userLikedPost: userLikedPost,
+                                                        mediaType: mediaType
+                                                    });
+                                                }
+
+                                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount} \nUserLikedPost: ${userLikedPost}`);
+                                                console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+
+                                                if (processedFollowingUsers === expectedFollowingUsersCount) {
+                                                    console.log("\nSetting Data To Variable")
+                                                    this.setState({
+                                                        videosDataFetched: videosDataFetched,
+                                                        picturesDataFetched: picturesDataFetched,
+                                                    }, () => {
+                                                        this.setStatesForLoadingFeed()
+                                                    });
+                                                }
+                                            })
+                                            .catch((exception) => {
+                                                console.log(`\nUnable to get Post Likes \n\n${exception}`);
+
+                                            })
+                                    }))
+                                //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
                             })
                         })
                 })
@@ -188,8 +243,7 @@ class FeedScreen extends Component {
                 });
         })
 
-        if(expectedFollowingUsersCount === 0)
-        {
+        if (expectedFollowingUsersCount === 0) {
             this.setStatesForLoadingFeed();
         }
     }
@@ -209,57 +263,61 @@ class FeedScreen extends Component {
         }
 
         this.setState({
-                videosIsLoading: false,
-                picturesIsLoading: false
-            });
+            videosIsLoading: false,
+            picturesIsLoading: false
+        });
 
-    }
-
-    renderUserFollowingVideoPosts = ({item}) => {
-        return <VideoPlayer
-            height={height / 1.6}
-            width={width}
-            videoUri={item.downloadURL}
-            item={item}
-            videosOutOfBoundItems={this.state.videosOutOfBoundItems}
-        />
     }
 
     render() {
 
         return (
-            <>
-                <StatusBar barStyle="dark-content"/>
-                <SafeAreaView style={{flex: 1}}>
-                    <ScrollView
-                        style={{flex: 1}}
-                        horizontal={true}
-                        scrollEventThrottle={16}
-                        pagingEnabled={true}
-                    >
-                        <View style={{width, height}}>
+            <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
 
-                            {this.state.videosIsLoading
-                                ?
-                                <View style={styles.loading}>
-                                    <ActivityIndicator size="large" color="red"/>
-                                </View>
-                                :
-                                <>
-                                    {this.state.loadVideos
-                                        ?
-                                        <VideoFeed data={this.state.videosDataFetched} navigation={this.props.route.params.navigation}/>
-                                        :
-                                        <View style={{flex: 1}}>
+                {/* Top Bar  */}
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    backgroundColor: "black"
+                }}>
+                    {/* Profile Icon */}
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("PrivateProfile")}>
+                        {this.state.profileImageLoaded
+                            ?
+                            <Image
+                                source={{uri: `${this.state.profileImage}`}}
+                                style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                            />
+                            :
+                            <Image
+                                source={require('./System_Images/Profile_Image_Icon.png')}
+                                style={{width: 50, height: 50, borderRadius: 30, marginLeft: 15}}
+                            />
+                        }
+                    </TouchableOpacity>
 
-                                        </View>
-                                    }
+                    {/* Slider (Picture / Videos) */}
+                    <View style={{flexDirection: 'row', alignItems: 'center', width: 250, height: 100}}>
+                        <SwitchSelector options={videosOrPicturesSelectedToView}
+                                        initial={this.state.initialViewVideosOrPictureFeed}
+                                        buttonColor={"#000000"}
+                                        buttonColor={"#000000"}
+                                        textColor={"#000000"}
 
-                                </>
-                            }
+                                        onPress={value => this.setState({initialViewVideosOrPictureFeed: value})}
+                        />
+                    </View>
 
-                        </View>
+                    {/* Chat BTN */}
+                    <Chat_BTN   navigation={this.props.navigation}/>
+                </View>
 
+
+                {/* Logic for which view is visible*/}
+                {this.state.initialViewVideosOrPictureFeed === 0
+                    ?
+                    <>
                         {/* Pictures Feed */}
                         {this.state.picturesIsLoading
                             ?
@@ -269,20 +327,50 @@ class FeedScreen extends Component {
                             :
 
                             <>
-                                {this.state.loadPictures
+                                {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
-                                    <PictureFeed data={this.state.picturesDataFetched} navigation={this.props.route.params.navigation}/>
+                                    <PictureFeed
+                                        userID={this.state.userId}
+                                        data={this.state.picturesDataFetched}
+                                        storyData={this.state.storiesData}
+                                        navigation={this.props.route.params.navigation}/>
                                     :
-                                    <View style={{flex: 1}}>
-
+                                    <View style={{flex: 1, padding:10}}>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
                                     </View>
                                 }
                             </>
 
                         }
-                    </ScrollView>
-                </SafeAreaView>
-            </>
+                    </>
+                    :
+                    <>
+                        {/* Video Feed */}
+                        {this.state.videosIsLoading
+                            ?
+                            <View style={styles.loading}>
+                                <ActivityIndicator size="large" color="red"/>
+                            </View>
+                            :
+                            <>
+                                {this.state.loadVideos
+                                    ?
+                                    <VideoFeed
+                                        userID={this.state.userId}
+                                        data={this.state.videosDataFetched}
+                                        navigation={this.props.route.params.navigation}/>
+                                    :
+                                    <View style={{flex: 1, padding:10}}>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
+                                    </View>
+                                }
+                            </>
+                        }
+                    </>
+                }
+
+
+            </ScrollView>
         );
 
     }

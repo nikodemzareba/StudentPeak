@@ -209,7 +209,7 @@ export default function VideoScreen(props) {
                         <Feather style={{ padding: 10 }} name={"camera"} size={20} color="white" />
                     </TouchableOpacity>
                 </View>
-                <View style={{ flex: 1 } [utils.borderTopGray]}>
+                <View style={{ flex: 1 }, [utils.borderTopGray]}>
 
                     <FlatList
                         numColumns={3}
@@ -272,6 +272,79 @@ export default function VideoScreen(props) {
         </View>
     );
 }
+const styles = StyleSheet.create({
+    closeButton: {
+        position: "absolute",
+        top: 35,
+        left: 15,
+        height: closeButtonSize,
+        width: closeButtonSize,
+        borderRadius: Math.floor(closeButtonSize / 2),
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#c4c5c4",
+        opacity: 0.7,
+        zIndex: 2,
+    },
+    media: {
+        ...StyleSheet.absoluteFillObject,
+    },
+    closeCross: {
+        width: "68%",
+        height: 1,
+        backgroundColor: "black",
+    },
+    control: {
+        position: "absolute",
+        flexDirection: "row",
+        bottom: 38,
+        width: "100%",
+
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    recordIndicatorContainer: {
+        flexDirection: "row",
+        position: "absolute",
+        top: 0,
+        opacity: 0.7,
+    },
+    recordTitle: {
+        fontSize: 14,
+        color: "black",
+        textAlign: "center",
+    },
+    recordDot: {
+        borderRadius: 3,
+        height: 6,
+        width: 6,
+        backgroundColor: "#ff0000",
+        marginHorizontal: 5,
+    },
+    text: {
+        color: "#000000",
+    },
+
+    capture: {
+        backgroundColor: "red",
+        borderRadius: 5,
+        height: captureSize,
+        width: captureSize,
+        borderRadius: Math.floor(captureSize / 2),
+        marginHorizontal: 31,
+    },
+    capturePicture: {
+        borderWidth: 6,
+        borderColor: 'gray',
+        backgroundColor: "white",
+        borderRadius: 5,
+        height: captureSize,
+        width: captureSize,
+        borderRadius: Math.floor(captureSize / 2),
+        marginHorizontal: 31,
+    },
+});
+
 
 const container = StyleSheet.create({
     container: {
@@ -459,76 +532,3 @@ const utils = StyleSheet.create({
         aspectRatio: 1
     }
 })
-
-const styles = StyleSheet.create({
-    closeButton: {
-        position: "absolute",
-        top: 35,
-        left: 15,
-        height: closeButtonSize,
-        width: closeButtonSize,
-        borderRadius: Math.floor(closeButtonSize / 2),
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#c4c5c4",
-        opacity: 0.7,
-        zIndex: 2,
-    },
-    media: {
-        ...StyleSheet.absoluteFillObject,
-    },
-    closeCross: {
-        width: "68%",
-        height: 1,
-        backgroundColor: "black",
-    },
-    control: {
-        position: "absolute",
-        flexDirection: "row",
-        bottom: 38,
-        width: "100%",
-
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    recordIndicatorContainer: {
-        flexDirection: "row",
-        position: "absolute",
-        top: 0,
-        opacity: 0.7,
-    },
-    recordTitle: {
-        fontSize: 14,
-        color: "black",
-        textAlign: "center",
-    },
-    recordDot: {
-        borderRadius: 3,
-        height: 6,
-        width: 6,
-        backgroundColor: "#ff0000",
-        marginHorizontal: 5,
-    },
-    text: {
-        color: "#000000",
-    },
-
-    capture: {
-        backgroundColor: "red",
-        borderRadius: 5,
-        height: captureSize,
-        width: captureSize,
-        //borderRadius: Math.floor(captureSize / 2),
-        marginHorizontal: 31,
-    },
-    capturePicture: {
-        borderWidth: 6,
-        borderColor: 'gray',
-        backgroundColor: "white",
-        borderRadius: 5,
-        height: captureSize,
-        width: captureSize,
-        //borderRadius: Math.floor(captureSize / 2),
-        marginHorizontal: 31,
-    },
-});

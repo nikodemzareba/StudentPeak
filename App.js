@@ -32,6 +32,7 @@ import ShowEventsResults from './components/main/Events_Screen/ShowEventsResults
 import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/UsersLikedPost";
 import Search from "./components/main/Search/Search";
 import SearchScreenResults from "./components/main/Search/SearchScreenResults";
+import ViewPost from "./components/main/Search/ViewPost";
 
 
 import Picture from './components/authentication/Picture'
@@ -121,6 +122,7 @@ function App() {
                                 <Stack.Screen name="UsersLikedPost" component={UsersLikedPost} options={{headerShown: false}}/>
                                 <Stack.Screen name="Search" component={Search} options={{headerShown: false}}/>
                                 <Stack.Screen name="SearchScreenResults" component={SearchScreenResults} options={{headerShown: false}}/>
+                                <Stack.Screen name="ViewPost" component={ViewPost} options={{headerShown: false}}/>
 
                             </Stack.Group>
 

@@ -145,7 +145,8 @@ class FeedScreen extends Component {
                                     .get()
                                     .then((postCommentsAndLikes => {
 
-                                        let userLikedPost = false;
+                                        let userLikedPost, profileImage, username, userID, caption, createdAt, downloadURL, mediaType, commentsCount,likesCount;
+                                        
                                         firebase.firestore()
                                             .collection('postData')
                                             .doc(userPost.id)
@@ -156,20 +157,21 @@ class FeedScreen extends Component {
                                                 if (documentSnapshot.exists) {
                                                     userLikedPost = true;
                                                 }
+                                                return documentSnapshot
                                             })
-                                            .then(() => {
+                                            .then((doc) => {
 
-                                                const profileImage = userDetails.get("profileimage");
-                                                const username = userDetails.get("username");
-                                                const userID = userFollowing.id;
+                                                 profileImage = userDetails.get("profileimage");
+                                                 username = userDetails.get("username");
+                                                 userID = userFollowing.id;
 
-                                                const caption = userPost.get("caption");
-                                                const createdAt = userPost.get("createdAt");
-                                                const downloadURL = userPost.get("downloadURL");
-                                                const mediaType = userPost.get("mediaType");
+                                                 caption = userPost.get("caption");
+                                                 createdAt = userPost.get("createdAt");
+                                                 downloadURL = userPost.get("downloadURL");
+                                                 mediaType = userPost.get("mediaType");
 
-                                                const commentsCount = postCommentsAndLikes.get("commentsCount");
-                                                const likesCount = postCommentsAndLikes.get("likesCount");
+                                                 commentsCount = postCommentsAndLikes.get("commentsCount");
+                                                 likesCount = postCommentsAndLikes.get("likesCount");
 
 
                                                 if (mediaType === "video") {

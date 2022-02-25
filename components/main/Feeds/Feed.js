@@ -105,7 +105,9 @@ class FeedScreen extends Component {
             })
     }
 
+    // This method is passed all the userID's of the users this user is following
     getData = async (querySnapshot) => {
+        
         const videosDataFetched = [];
         const picturesDataFetched = [];
 
@@ -116,10 +118,11 @@ class FeedScreen extends Component {
 
         // Got users Following info
         console.log("\nGot Users Following Data")
+        
+        // For each user we are following
         await querySnapshot.forEach((userFollowing) => {
 
-            // Get the user we are following userName & userProfilePhoto
-
+            // Get each user we are following; userName & userProfilePhoto
             firebase.firestore()
                 .collection('users')
                 .doc(userFollowing.id)
@@ -128,25 +131,28 @@ class FeedScreen extends Component {
 
                     console.log("\nGot Users Following Details etc: username, profileimage")
                     processedFollowingUsers++;
+                    
+                    // Get all of the posts from the user we are following
                     firebase.firestore()
                         .collection('posts')
                         .doc(userFollowing.id)
-                        .collection('userPosts')
-                        //.where("mediaType", "==", "video")
+                        .collection('userPosts')                      
                         .get()
                         .then(usersFollowingPosts => {
                             console.log("\nGot Posts Of Users i am Following!")
 
+                            // For each post from the user we are following 
                             usersFollowingPosts.forEach((userPost) => {
-
+                                
+                                // Get the posts details 
                                 firebase.firestore()
                                     .collection('postData')
                                     .doc(userPost.id)
                                     .get()
-                                    .then((postCommentsAndLikes => {
+                                    .then((postData => {
 
-                                        let userLikedPost, profileImage, username, userID, caption, createdAt, downloadURL, mediaType, commentsCount,likesCount;
-                                        
+                                        // check if the user logged in liked the post of the user they are following
+                                        let userLikedPost = false;
                                         firebase.firestore()
                                             .collection('postData')
                                             .doc(userPost.id)
@@ -157,21 +163,20 @@ class FeedScreen extends Component {
                                                 if (documentSnapshot.exists) {
                                                     userLikedPost = true;
                                                 }
-                                                return documentSnapshot
                                             })
-                                            .then((doc) => {
+                                            .then(() => {
 
-                                                 profileImage = userDetails.get("profileimage");
-                                                 username = userDetails.get("username");
-                                                 userID = userFollowing.id;
+                                                const profileImage = userDetails.get("profileimage");
+                                                const username = userDetails.get("username");
+                                                const userID = userFollowing.id;
 
-                                                 caption = userPost.get("caption");
-                                                 createdAt = userPost.get("createdAt");
-                                                 downloadURL = userPost.get("downloadURL");
-                                                 mediaType = userPost.get("mediaType");
+                                                const caption = postData.get("caption");
+                                                const createdAt = postData.get("createdAt");
+                                                const downloadURL = postData.get("downloadURL");
+                                                const mediaType = postData.get("mediaType");
 
-                                                 commentsCount = postCommentsAndLikes.get("commentsCount");
-                                                 likesCount = postCommentsAndLikes.get("likesCount");
+                                                const commentsCount = postData.get("commentsCount");
+                                                const likesCount = postData.get("likesCount");
 
 
                                                 if (mediaType === "video") {
@@ -268,7 +273,6 @@ class FeedScreen extends Component {
             videosIsLoading: false,
             picturesIsLoading: false
         });
-
     }
 
     render() {

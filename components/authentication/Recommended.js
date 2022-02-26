@@ -2,10 +2,16 @@ import React from 'react'
 import { StyleSheet, Text, View, Button, TouchableOpacity, useState } from 'react-native'
 import { ScrollView } from "react-native-gesture-handler";
 import FloatingActionButton from "react-native-floating-action-button";
+import firebase from 'firebase';
+require('firebase/firestore')
+
 
 export default function Interests({ navigation }) {
+  
 
+const snapshot =  firebase.firestore.collection('interests').where('type' == sports);
 
+snapshot.forEach(doc.data());
  
   return (
     <View style={styles.container}>

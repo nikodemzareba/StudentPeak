@@ -9,13 +9,31 @@ import commentModal from "./commentModal";
 import  { useRef } from "react";
 import {SafeAreaView} from "react-native";
 import BottomSheet from "react-native-gesture-bottom-sheet";
+import firebase from "firebase";
+
 
 
 export default function CommentBTN(props) {
 
     const [currentCommentsCount, setCurrentCommentsCount] = useState(props.commentsCount);
-    //const postID = useState(props.Post_ID)
+    const postID = props.postID;
+    console.log("This has been clicked");
+    console.log("PostedID recevied " + postID);
     const bottomSheet = useRef();
+
+    const getCommentLike =
+        firebase.firestore()
+            .collection('postData')
+            .doc(props.postID)
+            .collection("comments")
+            .get()
+            .then(doc =>{
+               doc.forEach(commentgot =>{
+                   console.log(commentgot.data());
+               })
+            })
+
+    console.log("Post data new is " + {getCommentLike});
 
     return(
     <View style = {feedStyles.likeAndCommentsBTN_View}>
@@ -36,7 +54,7 @@ export default function CommentBTN(props) {
             ref={bottomSheet}
             height={450}>
             <View>
-                <Text>Test</Text>
+                <Text>{getCommentLike}</Text>
             </View>
         </BottomSheet>
         <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>

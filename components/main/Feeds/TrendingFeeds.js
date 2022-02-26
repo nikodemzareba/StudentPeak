@@ -20,7 +20,7 @@ import {storyData} from "./FakeJSONData/TempStoryData";
 import {B} from "./Shared_Objects/Bold";
 import Chat_BTN from "./Shared_Objects/Chat_BTN";
 import {getProfileImage} from "./Shared_Objects/Functions_And_Methods/getProfileImage";
-import Trending_Pictures_Videos_Feed from "./Trending_Feed/Trending_Pictures_Videos_Feed";
+import Trending_Pictures_And_Videos_Feed from "./Trending_Feed/Trending_Pictures_And_Videos_Feed";
 
 const {height, width} = Dimensions.get('window');
 const separator = "###########################################################################################";
@@ -307,7 +307,7 @@ class TrendingFeeds extends Component {
                             <>
                                 {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
-                                    <Trending_Pictures_Videos_Feed
+                                    <Trending_Pictures_And_Videos_Feed
                                         userID={this.state.userId}
                                         data={this.state.picturesDataFetched}
                                         storyData={this.state.storiesData}

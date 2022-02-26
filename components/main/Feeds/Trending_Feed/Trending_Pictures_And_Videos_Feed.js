@@ -10,7 +10,7 @@ import Trending_Topics_FlatList from "./Trending_Feed_Objects/Trending_Topics_Fl
 import Trending_Posts_FlatList from "./Trending_Feed_Objects/Trending_Posts_FlatList";
 
 
-export default function Trending_Pictures_Videos_Feed(props) {
+export default function Trending_Pictures_And_Videos_Feed(props) {
 
     const [refresh, setRefresh] = useState(false);
     return (
@@ -24,11 +24,11 @@ export default function Trending_Pictures_Videos_Feed(props) {
             <Stories_FlatList storyData={props.storyData}/>
 
 
-            <Trending_Topics_FlatList data={tempPopularTopics} />
+            <Trending_Topics_FlatList    navigation={props.navigation} data={tempPopularTopics} />
 
-            <Trending_Posts_FlatList data={props.data} text={"Friends Like"} />
+            <Trending_Posts_FlatList    navigation={props.navigation} data={props.data} text={"Friends Like"} />
 
-            <Trending_Posts_FlatList data={props.data} text={"Going Viral"} />
+            <Trending_Posts_FlatList    navigation={props.navigation} data={props.data} text={"Going Viral"} />
 
 
         </View>

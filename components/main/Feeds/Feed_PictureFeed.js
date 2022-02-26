@@ -11,14 +11,14 @@ import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
 import LikeBTN from "./Shared_Objects/Likes_And_Comments/LikeBTN";
 import {feedStyles} from "./Shared_Objects/Styles";
 import LikesAndCommentsDisplay from "./Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
-import {isUserNameTooLong} from "./Shared_Objects/FunctionsAndMethods/isUserNameTooLong";
+import {isUserNameTooLong} from "./Shared_Objects/Functions_And_Methods/isUserNameTooLong";
 import Pictures_And_Videos_Post_Object from "./Shared_Objects/Likes_And_Comments/Pictures_And_Videos_Post_Object";
 import StoriesObject from "./Shared_Objects/StoriesObject";
 
 const {height, width} = Dimensions.get('window');
 
 
-export default function PictureFeed(props) {
+export default function Feed_PictureFeed(props) {
 
     const [refresh, setRefresh] = useState(false);
     return (

@@ -20,7 +20,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";
 import Modal from "./main/Feeds/Shared_Objects/modal";
-import VideoFeed from "./main/Feeds/VideoFeed";
+import Feed_VideoFeed from "./main/Feeds/Feed_VideoFeed";
 import {users} from "../redux/reducers/users";
 
 const Tab = createBottomTabNavigator();

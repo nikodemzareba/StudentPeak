@@ -144,6 +144,9 @@ export default function LikeBTN(props) {
                     })
             }
         }
+        else {
+            likeBTN_Initiation();
+        }
     }
 
 

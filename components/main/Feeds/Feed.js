@@ -12,8 +12,8 @@ import {
 } from 'react-native';
 
 import firebase from "firebase";
-import PictureFeed from "./PictureFeed";
-import VideoFeed from "./VideoFeed";
+import Feed_PictureFeed from "./Feed_PictureFeed";
+import Feed_VideoFeed from "./Feed_VideoFeed";
 
 
 const {height, width} = Dimensions.get('window');
@@ -314,7 +314,7 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
-                                    <PictureFeed
+                                    <Feed_PictureFeed
                                         userID={this.state.userId}
                                         data={this.state.picturesDataFetched}
                                         storyData={this.state.storiesData}
@@ -340,7 +340,7 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadVideos
                                     ?
-                                    <VideoFeed
+                                    <Feed_VideoFeed
                                         userID={this.state.userId}
                                         data={this.state.videosDataFetched}
                                         navigation={this.props.route.params.navigation}/>

@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="changed code to match new post DB structure">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Pictures_Videos_Feed.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Pictures_And_Videos_Post_Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Pictures_And_Videos_Post_Object.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/VideoFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed_VideoFeed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
@@ -54,7 +62,7 @@
       <workItem from="1645645337069" duration="339000" />
       <workItem from="1645828339914" duration="1423000" />
       <workItem from="1645833447064" duration="1146000" />
-      <workItem from="1645837616375" duration="8375000" />
+      <workItem from="1645837616375" duration="14493000" />
     </task>
     <task id="LOCAL-00001" summary="changed code to match new post DB structure">
       <created>1645823466307</created>
@@ -63,7 +71,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645823466307</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="In this Update:&#10;Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;&#10;In Previous Update:&#10;changed code to match new post DB structure">
+      <created>1645848181746</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645848181746</updated>
+    </task>
+    <task id="LOCAL-00003" summary="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
+      <created>1645855094651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645855094651</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +105,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changed code to match new post DB structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed code to match new post DB structure" />
+    <MESSAGE value="In this Update:&#10;Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;&#10;In Previous Update:&#10;changed code to match new post DB structure" />
+    <MESSAGE value="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
   </component>
 </project>

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <change afterPath="$PROJECT_DIR$/components/main/Feeds/FakeJSONData/Temp_Topics.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Topics_FlatList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Topics_TXT.js" afterDir="false" />
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Posts_FlatList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Pictures_And_Videos_Post_Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Pictures_And_Videos_Post_Object.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Pictures_Videos_Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Pictures_Videos_Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Topics_FlatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_FlatList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Topics_TXT.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Pictures_Videos_Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Pictures_Videos_Feed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +53,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Trending_Feed\Trending_Feed_Objects" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Trending_Feed" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Trending_Feed" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Likes_And_Comments\Likes" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Likes_And_Comments\Comments" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -137,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645862507126</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645868538299</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1645868538299</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +171,8 @@
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;.getProfileImage method works&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
     <MESSAGE value="In this Update:&#10;.Trending page gets users following liked posts &#10;&#10;Need to do:&#10;Formatting&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

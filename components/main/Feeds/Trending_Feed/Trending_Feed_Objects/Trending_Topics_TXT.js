@@ -1,6 +1,6 @@
-import {feedStyles} from "../Shared_Objects/Styles";
+import {feedStyles} from "../../Shared_Objects/Styles";
 import {Text, View} from "react-native";
-import {B} from "../Shared_Objects/Bold";
+import {B} from "../../Shared_Objects/Bold";
 import React from "react";
 
 

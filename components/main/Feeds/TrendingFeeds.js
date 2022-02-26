@@ -20,7 +20,7 @@ import {storyData} from "./FakeJSONData/TempStoryData";
 import {B} from "./Shared_Objects/Bold";
 import Chat_BTN from "./Shared_Objects/Chat_BTN";
 import {getProfileImage} from "./Shared_Objects/Functions_And_Methods/getProfileImage";
-import Trending_Pictures_Videos_Feed from "./Trending_Pictures_Videos_Feed";
+import Trending_Pictures_Videos_Feed from "./Trending_Feed/Trending_Pictures_Videos_Feed";
 
 const {height, width} = Dimensions.get('window');
 const separator = "###########################################################################################";

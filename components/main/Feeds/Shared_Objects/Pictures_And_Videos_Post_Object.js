@@ -14,10 +14,10 @@ export default function Pictures_And_Videos_Post_Object(props) {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
-    const  heightV = windowHeight/ 1.6;
+    const heightV = windowHeight / 1.6;
     const widthV = windowWidth;
 
-    const position = props.mediaType=== "picture" ? "absolute" : "relative";
+    const position = props.mediaType === "picture" ? "absolute" : "relative";
     return (
 
         <View style={feedStyles.post}>
@@ -28,34 +28,36 @@ export default function Pictures_And_Videos_Post_Object(props) {
                 navigation={props.navigation}
             />
 
-            {props.mediaType === "picture" ?
-                <ImageBackground
-                    source={{uri: props.downloadURL}}
-                    style={{
-                        width: '100%',
-                        height: undefined,
-
-                        aspectRatio: 1,
-                    }}
-                />
-
-
-                :
-                <View>
-                    <Video
-                        ref={video}
-                        style={feedStyles.video(widthV, heightV)}
+            <View style={{height: props.height!==undefined? props.height: undefined}}>
+                {props.mediaType === "picture" ?
+                    <ImageBackground
                         source={{uri: props.downloadURL}}
-                        resizeMode="cover"
-                        isLooping
-                        useNativeControls
-                        //useNativeControls
-                        //volume={5.0}
-                        //muted={true}
-                        onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        style={{
+                            width: '100%',
+                            height: undefined,
+
+                            aspectRatio: 1,
+                        }}
                     />
-                </View>
-            }
+
+
+                    :
+                    <View>
+                        <Video
+                            ref={video}
+                            style={feedStyles.video(widthV, heightV)}
+                            source={{uri: props.downloadURL}}
+                            resizeMode="cover"
+                            isLooping
+                            useNativeControls
+                            //useNativeControls
+                            //volume={5.0}
+                            //muted={true}
+                            onPlaybackStatusUpdate={status => setStatus(() => status)}
+                        />
+                    </View>
+                }
+            </View>
 
             <LikesAndCommentsDisplay
                 userID={props.userID}

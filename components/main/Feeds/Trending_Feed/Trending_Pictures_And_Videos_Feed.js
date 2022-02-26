@@ -20,7 +20,6 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
                 <B>Popular Posts</B>
             </Text>
 
-
             <Stories_FlatList storyData={props.storyData}/>
 
             <Trending_Topics_FlatList    navigation={props.navigation} data={tempPopularTopics} />

@@ -28,7 +28,7 @@ export default function Pictures_And_Videos_Post_Object(props) {
                 navigation={props.navigation}
             />
 
-            <View style={{height: props.height!==undefined? props.height: undefined}}>
+            <View style={{height: props.height!==undefined? props.height: undefined, width: props.width!==undefined? props.width: undefined}}>
                 {props.mediaType === "picture" ?
                     <ImageBackground
                         source={{uri: props.downloadURL}}

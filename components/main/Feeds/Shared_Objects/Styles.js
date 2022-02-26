@@ -52,7 +52,7 @@ export const feedStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'flex-start',
         position: position,
-        width: 150,
+
         height: 40,
 
 

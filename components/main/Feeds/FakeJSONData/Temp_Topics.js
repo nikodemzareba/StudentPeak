@@ -2,15 +2,19 @@ export const tempPopularTopics =
     [
         {
             key: 1,
-            topic: "Football"
+            topic: "Niko Zereba's OnlyFans"
         },
         {
             key: 2,
-            topic: "Basketball"
+            topic: "Refund Niko Zereba's OnlyFans"
         },
         {
             key: 3,
             topic: "WW3"
+        },
+        {
+            key: 69,
+            topic: "How much money do stripper make?"
         },
         {
             key: 4,
@@ -32,9 +36,6 @@ export const tempPopularTopics =
             key: 8,
             topic: "Rugby"
         },
-        {
-            key: 9,
-            topic: "How much money do stripper make?"
-        },
+
 
     ]

@@ -1,11 +1,12 @@
-import {FlatList, Text, View} from "react-native";
+import {Dimensions, FlatList, Text, View} from "react-native";
 import Pictures_And_Videos_Post_Object from "../../Shared_Objects/Pictures_And_Videos_Post_Object";
 import React, {useState} from "react";
 import {B} from "../../Shared_Objects/Bold";
 
 export default function Trending_Posts_FlatList(props) {
     const [refresh, setRefresh] = useState(false);
-
+    const windowHeight = Dimensions.get('window').height;
+    const windowWidth = Dimensions.get('window').width;
     return (
         <View style={{padding:15}}>
             <Text style={{marginLeft: 10, color: 'white', fontSize:20, fontWeight: 'bold', paddingRight: 10}}><B>{props.text}</B>
@@ -37,7 +38,8 @@ export default function Trending_Posts_FlatList(props) {
 
                             postID={item.key}
                             commentsCount={item.commentsCount}
-                            height={200}
+                            height={windowHeight/3}
+                            width={windowWidth-65}
 
                         />
                     )

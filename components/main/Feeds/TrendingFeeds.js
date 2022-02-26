@@ -287,14 +287,18 @@ class TrendingFeeds extends Component {
                         this.setState({                           
                             picturesDataFetched: picturesDataFetched,
                         }, () => {
-                            this.setStatesForLoadingFeed()
+
                         });
                     }
                 })
                 .catch((error) => {
-                    console.log(`${error} \nUnable to get User we are followings data!`);
+                    console.log(`${error} \nUnable to get User we are followings data! `);
                 });
-        })  
+        })
+
+        if (querySize === 0) {
+            this.setStatesForLoadingFeed();
+        }
     }
 
     getVideoPosts = async (querySnapshot) =>{

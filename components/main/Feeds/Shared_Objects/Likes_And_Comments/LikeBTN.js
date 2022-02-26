@@ -6,6 +6,8 @@ import firebase from "firebase";
 import {Octicons} from '@expo/vector-icons';
 import {feedStyles} from "../Styles";
 import Likes_And_Comments_Count_Txt from "./Likes_And_Comments_Count_Txt";
+import {success} from "concurrently/dist/src/defaults";
+
 
 export default function LikeBTN(props) {
 
@@ -69,97 +71,81 @@ export default function LikeBTN(props) {
 
     likeBTN_Initiation();
 
-    const BTN_Event = () => {
+    const BTN_Event = async () => {
+
+        const newState = !likeState;
+        const addOrMinusLike = newState ? 1 : -1; // -1 like if the user unliked and add +1 if the user liked
+        let success = false;
 
         if (likeDataLoaded) {
-            try {
-                const newState = !likeState;
-                const addOrMinusLike = newState ? 1 : -1; // -1 like if the user unliked and add +1 if the user liked
 
-                console.log(`\n\nAttempting to ${addOrMinusLike} post ${props.postID}`);
+            console.log(`\n\nAttempting to ${addOrMinusLike} post ${props.postID}`);
 
-                if (newState) // add likes
-                {
-                    // add users id to likes db
-                    addUserInLikesRef
-                        .doc(userLoggedIn)
-                        .set({})
-                        .then(() => {
+            if (newState) // add likes
+            {
+                try {
+                    const result = await firebase.firestore().runTransaction(async (t) => {
 
-                            console.log(`\n\nAdded usersName to likes Collection ${props.postID}`);
-                            storePostInUsersLiked
-                                .doc(props.postID)
-                                .set({})
-                                .then(() => {
-                                    console.log(`\n\nAdded PostID to  users likes Collection ${props.postID}`);
-                                    changeLikesState(addOrMinusLike, newState);
-                                })
-                                .catch((exception) => {
-                                    alert(`\nError Adding PostID to  users likes Collection \n\n${exception}`);
-                                    console.log(`\n\nError Adding PostID to  users likes Collection ${props.postID} \n\n${props.postID}`);
-                                })
+                        // add users id to likes db
+                        t.set(addUserInLikesRef.doc(userLoggedIn), {});
 
-                        })
-                        .catch((exception) => {
-                            alert(`\nError liking post \n\n${exception}`);
-                            console.log(`\n\nError Adding usersName to likes Collection ${props.postID} \n\n${props.postID}`);
-                        })
-                } else // remove likes
-                {
-                    // remove users id from likes db
-                    addUserInLikesRef.doc(userLoggedIn).delete()
-                        .then(() => {
-                            console.log(`\n\nRemoved usersName to likes Collection ${props.postID}`);
+                        // add  postID to  users likes collection
+                        t.set(storePostInUsersLiked.doc(props.postID), {});
 
-                            // remove users id from likes db
-                            storePostInUsersLiked.doc(props.postID).delete()
-                                .then(() => {
-                                    console.log(`\n\nRemoved PostID to  users likes Collection ${props.postID}`);
-                                    changeLikesState(addOrMinusLike, newState);
-                                })
-                                .catch((exception) => {
-                                    alert(`\nError Removing PostID to  users likes Collection\n\n${exception}`);
-                                    console.log(`\n\nError Removing PostID to  users likes Collection ${props.postID} \n\n${props.postID}`);
-                                })
-                        })
-                        .catch((exception) => {
-                            alert(`\nError unliking post \n\n${exception}`);
-                            console.log(`\n\nError Removing usersName to likes Collection ${props.postID} \n\n${props.postID}`);
-                        })
+                        // increase likes on post
+                        t.update(increaseLikesRef, "likesCount", firebase.firestore.FieldValue.increment(addOrMinusLike))
+
+                    }).then(() => {
+                        console.log(`Transaction success liking post ${props.postID}!`);
+                        success = true;
+                    })
+                } catch (e) {
+                    console.log(`Transaction failure liking post ${props.postID}!\n\n${e}`);
                 }
-            } catch (e) {
-                alert(`\nError liking /unliking post`);
-                console.log(`\nError liking /unliking post \n\n${e}`);
+
+            } else // remove likes
+            {
+                try {
+                    const result = await firebase.firestore().runTransaction(async (t) => {
+
+                        // remove users id to likes db
+                        t.delete(addUserInLikesRef.doc(userLoggedIn));
+
+                        // add  postID to  users likes collection
+                        t.delete(storePostInUsersLiked.doc(props.postID));
+
+                        // increase likes on post
+                        t.update(increaseLikesRef, "likesCount", firebase.firestore.FieldValue.increment(addOrMinusLike))
+
+                    }).then(() => {
+                        console.log(`Transaction success un-liking post ${props.postID}!`);
+                        success = true;
+
+                    })
+                } catch (e) {
+                    console.log(`Transaction failure un-liking post ${props.postID}!\n\n${e}`);
+                }
+            }
+
+            if (success) {
+                increaseLikesRef.get()
+                    .then((dbCurrentLikes) => {
+
+                        // Change Likes State
+                        setCurrentLikes(dbCurrentLikes.get("likesCount"))
+                        setLikeState(newState);
+
+                        console.log(`\n\nSetting Local states for like BTN`);
+                        console.log(`\n\nPostID: ${props.postID} \nCurrentUserID: ${userLoggedIn} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
+                    })
+                    .catch((exception) => {
+                        alert(`\nError getting post current likeCount ${props.postID} \n\n${exception}`);
+                        console.log(`\n\nError getting post current likeCount ${props.postID} \n\n${exception}`);
+                    })
             }
         }
     }
 
-    const changeLikesState = (addOrMinusLike, newState) => {
-
-        // Increase / decreaseLikes
-        increaseLikesRef
-            .update({
-                likesCount: firebase.firestore.FieldValue.increment(addOrMinusLike)
-            })
-            .then(() => {
-                console.log(`\n\nChanged post Likes by ${addOrMinusLike} to post ${props.postID}`);
-                // Get current DB Value for likes on this post
-                increaseLikesRef.get().then((dbCurrentLikes) => {
-
-                    // Change Likes State
-                    setCurrentLikes(dbCurrentLikes.get("likesCount"))
-                    setLikeState(newState);
-
-                    console.log(`\n\nSetting Local states for like BTN`);
-                    console.log(`\n\nPostID: ${props.postID} \nCurrentUserID: ${userLoggedIn} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
-                })
-            })
-            .catch((exception) => {
-                alert(`\nError Changing post  ${props.postID} likeCount by ${addOrMinusLike}  \n\n${exception}`);
-                console.log(`\n\nError Adding usersName to likes Collection ${props.postID} \n\n${props.postID}`);
-            })
-
-    }
 
     return (
 
@@ -178,7 +164,8 @@ export default function LikeBTN(props) {
                     <Octicons name="heart" size={24} color="white"/>
                 }
             </TouchableOpacity>
-            <Likes_And_Comments_Count_Txt  userID={userLoggedIn} postID={props.postID} use={"like"} count={currentLikes} navigation={props.navigation}/>
+            <Likes_And_Comments_Count_Txt userID={userLoggedIn} postID={props.postID} use={"like"} count={currentLikes}
+                                          navigation={props.navigation}/>
         </View>
     )
 }

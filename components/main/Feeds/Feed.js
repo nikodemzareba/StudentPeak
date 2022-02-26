@@ -24,6 +24,7 @@ import SwitchSelector from "react-native-switch-selector";
 import {storyData} from "./FakeJSONData/TempStoryData";
 import {B} from "./Shared_Objects/Bold";
 import Chat_BTN from "./Shared_Objects/Chat_BTN";
+import {getProfileImage} from "./Shared_Objects/Functions_And_Methods/getProfileImage";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -69,7 +70,7 @@ class FeedScreen extends Component {
     }
 
     componentDidMount() {
-        this.getProfileImage();
+        this.requestProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
 
         //HELLO DELETE Later
@@ -79,22 +80,16 @@ class FeedScreen extends Component {
         });
     }
 
-    getProfileImage() {
-        firebase.firestore()
-            .collection('users')
-            .doc(this.state.userId)
-            .get()
-            .then(userDetails => {
-                console.log(`\n\nCurrent UserID: ${this.state.userId} \nProfile Image URL: ${userDetails.get("profileimage")}`)
-                if (userDetails.get("profileimage") !== "") {
-                    console.log(`\n\n Has Profile Image`);
-
-                    this.setState({
-                        profileImage: userDetails.get("profileimage"),
-                        profileImageLoaded: true,
-                    });
-                }
-            })
+    requestProfileImage() {
+        getProfileImage(this.state.userId).then((r) => {
+            if(r !== undefined)
+            {
+                this.setState({
+                    profileImage: r,
+                    profileImageLoaded: true,
+                });
+            }
+        })
     }
 
     // This method is passed all the userID's of the users this user is following

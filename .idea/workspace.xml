@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Functions_And_Methods/getProfileImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Functions_And_Methods/getProfileImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645858604110</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects">
+      <created>1645858938617</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645858938617</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +132,18 @@
     <MESSAGE value="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
     <MESSAGE value="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
     <MESSAGE value="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
+    <MESSAGE value="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feeds/Feed.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

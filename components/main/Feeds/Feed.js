@@ -2,13 +2,11 @@ import React, {Component, useRef, useState} from 'react'
 import {
     View,
     Dimensions,
-    FlatList,
     Text,
     ActivityIndicator,
     ScrollView,
-    Button,
     StyleSheet,
-    SafeAreaView, Image, TouchableOpacity
+    Image, TouchableOpacity
 } from 'react-native';
 
 import firebase from "firebase";
@@ -23,10 +21,9 @@ const separator = "#############################################################
 
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
-import Profile_Icon from "./Shared_Objects/Profile_Objects/Profile_Icon";
-
-import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
-import Username_Link_Txt from "./Shared_Objects/Profile_Objects/Username_Link_Txt";
+import {storyData} from "./FakeJSONData/TempStoryData";
+import {B} from "./Shared_Objects/Bold";
+import Chat_BTN from "./Shared_Objects/Chat_BTN";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -35,11 +32,6 @@ const videosOrPicturesSelectedToView = [
     {label: 'Pictures', value: 0},
     {label: 'Videos', value: 1},
 ];
-
-import {storyData} from "./FakeJSONData/TempStoryData";
-import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
-import {B} from "./Shared_Objects/Bold";
-import Chat_BTN from "./Shared_Objects/Chat_BTN";
 
 
 class FeedScreen extends Component {

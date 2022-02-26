@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
-      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Stories/Stories_FlatList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" afterDir="false" />
-    </list>
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +44,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Stories" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Profile_Objects" />
     </key>
   </component>
@@ -91,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645857549218</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
+      <created>1645858604110</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645858604110</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +119,7 @@
     <MESSAGE value="In this Update:&#10;Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;&#10;In Previous Update:&#10;changed code to match new post DB structure" />
     <MESSAGE value="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
     <MESSAGE value="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
+    <MESSAGE value="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure" />
   </component>
 </project>

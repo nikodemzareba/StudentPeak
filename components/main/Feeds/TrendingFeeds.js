@@ -14,19 +14,14 @@ import {
 import firebase from "firebase";
 import Feed_PictureFeed from "./Feed_PictureFeed";
 import Feed_VideoFeed from "./Feed_VideoFeed";
-
-
-const {height, width} = Dimensions.get('window');
-
-
-const separator = "###########################################################################################";
-
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
-import Profile_Icon from "./Shared_Objects/Profile_Objects/Profile_Icon";
+import {storyData} from "./FakeJSONData/TempStoryData";
+import {B} from "./Shared_Objects/Bold";
+import Chat_BTN from "./Shared_Objects/Chat_BTN";
 
-import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
-import Username_Link_Txt from "./Shared_Objects/Profile_Objects/Username_Link_Txt";
+const {height, width} = Dimensions.get('window');
+const separator = "###########################################################################################";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -35,12 +30,6 @@ const videosOrPicturesSelectedToView = [
     {label: 'Pictures', value: 0},
     {label: 'Videos', value: 1},
 ];
-
-import {storyData} from "./FakeJSONData/TempStoryData";
-import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
-import {B} from "./Shared_Objects/Bold";
-import Chat_BTN from "./Shared_Objects/Chat_BTN";
-
 
 class TrendingFeeds extends Component {
 

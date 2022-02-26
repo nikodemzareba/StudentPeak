@@ -90,7 +90,13 @@ export const feedStyles = StyleSheet.create({
 
     },
     trendingNumber:{
-        width: 45,
+
+        flexDirection:"row",
+        alignContent:"center",
+
+        alignSelf: 'flex-start',
+
+
         height: 45,
         borderRadius: 45,
         // textAlign: 'center',

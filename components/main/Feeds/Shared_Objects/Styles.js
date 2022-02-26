@@ -1,10 +1,20 @@
 import {StyleSheet} from "react-native"
 
 export const feedStyles = StyleSheet.create({
+
+    stories: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingHorizontal: 0,
+        marginBottom: 10,
+        width: 60, height: 60
+    },
     video: (width, height) => ({
         alignSelf: 'center',
         width: width,
-        height: height
+        height: height,
+        borderBottom:20,
+        padding:20
     }),
     container: {
         flex: 1,
@@ -28,7 +38,7 @@ export const feedStyles = StyleSheet.create({
         marginBottom: 20,
         backgroundColor: "black"
     },
-    commentsAndLikesCircle: {
+    commentsAndLikesCircle: (position) => ({
         flexDirection: 'row',
         // backgroundColor: "red",
         backgroundColor: 'rgba(52, 52, 52, 0.8)',
@@ -41,8 +51,8 @@ export const feedStyles = StyleSheet.create({
 
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        position: 'absolute',
-        //width: 150,
+        position: position,
+        width: 150,
         height: 40,
 
 
@@ -52,7 +62,7 @@ export const feedStyles = StyleSheet.create({
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,
         borderBottomLeftRadius: 15,
-    },
+    }),
     likeAndCommentsBTN_View:{
         flexDirection: 'row',
         alignItems: 'flex-start',

@@ -23,10 +23,10 @@ const separator = "#############################################################
 
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
-import Profile_Icon from "./Shared_Objects/Profile_Icon";
+import Profile_Icon from "./Shared_Objects/Profile_Objects/Profile_Icon";
 
 import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
-import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
+import Username_Link_Txt from "./Shared_Objects/Profile_Objects/Username_Link_Txt";
 
 LogBox.ignoreLogs(['Setting a timer']);
 

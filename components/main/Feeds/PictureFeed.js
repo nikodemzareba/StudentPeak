@@ -72,9 +72,7 @@ export default function PictureFeed(props) {
                             downloadURL={item.downloadURL}
                             mediaType={item.mediaType}
 
-                            userLikedPost={item.userLikedPost}
                             postID={item.key}
-                            likesCount={item.likesCount}
                             commentsCount={item.commentsCount}
                         />
 

@@ -59,12 +59,12 @@ export default function Pictures_And_Videos_Post_Object(props) {
 
             <LikesAndCommentsDisplay
                 userID={props.userID}
-                userLikedPost={props.userLikedPost}
+
                 postID={props.postID}
-                likesCount={props.likesCount}
-                commentsCount={props.commentsCount}
                 navigation={props.navigation}
                 position={position}
+
+                commentsCount={props.commentsCount}
             />
 
         </View>

@@ -1,7 +1,7 @@
-import {feedStyles} from "../Styles";
-import ProfileTitle from "../Profile_Objects/ProfileTitle";
+import {feedStyles} from "./Styles";
+import ProfileTitle from "./Profile_Objects/ProfileTitle";
 import {Button, Dimensions, ImageBackground, View, StyleSheet} from "react-native";
-import LikesAndCommentsDisplay from "./LikesAndCommentsDisplay";
+import LikesAndCommentsDisplay from "./Likes_And_Comments/LikesAndCommentsDisplay";
 import React from "react";
 import {Video} from "expo-av";
 

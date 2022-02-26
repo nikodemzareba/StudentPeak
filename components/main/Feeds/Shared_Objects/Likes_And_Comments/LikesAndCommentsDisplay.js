@@ -1,8 +1,8 @@
 import {View} from "react-native";
 import {feedStyles} from "../Styles";
-import LikeBTN from "./LikeBTN";
+import LikeBTN from "./Likes/LikeBTN";
 import React from "react";
-import CommentBTN from "./CommentBTN";
+import CommentBTN from "./Comments/CommentBTN";
 
 
 export default function LikesAndCommentsDisplay(props) {

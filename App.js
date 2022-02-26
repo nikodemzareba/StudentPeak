@@ -29,7 +29,7 @@ import Add from './components/main/Add'
 import Save from './components/main/Save'
 import Topbar from './components/main/top/Topbar'
 import ShowEventsResults from './components/main/Events_Screen/ShowEventsResults'
-import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/UsersLikedPost";
+import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/UsersLikedPost";
 import Search from "./components/main/Search/Search";
 import SearchScreenResults from "./components/main/Search/SearchScreenResults";
 import ViewPost from "./components/main/Search/ViewPost";

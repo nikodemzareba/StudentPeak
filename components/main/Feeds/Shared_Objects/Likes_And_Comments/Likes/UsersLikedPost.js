@@ -4,14 +4,14 @@ import {
     FlatList,
 } from 'react-native';
 
-import {feedStyles} from "../Styles";
+import {feedStyles} from "../../Styles";
 
-import Profile_Icon from "../Profile_Objects/Profile_Icon";
-import Username_Link_Txt from "../Profile_Objects/Username_Link_Txt";
+import Profile_Icon from "../../Profile_Objects/Profile_Icon";
+import Username_Link_Txt from "../../Profile_Objects/Username_Link_Txt";
 
-import {isUserNameTooLong} from "../Functions_And_Methods/isUserNameTooLong";
+import {isUserNameTooLong} from "../../Functions_And_Methods/isUserNameTooLong";
 import FollowBTN from "./FollowBTN";
-import ProfileIcon_And_Username from "../Profile_Objects/ProfileIcon_And_Username";
+import ProfileIcon_And_Username from "../../Profile_Objects/ProfileIcon_And_Username";
 
 
 export default function UsersLikedPost(props) {

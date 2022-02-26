@@ -105,7 +105,9 @@ class FeedScreen extends Component {
             })
     }
 
+    // This method is passed all the userID's of the users this user is following
     getData = async (querySnapshot) => {
+
         const videosDataFetched = [];
         const picturesDataFetched = [];
 
@@ -116,10 +118,11 @@ class FeedScreen extends Component {
 
         // Got users Following info
         console.log("\nGot Users Following Data")
+
+        // For each user we are following
         await querySnapshot.forEach((userFollowing) => {
 
-            // Get the user we are following userName & userProfilePhoto
-
+            // Get each user we are following; userName & userProfilePhoto
             firebase.firestore()
                 .collection('users')
                 .doc(userFollowing.id)
@@ -128,118 +131,101 @@ class FeedScreen extends Component {
 
                     console.log("\nGot Users Following Details etc: username, profileimage")
                     processedFollowingUsers++;
+
+                    // Get all of the posts from the user we are following
                     firebase.firestore()
                         .collection('posts')
                         .doc(userFollowing.id)
                         .collection('userPosts')
-                        //.where("mediaType", "==", "video")
                         .get()
                         .then(usersFollowingPosts => {
                             console.log("\nGot Posts Of Users i am Following!")
 
+                            // For each post from the user we are following 
                             usersFollowingPosts.forEach((userPost) => {
 
+                                // Get the posts details 
                                 firebase.firestore()
                                     .collection('postData')
                                     .doc(userPost.id)
                                     .get()
-                                    .then((postCommentsAndLikes => {
+                                    .then((postData => {
 
-                                        let userLikedPost = false;
-                                        firebase.firestore()
-                                            .collection('postData')
-                                            .doc(userPost.id)
-                                            .collection("likes")
-                                            .doc(this.state.userId)
-                                            .get()
-                                            .then(documentSnapshot => {
-                                                if (documentSnapshot.exists) {
-                                                    userLikedPost = true;
-                                                }
-                                            })
-                                            .then(() => {
+                                        const profileImage = userDetails.get("profileimage");
+                                        const username = userDetails.get("username");
+                                        const userID = userFollowing.id;
 
-                                                const profileImage = userDetails.get("profileimage");
-                                                const username = userDetails.get("username");
-                                                const userID = userFollowing.id;
+                                        const caption = postData.get("caption");
+                                        const createdAt = postData.get("createdAt");
+                                        const downloadURL = postData.get("downloadURL");
+                                        const mediaType = postData.get("mediaType");
 
-                                                const caption = userPost.get("caption");
-                                                const createdAt = userPost.get("createdAt");
-                                                const downloadURL = userPost.get("downloadURL");
-                                                const mediaType = userPost.get("mediaType");
+                                        const commentsCount = postData.get("commentsCount");
+                                        const likesCount = postData.get("likesCount");
 
-                                                const commentsCount = postCommentsAndLikes.get("commentsCount");
-                                                const likesCount = postCommentsAndLikes.get("likesCount");
+                                        if (mediaType === "video") {
 
+                                            this.setState({
+                                                videosReceived: this.state.videosReceived + 1
+                                            });
 
-                                                if (mediaType === "video") {
+                                            videosDataFetched.push({
+                                                key: userPost.id,
+                                                userID: userID,
+                                                name: username,
+                                                profile: profileImage,
+                                                caption: caption,
+                                                createdAt: createdAt,
+                                                downloadURL: downloadURL,
+                                                mediaType: mediaType,
 
-                                                    this.setState({
-                                                        videosReceived: this.state.videosReceived + 1
-                                                    });
+                                                commentsCount: commentsCount,    // Needs be retrieved inside the comment method
+                                            });
+                                        } else if (mediaType === "picture") {
 
-                                                    videosDataFetched.push({
-                                                        key: userPost.id,
-                                                        userID: userID,
-                                                        name: username,
-                                                        profile: profileImage,
-                                                        caption: caption,
-                                                        createdAt: createdAt,
-                                                        downloadURL: downloadURL,
-                                                        commentsCount: commentsCount,
-                                                        likesCount: likesCount,
-                                                        userLikedPost: userLikedPost,
-                                                        mediaType: mediaType
-                                                    });
-                                                } else if (mediaType === "picture") {
+                                            this.setState({
+                                                picturesReceived: this.state.picturesReceived + 1
+                                            });
 
-                                                    this.setState({
-                                                        picturesReceived: this.state.picturesReceived + 1
-                                                    });
+                                            picturesDataFetched.push({
+                                                key: userPost.id,
+                                                userID: userID,
+                                                name: username,
+                                                profile: profileImage,
+                                                caption: caption,
+                                                createdAt: createdAt,
+                                                downloadURL: downloadURL,
+                                                mediaType: mediaType,
 
-                                                    picturesDataFetched.push({
-                                                        key: userPost.id,
-                                                        userID: userID,
-                                                        name: username,
-                                                        profile: profileImage,
-                                                        caption: caption,
-                                                        createdAt: createdAt,
-                                                        downloadURL: downloadURL,
-                                                        commentsCount: commentsCount,
-                                                        likesCount: likesCount,
-                                                        userLikedPost: userLikedPost,
-                                                        mediaType: mediaType
-                                                    });
-                                                }
+                                                commentsCount: commentsCount, // Needs be retrieved inside the comment method
+                                            });
+                                        }
 
-                                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount} \nUserLikedPost: ${userLikedPost}`);
-                                                console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                                        console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
-                                                if (processedFollowingUsers === expectedFollowingUsersCount) {
-                                                    console.log("\nSetting Data To Variable")
-                                                    this.setState({
-                                                        videosDataFetched: videosDataFetched,
-                                                        picturesDataFetched: picturesDataFetched,
-                                                    }, () => {
-                                                        this.setStatesForLoadingFeed()
-                                                    });
-                                                }
-                                            })
-                                            .catch((exception) => {
-                                                console.log(`\nUnable to get Post Likes \n\n${exception}`);
+                                        if (processedFollowingUsers === expectedFollowingUsersCount) {
+                                            console.log("\nSetting Data To Variable")
+                                            this.setState({
+                                                videosDataFetched: videosDataFetched,
+                                                picturesDataFetched: picturesDataFetched,
+                                            }, () => {
+                                                this.setStatesForLoadingFeed()
+                                            });
+                                        }
 
-                                            })
                                     }))
-                                //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+                                    .catch((error) => {
+                                        console.log(`${error} \nUnable to get Users following post data!`);
+                                    });
                             })
                         })
-                })
-                .then(() => {
-
-
+                        .catch((error) => {
+                            console.log(`${error} \nUnable to get Users following posts!`);
+                        });
                 })
                 .catch((error) => {
-                    console.log(`${error} \nUnable to get Users following posts!`);
+                    console.log(`${error} \nUnable to get User we are followings data!`);
                 });
         })
 
@@ -266,7 +252,6 @@ class FeedScreen extends Component {
             videosIsLoading: false,
             picturesIsLoading: false
         });
-
     }
 
     render() {
@@ -310,7 +295,7 @@ class FeedScreen extends Component {
                     </View>
 
                     {/* Chat BTN */}
-                    <Chat_BTN   navigation={this.props.navigation}/>
+                    <Chat_BTN navigation={this.props.navigation}/>
                 </View>
 
 
@@ -336,7 +321,7 @@ class FeedScreen extends Component {
                                         navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1, padding:10}}>
-                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> No Posts / Follow a user to view posts on your feed  </B> </Text>
                                     </View>
                                 }
                             </>
@@ -361,7 +346,7 @@ class FeedScreen extends Component {
                                         navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1, padding:10}}>
-                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B>  No Posts / Follow a user to view posts on your feed  </B> </Text>
                                     </View>
                                 }
                             </>

@@ -128,10 +128,10 @@ class FeedScreen extends Component {
                         .then(usersFollowingPosts => {
                             console.log("\nGot Posts Of Users i am Following!")
 
-                            // For each post from the user we are following 
+                            // For each post from the user we are following
                             usersFollowingPosts.forEach((userPost) => {
 
-                                // Get the posts details 
+                                // Get the posts details
                                 firebase.firestore()
                                     .collection('postData')
                                     .doc(userPost.id)
@@ -148,7 +148,6 @@ class FeedScreen extends Component {
                                         const mediaType = postData.get("mediaType");
 
                                         const commentsCount = postData.get("commentsCount");
-                                        const likesCount = postData.get("likesCount");
 
                                         if (mediaType === "video") {
 

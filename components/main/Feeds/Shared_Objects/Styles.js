@@ -68,5 +68,37 @@ export const feedStyles = StyleSheet.create({
         alignItems: 'flex-start',
         padding:4
     },
+    trendingTopics:{
+        flexDirection:"row",
+        alignContent:"center",
+
+        alignSelf: 'flex-start',
+
+
+
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderBottomRightRadius: 15,
+        borderBottomLeftRadius: 15,
+
+        height: 60,
+
+        textAlign:"center",
+        alignItems: 'center',
+        backgroundColor: 'white',
+        padding:5,
+
+    },
+    trendingNumber:{
+        width: 45,
+        height: 45,
+        borderRadius: 45,
+        // textAlign: 'center',
+        alignItems:"center",
+        backgroundColor:"black",
+        paddingRight:10
+
+
+    }
 
 });

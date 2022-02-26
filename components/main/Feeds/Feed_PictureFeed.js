@@ -1,21 +1,13 @@
-import {Button, Dimensions, FlatList, Image, ImageBackground, StyleSheet, Text, View} from "react-native";
-import {Feather} from "@expo/vector-icons";
-import React, {useState} from "react";
-import ProfileTitle from "./Shared_Objects/ProfileTitle";
-import Caption from "./Shared_Objects/Caption";
+import { FlatList,   View} from "react-native";
 
-import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
-import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
-import Profile_Icon from "./Shared_Objects/Profile_Icon";
-import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
-import LikeBTN from "./Shared_Objects/Likes_And_Comments/LikeBTN";
+import React, {useState} from "react";
+
 import {feedStyles} from "./Shared_Objects/Styles";
-import LikesAndCommentsDisplay from "./Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
-import {isUserNameTooLong} from "./Shared_Objects/Functions_And_Methods/isUserNameTooLong";
+
 import Pictures_And_Videos_Post_Object from "./Shared_Objects/Likes_And_Comments/Pictures_And_Videos_Post_Object";
 import StoriesObject from "./Shared_Objects/StoriesObject";
 
-const {height, width} = Dimensions.get('window');
+
 
 
 export default function Feed_PictureFeed(props) {
@@ -82,27 +74,3 @@ export default function Feed_PictureFeed(props) {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-
-    video: (width, height) => ({
-        alignSelf: 'center',
-        width: width,
-        height: undefined,
-        aspectRatio: 1,
-    }),
-    picture: (width, height) => ({
-        alignSelf: 'center',
-        width: width,
-        height: height
-    }),
-    container: {
-        flex: 1,
-        justifyContent: 'center'
-    },
-    controlsContainer: {
-        position: 'absolute',
-        bottom: 10
-    },
-    
-})

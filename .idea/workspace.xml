@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="Just did: Comment showing via each post with username and comment made&#10;&#10;To do: Style the comments page, function should only work if the bottom sheet is open to reduce unnecessary cached data&#10;&#10;To do: User should be able to make a comment on the page increasing the comment Count.">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="Just did: Comment modal stying changed to match the system UI, shows the user profile image along with username and comment&#10;&#10;To do: User should be able to make a comment on the page increasing the comment Count.&#10;Change the layout styling as I don't like the way it looks.">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/handleComment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/CommentBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/CommentBTN.js" afterDir="false" />
     </list>
@@ -79,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645972139197</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Just did: Comment modal stying changed to match the system UI, shows the user profile image along with username and comment&#10;&#10;To do: User should be able to make a comment on the page increasing the comment Count.&#10;Change the layout styling as I don't like the way it looks.">
+      <created>1645976614018</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645976614018</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +110,7 @@
     <MESSAGE value="Created a function that gets the comments, stores the users name and profileimage" />
     <MESSAGE value="Created a function that gets the comments, stores the users name and profileimage&#10;&#10;To do: Refactor code so it only works when the bottom sheet is opened and that takes in the specific post ID" />
     <MESSAGE value="Just did: Comment showing via each post with username and comment made&#10;&#10;To do: Style the comments page, function should only work if the bottom sheet is open to reduce unnecessary cached data&#10;&#10;To do: User should be able to make a comment on the page increasing the comment Count." />
-    <option name="LAST_COMMIT_MESSAGE" value="Just did: Comment showing via each post with username and comment made&#10;&#10;To do: Style the comments page, function should only work if the bottom sheet is open to reduce unnecessary cached data&#10;&#10;To do: User should be able to make a comment on the page increasing the comment Count." />
+    <MESSAGE value="Just did: Comment modal stying changed to match the system UI, shows the user profile image along with username and comment&#10;&#10;To do: User should be able to make a comment on the page increasing the comment Count.&#10;Change the layout styling as I don't like the way it looks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Just did: Comment modal stying changed to match the system UI, shows the user profile image along with username and comment&#10;&#10;To do: User should be able to make a comment on the page increasing the comment Count.&#10;Change the layout styling as I don't like the way it looks." />
   </component>
 </project>

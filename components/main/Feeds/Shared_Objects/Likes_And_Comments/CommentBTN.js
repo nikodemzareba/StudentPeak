@@ -1,5 +1,5 @@
 import {B} from "../Bold";
-import {FlatList, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, Text, TextInput, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
 import { Dimensions, StyleSheet } from 'react-native'
@@ -10,6 +10,7 @@ import  { useRef } from "react";
 import {SafeAreaView} from "react-native";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import firebase from "firebase";
+import Profile_Icon from "../Profile_Icon";
 
 
 
@@ -41,20 +42,48 @@ export default function CommentBTN(props) {
     //test to see if I can use flalist on this view
     render = () => {
         return (
-            <View>
+            <View style = {feedStyles.screenBackground}>
                 <FlatList
+                    style={{flex: 1}}
                     data={commentInfo}
                     keyExtractor={item => item.username}
                     renderItem = {({item}) => {
                     return (
-                        <View>
-                            <Text>{item.comment}</Text>
-                            <Text>{item.username}</Text>
+                        <View style = {{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            paddingHorizontal:5,
+                            marginBottom: 10,
+                            padding: 10,
+                        }}>
+                            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', paddingRight: 5}}>
+                                <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
+                                              profileImage={item.profileImage} navigation={props.navigation}/>
+                            </TouchableOpacity>
+                            <Text style = {{
+                                color:'white'
+                            }}>{item.username}</Text>
+                            <View>
+                                <Text style ={{
+                                    color:'white'
+                                }}>{item.comment}</Text>
+                            </View>
+
                         </View>
+
                     )
                     }
                 }
                 />
+                <View>
+                    <TextInput
+                        style ={{
+                            color: 'white',
+                            backgroundColor: 'lightgrey',
+                        }}
+                    />
+                </View>
             </View>
         );
     }
@@ -118,6 +147,7 @@ export default function CommentBTN(props) {
 
         </TouchableOpacity>
         <BottomSheet
+            sheetBackgroundColor = {'black'}
             draggable={true}
             hasDraggableIcon
             ref={bottomSheet}

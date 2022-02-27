@@ -28,6 +28,11 @@ import Bio from './components/authentication/Bio'
 import Add from './components/main/Add'
 import Save from './components/main/Save'
 import Topbar from './components/main/top/Topbar'
+import ShowEventsResults from './components/main/Events_Screen/ShowEventsResults'
+import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/UsersLikedPost";
+import Search from "./components/main/Search/Search";
+import SearchScreenResults from "./components/main/Search/SearchScreenResults";
+import ViewPost from "./components/main/Search/ViewPost";
 
 
 import Picture from './components/authentication/Picture'
@@ -70,13 +75,13 @@ function App() {
             }else{
                 setIsRegisterComplete(true);
             }
-            
+
         } else {
             setIsLoggedIn(false);
         }
     });
 
- 
+
 
 
     // firebase.firestore()
@@ -92,8 +97,8 @@ function App() {
     //     }
     // })
 
-            
-        
+
+
 
 
     return (
@@ -102,33 +107,38 @@ function App() {
         <Provider store={store}>
             <NavigationContainer>
 
-                {isLoggedIn ? 
-                
-                <Stack.Navigator> 
+                {isLoggedIn ?
 
-                    {isRegisterComplete ? 
+                    <Stack.Navigator>
 
-                    // if user has completed registration and has an account.
-                    <Stack.Group initialRouteName="Main"> 
+                        {isRegisterComplete ?
 
-                        <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
-                        <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
+                            // if user has completed registration and has an account.
+                            <Stack.Group initialRouteName="Main">
 
-                    </Stack.Group>
-                    
-                    :
+                                <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
+                                <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
+                                <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
+                                <Stack.Screen name="UsersLikedPost" component={UsersLikedPost} options={{headerShown: false}}/>
+                                <Stack.Screen name="Search" component={Search} options={{headerShown: false}}/>
+                                <Stack.Screen name="SearchScreenResults" component={SearchScreenResults} options={{headerShown: false}}/>
+                                <Stack.Screen name="ViewPost" component={ViewPost} options={{headerShown: false}}/>
 
-                    // If user registration is not complete but account has been made.
-                    <Stack.Group initialRouteName="Verify">
-                    
-                    <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
+                            </Stack.Group>
 
-                    </Stack.Group>}
-                       
-                        
+                            :
 
-                </Stack.Navigator> 
-                    
+                            // If user registration is not complete but account has been made.
+                            <Stack.Group initialRouteName="Verify">
+
+                                <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
+
+                            </Stack.Group>}
+
+
+
+                    </Stack.Navigator>
+
                     :
 
                     // If user is not logged in.
@@ -137,7 +147,6 @@ function App() {
                         <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
                         <Stack.Screen name="Register" component={Register} options={{headerShown: false}}/>
                     </Stack.Navigator>}
-
             </NavigationContainer>
         </Provider>
     );

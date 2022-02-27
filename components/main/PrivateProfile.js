@@ -1,19 +1,19 @@
 import firebase from 'firebase/app';
 import "firebase/auth";
-import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import {StatusBar} from "expo-status-bar";
+import React from "react";
 import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Alert,
-  Image,
-  Button,
-  TouchableOpacity
+    StyleSheet,
+    Text,
+    View,
+    SafeAreaView,
+    Alert,
+    Image,
+    Button,
+    TouchableOpacity
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import { SimpleLineIcons } from '@expo/vector-icons';
+import {ScrollView} from "react-native-gesture-handler";
+import {SimpleLineIcons} from '@expo/vector-icons';
 import App from '../../App';
 
 

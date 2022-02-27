@@ -2,18 +2,16 @@ import React, {Component, useRef, useState} from 'react'
 import {
     View,
     Dimensions,
-    FlatList,
     Text,
     ActivityIndicator,
     ScrollView,
-    Button,
     StyleSheet,
-    SafeAreaView, Image, TouchableOpacity
+    Image, TouchableOpacity
 } from 'react-native';
 
 import firebase from "firebase";
-import PictureFeed from "./PictureFeed";
-import VideoFeed from "./VideoFeed";
+import Feed_PictureFeed from "./Feed_PictureFeed";
+import Feed_VideoFeed from "./Feed_VideoFeed";
 
 
 const {height, width} = Dimensions.get('window');
@@ -23,10 +21,10 @@ const separator = "#############################################################
 
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
-import Profile_Icon from "./Shared_Objects/Profile_Icon";
-
-import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
-import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
+import {storyData} from "./FakeJSONData/TempStoryData";
+import {B} from "./Shared_Objects/Bold";
+import Chat_BTN from "./Shared_Objects/Chat_BTN";
+import {getProfileImage} from "./Shared_Objects/Functions_And_Methods/getProfileImage";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -35,11 +33,6 @@ const videosOrPicturesSelectedToView = [
     {label: 'Pictures', value: 0},
     {label: 'Videos', value: 1},
 ];
-
-import {storyData} from "./FakeJSONData/TempStoryData";
-import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
-import {B} from "./Shared_Objects/Bold";
-import Chat_BTN from "./Shared_Objects/Chat_BTN";
 
 
 class FeedScreen extends Component {
@@ -77,7 +70,7 @@ class FeedScreen extends Component {
     }
 
     componentDidMount() {
-        this.getProfileImage();
+        this.requestProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
 
         //HELLO DELETE Later
@@ -87,22 +80,16 @@ class FeedScreen extends Component {
         });
     }
 
-    getProfileImage() {
-        firebase.firestore()
-            .collection('users')
-            .doc(this.state.userId)
-            .get()
-            .then(userDetails => {
-                console.log(`\n\nCurrent UserID: ${this.state.userId} \nProfile Image URL: ${userDetails.get("profileimage")}`)
-                if (userDetails.get("profileimage") !== "") {
-                    console.log(`\n\n Has Profile Image`);
-
-                    this.setState({
-                        profileImage: userDetails.get("profileimage"),
-                        profileImageLoaded: true,
-                    });
-                }
-            })
+    requestProfileImage() {
+        getProfileImage(this.state.userId).then((r) => {
+            if(r !== undefined)
+            {
+                this.setState({
+                    profileImage: r,
+                    profileImageLoaded: true,
+                });
+            }
+        })
     }
 
     // This method is passed all the userID's of the users this user is following
@@ -141,10 +128,10 @@ class FeedScreen extends Component {
                         .then(usersFollowingPosts => {
                             console.log("\nGot Posts Of Users i am Following!")
 
-                            // For each post from the user we are following 
+                            // For each post from the user we are following
                             usersFollowingPosts.forEach((userPost) => {
 
-                                // Get the posts details 
+                                // Get the posts details
                                 firebase.firestore()
                                     .collection('postData')
                                     .doc(userPost.id)
@@ -161,7 +148,6 @@ class FeedScreen extends Component {
                                         const mediaType = postData.get("mediaType");
 
                                         const commentsCount = postData.get("commentsCount");
-                                        const likesCount = postData.get("likesCount");
 
                                         if (mediaType === "video") {
 
@@ -314,7 +300,7 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
-                                    <PictureFeed
+                                    <Feed_PictureFeed
                                         userID={this.state.userId}
                                         data={this.state.picturesDataFetched}
                                         storyData={this.state.storiesData}
@@ -340,7 +326,7 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadVideos
                                     ?
-                                    <VideoFeed
+                                    <Feed_VideoFeed
                                         userID={this.state.userId}
                                         data={this.state.videosDataFetched}
                                         navigation={this.props.route.params.navigation}/>

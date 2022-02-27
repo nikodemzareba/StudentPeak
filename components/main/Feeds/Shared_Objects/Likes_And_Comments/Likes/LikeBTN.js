@@ -4,8 +4,8 @@ import {TouchableOpacity, View} from "react-native";
 import firebase from "firebase";
 
 import {Octicons} from '@expo/vector-icons';
-import {feedStyles} from "../Styles";
-import Likes_And_Comments_Count_Txt from "./Likes_And_Comments_Count_Txt";
+import {feedStyles} from "../../Styles";
+import Likes_And_Comments_Count_Txt from "../Likes_And_Comments_Count_Txt";
 import {success} from "concurrently/dist/src/defaults";
 
 
@@ -143,6 +143,9 @@ export default function LikeBTN(props) {
                         console.log(`\n\nError getting post current likeCount ${props.postID} \n\n${exception}`);
                     })
             }
+        }
+        else {
+            likeBTN_Initiation();
         }
     }
 

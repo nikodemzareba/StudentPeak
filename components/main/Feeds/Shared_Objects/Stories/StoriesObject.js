@@ -1,9 +1,9 @@
 import {View} from "react-native";
-import Profile_Icon from "./Profile_Icon";
-import Username_Link_Txt from "./Username_Link_Txt";
-import {isUserNameTooLong} from "./FunctionsAndMethods/isUserNameTooLong";
+import Profile_Icon from "../Profile_Objects/Profile_Icon";
+import Username_Link_Txt from "../Profile_Objects/Username_Link_Txt";
+import {isUserNameTooLong} from "../Functions_And_Methods/isUserNameTooLong";
 import React from "react";
-import {feedStyles} from "./Styles";
+import {feedStyles} from "../Styles";
 
 export default function StoriesObject(props) {
     

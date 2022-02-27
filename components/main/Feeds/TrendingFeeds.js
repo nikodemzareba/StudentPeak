@@ -281,10 +281,10 @@ class TrendingFeeds extends Component {
 
                             commentsCount: commentsCount, // Needs be retrieved inside the comment method
                         });
-                    
+
                     if (receivedPosts === querySize) {
                         console.log("\nSetting Data To Variable")
-                        this.setState({                           
+                        this.setState({
                             picturesDataFetched: picturesDataFetched,
                         }, () => {
 
@@ -409,6 +409,7 @@ class TrendingFeeds extends Component {
                                         data={this.state.picturesDataFetched}
                                         storyData={this.state.storiesData}
                                         navigation={this.props.route.params.navigation}
+                                        type={"picture"}
                                     />
                                     :
                                     <View style={{flex: 1, padding: 10}}>

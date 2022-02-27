@@ -1,39 +1,39 @@
 export const tempPopularTopics =
     [
         {
-            key: 1,
+            key: "1",
             topic: "Niko Zereba's OnlyFans"
         },
         {
-            key: 2,
+            key: "2",
             topic: "Refund Niko Zereba's OnlyFans"
         },
         {
-            key: 3,
+            key: "3",
             topic: "WW3"
         },
         {
-            key: 69,
-            topic: "How much money do stripper make?"
+            key: "69",
+            topic: "How much money do strippers make?"
         },
         {
-            key: 4,
+            key: "4",
             topic: "Pole-Dancing"
         },
         {
-            key: 5,
+            key: "5",
             topic: "Broke@Uni"
         },
         {
-            key: 6,
-            topic: "Who Is Still Awake"
+            key:"6",
+            topic: "Who Is Still Awake?"
         },
         {
-            key: 7,
+            key: "7",
             topic: "Bob Marley"
         },
         {
-            key: 8,
+            key: "8",
             topic: "Rugby"
         },
 

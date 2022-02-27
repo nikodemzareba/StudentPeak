@@ -81,16 +81,42 @@ const retrieveProfileInfo = async() => {
 }
 }
 
-const retrieveUserPosts = async() => {
-  if (user != null) {
-  await db.collection('posts').doc(user.uid).get().then((doc) => {
-    if( doc.exists ) {
-      setUserPosts(doc.data());
-    }
-  })
-}
-}
+// const retrieveUserPosts = async() => {
+//   if (user != null) {
+//   await db.collection('posts').doc(user.uid).collection('userPosts').get().then((doc) => {
+//     if( doc.exists ) {
+//       setUserPosts(doc.data());
+//     }
+//   })
+// }
+// }
 
+const fetchPosts = async () => {
+  try {
+    const list = [];
+    await firestore()
+    .collection('posts')
+    .doc(user.uid)
+    .collection('userPosts')
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const {
+          caption,
+          createdAt,
+          downloadURL,
+          mediaType,
+        } = doc.data();
+        list.push({
+          caption,
+          createdAt,
+          downloadURL,
+          mediaType,
+        })
+      })
+    })
+  }
+}
 
 
 
@@ -142,7 +168,7 @@ useEffect(() => {
           source={{
             width: 100,
             height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : ''
+            uri: userPosts ? userPosts.downloadURL[0] : 'null'
           }}
           />
             <Text style={styles.createText}>{profileDisplay ? profileDisplay.name : ''}</Text>
@@ -177,7 +203,7 @@ useEffect(() => {
           source={{
             width: 100,
             height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : ''
+            uri: userPosts ? userPosts.downloadURL[0] : 'null'
           }}
           />
          
@@ -187,7 +213,7 @@ useEffect(() => {
           source={{
             width: 100,
             height: 200,
-            uri: userPosts ? userPosts.downloadURL[1] : ''
+            uri: userPosts ? userPosts.downloadURL[1] : 'null'
           }}
           />
          

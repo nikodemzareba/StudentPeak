@@ -4,6 +4,12 @@ import {feedStyles} from "../Feeds/Shared_Objects/Styles";
 
 export default function SearchScreenResults(props) {
 
+    if(props.data !== undefined) {
+        props.data.foreach((item) => {
+            console.log(`\n\n${item.id}`)
+        })
+    }
+
     return (
         <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
             <View style={feedStyles.screenBackground}>

@@ -22,6 +22,7 @@ export default function CommentBTN(props) {
     const bottomSheet = useRef();
 
     //flatlist test data
+    //Get rid of this test data
     const DATA = [
         {
             id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -42,11 +43,14 @@ export default function CommentBTN(props) {
         return (
             <View>
                 <FlatList
-                    data={DATA}
-                    keyExtractor={item => item.id}
+                    data={commentInfo}
+                    keyExtractor={item => item.username}
                     renderItem = {({item}) => {
                     return (
-                        <Text>{item.title}</Text>
+                        <View>
+                            <Text>{item.comment}</Text>
+                            <Text>{item.username}</Text>
+                        </View>
                     )
                     }
                 }
@@ -55,47 +59,50 @@ export default function CommentBTN(props) {
         );
     }
 
+    //Array to store comment Details
     let commentInfo = [];
-    //get comments  via the postID
-    const getCommentLike =
 
+    //get comments  via the postID
+    function getCommentLike  (postID) {
         firebase.firestore()
             .collection('postData')
-            .doc(props.postID)
+            .doc(postID)
             .collection("comments")
             .get()
             .then(doc =>{
-                       doc.forEach((commentGot) =>{
-                           //get the comment made by the user
-                           const userComment = commentGot.get('comment');
-                           commentInfo.push({
-                               comment:userComment
-                           });
-                           //next step will be to go get the comment User Details
-                           firebase.firestore()
-                               .collection('users')
-                               .doc(commentGot.id)
-                               .get()
-                               .then(userDetails => {
-                                   const userID = commentGot.id;
-                                   const username = userDetails.get("username");
-                                   const profileImage = userDetails.get("profileimage");
-                                        commentInfo.push({
-                                            key: userID,
-                                            username: username,
-                                            profileImage: profileImage,
-                                        })
-                                   console.log("All details captured here here " +  JSON.stringify(commentInfo));
+                doc.forEach((commentGot) =>{
+                    //get the comment made by the user
+                    const userComment = commentGot.get('comment');
+                    //next step will be to go get the comment User Details
+                    firebase.firestore()
+                        .collection('users')
+                        .doc(commentGot.id)
+                        .get()
+                        .then(userDetails => {
+                            const userID = commentGot.id;
+                            const username = userDetails.get("username");
+                            const profileImage = userDetails.get("profileimage");
+                            //saving all information into array
+                            commentInfo.push({
+                                key: userID,
+                                username: username,
+                                profileImage: profileImage,
+                                comment:userComment
+                            })
+                            console.log("All details captured here here " +  JSON.stringify(commentInfo));
 
-                               }).catch((exception) => {
-                               alert(`\nError seeing comment Info \n\n${exception}`);
-                               console.log(`\nError seeing comment Info \n\n${exception}`);
-                               })
-                       })
+                        }).catch((exception) => {
+                        alert(`\nError seeing comment Info \n\n${exception}`);
+                        console.log(`\nError seeing comment Info \n\n${exception}`);
+                    })
+                })
             }).catch((exception) => {
-                alert(`\nError getting users who commented on this post\n\n${exception}`);
-                console.log(`\n\nError getting users who commented on post ${props.postID}`);
-            })
+            alert(`\nError getting users who commented on this post\n\n${exception}`);
+            console.log(`\n\nError getting users who commented on post ${props.postID}`);
+        })
+    }
+
+
 
     return(
     <View style = {feedStyles.likeAndCommentsBTN_View}>
@@ -115,6 +122,7 @@ export default function CommentBTN(props) {
             hasDraggableIcon
             ref={bottomSheet}
             height={450}>
+            {getCommentLike(postID)}
             {render()}
         </BottomSheet>
 

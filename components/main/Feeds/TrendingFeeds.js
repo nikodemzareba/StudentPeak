@@ -46,6 +46,10 @@ class TrendingFeeds extends Component {
             firebase.auth().currentUser.uid,
             viewVideosOrPictureFeed: 0,
 
+            //Trending Topics
+            trendingTopicsDataFetched: [],
+            trendingTopicsLoading: true,
+
             // Stories 
             pictureStoriesData: [],
             pictureStoriesDataLoaded: false,
@@ -83,14 +87,18 @@ class TrendingFeeds extends Component {
         this.popularPicturePostsRef = firebase.firestore()
             .collection("postData")
             .orderBy('likesCount', 'desc')
-            // .where("mediaType", "==", "picture")
+            .where("mediaType", "==", "picture")
             .limit(50)
         // .limitToLast(50)
+
+
+
 
         this.popularVideoPostsRef = firebase.firestore()
             .collection("postData")
             .where("mediaType", "==", "video")
-            .orderBy('likesCount', 'desc').limit(50)
+            .orderBy('likesCount', 'desc')
+            .limit(50)
         // .limitToLast(50)
 
         this.popularPostsRef = firebase.firestore()
@@ -100,7 +108,7 @@ class TrendingFeeds extends Component {
 
         this.popularPostTopicsRef = firebase.firestore()
             .collection("postTags")
-            .orderBy("numberOfPosts")
+            .orderBy('numberOfPosts', 'desc')
 
         this.popularStoriesRef = firebase.firestore()
             .collection("stories")
@@ -122,7 +130,7 @@ class TrendingFeeds extends Component {
         this.requestProfileImage();
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getFriendsLikePosts);
         this.unsubscribe = this.popularPicturePostsRef.onSnapshot(this.getPopularPicturePosts);
-        this.unsubscribe = this.popularPostTopicsRef.onSnapshot(this.get);
+        this.unsubscribe = this.popularPostTopicsRef.onSnapshot(this.getPopularTopics);
 
         //HELLO DELETE Later
         this.setState({
@@ -323,6 +331,35 @@ class TrendingFeeds extends Component {
         }
     }
 
+    getPopularTopics = async (querySnapShot) => {
+        let data = [];
+        let resultsSize = querySnapShot.size;
+        let receivedDataCount = 0;
+
+        await querySnapShot.forEach((trendingTopic) => {
+
+            receivedDataCount++
+
+            data.push({
+                key: `${receivedDataCount}`,
+                topic: `${trendingTopic.id}`
+            });
+
+            if (resultsSize === receivedDataCount) {
+
+                this.setState({
+                    trendingTopicsDataFetched: data,
+                    trendingTopicsLoading: false
+                })
+            }
+        })
+
+        if (resultsSize === 0) {
+            this.setState({
+                trendingTopicsLoading: false
+            })
+        }
+    }
 
 
     getVideoPosts = async (querySnapshot) => {
@@ -400,7 +437,7 @@ class TrendingFeeds extends Component {
                     ?
                     <>
                         {/* Pictures Feed */}
-                        {this.state.friendsPicturesIsLoading || this.state.trendingFeed_PicturesIsLoading
+                        {this.state.friendsPicturesIsLoading || this.state.trendingFeed_PicturesIsLoading || this.state.trendingTopicsLoading
                             ?
                             <View style={styles.loading}>
                                 <ActivityIndicator size="large" color="red"/>
@@ -412,6 +449,7 @@ class TrendingFeeds extends Component {
                                     userID={this.state.userId}
                                     data={this.state.friendsPicturesDataFetched}
                                     data2={this.state.trendingFeed_PicturesDataFetched}
+                                    data3={this.state.trendingTopicsDataFetched}
                                     storyData={this.state.storiesData}
                                     navigation={this.props.route.params.navigation}
                                     type={"picture"}

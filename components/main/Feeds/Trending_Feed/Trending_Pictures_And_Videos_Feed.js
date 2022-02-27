@@ -13,8 +13,12 @@ import firebase from "firebase";
 
 export default function Trending_Pictures_And_Videos_Feed(props) {
 
+    const [friendsLikedDataIsLoading, setFriendsLikedDataIsLoading] = useState(true);
+    // const [friendsLikedDataFetched, setFriendsLikedDataFetched] = useState([]);
+    const friendsLikedDataFetched = [];
+
     let
-        loadDefault = false,
+        loadDefault = true,
         dataType = props.type,
         userID = props.userID,
         navigation = props.navigation,
@@ -26,9 +30,9 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
         loadStoriesData = false,
 
         // Friends Liked Data
-        friendsLikedDataFetched = [],
+        //friendsLikedDataFetched = [],
         friendsLikedDataReceived = 0,
-        friendsLikedDataIsLoading = true,
+
         loadFriendsLikedData = false,
 
         // Trending Data
@@ -55,20 +59,20 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
         .collection("postData")
         .orderBy("likesCount")
         .where("mediaType", "==", dataType)
-        .limitToLast(50)
+
 
 
     const popularPostTopicsRef = firebase.firestore()
         .collection("postTags")
         .orderBy("numberOfPosts")
-        .limitToLast(50)
+
 
     const popularStoriesRef = firebase.firestore()
         .collection("stories")
         .orderBy("views")
-        .limitToLast(50)
 
-    const getPopularStories = async (querySnapshot) => {
+
+    const getPopularStories = async () => {
 
         storiesDataIsLoading = false;
         loadStoriesData = false;
@@ -136,100 +140,106 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
         }
     }
 
-    const getFriendsLikePosts = async (querySnapshot) => {
+    const getFriendsLikePosts = () => {
 
-        const dataFetched = [];
-        let resultsSize = querySnapshot.size;
-        let receivedDataCount = 0;
+        usersFollowingRef.get()
+            .then((querySnapShot) => {
 
-        // For each user we are following
-        await querySnapshot.forEach((userFollowing) => {
+                const dataFetched = [];
+                let resultsSize = querySnapShot.size;
+                let receivedDataCount = 0;
 
-            // console.log(`\n\nGot friends liked posts `)
-            receivedDataCount++;
+                // For each user we are following
+                querySnapShot.forEach((userFollowing) => {
 
-            // Get all of the posts this user we are following has liked
-            firebase.firestore()
-                .collection('posts')
-                .doc(userFollowing.id)
-                .collection('postsUserHasLiked')
-                .get()
-                .then(usersFollowingsLikedPosts => {
+                    // console.log(`\n\nGot friends liked posts `)
+                    receivedDataCount++;
 
-                    // For each post the user we are followed has liked
-                    usersFollowingsLikedPosts.forEach((likedPost) => {
+                    // Get all of the posts this user we are following has liked
+                    firebase.firestore()
+                        .collection('posts')
+                        .doc(userFollowing.id)
+                        .collection('postsUserHasLiked')
+                        .get()
+                        .then(usersFollowingsLikedPosts => {
 
-                        // Get the posts details
-                        firebase.firestore()
-                            .collection('postData')
-                            .doc(likedPost.id)
-                            .get()
-                            .then((postData => {
+                            // For each post the user we are followed has liked
+                            usersFollowingsLikedPosts.forEach((likedPost) => {
 
+                                // Get the posts details
                                 firebase.firestore()
-                                    .collection('users')
-                                    .doc(postData.get("userID"))
+                                    .collection('postData')
+                                    .doc(likedPost.id)
                                     .get()
-                                    .then(userDetails => {
+                                    .then((postData => {
+                                        let id =postData.get("userID");
+                                        firebase.firestore()
+                                            .collection('users')
+                                            .doc(id)
+                                            .get()
+                                            .then(userDetails => {
 
-                                        friendsLikedDataReceived++;
+                                                friendsLikedDataReceived++;
 
-                                        const profileImage = userDetails.get("profileimage");
-                                        const username = userDetails.get("username");
-                                        const userID = postData.get("userID");
+                                                const profileImage = userDetails.get("profileimage");
+                                                const username = userDetails.get("username");
+                                                const userID = postData.get("userID");
 
-                                        const caption = postData.get("caption");
-                                        const createdAt = postData.get("createdAt");
-                                        const downloadURL = postData.get("downloadURL");
-                                        const mediaType = postData.get("mediaType");
+                                                const caption = postData.get("caption");
+                                                const createdAt = postData.get("createdAt");
+                                                const downloadURL = postData.get("downloadURL");
+                                                const mediaType = postData.get("mediaType");
 
-                                        const commentsCount = postData.get("commentsCount");
+                                                const commentsCount = postData.get("commentsCount");
 
-                                        dataFetched.push({
-                                            key: likedPost.id,
-                                            userID: userID,
-                                            name: username,
-                                            profile: profileImage,
-                                            caption: caption,
-                                            createdAt: createdAt,
-                                            downloadURL: downloadURL,
-                                            mediaType: mediaType,
+                                                friendsLikedDataFetched.push({
+                                                    key: likedPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
 
-                                            commentsCount: commentsCount,    // Needs be retrieved inside the comment method
-                                        });
+                                                    commentsCount: commentsCount,    // Needs be retrieved inside the comment method
+                                                });
 
 
-                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
-                                        console.log(`\n\nProcessed Users Count = ${receivedDataCount} | Expected Users Count = ${resultsSize}`);
+                                                console.log(`\n\ngetFriendsLikePosts() \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                                                console.log(`\n\nProcessed Users Count = ${receivedDataCount} | Expected Users Count = ${resultsSize}`);
 
-                                        if (receivedDataCount === resultsSize) {
+                                                if (receivedDataCount === resultsSize) {
 
-                                            friendsLikedDataFetched = dataFetched;
-                                            friendsLikedDataIsLoading = false;
-                                            loadFriendsLikedData = true;
-                                        }
-                                    })
+                                                   // friendsLikedDataFetched = dataFetched;
+                                                    // setFriendsLikedDataFetched(dataFetched);
+
+                                                    setFriendsLikedDataIsLoading(false);
+                                                    loadFriendsLikedData = true;
+                                                }
+                                            })
+                                            .catch((error) => {
+                                                console.log(`${error} \nUnable to get User we are followings data!`);
+                                            });
+
+                                    }))
                                     .catch((error) => {
-                                        console.log(`${error} \nUnable to get User we are followings data!`);
+                                        console.log(`${error} \nUnable to get Users following post data!`);
                                     });
+                            })
+                        })
+                        .catch((error) => {
+                            console.log(`${error} \nUnable to get Users following posts!`);
+                        });
 
-                            }))
-                            .catch((error) => {
-                                console.log(`${error} \nUnable to get Users following post data!`);
-                            });
-                    })
                 })
-                .catch((error) => {
-                    console.log(`${error} \nUnable to get Users following posts!`);
-                });
 
-        })
+                if (resultsSize === 0) {
 
-        if (resultsSize === 0) {
-
-            friendsLikedDataIsLoading = false;
-            loadFriendsLikedData = false;
-        }
+                    setFriendsLikedDataIsLoading(false);
+                    loadFriendsLikedData = false;
+                }
+            })
     }
 
     const getPopularTopics = async (querySnapshot) => {
@@ -266,18 +276,29 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
         }
     }
 
-    const getData =() => {
-        usersFollowingRef.onSnapshot(getFriendsLikePosts);
-        //popularPostsRef.onSnapshot(getPopularPosts);
-        popularPostTopicsRef.onSnapshot(getPopularTopics);
-        //popularStoriesRef.onSnapshot(getPopularStories);
+    const getData = () => {
+        // usersFollowingRef.onSnapshot(getFriendsLikePosts);
+        // //popularPostsRef.onSnapshot(getPopularPosts);
+        // popularPostTopicsRef.onSnapshot(getPopularTopics);
+        // //popularStoriesRef.onSnapshot(getPopularStories);
 
+        console.log(`\n\nfriendsLikedDataIsLoading Status ${friendsLikedDataIsLoading}`)
+        getFriendsLikePosts();
         storiesDataIsLoading = false;
-        loadStoriesData = false;
-        viralDataIsLoading=false;
-    }
 
-    getData();
+        viralDataIsLoading = false;
+        trendingTopicsDataIsLoading = false;
+
+
+
+
+
+
+    }
+    useEffect(() => {
+        getData();
+    }, []);
+
 
 
 
@@ -297,13 +318,13 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
 
                     <Trending_Posts_FlatList navigation={props.navigation} data={props.data} text={"Friends Like"}/>
 
-                    <Trending_Posts_FlatList navigation={props.navigation} data={props.data} text={"Going Viral"}/>
+                    <Trending_Posts_FlatList navigation={props.navigation} data={props.data2} text={"Going Viral"}/>
 
 
                 </View>
                 :
                 <>
-                    { !storiesDataIsLoading && !friendsLikedDataIsLoading && !viralDataIsLoading && !trendingTopicsDataIsLoading
+                    {!storiesDataIsLoading && !friendsLikedDataIsLoading && !viralDataIsLoading && !trendingTopicsDataIsLoading
                         ?
                         <View style={feedStyles.screenBackground}>
 
@@ -313,22 +334,12 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
 
                             <Stories_FlatList storyData={props.storyData}/>
 
-                            <Trending_Topics_FlatList
-                                navigation={props.navigation}
-                                data={trendingTopicsDataFetched}
-                            />
+                            <Trending_Topics_FlatList navigation={props.navigation} data={tempPopularTopics}/>
 
-                            <Trending_Posts_FlatList
-                                navigation={props.navigation}
-                                data={friendsLikedDataReceived}
-                                text={"Friends Like"}
-                            />
+                            <Trending_Posts_FlatList navigation={props.navigation} data={friendsLikedDataFetched} text={"Friends Like"}/>
 
-                            <Trending_Posts_FlatList
-                                navigation={props.navigation}
-                                data={props.data}
-                                text={"Going Viral"}
-                            />
+                            <Trending_Posts_FlatList navigation={props.navigation} data={props.data} text={"Going Virallll"}/>
+
 
                         </View>
                         :

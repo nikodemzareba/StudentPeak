@@ -14,8 +14,8 @@ export default function Pictures_And_Videos_Post_Object(props) {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
-    const heightV = windowHeight / 1.6;
-    const widthV = windowWidth;
+    const heightV = props.height === undefined ? windowHeight / 1.6 : props.height;
+    const widthV =  props.width === undefined ? windowWidth : props.width;
 
     const position = props.mediaType === "picture" ? "absolute" : "relative";
     return (

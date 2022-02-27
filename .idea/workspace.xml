@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Testing polymorphic explore feed&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/FakeJSONData/Temp_Topics.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/FakeJSONData/Temp_Topics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Pictures_And_Videos_Post_Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Pictures_And_Videos_Post_Object.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Pictures_And_Videos_Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Pictures_And_Videos_Feed.js" afterDir="false" />
     </list>
@@ -77,7 +76,8 @@
       <workItem from="1645828339914" duration="1423000" />
       <workItem from="1645833447064" duration="1146000" />
       <workItem from="1645837616375" duration="14493000" />
-      <workItem from="1645903256774" duration="17500000" />
+      <workItem from="1645903256774" duration="26352000" />
+      <workItem from="1645932366837" duration="2924000" />
     </task>
     <task id="LOCAL-00001" summary="changed code to match new post DB structure">
       <created>1645823466307</created>
@@ -184,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645911282243</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="In this Update:&#10;Testing polymorphic explore feed&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645923806204</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1645923806204</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +224,8 @@
     <MESSAGE value="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Trending Topic Number object shape now increases with text size&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;Testing polymorphic explore feed&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Testing polymorphic explore feed&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -228,20 +236,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js</url>
-          <line>312</line>
-          <properties lambdaOrdinal="-1" />
+          <line>334</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js</url>
-          <line>94</line>
-          <properties lambdaOrdinal="-1" />
+          <line>109</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js</url>
-          <line>243</line>
-          <properties lambdaOrdinal="-1" />
+          <line>261</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

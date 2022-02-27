@@ -1,5 +1,5 @@
 import {B} from "../Bold";
-import {Text, TouchableOpacity, View} from "react-native";
+import {FlatList, Text, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
 import { Dimensions, StyleSheet } from 'react-native'
@@ -21,19 +21,81 @@ export default function CommentBTN(props) {
     console.log("PostedID recevied " + postID);
     const bottomSheet = useRef();
 
+    //flatlist test data
+    const DATA = [
+        {
+            id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+            title: "First Comment",
+        },
+        {
+            id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+            title: "Second Comment",
+        },
+        {
+            id: "58694a0f-3da1-471f-bd96-145571e29d72",
+            title: "Third Comment",
+        },
+    ];
+
+    //test to see if I can use flalist on this view
+    render = () => {
+        return (
+            <View>
+                <FlatList
+                    data={DATA}
+                    keyExtractor={item => item.id}
+                    renderItem = {({item}) => {
+                    return (
+                        <Text>{item.title}</Text>
+                    )
+                    }
+                }
+                />
+            </View>
+        );
+    }
+
+    let commentInfo = [];
+    //get comments  via the postID
     const getCommentLike =
+
         firebase.firestore()
             .collection('postData')
             .doc(props.postID)
             .collection("comments")
             .get()
             .then(doc =>{
-               doc.forEach(commentgot =>{
-                   console.log(commentgot.data());
-               })
-            })
+                       doc.forEach((commentGot) =>{
+                           //get the comment made by the user
+                           const userComment = commentGot.get('comment');
+                           commentInfo.push({
+                               comment:userComment
+                           });
+                           //next step will be to go get the comment User Details
+                           firebase.firestore()
+                               .collection('users')
+                               .doc(commentGot.id)
+                               .get()
+                               .then(userDetails => {
+                                   const userID = commentGot.id;
+                                   const username = userDetails.get("username");
+                                   const profileImage = userDetails.get("profileimage");
+                                        commentInfo.push({
+                                            key: userID,
+                                            username: username,
+                                            profileImage: profileImage,
+                                        })
+                                   console.log("All details captured here here " +  JSON.stringify(commentInfo));
 
-    console.log("Post data new is " + {getCommentLike});
+                               }).catch((exception) => {
+                               alert(`\nError seeing comment Info \n\n${exception}`);
+                               console.log(`\nError seeing comment Info \n\n${exception}`);
+                               })
+                       })
+            }).catch((exception) => {
+                alert(`\nError getting users who commented on this post\n\n${exception}`);
+                console.log(`\n\nError getting users who commented on post ${props.postID}`);
+            })
 
     return(
     <View style = {feedStyles.likeAndCommentsBTN_View}>
@@ -53,10 +115,9 @@ export default function CommentBTN(props) {
             hasDraggableIcon
             ref={bottomSheet}
             height={450}>
-            <View>
-                <Text>{getCommentLike}</Text>
-            </View>
+            {render()}
         </BottomSheet>
+
         <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>
     </View>
 

@@ -50,7 +50,7 @@ class TrendingFeeds extends Component {
             trendingTopicsDataFetched: [],
             trendingTopicsLoading: true,
 
-            // Stories 
+            // Stories
             pictureStoriesData: [],
             pictureStoriesDataLoaded: false,
             videoStoriesData: [],
@@ -111,28 +111,24 @@ class TrendingFeeds extends Component {
         })
     }
 
+
     componentDidMount() {
+
         this.requestProfileImage();
+        this.getData();
 
-        // Get friends liked posts
-        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getFriendsLikePosts);
+        this.willFocusSubscription = this.props.navigation.addListener(
+            'willFocus',
+            () => {
 
-        // Get popular pictures & videos
-        this.unsubscribe = this.popularPicturePostsRef("picture").onSnapshot((r) => {
-            this.getPopularPosts(r, "picture")
-        });
-        this.unsubscribe = this.popularPicturePostsRef("video").onSnapshot((r) => {
-            this.getPopularPosts(r, "video")
-        });
+                this.resetConditions();
+                this.getData();
+            }
+        );
+    }
 
-        // Get popular topics
-        this.unsubscribe = this.popularPostTopicsRef.onSnapshot(this.getPopularTopics);
-
-        //HELLO DELETE Later
-        this.setState({
-            storiesDataLoaded: true,
-            storiesData: storyData
-        });
+    componentWillUnmount() {
+        this.willFocusSubscription();
     }
 
     isKeyInList(key, list) {
@@ -402,6 +398,68 @@ class TrendingFeeds extends Component {
                 trendingTopicsLoading: false
             })
         }
+    }
+
+    resetConditions = () =>{
+
+        this.setState({
+            //Trending Topics
+            trendingTopicsDataFetched: [],
+            trendingTopicsLoading: true,
+
+            // Stories
+            pictureStoriesData: [],
+            pictureStoriesDataLoaded: false,
+            videoStoriesData: [],
+            videoStoriesDataLoaded: false,
+
+            // Friends Following Data
+            friendsVideoDataFetched: [],
+            friendsVideosIsLoading: true,
+            friendsVideosReceived: 0,
+            friendsLoadVideos: false,
+
+            friendsPicturesDataFetched: [],
+            friendsPicturesIsLoading: true,
+            friendsPicturesReceived: 0,
+            loadFriendsPictures: false,
+
+            // Trending Data
+            trendingFeed_VideosDataFetched: [],
+            trendingFeed_VideosIsLoading: true,
+            trendingFeed_VideosReceived: 0,
+            trendingFeed_loadVideos: false,
+
+            trendingFeed_PicturesDataFetched: [],
+            trendingFeed_PicturesIsLoading: true,
+            trendingFeed_PicturesReceived: 0,
+            trendingFeed_loadPictures: false,
+
+        });
+      
+    }
+
+    getData = () =>{
+
+        // Get friends liked posts
+        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getFriendsLikePosts);
+
+        // Get popular pictures & videos
+        this.unsubscribe = this.popularPicturePostsRef("picture").onSnapshot((r) => {
+            this.getPopularPosts(r, "picture")
+        });
+        this.unsubscribe = this.popularPicturePostsRef("video").onSnapshot((r) => {
+            this.getPopularPosts(r, "video")
+        });
+
+        // Get popular topics
+        this.unsubscribe = this.popularPostTopicsRef.onSnapshot(this.getPopularTopics);
+
+        //HELLO DELETE Later
+        this.setState({
+            storiesDataLoaded: true,
+            storiesData: storyData
+        });
     }
 
     render() {

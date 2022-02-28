@@ -7,7 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import FeedScreen from "./main/Feeds/Feed"
 import Add from "./main/Add"
-import SearchScreen from "./main/Search/Search"
+import Search from "./main/Search/Search"
 import EventScreen from "./main/Events_Screen/Events"
 import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
@@ -79,6 +79,14 @@ export class Main extends Component {
                                 header: () => null,
                                 tabBarVisible: false,
 
+                                tabBarIcon: ({color, size}) => (
+                                    //decide what is inside the Icon
+                                    <MaterialCommunityIcons name="magnify" color={color} size={26}/>
+                                ),
+                            }}
+                />
+                <Tab.Screen name="Search" component={Search} initialParams={{navigation: this.props.navigation}}
+                            options={{
                                 tabBarIcon: ({color, size}) => (
                                     //decide what is inside the Icon
                                     <MaterialCommunityIcons name="magnify" color={color} size={26}/>

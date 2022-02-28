@@ -135,7 +135,6 @@ class TrendingFeeds extends Component {
         });
     }
 
-
     isKeyInList(key, list) {
         return list.some(item => key === item.key);
     }

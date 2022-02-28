@@ -135,6 +135,11 @@ class TrendingFeeds extends Component {
         });
     }
 
+
+    isKeyInList(key, list) {
+        return list.some(item => key === item.key);
+    }
+
     getFriendsLikePosts = async (querySnapshot) => {
 
         const friendsVideoDataFetched = [];
@@ -190,40 +195,47 @@ class TrendingFeeds extends Component {
 
                                         if (mediaType === "video") {
 
-                                            this.setState({
-                                                friendsVideosReceived: this.state.friendsVideosReceived + 1
-                                            });
+                                            if( ! this.isKeyInList(likedPost.id, friendsVideoDataFetched))
+                                            {
+                                                this.setState({
+                                                    friendsVideosReceived: this.state.friendsVideosReceived + 1
+                                                });
 
-                                            friendsVideoDataFetched.push({
-                                                key: likedPost.id,
-                                                userID: userID,
-                                                name: username,
-                                                profile: profileImage,
-                                                caption: caption,
-                                                createdAt: createdAt,
-                                                downloadURL: downloadURL,
-                                                mediaType: mediaType,
+                                                friendsVideoDataFetched.push({
+                                                    key: likedPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
 
-                                                commentsCount: commentsCount,    // Needs be retrieved inside the comment method
-                                            });
+                                                    commentsCount: commentsCount,    // Needs be retrieved inside the comment method
+                                                });
+                                            }
+
                                         } else if (mediaType === "picture") {
 
-                                            this.setState({
-                                                friendsPicturesReceived: this.state.friendsPicturesReceived + 1
-                                            });
+                                            if( ! this.isKeyInList(likedPost.id, friendsPicturesDataFetched)) {
 
-                                            friendsPicturesDataFetched.push({
-                                                key: likedPost.id,
-                                                userID: userID,
-                                                name: username,
-                                                profile: profileImage,
-                                                caption: caption,
-                                                createdAt: createdAt,
-                                                downloadURL: downloadURL,
-                                                mediaType: mediaType,
+                                                this.setState({
+                                                    friendsPicturesReceived: this.state.friendsPicturesReceived + 1
+                                                });
 
-                                                commentsCount: commentsCount, // Needs be retrieved inside the comment method
-                                            });
+                                                friendsPicturesDataFetched.push({
+                                                    key: likedPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
+
+                                                    commentsCount: commentsCount, // Needs be retrieved inside the comment method
+                                                });
+                                            }
                                         }
 
                                         console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);

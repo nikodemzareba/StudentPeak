@@ -34,6 +34,7 @@ const videosOrPicturesSelectedToView = [
     {label: 'Videos', value: 1},
 ];
 
+// const controller = new AbortController();
 
 class FeedScreen extends Component {
 
@@ -50,7 +51,7 @@ class FeedScreen extends Component {
             profileImageLoaded: false,
             profileImage: "",
             userId:
-                // "upb6UG9eM0VWzRo8tGke3xK9p953",
+            // "upb6UG9eM0VWzRo8tGke3xK9p953",
             firebase.auth().currentUser.uid,
 
             videosDataFetched: [],
@@ -62,34 +63,86 @@ class FeedScreen extends Component {
             picturesIsLoading: true,
             picturesReceived: 0,
             loadPictures: false,
+
+
         }
         this.usersFollowingRef = firebase.firestore()
             .collection('following')
             .doc(this.state.userId)
             .collection('userFollowing')
+
+        // this.props.route.params.navigation.addListener(
+        //     'didFocus',
+        //     payload => {
+        //         console.log("\n\nNAV Focus Event Triggered")
+        //         controller.abort();
+        //         this.resetConditions();
+        //         this.dataRequest();
+        //     }
+        // );
     }
 
     componentDidMount() {
         this.requestProfileImage();
-        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+        this.dataRequest();
+        console.log(`${this.state.userId}`)
 
-        //HELLO DELETE Later
-        this.setState({
-            storiesDataLoaded: true,
-            storiesData: storyData
-        });
+        LogBox.ignoreLogs(['Animated: `useNativeDriver`','componentWillReceiveProps']); // temp fix for errors should be avoided
+
+        this.willFocusSubscription = this.props.navigation.addListener(
+            'willFocus',
+            () => {
+                console.log("\n\nNAV Focus Event Triggered")
+                this.resetConditions();
+                this.dataRequest();
+            }
+        );
+    }
+
+
+    componentWillUnmount() {
+        this.willFocusSubscription();
+        // controller.abort();
     }
 
     requestProfileImage() {
         getProfileImage(this.state.userId).then((r) => {
-            if(r !== undefined)
-            {
+            if (r !== undefined) {
                 this.setState({
                     profileImage: r,
                     profileImageLoaded: true,
                 });
             }
         })
+    }
+
+    resetConditions = () => {
+
+        this.setState({
+            storiesData: [],
+            storiesDataLoaded: false,
+
+            videosDataFetched: [],
+            videosIsLoading: true,
+            videosReceived: 0,
+            loadVideos: false,
+
+            picturesDataFetched: [],
+            picturesIsLoading: true,
+            picturesReceived: 0,
+            loadPictures: false,
+        })
+    }
+
+    dataRequest = () => {
+        console.log("\n\nRequesting new feed DATA")
+        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+
+        // HELLO REMOVE
+        this.setState({
+            storiesDataLoaded: true,
+            storiesData: storyData
+        });
     }
 
     // This method is passed all the userID's of the users this user is following
@@ -99,7 +152,7 @@ class FeedScreen extends Component {
         const picturesDataFetched = [];
 
         let expectedFollowingUsersCount = querySnapshot.size;
-        console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
+        console.log(`\n\nFeedScreen getData() Number of Users Following: ${expectedFollowingUsersCount}`)
 
         let processedFollowingUsers = 0;
 
@@ -129,7 +182,11 @@ class FeedScreen extends Component {
                             console.log("\nGot Posts Of Users i am Following!")
 
                             // For each post from the user we are following
+                            let expectedResults = usersFollowingPosts.size;
+                            let countProcessed = 0;
                             usersFollowingPosts.forEach((userPost) => {
+
+                                countProcessed++;
 
                                 // Get the posts details
                                 firebase.firestore()
@@ -187,11 +244,11 @@ class FeedScreen extends Component {
                                             });
                                         }
 
-                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                                        console.log(`\nFeedScreen \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
                                         console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
-                                        if (processedFollowingUsers === expectedFollowingUsersCount) {
-                                            console.log("\nSetting Data To Variable")
+                                        if (processedFollowingUsers === expectedFollowingUsersCount && expectedResults === countProcessed) {
+
                                             this.setState({
                                                 videosDataFetched: videosDataFetched,
                                                 picturesDataFetched: picturesDataFetched,
@@ -223,12 +280,15 @@ class FeedScreen extends Component {
     setStatesForLoadingFeed() {
         console.log("\nLoad Pictures & Videos")
         if (this.state.videosReceived > 0) {
+
+            console.log("\nFeed Screen got Pictures")
             this.setState({
                 loadVideos: true
             });
         }
 
         if (this.state.picturesReceived > 0) {
+            console.log("\nFeed Screen got Videos")
             this.setState({
                 loadPictures: true
             });
@@ -306,8 +366,9 @@ class FeedScreen extends Component {
                                         storyData={this.state.storiesData}
                                         navigation={this.props.route.params.navigation}/>
                                     :
-                                    <View style={{flex: 1, padding:10}}>
-                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> No Posts / Follow a user to view posts on your feed  </B> </Text>
+                                    <View style={{flex: 1, padding: 10}}>
+                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> No Posts
+                                            / Follow a user to view posts on your feed </B> </Text>
                                     </View>
                                 }
                             </>
@@ -331,8 +392,9 @@ class FeedScreen extends Component {
                                         data={this.state.videosDataFetched}
                                         navigation={this.props.route.params.navigation}/>
                                     :
-                                    <View style={{flex: 1, padding:10}}>
-                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B>  No Posts / Follow a user to view posts on your feed  </B> </Text>
+                                    <View style={{flex: 1, padding: 10}}>
+                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> No Posts
+                                            / Follow a user to view posts on your feed </B> </Text>
                                     </View>
                                 }
                             </>

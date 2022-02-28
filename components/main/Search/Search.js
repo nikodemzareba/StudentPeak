@@ -8,7 +8,7 @@ import {connect} from 'redux';
 import firebase from 'firebase';
 import {B} from "../Feeds/Shared_Objects/Bold";
 import {feedStyles} from "../Feeds/Shared_Objects/Styles";
-import ProfileIcon_And_Username from "../Feeds/Shared_Objects/ProfileIcon_And_Username";
+import ProfileIcon_And_Username from "../Feeds/Shared_Objects/Profile_Objects/ProfileIcon_And_Username";
 
 require('firebase/firestore');
 

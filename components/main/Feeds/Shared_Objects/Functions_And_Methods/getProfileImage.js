@@ -1,8 +1,9 @@
 import firebase from "firebase";
 
 
-export const getProfileImage = (userID) => {
-    firebase.firestore()
+export const getProfileImage = async (userID) => {
+
+    return await firebase.firestore()
         .collection('users')
         .doc(userID)
         .get()
@@ -12,6 +13,13 @@ export const getProfileImage = (userID) => {
                 console.log(`\n\n Has Profile Image`);
             }
 
-            return  userDetails.get("profileimage");
+            return userDetails.get("profileimage");
         })
+        .
+        catch((Exception) =>{
+            console.log(`\n\nError getting Profile Image \n\n${Exception}`);
+            return undefined;
+        })
+
+
 }

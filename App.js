@@ -29,10 +29,11 @@ import Add from './components/main/Add'
 import Save from './components/main/Save'
 import Topbar from './components/main/top/Topbar'
 import ShowEventsResults from './components/main/Events_Screen/ShowEventsResults'
-import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/UsersLikedPost";
+import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/UsersLikedPost";
 import Search from "./components/main/Search/Search";
 import SearchScreenResults from "./components/main/Search/SearchScreenResults";
 import ViewPost from "./components/main/Search/ViewPost";
+import Trending_Pictures_And_Videos_Feed from "./components/main/Feeds/Trending_Feed/Trending_Pictures_And_Videos_Feed";
 
 
 import Picture from './components/authentication/Picture'
@@ -123,6 +124,7 @@ function App() {
                                 <Stack.Screen name="Search" component={Search} options={{headerShown: false}}/>
                                 <Stack.Screen name="SearchScreenResults" component={SearchScreenResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="ViewPost" component={ViewPost} options={{headerShown: false}}/>
+                                <Stack.Screen name="Trending_Pictures_Videos_Feed" component={Trending_Pictures_And_Videos_Feed} options={{headerShown: false}}/>
 
                             </Stack.Group>
 

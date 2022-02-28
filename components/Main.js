@@ -19,8 +19,8 @@ import TrendingFeeds from "./main/Feeds/TrendingFeeds";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";
-import Modal from "./main/Feeds/Shared_Objects/modal";
-import VideoFeed from "./main/Feeds/VideoFeed";
+import Modal from "./main/Feeds/Shared_Objects/Likes_And_Comments/Comments/modal";
+import Feed_VideoFeed from "./main/Feeds/Feed_VideoFeed";
 import {users} from "../redux/reducers/users";
 
 const Tab = createBottomTabNavigator();
@@ -76,6 +76,9 @@ export class Main extends Component {
                 />
                 <Tab.Screen name="TrendingFeeds" component={TrendingFeeds} initialParams={{navigation: this.props.navigation}}
                             options={{
+                                header: () => null,
+                                tabBarVisible: false,
+
                                 tabBarIcon: ({color, size}) => (
                                     //decide what is inside the Icon
                                     <MaterialCommunityIcons name="magnify" color={color} size={26}/>

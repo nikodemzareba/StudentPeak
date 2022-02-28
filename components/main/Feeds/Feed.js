@@ -71,15 +71,6 @@ class FeedScreen extends Component {
             .doc(this.state.userId)
             .collection('userFollowing')
 
-        // this.props.route.params.navigation.addListener(
-        //     'didFocus',
-        //     payload => {
-        //         console.log("\n\nNAV Focus Event Triggered")
-        //         controller.abort();
-        //         this.resetConditions();
-        //         this.dataRequest();
-        //     }
-        // );
     }
 
     componentDidMount() {
@@ -89,19 +80,16 @@ class FeedScreen extends Component {
 
         LogBox.ignoreLogs(['Animated: `useNativeDriver`','componentWillReceiveProps']); // temp fix for errors should be avoided
 
-        this.willFocusSubscription = this.props.navigation.addListener(
-            'willFocus',
-            () => {
-                console.log("\n\nNAV Focus Event Triggered")
-                this.resetConditions();
-                this.dataRequest();
-            }
-        );
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
+            this.resetConditions();
+            this.dataRequest();
+        });
     }
 
 
     componentWillUnmount() {
-        this.willFocusSubscription();
+        this._unsubscribe();
+        // this.willFocusSubscription();
         // controller.abort();
     }
 

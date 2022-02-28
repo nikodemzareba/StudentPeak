@@ -79,40 +79,25 @@ class TrendingFeeds extends Component {
             trendingFeed_loadPictures: false,
         }
 
+        this.popularPostTopicsRef = firebase.firestore()
+            .collection("postTags")
+            .orderBy('numberOfPosts', 'desc')
+
+        this.popularStoriesRef = (type) => firebase.firestore()
+            .collection("stories")
+            .orderBy("views")
+
         this.usersFollowingRef = firebase.firestore()
             .collection('following')
             .doc(this.state.userId)
             .collection('userFollowing')
 
-        this.popularPicturePostsRef = firebase.firestore()
-            .collection("postData")
-            .orderBy('likesCount', 'desc')
-            .where("mediaType", "==", "picture")
-            .limit(50)
-        // .limitToLast(50)
-
-
-
-
-        this.popularVideoPostsRef = firebase.firestore()
-            .collection("postData")
-            .where("mediaType", "==", "video")
-            .orderBy('likesCount', 'desc')
-            .limit(50)
-        // .limitToLast(50)
-
-        this.popularPostsRef = firebase.firestore()
-            .collection("postData")
-            .orderBy('likesCount')
-            .where("mediaType", "==", "pictures")
-
-        this.popularPostTopicsRef = firebase.firestore()
-            .collection("postTags")
-            .orderBy('numberOfPosts', 'desc')
-
-        this.popularStoriesRef = firebase.firestore()
-            .collection("stories")
-            .orderBy("views")
+        this.popularPicturePostsRef = (type) =>
+            firebase.firestore()
+                .collection("postData")
+                .orderBy('likesCount', 'desc')
+                .where("mediaType", "==", type)
+                .limit(50)
     }
 
     requestProfileImage() {
@@ -128,8 +113,19 @@ class TrendingFeeds extends Component {
 
     componentDidMount() {
         this.requestProfileImage();
+
+        // Get friends liked posts
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getFriendsLikePosts);
-        this.unsubscribe = this.popularPicturePostsRef.onSnapshot(this.getPopularPicturePosts);
+
+        // Get popular pictures & videos
+        this.unsubscribe = this.popularPicturePostsRef("picture").onSnapshot((r) => {
+            this.getPopularPosts(r, "picture")
+        });
+        this.unsubscribe = this.popularPicturePostsRef("video").onSnapshot((r) => {
+            this.getPopularPosts(r, "video")
+        });
+
+        // Get popular topics
         this.unsubscribe = this.popularPostTopicsRef.onSnapshot(this.getPopularTopics);
 
         //HELLO DELETE Later
@@ -267,9 +263,11 @@ class TrendingFeeds extends Component {
         }
     }
 
-    getPopularPicturePosts = async (querySnapshot) => {
+    getPopularPosts = async (querySnapshot, type) => {
 
         const picturesDataFetched = [];
+        const videosDataFetched = [];
+
         let querySize = querySnapshot.size;
         let receivedPosts = 0;
 
@@ -291,32 +289,59 @@ class TrendingFeeds extends Component {
 
                     const commentsCount = postData.get("commentsCount");
 
-                    this.setState({
-                        trendingFeed_PicturesReceived: this.state.trendingFeed_PicturesReceived + 1
-                    });
+                    if (type === "picture") {
+                        this.setState({
+                            trendingFeed_PicturesReceived: this.state.trendingFeed_PicturesReceived + 1
+                        });
 
-                    picturesDataFetched.push({
-                        key: postData.id,
-                        userID: userID,
-                        name: username,
-                        profile: profileImage,
-                        caption: caption,
-                        createdAt: createdAt,
-                        downloadURL: downloadURL,
-                        mediaType: mediaType,
+                        picturesDataFetched.push({
+                            key: postData.id,
+                            userID: userID,
+                            name: username,
+                            profile: profileImage,
+                            caption: caption,
+                            createdAt: createdAt,
+                            downloadURL: downloadURL,
+                            mediaType: mediaType,
 
-                        commentsCount: commentsCount, // Needs be retrieved inside the comment method
-                    });
+                            commentsCount: commentsCount, // Needs be retrieved inside the comment method
+                        });
+                    } else if (type === "video") {
+                        this.setState({
+                            trendingFeed_VideosReceived: this.state.trendingFeed_VideosReceived + 1
+                        });
+
+                        videosDataFetched.push({
+                            key: postData.id,
+                            userID: userID,
+                            name: username,
+                            profile: profileImage,
+                            caption: caption,
+                            createdAt: createdAt,
+                            downloadURL: downloadURL,
+                            mediaType: mediaType,
+
+                            commentsCount: commentsCount, // Needs be retrieved inside the comment method
+                        });
+                    }
 
                     console.log(`\ngetPopularPicturePosts() UserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
 
 
                     if (receivedPosts === querySize) {
                         console.log("\nSetting Data To Variable")
-                        this.setState({
-                            trendingFeed_PicturesIsLoading: false,
-                            trendingFeed_PicturesDataFetched: picturesDataFetched,
-                        })
+
+                        if (type === "picture") {
+                            this.setState({
+                                trendingFeed_PicturesIsLoading: false,
+                                trendingFeed_PicturesDataFetched: picturesDataFetched,
+                            })
+                        } else if (type === "video") {
+                            this.setState({
+                                trendingFeed_VideosIsLoading: false,
+                                trendingFeed_VideosDataFetched: videosDataFetched,
+                            })
+                        }
                     }
                 })
                 .catch((error) => {
@@ -325,9 +350,16 @@ class TrendingFeeds extends Component {
         })
 
         if (querySize === 0) {
-            this.setState({
-                trendingFeed_PicturesIsLoading: false,
-            })
+
+            if (type === "picture") {
+                this.setState({
+                    trendingFeed_PicturesIsLoading: false,
+                })
+            } else if (type === "video") {
+                this.setState({
+                    trendingFeed_VideosIsLoading: false,
+                })
+            }
         }
     }
 
@@ -360,18 +392,6 @@ class TrendingFeeds extends Component {
             })
         }
     }
-
-
-    getVideoPosts = async (querySnapshot) => {
-
-        const videosDataFetched = [];
-        const picturesDataFetched = [];
-
-        let querySize = querySnapshot.size;
-
-
-    }
-
 
     render() {
 
@@ -447,9 +467,9 @@ class TrendingFeeds extends Component {
 
                                 <Trending_Pictures_And_Videos_Feed
                                     userID={this.state.userId}
-                                    data={this.state.friendsPicturesDataFetched}
-                                    data2={this.state.trendingFeed_PicturesDataFetched}
-                                    data3={this.state.trendingTopicsDataFetched}
+                                    friendsLikedPostsData={this.state.friendsPicturesDataFetched}
+                                    popularPosts={this.state.trendingFeed_PicturesDataFetched}
+                                    trendingTopics={this.state.trendingTopicsDataFetched}
                                     storyData={this.state.storiesData}
                                     navigation={this.props.route.params.navigation}
                                     type={"picture"}
@@ -462,25 +482,32 @@ class TrendingFeeds extends Component {
                     :
                     <>
                         {/* Video Feed */}
-                        {this.state.friendsVideosIsLoading
+                        {this.state.friendsVideosIsLoading || this.state.trendingFeed_VideosIsLoading || this.state.trendingTopicsLoading
                             ?
                             <View style={styles.loading}>
                                 <ActivityIndicator size="large" color="red"/>
                             </View>
                             :
                             <>
-                                {this.state.friendsLoadVideos
-                                    ?
-                                    <Feed_VideoFeed
-                                        userID={this.state.userId}
-                                        data={this.state.videosDataFetched}
-                                        navigation={this.props.route.params.navigation}/>
-                                    :
-                                    <View style={{flex: 1, padding: 10}}>
-                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> Follow a
-                                            user to view posts on your feed </B> </Text>
-                                    </View>
-                                }
+                                {/*{this.state.friendsLoadVideos*/}
+                                {/*    ?*/}
+
+                                <Trending_Pictures_And_Videos_Feed
+                                    userID={this.state.userId}
+                                    friendsLikedPostsData={this.state.friendsVideoDataFetched}
+                                    popularPosts={this.state.trendingFeed_VideosDataFetched}
+                                    trendingTopics={this.state.trendingTopicsDataFetched}
+                                    storyData={this.state.storiesData}
+                                    navigation={this.props.route.params.navigation}
+                                    type={"video"}
+                                />
+
+                                {/*    :*/}
+                                {/*    <View style={{flex: 1, padding: 10}}>*/}
+                                {/*        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> Follow a*/}
+                                {/*            user to view posts on your feed </B> </Text>*/}
+                                {/*    </View>*/}
+                                {/*}*/}
                             </>
                         }
                     </>

@@ -60,8 +60,6 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
         .orderBy("likesCount")
         .where("mediaType", "==", dataType)
 
-
-
     const popularPostTopicsRef = firebase.firestore()
         .collection("postTags")
         .orderBy("numberOfPosts")
@@ -70,7 +68,6 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
     const popularStoriesRef = firebase.firestore()
         .collection("stories")
         .orderBy("views")
-
 
     const getPopularStories = async () => {
 
@@ -314,11 +311,11 @@ export default function Trending_Pictures_And_Videos_Feed(props) {
 
                     <Stories_FlatList storyData={props.storyData}/>
 
-                    <Trending_Topics_FlatList navigation={props.navigation} data={props.data3}/>
+                    <Trending_Topics_FlatList navigation={props.navigation} data={props.trendingTopics}/>
 
-                    <Trending_Posts_FlatList navigation={props.navigation} data={props.data} text={"Friends Like"}/>
+                    <Trending_Posts_FlatList navigation={props.navigation} data={props.friendsLikedPostsData} text={"Friends Like"}/>
 
-                    <Trending_Posts_FlatList navigation={props.navigation} data={props.data2} text={"Going Viral"}/>
+                    <Trending_Posts_FlatList navigation={props.navigation} data={props.popularPosts} text={"Going Viral"}/>
 
 
                 </View>

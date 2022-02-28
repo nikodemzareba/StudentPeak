@@ -16,7 +16,7 @@ export default function handleComment(postId, userId, comment){
             .add(
                 {
                     userId: userId,
-                    comment: 'testing comment feature',
+                    comment: comment,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 }
             ).then(

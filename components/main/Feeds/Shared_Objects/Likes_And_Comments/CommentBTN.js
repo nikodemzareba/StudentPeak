@@ -17,12 +17,12 @@ import handleComment from "./handleComment";
 
 export default function CommentBTN(props) {
 
-    const [comment, setComment] = useState('YY')
+    const [comment, setComment] = useState('yy')
     const [currentCommentsCount, setCurrentCommentsCount] = useState(props.commentsCount);
     const postID = props.postID;
     console.log("This has been clicked");
     console.log("PostedID recevied " + postID);
-    const bottomSheet = useRef(); 
+    const bottomSheet = useRef();
 
     //check if Modal open function
     let [isVisible, setIsVisible] = useState(false)
@@ -80,22 +80,7 @@ export default function CommentBTN(props) {
                         }
                         }
                     />
-                    <View>
-                        <TextInput
-                            style ={{
-                                color: 'white',
-                                backgroundColor: 'lightgrey',
-                                padding: 10,
-                                flexDirection: 'row',
-                            }}
-                            value={comment}
-                            onChangeText={setComment}
-                            placeholder="Enter comment here"
-                        />
-                        <TouchableOpacity onPress={() => handleComment(postID, firebase.auth().currentUser.uid, setComment)}>
-                            <Ionicons name="arrow-up-circle" size={34} color={'crimson'} />
-                        </TouchableOpacity>
-                    </View>
+
                 </View>
             );
     }
@@ -146,10 +131,7 @@ export default function CommentBTN(props) {
                 alert(`\nError getting users who commented on this post\n\n${exception}`);
                 console.log(`\n\nError getting users who commented on post ${props.postID}`);
             })
-
     }
-
-
 
     return(
     <View style = {feedStyles.likeAndCommentsBTN_View}>
@@ -170,6 +152,22 @@ export default function CommentBTN(props) {
                 height={450}>
                 {getCommentLike(postID)}
                 {render()}
+                <View>
+                    <TextInput
+                        style ={{
+                            color: 'white',
+                            backgroundColor: 'lightgrey',
+                            padding: 10,
+                            flexDirection: 'row',
+                        }}
+                        value={comment}
+                        onChangeText={setComment}
+                        placeholder="Enter comment here"
+                    />
+                    <TouchableOpacity onPress={() => handleComment(postID, firebase.auth().currentUser.uid, setComment)}>
+                        <Ionicons name="arrow-up-circle" size={34} color={'crimson'} />
+                    </TouchableOpacity>
+                </View>
             </BottomSheet>
         </TouchableOpacity>
         <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>

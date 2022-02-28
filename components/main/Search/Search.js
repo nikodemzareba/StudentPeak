@@ -41,65 +41,90 @@ export default function Search(props) {
                         profileImage: profileImage,
                     });
 
-            })
- 
-
-        firebase.firestore()
-        .collection('postTags')
-        .where(firebase.firestore.FieldPath.documentId())
-        .get()
-        .then((snapshot) => {
-            snapshot.forEach((post) => {
-
-                tagsData.push({
-                    postTag: post.id
-                });
+                })
 
             })
-            setTags(tagsData);
-            setUsers(usersData);
+            .catch((exception) => {
+                console.log(`\n\n############################################\nSearch() Cannot retrieve users from DB \n${exception}`)
+            })
+            .then(() => {
+                firebase.firestore()
+                    .collection('postTags')
+                    .where(firebase.firestore.FieldPath.documentId(), '>=', search)
+                    .get()
+                    .then((postTags) => {
 
-        })
-        
-    })
-}
+                        const expectedResults = postTags !== undefined? postTags.size: 0;
+                        let count = 0;
+
+                        console.log(`\n\nSearch Icon Results size ${postTags.size}`)
+                        postTags.forEach((postTag) => {
+
+                            count++;
+
+                            console.log(`${count} Tag ID ${postTag.id}`)
+                            tagsData.push({
+                                 key: postTag.id
+                            });
+
+                            if (expectedResults === count) {
+                                setTags(tagsData);
+                                setUsers(usersData);
+                            }
+                        })
+
+                        if (expectedResults === 0) {
+                            setTags(tagsData);
+                            setUsers(usersData);
+                        }
+
+                    })
+                    .catch((exception) => {
+                        console.log(`\n\nSearch() Cannot retrieve tags from DB \n${exception}`)
+                    })
+
+            })
+    }
 
 
     return (
         <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
             <View style={feedStyles.screenBackground}>
-                <View style={{ paddingTop: 10, height: 30}}>
+                <View style={{paddingTop: 10, height: 30}}>
                 </View>
 
-                <View style={{backgroundColor: "white",  justifyContent:"center", height: 50}}>
+                <View style={{backgroundColor: "white", justifyContent: "center", height: 50}}>
                     <TextInput
-                        placeholder="Search" onChangeText={(search) => fetchData(search)}
+                        placeholder="Search" onChangeText={(search) => {
+                        if(search!==undefined ||search !== "")
+                        {
+                            fetchData(search)
+                        }
+                    }}
                     />
                 </View>
-
 
 
                 <FlatList
                     numColumns={1}
                     horizontal={false}
-                    data={users}
+                    data={tags}
                     contentContainerStyle={{paddingTop: 25}}
                     renderItem={({item}) => {
 
                         return (
                             <Find_Post_Object
-                                postTag={item.postTag}
+                                postTag={item.key}
                                 navigation={props.navigation}
                             />
 
-                            
+
                         )
                     }}
                 />
 
 
-
-                    <FlatList
+                <FlatList
                     numColumns={1}
                     horizontal={false}
                     data={users}
@@ -124,6 +149,6 @@ export default function Search(props) {
         </ScrollView>
 
     )
-               
+
 
 }

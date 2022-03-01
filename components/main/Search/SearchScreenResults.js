@@ -98,7 +98,7 @@ export default function SearchScreenResults(props) {
 
 
     return (
-        <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+        <View style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
             <View style={feedStyles.screenBackground}>
                 <View style={{paddingTop: 10, height: 30}}>
                 </View>
@@ -132,7 +132,7 @@ export default function SearchScreenResults(props) {
                 <View style={{paddingTop: 10, height: 30}}>
                 </View>
 
-                <SafeAreaView style={styles.container}>
+
                     <FlatList
                         data={posts}
                         //Setting the number of column
@@ -142,9 +142,9 @@ export default function SearchScreenResults(props) {
                         )}
 
                     />
-                </SafeAreaView>
+
             </View>
-        </ScrollView>
+        </View>
     )
 }
 

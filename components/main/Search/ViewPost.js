@@ -22,45 +22,51 @@ export default function ViewPost(props) {
 
     return (
 
-        <View style={feedStyles.screenBackground}>
+        <View style={{backgroundColor: "black", paddingTop: 30, flex: 1}}>
 
-            <View style={{paddingTop: 10, height: 20, backgroundColor:"black"}}>
-            </View>
-            <TouchableOpacity
-                onPress={() => {
-                    const navigation = props.route.params.navigation;
-                    props.route.params.navigation.navigate("Search", {navigation: navigation})
-                }}
+            <TouchableOpacity style={{padding: 30}}
+                              onPress={() => {
+                                  const navigation = props.route.params.navigation;
+                                  props.route.params.navigation.navigate("Search", {navigation: navigation})
+                              }}
             >
                 <SimpleLineIcons
                     style={styles.icon}
                     name="arrow-left"
-                    size={20}
+                    size={40}
                     color="white"
 
                 />
             </TouchableOpacity>
 
 
-            <View style={{paddingTop: 10, height: 20, backgroundColor:"black"}}>
+            {/*<View style={{paddingTop: 10, height: 20, backgroundColor:"black"}}>*/}
+            {/*</View>*/}
+
+            <View style={{flex:1, paddingTop:25, alignItems: 'center'}}>
+                <Pictures_And_Videos_Post_Object
+                    name={props.route.params.data.name}
+                    profileImage={props.route.params.data.profile}
+                    userID={props.route.params.data.userID}
+                    navigation={props.navigation}
+                    downloadURL={props.route.params.data.downloadURL}
+                    mediaType={props.route.params.data.mediaType}
+
+                    postID={props.route.params.data.key}
+                    commentsCount={props.route.params.data.commentsCount}
+
+                />
             </View>
 
-            <Pictures_And_Videos_Post_Object
-                name={props.route.params.data.name}
-                profileImage={props.route.params.data.profile}
-                userID={props.route.params.data.userID}
-                navigation={props.navigation}
-                downloadURL={props.route.params.data.downloadURL}
-                mediaType={props.route.params.data.mediaType}
 
-                postID={props.route.params.data.key}
-                commentsCount={props.route.params.data.commentsCount}
+            {props.route.params.data.mediaType === "video"
+                ?
+                <View style={{paddingTop: 10, height: 100, backgroundColor:"black"}}>
+                </View>
+                :
 
-            />
-
-
-            <View style={{paddingTop: 10, height: 100, backgroundColor:"black"}}>
-            </View>
+                <View style={{paddingTop: 10, height: 150, backgroundColor:"black"}}>
+                </View>}
 
 
         </View>

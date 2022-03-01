@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
-import {View,  TextInput, FlatList, ScrollView} from 'react-native'
+import {View, Text, TextInput, FlatList, TouchableOpacity, ScrollView} from 'react-native'
+import Topbar from '../top/Topbar';
+import {connect} from 'redux';
 
 
-
-
+//import from firebase
 import firebase from 'firebase';
+import {B} from "../Feeds/Shared_Objects/Bold";
 import {feedStyles} from "../Feeds/Shared_Objects/Styles";
 import ProfileIcon_And_Username from "../Feeds/Shared_Objects/Profile_Objects/ProfileIcon_And_Username";
-import Find_Post_Object from "./Objects/Find_Post_Object";
+import Find_Post_Object from './Objects/Find_Post_Object';
 
 require('firebase/firestore');
 
@@ -15,6 +17,7 @@ require('firebase/firestore');
 export default function Search(props) {
     const [users, setUsers] = useState([])
     const [tags, setTags] = useState([])
+
 
     const fetchData = (search) => {
         let usersData = [];
@@ -40,29 +43,47 @@ export default function Search(props) {
 
                 })
 
-                //Nested query search for postTags literally a copy  and  paste of above
-                //HELLO UNCOMMENT
-                // firebase.firestore()
-                //     .collection('users')
-                //     .where('username', '>=', search)
-                //     .get()
-                //     .then((snapshot) => {
-                //
-                //         snapshot.forEach((post) => {
-                //
-                //             tagsData.push({
-                //                 postTag: post.id
-                //             });
-                //         })
-                //
-                //         setTags(tagsData);
-                //         setUsers(usersData);
-                //     })
-
-                setTags(usersData); // HELLO DELETE
-                setUsers(usersData);// HELLO DELETE
             })
+            .catch((exception) => {
+                console.log(`\n\n############################################\nSearch() Cannot retrieve users from DB \n${exception}`)
+            })
+            .then(() => {
+                firebase.firestore()
+                    .collection('postTags')
+                    .where(firebase.firestore.FieldPath.documentId(), '>=', search)
+                    .get()
+                    .then((postTags) => {
 
+                        const expectedResults = postTags !== undefined? postTags.size: 0;
+                        let count = 0;
+
+                        console.log(`\n\nSearch Icon Results size ${postTags.size}`)
+                        postTags.forEach((postTag) => {
+
+                            count++;
+
+                            console.log(`${count} Tag ID ${postTag.id}`)
+                            tagsData.push({
+                                 key: postTag.id
+                            });
+
+                            if (expectedResults === count) {
+                                setTags(tagsData);
+                                setUsers(usersData);
+                            }
+                        })
+
+                        if (expectedResults === 0) {
+                            setTags(tagsData);
+                            setUsers(usersData);
+                        }
+
+                    })
+                    .catch((exception) => {
+                        console.log(`\n\nSearch() Cannot retrieve tags from DB \n${exception}`)
+                    })
+
+            })
     }
 
 
@@ -74,9 +95,15 @@ export default function Search(props) {
 
                 <View style={{backgroundColor: "white", justifyContent: "center", height: 50}}>
                     <TextInput
-                        placeholder="Search" onChangeText={(search) => fetchData(search)}
+                        placeholder="Search" onChangeText={(search) => {
+                        if(search!==undefined ||search !== "")
+                        {
+                            fetchData(search)
+                        }
+                    }}
                     />
                 </View>
+
 
                 <FlatList
                     numColumns={1}
@@ -87,13 +114,15 @@ export default function Search(props) {
 
                         return (
                             <Find_Post_Object
-                                postTag={item.username} //HELLO REMOVE
-                                // postTag = {item.postTag}   //HELLO UNCOMMENT
+                                postTag={item.key}
                                 navigation={props.navigation}
                             />
+
+
                         )
                     }}
                 />
+
 
                 <FlatList
                     numColumns={1}
@@ -109,13 +138,17 @@ export default function Search(props) {
                                 profileImage={item.profileImage}
                                 navigation={props.navigation}
                             />
+
+
                         )
                     }}
                 />
+
             </View>
 
         </ScrollView>
 
     )
-}
 
+
+}

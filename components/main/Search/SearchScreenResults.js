@@ -1,11 +1,11 @@
-import {ScrollView, View, Text} from "react-native";
+import {ScrollView, View, Text, TextInput} from "react-native";
 import React, {useEffect, Component, useState} from 'react'
 import {feedStyles} from "../Feeds/Shared_Objects/Styles";
 import firebase from "firebase";
 
 export default function SearchScreenResults(props) {
 
-    const getPosts = () => {
+    const getPosts = (tag) => {
 
         // Get the posts related to the tag (results = postID's)
         firebase.firestore()
@@ -13,14 +13,14 @@ export default function SearchScreenResults(props) {
             .doc(props.postTag)
             .collection('posts')
             .get()
-            .then((posts) =>{
+            .then((posts) => {
 
                 const resultSize = posts.size;
-                let count =0;
-                let postsData =[]
+                let count = 0;
+                let postsData = []
 
                 // For each postID
-                posts.forEach((post) =>{
+                posts.forEach((post) => {
 
                     // For each postID get its data
                     firebase.firestore()
@@ -64,8 +64,7 @@ export default function SearchScreenResults(props) {
 
                                     console.log(`\nFind_Post_Object() \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
 
-                                    if(count===resultSize)
-                                    {
+                                    if (count === resultSize) {
                                         const data = postsData;
 
                                     }
@@ -79,19 +78,33 @@ export default function SearchScreenResults(props) {
 
 
     console.log(`\n\nSearchScreenResults() \n${props.route.params.postTag}`)
-    if(props.data !== undefined) {
+    if (props.data !== undefined) {
         props.data.foreach((item) => {
             console.log(`\n\n${item.key}`)
         })
     }
 
+    getPosts(props.route.params.postTag);
+
+
     return (
         <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
             <View style={feedStyles.screenBackground}>
-                <View style={{ paddingTop: 10, height: 30}}>
+                <View style={{paddingTop: 10, height: 30}}>
                 </View>
-           
-                <Text style={{color:"white"}}> Results Screen </Text>
+                <View style={{backgroundColor: "white", justifyContent: "center", height: 50}}>
+                    <TextInput
+                        placeholder={props.route.params.postTag} onChangeText={(tag) => {
+
+                        if (tag !== undefined || tag !== "") {
+                            getPosts(tag)
+                        }
+                    }}
+                    />
+                </View>
+
+
+
             </View>
         </ScrollView>
     )

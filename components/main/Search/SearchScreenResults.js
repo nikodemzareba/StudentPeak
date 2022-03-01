@@ -1,16 +1,32 @@
-import {ScrollView, View, Text, TextInput} from "react-native";
+import {
+    ScrollView,
+    View,
+    Text,
+    TextInput,
+    FlatList,
+    Image,
+    StyleSheet,
+    SafeAreaView,
+    TouchableOpacity,
+} from "react-native";
 import React, {useEffect, Component, useState} from 'react'
 import {feedStyles} from "../Feeds/Shared_Objects/Styles";
 import firebase from "firebase";
+import {Video} from "expo-av";
+import {SimpleLineIcons} from "@expo/vector-icons";
+import SearchScreenObject from "./Objects/SearchScreenObject";
 
 export default function SearchScreenResults(props) {
+
+    console.log(`\n\nSearchScreenResults() \n${props.route.params.postTag}`)
+    const [posts, setPosts] = useState([])
 
     const getPosts = (tag) => {
 
         // Get the posts related to the tag (results = postID's)
         firebase.firestore()
             .collection('postTags')
-            .doc(props.postTag)
+            .doc(tag)
             .collection('posts')
             .get()
             .then((posts) => {
@@ -62,11 +78,11 @@ export default function SearchScreenResults(props) {
                                         commentsCount: commentsCount, // Needs be retrieved inside the comment method
                                     });
 
-                                    console.log(`\nFind_Post_Object() \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                                    console.log(`\nSearchScreenResults getPosts()  \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
 
                                     if (count === resultSize) {
-                                        const data = postsData;
-
+                                        console.log(`\n\nSetting Results `);
+                                        setPosts(postsData);
                                     }
                                 })
                         })
@@ -75,16 +91,10 @@ export default function SearchScreenResults(props) {
 
             })
     }
+    useEffect(() => {
+        getPosts(props.route.params.postTag);
 
-
-    console.log(`\n\nSearchScreenResults() \n${props.route.params.postTag}`)
-    if (props.data !== undefined) {
-        props.data.foreach((item) => {
-            console.log(`\n\n${item.key}`)
-        })
-    }
-
-    getPosts(props.route.params.postTag);
+    }, []);
 
 
     return (
@@ -92,20 +102,61 @@ export default function SearchScreenResults(props) {
             <View style={feedStyles.screenBackground}>
                 <View style={{paddingTop: 10, height: 30}}>
                 </View>
-                <View style={{backgroundColor: "white", justifyContent: "center", height: 50}}>
-                    <TextInput
-                        placeholder={props.route.params.postTag} onChangeText={(tag) => {
+                {/*<View style={{backgroundColor: "white", justifyContent: "center", height: 50}}>*/}
+                {/*    <TextInput*/}
+                {/*        placeholder={props.route.params.postTag} onChangeText={(tag) => {*/}
 
-                        if (tag !== undefined || tag !== "") {
-                            getPosts(tag)
-                        }
+                {/*        if (tag !== undefined || tag !== "") {*/}
+                {/*            getPosts(tag)*/}
+                {/*            console.log(`\n\nGetting Posts for tag ${tag}`)*/}
+                {/*        }*/}
+                {/*    }}*/}
+                {/*    />*/}
+                {/*</View>*/}
+
+                <TouchableOpacity
+                    onPress={() => {
+                        const navigation = props.route.params.navigation;
+                        props.route.params.navigation.navigate("Search", {navigation:navigation})
                     }}
+                >
+                    <SimpleLineIcons
+                        style={styles.icon}
+                        name="arrow-left"
+                        size={20}
+                        color="white"
+
                     />
+                </TouchableOpacity>
+
+                <View style={{paddingTop: 10, height: 30}}>
                 </View>
 
+                <SafeAreaView style={styles.container}>
+                    <FlatList
+                        data={posts}
+                        //Setting the number of column
+                        numColumns={3}
+                        renderItem={({item}) => (
+                            <SearchScreenObject item={item} navigation={props.route.params.navigation}/>
+                        )}
 
-
+                    />
+                </SafeAreaView>
             </View>
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+
+    },
+    imageThumbnail: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+    },
+});

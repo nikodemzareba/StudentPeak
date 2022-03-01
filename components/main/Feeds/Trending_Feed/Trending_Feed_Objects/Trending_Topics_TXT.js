@@ -16,7 +16,7 @@ export default function Trending_Topics_TXT(props) {
 
                 if(postTag.get("numberOfPosts") > 0)
                 {
-                    props.navigation.navigate("SearchScreenResults", {postTag: props.text})
+                    props.navigation.navigate("SearchScreenResults", {postTag: props.text, navigation: props.navigation})
                     return
                 }
                 alert(`Sorry, the tag ${props.text} has no results`);

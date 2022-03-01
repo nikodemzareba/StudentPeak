@@ -13,13 +13,12 @@ export default function Find_Post_Object(props) {
 
                 if(postTag.get("numberOfPosts") > 0)
                 {
-                    props.navigation.navigate("SearchScreenResults", {postTag: props.postTag})
+                    props.navigation.navigate("SearchScreenResults", {postTag: props.postTag, navigation: props.navigation})
 
                 }
                 else {
                     alert(`Sorry, the tag ${props.postTag} has no results`);
                 }
-
             })
 
     }

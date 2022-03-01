@@ -1,6 +1,7 @@
 import {Image, StyleSheet, TouchableOpacity} from "react-native";
-import {Video} from "expo-av";
+
 import React from "react";
+import {Video} from "expo-av";
 
 export default function SearchScreenObject(props) {
     return (
@@ -15,11 +16,7 @@ export default function SearchScreenObject(props) {
                 <Image style={styles.imageThumbnail} source={{uri: props.item.downloadURL}}/>
                 :
 
-                <Video source={{uri: props.item.downloadURL}}   // Can be a URL or a local file.
-                       paused={true}
-                       controls={false}
-                />
-            }
+                <Image style={styles.imageThumbnail} source={{uri: props.item.downloadURL}}/>}
 
         </TouchableOpacity>
     )

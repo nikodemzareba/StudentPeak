@@ -26,7 +26,8 @@ export const feedStyles = StyleSheet.create({
         padding: 30,
     },
     post: {
-        flex: 1, marginBottom: 20,
+        flex: 1,
+        marginBottom: 20,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,

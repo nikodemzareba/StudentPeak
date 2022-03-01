@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {ActivityIndicator, FlatList, StyleSheet, Text, View} from "react-native";
+import { Text, View} from "react-native";
 import {feedStyles} from "../Shared_Objects/Styles";
 import Stories_FlatList from "../Shared_Objects/Stories/Stories_FlatList";
-import Pictures_And_Videos_Post_Object from "../Shared_Objects/Pictures_And_Videos_Post_Object";
+
 import {B} from "../Shared_Objects/Bold";
-import Trending_Topics_TXT from "./Trending_Feed_Objects/Trending_Topics_TXT";
-import {tempPopularTopics} from "../FakeJSONData/Temp_Topics";
+
 import Trending_Topics_FlatList from "./Trending_Feed_Objects/Trending_Topics_FlatList";
 import Trending_Posts_FlatList from "./Trending_Feed_Objects/Trending_Posts_FlatList";
-import firebase from "firebase";
+
 
 
 export default function Trending_Pictures_And_Videos_Feed(props) {

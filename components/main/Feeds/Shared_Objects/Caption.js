@@ -1,7 +1,7 @@
 import {B} from "./Bold";
 import {Text, View} from "react-native";
 import React from "react";
-import Username_Link_Txt from "./Username_Link_Txt";
+import Username_Link_Txt from "./Profile_Objects/Username_Link_Txt";
 
 
 export default function Caption(props) {

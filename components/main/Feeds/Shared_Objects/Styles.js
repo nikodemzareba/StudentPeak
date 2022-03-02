@@ -26,7 +26,8 @@ export const feedStyles = StyleSheet.create({
         padding: 30,
     },
     post: {
-        flex: 1, marginBottom: 20,
+        flex: 1,
+        marginBottom: 20,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,
@@ -34,7 +35,8 @@ export const feedStyles = StyleSheet.create({
         backgroundColor: 'rgba(52, 52, 52, 0.8)'
     },
     screenBackground: {
-        flex: 1,
+       //  flex: 1,
+       // paddingTop:20,
         marginBottom: 20,
         backgroundColor: "black"
     },
@@ -52,7 +54,7 @@ export const feedStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'flex-start',
         position: position,
-        width: 150,
+
         height: 40,
 
 
@@ -67,6 +69,51 @@ export const feedStyles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         padding:4
+    },
+    trendingTopics:{
+        flexDirection:"row",
+        alignContent:"center",
+
+        alignSelf: 'flex-start',
+
+
+
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderBottomRightRadius: 15,
+        borderBottomLeftRadius: 15,
+
+        height: 60,
+
+        textAlign:"center",
+        alignItems: 'center',
+        backgroundColor: 'white',
+        padding:5,
+
+    },
+    trendingNumber:{
+
+        flexDirection:"row",
+        alignContent:"center",
+
+        alignSelf: 'flex-start',
+
+
+        height: 45,
+        borderRadius: 45,
+        // textAlign: 'center',
+        alignItems:"center",
+        backgroundColor:"black",
+        paddingRight:10
+    },
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 
 });

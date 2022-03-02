@@ -9,7 +9,7 @@ import {feedStyles} from "../../Styles";
 import Profile_Icon from "../../Profile_Objects/Profile_Icon";
 import Username_Link_Txt from "../../Profile_Objects/Username_Link_Txt";
 
-import {isUserNameTooLong} from "../../Functions_And_Methods/isUserNameTooLong";
+import {isTextTooLong} from "../../Functions_And_Methods/isTextTooLong";
 import FollowBTN from "./FollowBTN";
 import ProfileIcon_And_Username from "../../Profile_Objects/ProfileIcon_And_Username";
 

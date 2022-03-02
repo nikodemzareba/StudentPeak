@@ -17,7 +17,7 @@ export default function LikeBTN(props) {
 
     const userLoggedIn = firebase.auth().currentUser.uid;
 
-    console.log(`\n\nLikeBTN() \nPostID: ${props.postID} \nCurrentUserID: ${userLoggedIn} \nUserIDRelatedToPost: ${props.userID} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
+ //  console.log(`\n\nLikeBTN() \nPostID: ${props.postID} \nCurrentUserID: ${userLoggedIn} \nUserIDRelatedToPost: ${props.userID} \nUserLikedPost: ${likeState} \nLikesCount: ${currentLikes}`);
 
 
     const addUserInLikesRef =

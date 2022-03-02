@@ -87,6 +87,8 @@ export class Main extends Component {
                 />
                 <Tab.Screen name="Search" component={Search} initialParams={{navigation: this.props.navigation}}
                             options={{
+                                header: () => null,
+                                tabBarVisible: false,
                                 tabBarIcon: ({color, size}) => (
                                     //decide what is inside the Icon
                                     <MaterialCommunityIcons name="magnify" color={color} size={26}/>

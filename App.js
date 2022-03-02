@@ -117,7 +117,7 @@ function App() {
                             <Stack.Group initialRouteName="Main">
 
                                 <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
-                                <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
+                                <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="UsersLikedPost" component={UsersLikedPost} options={{headerShown: false}}/>
                                 <Stack.Screen name="Search" component={Search} options={{headerShown: false}}/>

@@ -115,7 +115,10 @@ const fetchPosts = async () => {
         })
       })
     })
-  }
+  } catch {
+
+} finally {
+
 }
 
 
@@ -225,8 +228,6 @@ useEffect(() => {
         };
 
 
-export default ProfileView;
-
 
 const styles = StyleSheet.create({
   imageStyle: {
@@ -308,3 +309,6 @@ const styles = StyleSheet.create({
    
   }
 });
+}
+
+export default ProfileView;

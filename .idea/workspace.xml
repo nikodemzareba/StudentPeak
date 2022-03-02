@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="Just did:&#10;Fixed typo in query script stopping the comments from loading&#10;Fixed navigator screen width taking the full size of the screen.&#10;&#10;&#10;To do: &#10;Change the comment page styling, set conditions allowing the user to make a comment if the comment page is currently empty.&#10;Keep track of comment count when a user adds a comment.&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="Just did:&#10;Changed the styled outlook of the comment page to match the app UI&#10;&#10;To do: &#10;Keep track of comments count&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -327,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646249790134</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Just did:&#10;Changed the styled outlook of the comment page to match the app UI&#10;&#10;To do: &#10;Keep track of comments count&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects">
+      <created>1646252199194</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1646252199194</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +353,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.getProfileImage method works&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
     <MESSAGE value="In this Update:&#10;.Trending page gets users following liked posts &#10;&#10;Need to do:&#10;Formatting&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
@@ -370,7 +377,8 @@
     <MESSAGE value="In this Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;&#10;&#10;Need to do:&#10;Video thumbnail&#10;&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="Just did:&#10;Fixed typo in query script stopping the comments from loading&#10;Fixed navigator screen width taking the full size of the screen.&#10;&#10;&#10;To do: &#10;Change the comment page styling, set conditions allowing the user to make a comment if the comment page is currently empty.&#10;Keep track of comment count when a user adds a comment.&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Just did:&#10;Fixed typo in query script stopping the comments from loading&#10;Fixed navigator screen width taking the full size of the screen.&#10;&#10;&#10;To do: &#10;Change the comment page styling, set conditions allowing the user to make a comment if the comment page is currently empty.&#10;Keep track of comment count when a user adds a comment.&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects" />
+    <MESSAGE value="Just did:&#10;Changed the styled outlook of the comment page to match the app UI&#10;&#10;To do: &#10;Keep track of comments count&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="Just did:&#10;Changed the styled outlook of the comment page to match the app UI&#10;&#10;To do: &#10;Keep track of comments count&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

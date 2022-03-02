@@ -13,13 +13,36 @@ export default function CommentBTN(props) {
 
 
 
-    const [comment, setComment] = useState('yy')
-    const [currentCommentsCount, setCurrentCommentsCount] = useState(props.commentsCount);
+    let [currentCommentsCount, setCurrentCommentsCount] = useState(false);
+    const [currentComments, setCurrentComments] = useState(0);
     const postID = props.postID;
     console.log("PostedID recevied " + postID);
 
 
-    console.log(JSON.stringify(setComment));
+    const commentBTN_Count = () => {
+        let currentCommentState, commentCount;
+
+        // Get the current count of the post
+            firebase.firestore()
+                .collection('postData')
+                .doc(props.postID)
+                .get()
+                .then((dbCommentCount) => {
+                    commentCount = dbCommentCount.get("commentsCount");
+                    if(dbCommentCount.exists){
+                        currentCommentsCount = true;
+                        return;
+                    }
+                    currentCommentState = false;
+                })
+                .then(() => {
+                    setCurrentComments(commentCount)
+                    setCurrentCommentsCount(currentCommentState)
+                })
+    }
+
+
+    commentBTN_Count();
 
     //get comments  via the postID
     function getCommentByUsers  (postID) {
@@ -29,6 +52,8 @@ export default function CommentBTN(props) {
             .collection('postData')
             .doc(postID)
             .collection("comments")
+            //sort comments out by latest entries to the collection
+            .orderBy('createdAt', 'desc')
             .get()
             .then(doc =>{
                 const resultsCount  = doc.size;
@@ -96,7 +121,7 @@ export default function CommentBTN(props) {
                     name={"chatbubble"}
                 />
             </TouchableOpacity>
-            <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>
+            <Likes_And_Comments_Count_Txt use={"comment"} count={currentComments}/>
         </View>
 
     )

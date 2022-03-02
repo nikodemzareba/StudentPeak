@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderStyle: 'solid',
         paddingVertical: 5,
+
     },
     avatarSmall: {
         height: 32,
@@ -217,7 +218,8 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         flex: 1,
         marginHorizontal: 10,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        color: 'black',
     }
 })
 

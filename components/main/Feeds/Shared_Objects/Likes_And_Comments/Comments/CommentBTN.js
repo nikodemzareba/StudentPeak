@@ -25,14 +25,17 @@ export default function CommentBTN(props) {
     function getCommentByUsers  (postID) {
         //Array to store comment Details
         let commentInfo = [];
-            firebase.firestore()
-                .collection('postData')
-                .doc(postID)
-                .collection("comments")
-                .get()
-                .then(doc =>{
-                    const resultsCount  = doc.size;
-                    let count = 0;
+        firebase.firestore()
+            .collection('postData')
+            .doc(postID)
+            .collection("comments")
+            .get()
+            .then(doc =>{
+                const resultsCount  = doc.size;
+                if(resultsCount === 0){
+                    console.log('no result to show');
+                    props.navigation.navigate("showComment", { navigation: props.navigation, commentInfo: commentInfo,  postID: props.postID})
+                }
                     doc.forEach((commentGot) =>{
                         count ++;
                         //get the comment made by the user
@@ -72,32 +75,36 @@ export default function CommentBTN(props) {
                             alert(`\nError seeing comment Info \n\n${exception}`);
                             console.log(`\nError seeing comment Info \n\n${exception}`);
                         })
-
                     })
+                    let count = 0;
 
-                }).catch((exception) => {
-                alert(`\nError getting users who commented on this post\n\n${exception}`);
-                console.log(`\n\nError getting users who commented on post ${props.postID}`);
-            })
+
+
+
+
+            }).catch((exception) => {
+            alert(`\nError getting users who commented on this post\n\n${exception}`);
+            console.log(`\n\nError getting users who commented on post ${props.postID}`);
+        })
 
     }
 
 
 
     return(
-    <View style = {feedStyles.likeAndCommentsBTN_View}>
-        <TouchableOpacity
-            style={styles.button}
-            onPress={() => getCommentByUsers(postID)}
-        >
-            <Ionicons
-                color="#FFFFFF"
-                size={24}
-                name={"chatbubble"}
-            />
-        </TouchableOpacity>
-        <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>
-    </View>
+        <View style = {feedStyles.likeAndCommentsBTN_View}>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => getCommentByUsers(postID)}
+            >
+                <Ionicons
+                    color="#FFFFFF"
+                    size={24}
+                    name={"chatbubble"}
+                />
+            </TouchableOpacity>
+            <Likes_And_Comments_Count_Txt use={"comment"} count={currentCommentsCount}/>
+        </View>
 
     )
 }

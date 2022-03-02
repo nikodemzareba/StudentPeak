@@ -35,8 +35,8 @@ export const feedStyles = StyleSheet.create({
         backgroundColor: 'rgba(52, 52, 52, 0.8)'
     },
     screenBackground: {
-       //  flex: 1,
-       // paddingTop:20,
+       flex: 1,
+       paddingTop:20,
         marginBottom: 20,
         backgroundColor: "black"
     },

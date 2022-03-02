@@ -1,10 +1,11 @@
-import {FlatList, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {feedStyles} from "../../Styles";
 import firebase from "firebase";
 import {Ionicons} from "@expo/vector-icons";
 import Profile_Icon from "../../Profile_Objects/Profile_Icon";
 import {useState} from "react";
+import ProfileIcon_And_Username from "../../Profile_Objects/ProfileIcon_And_Username";
 
 
 export default function showComment(props) {
@@ -141,42 +142,24 @@ export default function showComment(props) {
                 extraData={refresh}
                 renderItem={({item}) => {
                     return (
-                        <View style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            paddingHorizontal: 5,
-                            marginBottom: 10,
-                            padding: 10,
-                            backgroundColor: 'grey'
-                        }}>
-                            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', paddingRight: 5}}>
-                                <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
-                                              profileImage={item.profileImage} navigation={navigation}/>
-                            </TouchableOpacity>
-                            <Text style={{
-                                color: 'white'
-                            }}>{item.username}</Text>
-                            <View>
+                        <View style={styles.container}>
+                            <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
+                                          profileImage={item.profileImage} navigation={navigation}/>
+                            <View style={styles.containerText}>
+                                <Text style={styles.displayName}>{item.username}</Text>
                                 <Text style={{
                                     color: 'white'
                                 }}>{item.comment}</Text>
                             </View>
-
                         </View>
 
                     )
                 }
                 }
             />
-            <View>
+            <View style={styles.containerInput}>
                 <TextInput
-                    style={{
-                        color: 'black',
-                        backgroundColor: 'white',
-                        padding: 10,
-                        flexDirection: 'row',
-                    }}
+                    style={styles.input}
                     onChangeText={(comment) => {
 
                         if (comment !== "" || comment !== undefined) {
@@ -193,4 +176,48 @@ export default function showComment(props) {
     )
 }
 
+const styles = StyleSheet.create({
+    container: {
+        padding: 20,
+        flexDirection: 'row',
+        flex: 1,
+        backgroundColor: '#363434'
+    },
+    containerText: {
+        marginHorizontal: 14
+    },
+    displayName: {
+        color: 'gray',
+        fontSize: 13
+    },
+    textInput: {
+        borderColor: 'lightgray',
+        borderBottomWidth: 1,
+        borderStyle: 'solid',
+        paddingVertical: 5,
+    },
+    avatarSmall: {
+        height: 32,
+        width: 32,
+        borderRadius: 16
+    },
+
+    TextInputContainer :{
+
+            justifyContent: 'flex-end',
+            flex: 1
+    },
+    containerInput: {
+        padding: 10,
+        flexDirection: 'row'
+
+    },
+    input: {
+        backgroundColor: 'lightgrey',
+        borderRadius: 4,
+        flex: 1,
+        marginHorizontal: 10,
+        paddingHorizontal: 10
+    }
+})
 

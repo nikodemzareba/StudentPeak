@@ -123,7 +123,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
                 } else if (props.use === "comment") {
                     console.log(`\n\nGo to Likes Comments Page`)
-                    // props.navigation.navigate("PublicProfile", {uid: props.userID})
+                     //props.navigation.navigate("showComment")
                 }
 
             }}

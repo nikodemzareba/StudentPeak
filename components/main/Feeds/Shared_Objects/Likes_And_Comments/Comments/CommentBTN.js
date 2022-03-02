@@ -32,10 +32,7 @@ export default function CommentBTN(props) {
             .get()
             .then(doc =>{
                 const resultsCount  = doc.size;
-                if(resultsCount === 0){
-                    console.log('no result to show');
-                    props.navigation.navigate("showComment", { navigation: props.navigation, commentInfo: commentInfo,  postID: props.postID})
-                }
+                let count = 0;
                     doc.forEach((commentGot) =>{
                         count ++;
                         //get the comment made by the user
@@ -76,10 +73,6 @@ export default function CommentBTN(props) {
                             console.log(`\nError seeing comment Info \n\n${exception}`);
                         })
                     })
-                    let count = 0;
-
-
-
 
 
             }).catch((exception) => {

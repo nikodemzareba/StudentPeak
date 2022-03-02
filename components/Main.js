@@ -47,11 +47,6 @@ export class Main extends Component {
                     tabBarStyle: {
                         height: 78,
                         backgroundColor: 'black',
-                        borderRadius: 15,
-                        left: 5,
-                        right: 5,
-                        borderBottomLeftRadius: 0,
-                        borderBottomRightRadius: 0,
                     }
                 }}
 

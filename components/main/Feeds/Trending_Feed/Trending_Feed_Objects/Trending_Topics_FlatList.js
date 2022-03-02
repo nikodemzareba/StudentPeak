@@ -8,6 +8,7 @@ import Trending_Topics_TXT from "./Trending_Topics_TXT";
 
 export default function Trending_Topics_FlatList(props) {
 
+
     return (
         <View>
             <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold', padding: 10}}>
@@ -29,7 +30,7 @@ export default function Trending_Topics_FlatList(props) {
                 }
                 renderItem={({item}) => {
                     return (
-                        <Trending_Topics_TXT number={item.key} text={item.topic}/>
+                        <Trending_Topics_TXT navigation={props.navigation} number={item.key} text={item.topic}/>
                     )
                 }}
             />

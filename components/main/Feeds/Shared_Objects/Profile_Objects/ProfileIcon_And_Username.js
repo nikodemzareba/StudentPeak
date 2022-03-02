@@ -1,7 +1,7 @@
 import {TouchableOpacity, View} from "react-native";
 import Profile_Icon from "./Profile_Icon";
 import Username_Link_Txt from "./Username_Link_Txt";
-import {isUserNameTooLong} from "../Functions_And_Methods/isUserNameTooLong";
+import {isTextTooLong} from "../Functions_And_Methods/isTextTooLong";
 import React from "react";
 import firebase from "firebase";
 
@@ -32,7 +32,7 @@ export default function ProfileIcon_And_Username(props) {
             </TouchableOpacity>
             <TouchableOpacity style={{alignItems: 'flex-start'}}>
                 <Username_Link_Txt
-                    name={isUserNameTooLong(props.name, 28)}
+                    name={isTextTooLong(props.name, 28)}
                     userID={props.userID}
                     fontSize={15}
                     fontWeight={'bold'} navigation={props.navigation}

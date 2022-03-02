@@ -1,9 +1,9 @@
 import {FlatList, Text, TextInput, TouchableOpacity, View} from "react-native";
 import React from "react";
-import {feedStyles} from "../Styles";
+import {feedStyles} from "../../Styles";
 import firebase from "firebase";
 import {Ionicons} from "@expo/vector-icons";
-import Profile_Icon from "../Profile_Icon";
+import Profile_Icon from "../../Profile_Objects/Profile_Icon";
 import {useState} from "react";
 
 

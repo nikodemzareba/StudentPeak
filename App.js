@@ -40,7 +40,7 @@ import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
 import Chat from './components/main/ChatList'
-import showComment from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/showComment";
+import showComment from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment";
 
 const Stack = createStackNavigator();
 

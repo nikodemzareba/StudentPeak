@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <change afterPath="$PROJECT_DIR$/components/main/Search/Functions/getPosts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Search/Objects/Find_Post_Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search/Objects/Find_Post_Object.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Search/SearchScreenResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search/SearchScreenResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Search/ViewPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search/ViewPost.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646175982707</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646178878227</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1646178878227</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

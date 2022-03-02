@@ -3,6 +3,7 @@ import {Text, TouchableOpacity, View} from "react-native";
 import {B} from "../../Shared_Objects/Bold";
 import React from "react";
 import firebase from "firebase";
+import {getPosts} from "../../../Search/Functions/getPosts";
 
 
 export default function Trending_Topics_TXT(props) {
@@ -16,7 +17,8 @@ export default function Trending_Topics_TXT(props) {
 
                 if(postTag.get("numberOfPosts") > 0)
                 {
-                    props.navigation.navigate("SearchScreenResults", {postTag: props.text, navigation: props.navigation})
+                    // props.navigation.navigate("SearchScreenResults", {postTag: props.text, navigation: props.navigation})
+                     getPosts(props.text, props.navigation)
                     return
                 }
                 alert(`Sorry, the tag ${props.text} has no results`);

@@ -5,7 +5,6 @@ import React, {useState} from "react";
 import {feedStyles} from "./Shared_Objects/Styles";
 
 import Pictures_And_Videos_Post_Object from "./Shared_Objects/Pictures_And_Videos_Post_Object";
-import StoriesObject from "./Shared_Objects/Stories/StoriesObject";
 import Stories_FlatList from "./Shared_Objects/Stories/Stories_FlatList";
 
 

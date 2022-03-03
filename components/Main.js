@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {View, Text, Button, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import firebase from 'firebase'
 
@@ -7,7 +6,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import FeedScreen from "./main/Feeds/Feed"
 import Add from "./main/Add"
-import SearchScreen from "./main/Search/Search"
+import Search from "./main/Search/Search"
 import EventScreen from "./main/Events_Screen/Events"
 import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
@@ -19,8 +18,7 @@ import TrendingFeeds from "./main/Feeds/TrendingFeeds";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";
-import Modal from "./main/Feeds/Shared_Objects/modal";
-import VideoFeed from "./main/Feeds/VideoFeed";
+import Modal from "./main/Feeds/Shared_Objects/Likes_And_Comments/Comments/modal";
 import {users} from "../redux/reducers/users";
 
 const Tab = createBottomTabNavigator();
@@ -76,12 +74,16 @@ export class Main extends Component {
                 />
                 <Tab.Screen name="TrendingFeeds" component={TrendingFeeds} initialParams={{navigation: this.props.navigation}}
                             options={{
+                                header: () => null,
+                                tabBarVisible: false,
+
                                 tabBarIcon: ({color, size}) => (
                                     //decide what is inside the Icon
                                     <MaterialCommunityIcons name="magnify" color={color} size={26}/>
                                 ),
                             }}
                 />
+
                 <Tab.Screen name="Add" component={Add}
                             options={{
                                 tabBarIcon: ({color, size}) => (

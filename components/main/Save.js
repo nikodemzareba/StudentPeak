@@ -3,7 +3,7 @@ import { Video } from 'expo-av';
 import firebase from 'firebase';
 import React, { useLayoutEffect, useState } from 'react';
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// import MentionsTextInput from 'react-native-mentions';
+import MentionsTextInput from 'react-native-mentions';
 import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -174,26 +174,26 @@ function Save(props) {
                         <View style={[{ marginBottom: 20, width: '100%' }]}>
 
 
-                            {/*<MentionsTextInput*/}
+                            <MentionsTextInput
 
-                            {/*    textInputStyle={{ borderColor: '#ebebeb', borderWidth: 1, padding: 5, fontSize: 15, width: '100%' }}*/}
-                            {/*    suggestionsPanelStyle={{ backgroundColor: 'rgba(100,100,100,0.1)' }}*/}
-                            {/*    loadingComponent={() => <View style={{ flex: 1, width: 200, justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator /></View>}*/}
-                            {/*    textInputMinHeight={30}*/}
-                            {/*    textInputMaxHeight={80}*/}
-                            {/*    trigger={'@'}*/}
-                            {/*    triggerLocation={'new-word-only'} // 'new-word-only', 'anywhere'*/}
-                            {/*    value={caption}*/}
-                            {/*    onChangeText={setCaption}*/}
-                            {/*    triggerCallback={callback.bind(this)}*/}
-                            {/*    renderSuggestionsRow={renderSuggestionsRow.bind(this)}*/}
-                            {/*    suggestionsData={data}*/}
-                            {/*    keyExtractor={(item, index) => item.username}*/}
-                            {/*    suggestionRowHeight={45}*/}
-                            {/*    horizontal={true}*/}
-                            {/*    MaxVisibleRowCount={3}*/}
-                            {/*    */}
-                            {/*/>*/}
+                                textInputStyle={{ borderColor: '#ebebeb', borderWidth: 1, padding: 5, fontSize: 15, width: '100%' }}
+                                suggestionsPanelStyle={{ backgroundColor: 'rgba(100,100,100,0.1)' }}
+                                loadingComponent={() => <View style={{ flex: 1, width: 200, justifyContent: 'center', alignItems: 'center' }}><ActivityIndicator /></View>}
+                                textInputMinHeight={30}
+                                textInputMaxHeight={80}
+                                trigger={'@'}
+                                triggerLocation={'new-word-only'} // 'new-word-only', 'anywhere'
+                                value={caption}
+                                onChangeText={setCaption}
+                                triggerCallback={callback.bind(this)}
+                                renderSuggestionsRow={renderSuggestionsRow.bind(this)}
+                                suggestionsData={data}
+                                keyExtractor={(item, index) => item.username}
+                                suggestionRowHeight={45}
+                                horizontal={true}
+                                MaxVisibleRowCount={3}
+                                
+                            />
                         </View>
                         <View>
                             {props.route.params.type ?

@@ -5,7 +5,7 @@ import {feedStyles} from "./Shared_Objects/Styles";
 
 const {height, width} = Dimensions.get('window');
 
-export default function VideoFeed(props) {
+export default function Feed_VideoFeed(props) {
 
     const [videosOutOfBoundItems, setVideosOutOfBoundItems] = useState(null);
 

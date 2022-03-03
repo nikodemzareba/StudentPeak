@@ -1,7 +1,5 @@
 import {Image, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
-import {Ionicons} from "@expo/vector-icons";
-import { Dimensions, StyleSheet } from 'react-native'
 import {feedStyles} from "../../Styles";
 import Likes_And_Comments_Count_Txt from "../Likes_And_Comments_Count_Txt";
 import firebase from "firebase";
@@ -61,7 +59,7 @@ export default function CommentBTN(props) {
                 console.log("\n\n Document has is \n\n" + resultsCount);
                 let count = 0;
                 //allow user to go comments like
-                if(resultsCount == 0){
+                if(resultsCount === 0){
                     props.navigation.navigate("showComment", { navigation: props.navigation, commentInfo: commentInfo,  postID: props.postID})
                 }
                     doc.forEach((commentGot) =>{
@@ -118,11 +116,11 @@ export default function CommentBTN(props) {
     return(
         <View style = {feedStyles.likeAndCommentsBTN_View}>
             <TouchableOpacity
-                style={styles.button}
+                style={feedStyles.button}
                 onPress={() => getCommentByUsers(postID)}
             >
 
-                <Image source={comment_img} style={{height: 30, resizeMode: 'contain'}}/>
+                <Image source={comment_img} style={{height: 24, resizeMode: 'contain'}}/>
             </TouchableOpacity>
             <Likes_And_Comments_Count_Txt use={"comment"} count={currentComments}/>
         </View>
@@ -133,25 +131,3 @@ export default function CommentBTN(props) {
 
 
 
-const styles = StyleSheet.create({
-    container: {
-        width: Dimensions.get('window').width,
-        position: 'absolute',
-        zIndex: 999,
-        bottom: 0,
-        paddingLeft: 20,
-        paddingBottom: 20,
-        paddingRight: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end'}
-    ,
-    actionButton: {
-        paddingBottom: 16
-    },
-    actionButtonText: {
-        color: 'white',
-        textAlign: 'center',
-        marginTop: 4
-    }
-})

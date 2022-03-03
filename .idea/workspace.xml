@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="Just did:&#10;Changed the styled outlook of the comment page to match the app UI&#10;&#10;To do: &#10;Keep track of comments count&#10; &#10;&#10;&#10;&#10;Previous work: Users can now make a comment on a post&#10;&#10;Refactored comments code,so it's easier to pass parameters between objects">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/Functions/getCommentByUsers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,11 +38,19 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/SearchScreenResults.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/Search.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/ViewPost.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/Objects/Find_Post_Object.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="25WaXTPyIyDTF8M1WWZ4nMuJi8j" />
   <component name="ProjectLevelVcsManager">
@@ -351,6 +361,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="In this Update:&#10;.Trending page gets users following liked posts &#10;&#10;Need to do:&#10;Formatting&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />

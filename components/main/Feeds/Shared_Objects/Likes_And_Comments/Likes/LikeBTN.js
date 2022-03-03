@@ -163,10 +163,10 @@ export default function LikeBTN(props) {
                 {likeState === true
                     ?
 
-                    <Image source={heart_fill} style={{height: 30, resizeMode: 'contain'}}/>
+                    <Image source={heart_fill} style={{height: 25, width:25, paddingRight:10 }}/>
 
                     :
-                    <Image source={heart} style={{height: 30, resizeMode: 'contain'}}/>
+                    <Image source={heart} style={{height: 25, paddingRight:10, width:25}}/>
                 }
             </TouchableOpacity>
             <Likes_And_Comments_Count_Txt userID={userLoggedIn} postID={props.postID} use={"like"} count={currentLikes}

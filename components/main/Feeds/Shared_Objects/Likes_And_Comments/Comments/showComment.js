@@ -135,6 +135,7 @@ export default function showComment(props) {
     }
 
     return (
+        //flat-list that renders the comments' page after data is received
         <View style={feedStyles.screenBackground}>
             <FlatList
                 style={{flex: 1}}
@@ -142,11 +143,11 @@ export default function showComment(props) {
                 extraData={refresh}
                 renderItem={({item}) => {
                     return (
-                        <View style={styles.container}>
+                        <View style={feedStyles.showCommentContainer}>
                             <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
                                           profileImage={item.profileImage} navigation={navigation}/>
-                            <View style={styles.containerText}>
-                                <Text style={styles.displayName}>{item.username}</Text>
+                            <View style={feedStyles.containerText}>
+                                <Text style={feedStyles.displayName}>{item.username}</Text>
                                 <Text style={{
                                     color: 'white'
                                 }}>{item.comment}</Text>
@@ -157,9 +158,9 @@ export default function showComment(props) {
                 }
                 }
             />
-            <View style={styles.containerInput}>
+            <View style={feedStyles.containerInput}>
                 <TextInput
-                    style={styles.input}
+                    style={feedStyles.input}
                     onChangeText={(comment) => {
 
                         if (comment !== "" || comment !== undefined) {
@@ -176,50 +177,4 @@ export default function showComment(props) {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-        flexDirection: 'row',
-        flex: 1,
-        backgroundColor: '#363434'
-    },
-    containerText: {
-        marginHorizontal: 14
-    },
-    displayName: {
-        color: 'gray',
-        fontSize: 13
-    },
-    textInput: {
-        borderColor: 'lightgray',
-        borderBottomWidth: 1,
-        borderStyle: 'solid',
-        paddingVertical: 5,
-
-    },
-    avatarSmall: {
-        height: 32,
-        width: 32,
-        borderRadius: 16
-    },
-
-    TextInputContainer :{
-
-            justifyContent: 'flex-end',
-            flex: 1
-    },
-    containerInput: {
-        padding: 10,
-        flexDirection: 'row'
-
-    },
-    input: {
-        backgroundColor: 'lightgrey',
-        borderRadius: 4,
-        flex: 1,
-        marginHorizontal: 10,
-        paddingHorizontal: 10,
-        color: 'black',
-    }
-})
 

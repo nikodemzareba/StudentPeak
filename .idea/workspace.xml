@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="changed code to match new post DB structure">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Search works with Tags&#10;&#10;Need to do:&#10;. fix unhandled promise error&#10;&#10;&#10;In Previous Update:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Pictures_And_Videos_Post_Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Pictures_And_Videos_Post_Object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/showComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/showComment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,17 +12,37 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Ty-6" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="25WaXTPyIyDTF8M1WWZ4nMuJi8j" />
   <component name="ProjectLevelVcsManager">
@@ -41,7 +58,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../gp" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Trending_Feed" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Trending_Feed\Trending_Feed_Objects" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Trending_Feed" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -54,7 +81,16 @@
       <workItem from="1645645337069" duration="339000" />
       <workItem from="1645828339914" duration="1423000" />
       <workItem from="1645833447064" duration="1146000" />
-      <workItem from="1645837616375" duration="8375000" />
+      <workItem from="1645837616375" duration="14493000" />
+      <workItem from="1645903256774" duration="26352000" />
+      <workItem from="1645932366837" duration="4573000" />
+      <workItem from="1645937652771" duration="12000" />
+      <workItem from="1645981291004" duration="27680000" />
+      <workItem from="1646032616032" duration="403000" />
+      <workItem from="1646054344190" duration="2583000" />
+      <workItem from="1646058819080" duration="723000" />
+      <workItem from="1646155405728" duration="725000" />
+      <workItem from="1646194789643" duration="493000" />
     </task>
     <task id="LOCAL-00001" summary="changed code to match new post DB structure">
       <created>1645823466307</created>
@@ -63,7 +99,231 @@
       <option name="project" value="LOCAL" />
       <updated>1645823466307</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="In this Update:&#10;Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;&#10;In Previous Update:&#10;changed code to match new post DB structure">
+      <created>1645848181746</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645848181746</updated>
+    </task>
+    <task id="LOCAL-00003" summary="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
+      <created>1645855094651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645855094651</updated>
+    </task>
+    <task id="LOCAL-00004" summary="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
+      <created>1645857549218</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645857549218</updated>
+    </task>
+    <task id="LOCAL-00005" summary="In this Update:&#10;Refactoring&#10;&amp; Creating Stories Objects &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Changed LikeBTN  to a transaction update &#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
+      <created>1645858604110</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645858604110</updated>
+    </task>
+    <task id="LOCAL-00006" summary="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects">
+      <created>1645858938617</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645858938617</updated>
+    </task>
+    <task id="LOCAL-00007" summary="In this Update:&#10;.Refactoring&#10;.getProfileImage method works&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects">
+      <created>1645859816041</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645859816041</updated>
+    </task>
+    <task id="LOCAL-00008" summary="In this Update:&#10;.Trending page gets users following liked posts &#10;&#10;Need to do:&#10;Formatting&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645861648039</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645861648039</updated>
+    </task>
+    <task id="LOCAL-00009" summary="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645862507126</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1645862507126</updated>
+    </task>
+    <task id="LOCAL-00010" summary="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645868538299</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1645868538299</updated>
+    </task>
+    <task id="LOCAL-00011" summary="In this Update:&#10;.GUi up &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645870544381</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1645870544381</updated>
+    </task>
+    <task id="LOCAL-00012" summary="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645870896466</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1645870896466</updated>
+    </task>
+    <task id="LOCAL-00013" summary="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645876206446</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1645876206446</updated>
+    </task>
+    <task id="LOCAL-00014" summary="In this Update:&#10;.Trending Topic Number object shape now increases with text size&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645905806279</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1645905806279</updated>
+    </task>
+    <task id="LOCAL-00015" summary="In this Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645911282243</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1645911282243</updated>
+    </task>
+    <task id="LOCAL-00016" summary="In this Update:&#10;Testing polymorphic explore feed&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645923806204</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1645923806204</updated>
+    </task>
+    <task id="LOCAL-00017" summary="In this Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645936110974</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1645936110974</updated>
+    </task>
+    <task id="LOCAL-00018" summary="In this Update:&#10;trending page works for pictures &#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1645937293385</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1645937293385</updated>
+    </task>
+    <task id="LOCAL-00019" summary="In this Update:&#10;trending page works for pictures  &amp; Videos&#10;&#10;Need to do:&#10;.avoid adding the same post liked by multiple users&#10;&#10;In Previous Update:&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646015361430</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1646015361430</updated>
+    </task>
+    <task id="LOCAL-00020" summary="In this Update:&#10;.avoid adding the same post liked by multiple users&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646016226567</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1646016226567</updated>
+    </task>
+    <task id="LOCAL-00021" summary="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646017304537</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1646017304537</updated>
+    </task>
+    <task id="LOCAL-00022" summary="In this Update:&#10;.Refactoring&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646018278614</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1646018278614</updated>
+    </task>
+    <task id="LOCAL-00023" summary="In this Update:&#10;.Refactoring&#10;&#10;&#10;Need to do:&#10;Trying to get main feed to reload&#10;&#10;&#10;In Previous Update:&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646026280894</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1646026280894</updated>
+    </task>
+    <task id="LOCAL-00024" summary="In this Update:&#10;.Refactoring&#10;.Feed Screen reloads when user goes to page.&#10;&#10;&#10;Need to do:&#10;Trying to get main feed to reload&#10;&#10;&#10;In Previous Update:&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646028519949</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1646028519949</updated>
+    </task>
+    <task id="LOCAL-00025" summary="In this Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646159956124</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1646159956124</updated>
+    </task>
+    <task id="LOCAL-00026" summary="In this Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646159966403</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1646159966403</updated>
+    </task>
+    <task id="LOCAL-00027" summary="In this Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646161031698</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1646161031698</updated>
+    </task>
+    <task id="LOCAL-00028" summary="In this Update:&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646168148421</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1646168148422</updated>
+    </task>
+    <task id="LOCAL-00029" summary="In this Update:&#10;.Refactoring&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646169261284</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1646169261284</updated>
+    </task>
+    <task id="LOCAL-00030" summary="In this Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;&#10;&#10;Need to do:&#10;Video thumbnail&#10;&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646173394338</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1646173394338</updated>
+    </task>
+    <task id="LOCAL-00031" summary="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646175757647</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1646175757647</updated>
+    </task>
+    <task id="LOCAL-00032" summary="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646175982707</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1646175982707</updated>
+    </task>
+    <task id="LOCAL-00033" summary="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
+      <created>1646178878227</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1646178878227</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,7 +342,46 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changed code to match new post DB structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed code to match new post DB structure" />
+    <MESSAGE value="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.getProfileImage method works&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
+    <MESSAGE value="In this Update:&#10;.Trending page gets users following liked posts &#10;&#10;Need to do:&#10;Formatting&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.GUi up &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Trending Topic Number object shape now increases with text size&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;Testing polymorphic explore feed&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;trending page works for pictures &#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;trending page works for pictures  &amp; Videos&#10;&#10;Need to do:&#10;.avoid adding the same post liked by multiple users&#10;&#10;In Previous Update:&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.avoid adding the same post liked by multiple users&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;&#10;Need to do:&#10;Trying to get main feed to reload&#10;&#10;&#10;In Previous Update:&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Feed Screen reloads when user goes to page.&#10;&#10;&#10;Need to do:&#10;Trying to get main feed to reload&#10;&#10;&#10;In Previous Update:&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;&#10;&#10;Need to do:&#10;Video thumbnail&#10;&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feeds/Feed.js</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js</url>
+          <line>504</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

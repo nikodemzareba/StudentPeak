@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Search works with Tags&#10;&#10;Need to do:&#10;. fix unhandled promise error&#10;&#10;&#10;In Previous Update:">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Merging with G2 &amp; fixing errors&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/showComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/showComment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/PrivateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/PrivateProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Save.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Ty-6" />
+        <entry key="$PROJECT_DIR$" value="Master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,12 +36,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/SearchScreenResults.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/Search.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/ViewPost.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Search/Objects/Find_Post_Object.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="25WaXTPyIyDTF8M1WWZ4nMuJi8j" />
@@ -91,6 +97,8 @@
       <workItem from="1646058819080" duration="723000" />
       <workItem from="1646155405728" duration="725000" />
       <workItem from="1646194789643" duration="493000" />
+      <workItem from="1646333787140" duration="672000" />
+      <workItem from="1646336490491" duration="348000" />
     </task>
     <task id="LOCAL-00001" summary="changed code to match new post DB structure">
       <created>1645823466307</created>

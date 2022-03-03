@@ -1,10 +1,11 @@
-import {FlatList, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {feedStyles} from "../../Styles";
 import firebase from "firebase";
 import {Ionicons} from "@expo/vector-icons";
 import Profile_Icon from "../../Profile_Objects/Profile_Icon";
 import {useState} from "react";
+import ProfileIcon_And_Username from "../../Profile_Objects/ProfileIcon_And_Username";
 
 
 export default function showComment(props) {
@@ -134,6 +135,7 @@ export default function showComment(props) {
     }
 
     return (
+        //flat-list that renders the comments' page after data is received
         <View style={feedStyles.screenBackground}>
             <FlatList
                 style={{flex: 1}}
@@ -141,42 +143,24 @@ export default function showComment(props) {
                 extraData={refresh}
                 renderItem={({item}) => {
                     return (
-                        <View style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            paddingHorizontal: 5,
-                            marginBottom: 10,
-                            padding: 10,
-                            backgroundColor: 'grey'
-                        }}>
-                            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', paddingRight: 5}}>
-                                <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
-                                              profileImage={item.profileImage} navigation={navigation}/>
-                            </TouchableOpacity>
-                            <Text style={{
-                                color: 'white'
-                            }}>{item.username}</Text>
-                            <View>
+                        <View style={feedStyles.showCommentContainer}>
+                            <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
+                                          profileImage={item.profileImage} navigation={navigation}/>
+                            <View style={feedStyles.containerText}>
+                                <Text style={feedStyles.displayName}>{item.username}</Text>
                                 <Text style={{
                                     color: 'white'
                                 }}>{item.comment}</Text>
                             </View>
-
                         </View>
 
                     )
                 }
                 }
             />
-            <View>
+            <View style={feedStyles.containerInput}>
                 <TextInput
-                    style={{
-                        color: 'black',
-                        backgroundColor: 'white',
-                        padding: 10,
-                        flexDirection: 'row',
-                    }}
+                    style={feedStyles.input}
                     onChangeText={(comment) => {
 
                         if (comment !== "" || comment !== undefined) {

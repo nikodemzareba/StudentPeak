@@ -2,6 +2,7 @@ import {Text, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {B} from "../Bold";
 import firebase from "firebase";
+import {getCommentByUsers} from "./Comments/Functions/getCommentByUsers";
 
 
 export default function Likes_And_Comments_Count_Txt(props) {
@@ -123,7 +124,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
                 } else if (props.use === "comment") {
                     console.log(`\n\nGo to Likes Comments Page`)
-                     //props.navigation.navigate("showComment")
+                    getCommentByUsers(props.postID, props.navigation)
                 }
 
             }}

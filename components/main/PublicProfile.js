@@ -25,18 +25,18 @@ import App from '../../App';
 
 
 function PublicProfile(props) {
-  const[userPosts, setUserPosts] = useState ([]);
+  const [userPosts, setUserPosts] = useState();
   const[user, setUser] = useState (null);
    const [following, setFollowing] = useState(false);
 
-
+ 
   useEffect(() => {
     const{currentUser, posts } = props;
     console.log({currentUser, posts})
-
+   
     if(props.route.params.uid == firebase.auth().currentUser.uid) {
       setUser(currentUser)
-      setUserPosts(posts)
+      retrieveUserPosts();
 
     }
     else {
@@ -105,11 +105,13 @@ if(user== null) {
   return <View/>
 }
 return (
+  <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
   <View style={styles.container}>
     <View style={styles.containerInfo}>
-    <Text>
-      {user.username}</Text>
-
+      <View>
+    <Text style={styles.userNameTop}>@{user.username}</Text>
+    </View>
+    
       {props.route.params.uid != firebase.auth().currentUser.uid ? (
         <View>
           {following ?(
@@ -130,25 +132,40 @@ return (
 
       ) : null}
     </View>
-    <View style={styles.containerGallery}>
-      <FlatList
-        numColumns= {3}
-        horizontal = {false}
-        data = {userPosts}
-        renderItem={({item})=>(
-          <View
-            style = {styles.containerImage}>
-          <Image
-          style = {styles.image}
-            source={{uri: item.downloadURL}}
-          />
+    
+    <View style={styles.textWrapper}>
+            <Text style={styles.createText2}>Followers</Text>
+            <Text style={styles.createText2}>       {user.followers}</Text>
           </View>
-        ) }
-      />
-
-    </View>
-
+          <View style={styles.textWrapper}>
+            <Text style={styles.createText2}>Following</Text>
+            <Text style={styles.createText2}>     {user.following}</Text>
+          </View>
+          <View>
+  <Text style = {styles.bioText}>    {user.bio}</Text>
   </View>
+  <View style={styles.containerGallery}>
+ 
+ <FlatList
+   numColumns= {3}
+   horizontal = {false}
+   data = {userPosts}
+   renderItem={({item})=>(
+     <View
+       style = {styles.containerImage}>
+     <Image
+     style = {styles.image}
+       source={{uri: item.downloadURL}}
+     />
+     </View>
+   ) }
+ />
+
+</View>
+        
+  </View>
+ 
+  </SafeAreaView>
 
 )
 }
@@ -174,7 +191,36 @@ const styles = StyleSheet.create({
 
   containerImage: {
     flex: 1/3
-  }
+  },
+  userNameTop: {
+    fontWeight: "bold",
+    fontFamily: "Montserrat",
+    fontSize: 20,
+    color: "white",
+    justifyContent: "center",
+    alignItems: "flex-start",
+  },
+  createText: {
+    fontWeight: "bold",
+    fontFamily: "Montserrat",
+    fontSize: 18,
+    color: "white",
+    justifyContent: "center",
+    alignContent: "center",
+  },
+  createText2: {
+    fontWeight: "bold",
+    fontFamily: "Montserrat",
+    fontSize: 10,
+    color: "white",
+    justifyContent: "center",
+    alignContent: "center",
+  },
+  bioText: {
+    color: 'white',
+    fontFamily: 'Montserrat',
+    fontSize: 15,
+},
 })
 
 const mapStateToProps = (store) => ({

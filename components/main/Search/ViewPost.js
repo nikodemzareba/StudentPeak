@@ -13,7 +13,8 @@ import React, {useEffect, Component, useState} from 'react'
 import {feedStyles} from "../Feeds/Shared_Objects/Styles";
 import Pictures_And_Videos_Post_Object from "../Feeds/Shared_Objects/Pictures_And_Videos_Post_Object";
 import {SimpleLineIcons} from "@expo/vector-icons";
-import styles from "../../../frontend/screens/feed/styles";
+import styles from "../../post/styles";
+
 
 const windowHeight = Dimensions.get('window').height;
 export default function ViewPost(props) {

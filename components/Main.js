@@ -18,7 +18,6 @@ import TrendingFeeds from "./main/Feeds/TrendingFeeds";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";
-import Modal from "./main/Feeds/Shared_Objects/Likes_And_Comments/Comments/modal";
 import {users} from "../redux/reducers/users";
 
 const Tab = createBottomTabNavigator();
@@ -48,18 +47,12 @@ export class Main extends Component {
                     tabBarStyle: {
                         height: 78,
                         backgroundColor: 'black',
-                        borderRadius: 15,
-                        left: 5,
-                        right: 5,
-                        borderBottomLeftRadius: 0,
-                        borderBottomRightRadius: 0,
                     }
                 }}
 
             >
 
                 <Tab.Screen name="Feed" component={FeedScreen} initialParams={{navigation: this.props.navigation}}
-                            tabBar={() => <Modal/>}
 
                             options={{
                                 header: () => null,

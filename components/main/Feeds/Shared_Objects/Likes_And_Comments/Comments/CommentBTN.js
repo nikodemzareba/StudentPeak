@@ -57,7 +57,12 @@ export default function CommentBTN(props) {
             .get()
             .then(doc =>{
                 const resultsCount  = doc.size;
+                console.log("\n\n Document has is \n\n" + resultsCount);
                 let count = 0;
+                //allow user to go comments like
+                if(resultsCount == 0){
+                    props.navigation.navigate("showComment", { navigation: props.navigation, commentInfo: commentInfo,  postID: props.postID})
+                }
                     doc.forEach((commentGot) =>{
                         count ++;
                         //get the comment made by the user

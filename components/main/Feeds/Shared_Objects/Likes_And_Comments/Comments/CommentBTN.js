@@ -1,10 +1,11 @@
-import {TouchableOpacity, View} from "react-native";
+import {Image, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import {Ionicons} from "@expo/vector-icons";
 import { Dimensions, StyleSheet } from 'react-native'
 import {feedStyles} from "../../Styles";
 import Likes_And_Comments_Count_Txt from "../Likes_And_Comments_Count_Txt";
 import firebase from "firebase";
+import comment_img from './comment-13420.png'
 
 
 
@@ -120,11 +121,8 @@ export default function CommentBTN(props) {
                 style={styles.button}
                 onPress={() => getCommentByUsers(postID)}
             >
-                <Ionicons
-                    color="#FFFFFF"
-                    size={24}
-                    name={"chatbubble"}
-                />
+
+                <Image source={comment_img} style={{height: 30, resizeMode: 'contain'}}/>
             </TouchableOpacity>
             <Likes_And_Comments_Count_Txt use={"comment"} count={currentComments}/>
         </View>

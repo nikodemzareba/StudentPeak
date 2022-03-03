@@ -1,12 +1,14 @@
 import {Ionicons} from "@expo/vector-icons";
 import React, {useState} from "react";
-import {TouchableOpacity, View} from "react-native";
+import {Image, TouchableOpacity, View} from "react-native";
 import firebase from "firebase";
 
 import {Octicons} from '@expo/vector-icons';
 import {feedStyles} from "../../Styles";
 import Likes_And_Comments_Count_Txt from "../Likes_And_Comments_Count_Txt";
 import {success} from "concurrently/dist/src/defaults";
+import heart from './heart-431.png'
+import heart_fill from './heart-431-fill.png'
 
 
 export default function LikeBTN(props) {
@@ -161,10 +163,10 @@ export default function LikeBTN(props) {
                 {likeState === true
                     ?
 
-                    <Ionicons name="ios-heart-sharp" size={24} color="red"/>
+                    <Image source={heart_fill} style={{height: 30, resizeMode: 'contain'}}/>
 
                     :
-                    <Octicons name="heart" size={24} color="white"/>
+                    <Image source={heart} style={{height: 30, resizeMode: 'contain'}}/>
                 }
             </TouchableOpacity>
             <Likes_And_Comments_Count_Txt userID={userLoggedIn} postID={props.postID} use={"like"} count={currentLikes}

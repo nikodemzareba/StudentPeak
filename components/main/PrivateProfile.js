@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import "firebase/auth";
 import {StatusBar} from "expo-status-bar";
-import React from "react";
+import React, {useState} from "react";
 import {
     StyleSheet,
     Text,
@@ -61,9 +61,9 @@ var db = firebase.firestore();
 //   }
 // }
 
-const [profileDisplay, setprofileDisplay] = useState();
+const [profileDisplay, setprofileDisplay] = useState("");
 
-const [userPosts, setUserPosts] = useState();
+const [userPosts, setUserPosts] = useState([]);
 
 
 

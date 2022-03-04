@@ -101,7 +101,7 @@ export class Main extends Component {
                                 ),
                             }}
                 />
-                <Tab.Screen name="PrivateProfile" component={PrivateProfileScreen}
+                <Tab.Screen name="PrivateProfile" component={PrivateProfileScreen} initialParams={{navigation: this.props.navigation}}
                             listeners={({navigation}) => ({
                                 tabPress: event => {
                                     event.preventDefault();

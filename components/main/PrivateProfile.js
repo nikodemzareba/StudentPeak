@@ -1,314 +1,349 @@
-import firebase from 'firebase/app';
-import "firebase/auth";
-import {StatusBar} from "expo-status-bar";
-import React, {useState} from "react";
+import React, {Component, useRef, useState} from 'react'
 import {
-    StyleSheet,
-    Text,
     View,
-    SafeAreaView,
-    Alert,
-    Image,
-    Button,
-    TouchableOpacity
-} from "react-native";
-import {ScrollView} from "react-native-gesture-handler";
-import {SimpleLineIcons} from '@expo/vector-icons';
-import App from '../../App';
+    Dimensions,
+    Text,
+    ActivityIndicator,
+    ScrollView,
+    StyleSheet,
+    Image, TouchableOpacity
+} from 'react-native';
+
+import firebase from "firebase";
+import Feed_PictureFeed from "./Feeds/Feed_PictureFeed";
+import Feed_VideoFeed from "./Feeds/Feed_VideoFeed";
 
 
-
-const ProfileView = () => {
-
-var db = firebase.firestore();
+const {height, width} = Dimensions.get('window');
 
 
-//const followers = '20';
-//const following = '56';
+const separator = "###########################################################################################";
+
+import {storyData} from "./Feeds/FakeJSONData/TempStoryData";
+import {B} from "./Feeds/Shared_Objects/Bold";
+import PrivateProfileDisplay from './PrivateProfileDisplay';
 
 
+class PrivateProfile extends Component {
+
+     constructor(props) {
+        super(props);
+
+        this.state = {
+
+            storiesData: [],
+            storiesDataLoaded: false,
+
+            initialViewVideosOrPictureFeed: 0,
+
+            profileImageLoaded: false,
+            profileImage: "",
+            userId:
+            // "upb6UG9eM0VWzRo8tGke3xK9p953",
+            firebase.auth().currentUser.uid,
+
+            videosDataFetched: [],
+            videosIsLoading: true,
+            videosReceived: 0,
+            loadVideos: false,
+
+            picturesDataFetched: [],
+            picturesIsLoading: true,
+            picturesReceived: 0,
+            loadPictures: false,
 
 
-// firebase.auth().onAuthStateChanged(async user => {
-//   if (user) {
-    
-//   setupUI(user);
+        }
+        this.usersFollowingRef = firebase.firestore()
+            .collection('following')
+            .doc(this.state.userId)
+            .collection('userFollowing')
 
-
-
-//   }
-  
-  
-// });
-
-
-
-// const setupUI = (user) => {
-//   if (user) {
-   
-//     db.collection('users').doc(user.uid).onSnapshot((doc => {
-//       if (doc.exists) {
-//       name = doc.data().name;
-//       username = doc.data().username;
-//       bio = doc.data().bio;
-//       console.log(bio);
-//       const user = firebase.auth().currentUser;
-//       console.log(user.uid);
-      
-//       }
-      
-//     }))
-//   }
-// }
-
-const [profileDisplay, setprofileDisplay] = useState("");
-
-const [userPosts, setUserPosts] = useState([]);
-
-
-
-const user = firebase.auth().currentUser;
-
-
-
-const retrieveProfileInfo = async() => {
-  if (user != null) {
-  await db.collection('users').doc(user.uid).get().then((doc) => {
-    if( doc.exists ) {
-      setprofileDisplay(doc.data());
     }
-  })
-}
-}
 
-// const retrieveUserPosts = async() => {
-//   if (user != null) {
-//   await db.collection('posts').doc(user.uid).collection('userPosts').get().then((doc) => {
-//     if( doc.exists ) {
-//       setUserPosts(doc.data());
-//     }
-//   })
-// }
-// }
-
-const fetchPosts = async () => {
-  try {
-    const list = [];
-    await firestore()
-    .collection('posts')
-    .doc(user.uid)
-    .collection('userPosts')
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const {
-          caption,
-          createdAt,
-          downloadURL,
-          mediaType,
-        } = doc.data();
-        list.push({
-          caption,
-          createdAt,
-          downloadURL,
-          mediaType,
-        })
-      })
-    })
-  } catch {
-
-} finally {
-
-}
+    componentDidMount() {
+        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
+        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getProfileInfo);
+        //HELLO DELETE Later
+        this.setState({
+            storiesDataLoaded: true,
+            storiesData: storyData
+        });
+    }
 
 
+    // This method is passed all the userID's of the users this user is following
+    getData = async () => {
+
+        const videosDataFetched = [];
+        const picturesDataFetched = [];
 
 
+        // Got users Following info
+       // console.log("\nGot Users Following Data")
+       firebase.firestore()
+       .collection('users')
+       .doc(this.state.userId)
+       .get()
+       .then(userDetails => {
 
-
-
-useEffect(() => {
-  
-  retrieveProfileInfo();
-  retrieveUserPosts();
-  
-});
-
-
-
-// const user = firebase.auth().currentUser;
-// if (user != null) {
-// user.reload;
-// }
-
-
-
-//if (user !== null) {
-//  setupUI(user);
-//}
-
-
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
-      <ScrollView style={StyleSheet.container}>
-        <View   style = {styles.usernameBackButton} >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-        <SimpleLineIcons
-          style={styles.icon}
-          name="arrow-left"
-          size={20}
-          color="white"
           
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.userNameTop}>{profileDisplay ? profileDisplay.username : ''}</Text>
-          </TouchableOpacity>
-        </View> 
-        <SafeAreaView style={styles.lines}>
-          <View style={styles.textWrapper}>
-          <Image    style={styles.imageStyle}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : 'null'
-          }}
-          />
-            <Text style={styles.createText}>{profileDisplay ? profileDisplay.name : ''}</Text>
-          </View>
-          <View style={styles.textWrapper}>
-            <Text style={styles.createText2}>Followers</Text>
-            <Text style={styles.createText2}>       {profileDisplay ? profileDisplay.followers : '0'}</Text>
-          </View>
-          <View style={styles.textWrapper}>
-            <Text style={styles.createText2}>Following</Text>
-            <Text style={styles.createText2}>     {profileDisplay ? profileDisplay.following : '0'}</Text>
-          </View>
+                    // Get all of the posts from the user we are following
+                    firebase.firestore()
+                        .collection('posts')
+                        .doc(this.state.userId)
+                        .collection('userPosts')
+                        .get()
+                        .then(privatePosts => {
+                       //     console.log("\nGot Posts Of Users i am Following!")
 
-         
+                            // For each post from the user we are following 
+                            privatePosts.forEach((userPost) => {
+
+                                // Get the posts details 
+                                firebase.firestore()
+                                    .collection('postData')
+                                    .doc(userPost.id)
+                                    .get()
+                                    .then((postData => {
+                                        
+                                      const profileImage = userDetails.get("profileimage");
+                                      const name = userDetails.get("username");
+                                        const caption = postData.get("caption");
+                                        const createdAt = postData.get("createdAt");
+                                        const downloadURL = postData.get("downloadURL");
+                                        const mediaType = postData.get("mediaType");
+                                        const commentsCount = postData.get("commentsCount");
+                                        const likesCount = postData.get("likesCount");
+                                        const userID = this.state.userId;
+
+                                        if (mediaType === "video") {
+
+                                            this.setState({
+                                                videosReceived: this.state.videosReceived + 1
+                                            });
+
+                                            videosDataFetched.push({
+                                                key: userPost.id,
+                                                caption: caption,
+                                                createdAt: createdAt,
+                                                downloadURL: downloadURL,
+                                                mediaType: mediaType,
+                                                commentsCount: commentsCount,    // Needs be retrieved inside the comment method
+                                                profile: profileImage,
+                                                name: name,
+                                                userID: userID,
+                                            });
+                                        } else if (mediaType === "picture") {
+
+                                            this.setState({
+                                                picturesReceived: this.state.picturesReceived + 1
+                                            });
+
+                                            picturesDataFetched.push({ 
+                                                key: userPost.id,
+                                                caption: caption,
+                                                createdAt: createdAt,
+                                                downloadURL: downloadURL,
+                                                mediaType: mediaType,
+                                                commentsCount: commentsCount, // Needs be retrieved inside the comment method
+                                                profile: profileImage,
+                                                name: name,
+                                                userID: userID,
+                                            });
+                                           
+                                        }
+                                         
+
+                                //        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                                 //       console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+
+                                       
+                                     //       console.log("\nSetting Data To Variable")
+                                            this.setState({
+                                                videosDataFetched: videosDataFetched,
+                                                picturesDataFetched: picturesDataFetched,
+                                            }, () => {
+                                                this.setStatesForLoadingFeed()
+                                            });
+                                        
+
+                                    }))
+                                    .catch((error) => {
+                                //        console.log(`${error} \nUnable to get Users following post data!`);
+                                    });
+                            })
+                        })
+                        .catch((error) => {
+                     //       console.log(`${error} \nUnable to get Users following posts!`);
+                        })
+                        });
+
+                                   
+    }
+
+    getProfileInfo = async () => {
        
-        </SafeAreaView>
-        <View>
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Edit</Text>
-        </TouchableOpacity>
-        </View>
-        <View>
-        <TouchableOpacity style={styles.loginBtn} onPress={() => firebase.auth().signOut()}>
-          <Text style={styles.loginText}>Log out</Text>
-        </TouchableOpacity>
-        </View>
-        <View>
-            <Text style = {styles.bioText}>    {profileDisplay ? profileDisplay.bio : ''}</Text>
-        </View>
-        <View>
-          <Image style = {styles.postImages}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : 'null'
-          }}
-          />
-         
-        </View>
-        <View>
-          <Image style = {styles.postImages}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[1] : 'null'
-          }}
-          />
-         
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        const profileDataFeteched = [];
+        
+
+        firebase.firestore()
+        .collection('users')
+        .doc(this.state.userId)
+        .get()
+        .then((userInfo) => {
+           
+               const bio = userInfo.get("bio");
+               const followers = userInfo.get("followers");
+               const following = userInfo.get("following");
+               const name = userInfo.get("name");
+               const username = userInfo.get("username");
+               const profileimage = userInfo.get("profileimage");
+               
+               this.setState({
+                profileDataFeteched: profileDataFeteched,
+                
+            }, () => {
+                this.setStatesForLoadingFeed()
+            });
+            
+            profileDataFeteched.push({
+                key: this.state.userId,
+                bio: bio,
+                followers: followers,
+                following: following,
+                name: name,
+                username: username,
+                profileimage: profileimage,
+                profile: profileimage,
+            })
+        })
+ 
+    }
+
     
-  );
-        };
+
+    setStatesForLoadingFeed() {
+    
+            this.setState({
+                loadVideos: true
+            });
+        
+        
+            this.setState({
+                loadPictures: true
+            });
+        
+
+        this.setState({
+            videosIsLoading: false,
+            picturesIsLoading: false
+        });
+    }
+
+    render() {
+
+        return (
+            <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+
+                <View>
+                    <PrivateProfileDisplay
+                    userID={this.state.userId}
+                    data={this.state.profileDataFeteched}
+                    navigation={this.props.route.params.navigation}
+                    />
+                </View>
 
 
+                {/* Logic for which view is visible*/}
+                {this.state.initialViewVideosOrPictureFeed === 0
+                    ?
+                    <>
+                        {/* Pictures Feed */}
+                        {this.state.picturesIsLoading
+                            ?
+                            <View style={styles.loading}>
+                                <ActivityIndicator size="large" color="red"/>
+                            </View>
+                            :
+
+                            <>
+                                {this.state.loadPictures
+                                    ?
+                                    <Feed_PictureFeed
+                                        userID={this.state.userId}
+                                        data={this.state.picturesDataFetched}
+                                        navigation={this.props.route.params.navigation}/>
+                                    :
+                                    <View style={{flex: 1, padding:10}}>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> No Posts / Follow a user to view posts on your feed  </B> </Text>
+                                    </View>
+                                }
+                            </>
+
+                        }
+                    </>
+                    :
+                    <>
+                        {/* Video Feed */}
+                        {this.state.videosIsLoading
+                            ?
+                            <View style={styles.loading}>
+                                <ActivityIndicator size="large" color="red"/>
+                            </View>
+                            :
+                            <>
+                                {this.state.loadVideos
+                                    ?
+                                    <Feed_VideoFeed
+                                        userID={this.state.userId}
+                                        data={this.state.videosDataFetched}
+                                        navigation={this.props.route.params.navigation}/>
+                                    :
+                                    <View style={{flex: 1, padding:10}}>
+                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B>  No Posts / Follow a user to view posts on your feed  </B> </Text>
+                                    </View>
+                                }
+                            </>
+                        }
+                    </>
+                }
+
+
+            </ScrollView>
+        );
+
+    }
+}
 
 const styles = StyleSheet.create({
-  imageStyle: {
-    height: 50,
-    width: 50,
-    borderRadius: 75,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 20,
-  },
-  createText: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat",
-    fontSize: 18,
-    color: "white",
-    justifyContent: "center",
-    alignContent: "center",
-  },
-  createText2: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat",
-    fontSize: 10,
-    color: "white",
-    justifyContent: "center",
-    alignContent: "center",
-  },
-  textWrapper: {
-    borderWidth: 2,
-    borderColor: "white",
-    borderRadius: 75,
-    padding: 10,
-    backgroundColor: "grey",
-    margin: 10,
-  },
-  lines: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    top: 20,
-  },
-  userNameTop: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat",
-    fontSize: 20,
-    color: "white",
-    justifyContent: "center",
-    alignItems: "flex-start",
-  },
-  loginBtn: {
-      width: '20%',
-      backgroundColor: 'white',
-      borderRadius: 25,
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: 20,
-      marginBottom: 20,
-      left: 20
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    loginText: {
-      color: 'black',
-      fontFamily: 'Montserrat',
-  },
-  bioText: {
-      color: 'white',
-      fontFamily: 'Montserrat',
-      fontSize: 15,
-  },
-  usernameBackButton: {
-    flex: 0,
-    flexDirection: 'row'
-  },
-  postImages: {
-    margin: 20,
-    left: 20,
-   
-  }
-});
-}
+    video: (width, height) => ({
+        alignSelf: 'center',
+        width: width,
+        height: height
+    }),
+    picture: (width, height) => ({
+        alignSelf: 'center',
+        width: width,
+        height: height
+    }),
+    container: {
+        flex: 1,
+        justifyContent: 'center'
+    },
+    controlsContainer: {
+        position: 'absolute',
+        bottom: 10
+    }
+})
 
-export default ProfileView;
+export default PrivateProfile;

@@ -220,7 +220,7 @@ class PrivateProfile extends Component {
                                 //Setting the number of column
                                 numColumns={3}
                                 renderItem={({item}) => (
-                                    <SearchScreenObject item={item} navigation={this.props.route.params.navigation}/>
+                                    <SearchScreenObject item={item} navigation={this.props.route.params.navigation} comingFrom={"PrivateProfile"}/>
                                 )}
 
                             />

@@ -41,12 +41,6 @@ class PrivateProfile extends Component {
     componentDidMount() {
         this.getData();
         this.getProfileInfo();
-
-        //HELLO DELETE Later
-        this.setState({
-            storiesDataLoaded: true,
-            storiesData: storyData
-        });
     }
 
 

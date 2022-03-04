@@ -1,314 +1,218 @@
-import firebase from 'firebase/app';
-import "firebase/auth";
-import {StatusBar} from "expo-status-bar";
-import React, {useState} from "react";
+import React, {Component} from 'react'
 import {
-    StyleSheet,
-    Text,
     View,
-    SafeAreaView,
-    Alert,
-    Image,
-    Button,
-    TouchableOpacity
-} from "react-native";
-import {ScrollView} from "react-native-gesture-handler";
-import {SimpleLineIcons} from '@expo/vector-icons';
-import App from '../../App';
+    ActivityIndicator,
+    ScrollView,
+    StyleSheet,
+    FlatList
+} from 'react-native';
+
+import firebase from "firebase";
 
 
-
-const ProfileView = () => {
-
-var db = firebase.firestore();
-
-
-//const followers = '20';
-//const following = '56';
+import {storyData} from "./Feeds/FakeJSONData/TempStoryData";
+import PrivateProfileDisplay from './PrivateProfileDisplay';
+import {feedStyles} from "./Feeds/Shared_Objects/Styles";
+import SearchScreenObject from "./Search/Objects/SearchScreenObject";
 
 
+class PrivateProfile extends Component {
 
+    constructor(props) {
+        super(props);
 
-// firebase.auth().onAuthStateChanged(async user => {
-//   if (user) {
-    
-//   setupUI(user);
+        this.state = {
 
+            profileImageLoaded: false,
+            profileImage: "",
+            userId:
+            firebase.auth().currentUser.uid,
 
-
-//   }
-  
-  
-// });
-
-
-
-// const setupUI = (user) => {
-//   if (user) {
-   
-//     db.collection('users').doc(user.uid).onSnapshot((doc => {
-//       if (doc.exists) {
-//       name = doc.data().name;
-//       username = doc.data().username;
-//       bio = doc.data().bio;
-//       console.log(bio);
-//       const user = firebase.auth().currentUser;
-//       console.log(user.uid);
-      
-//       }
-      
-//     }))
-//   }
-// }
-
-const [profileDisplay, setprofileDisplay] = useState("");
-
-const [userPosts, setUserPosts] = useState([]);
-
-
-
-const user = firebase.auth().currentUser;
-
-
-
-const retrieveProfileInfo = async() => {
-  if (user != null) {
-  await db.collection('users').doc(user.uid).get().then((doc) => {
-    if( doc.exists ) {
-      setprofileDisplay(doc.data());
+            mediaDataDataFetched: [],
+            mediaDataIsLoading: true,
+            loadMediaData: false,
+        }
+        this.usersFollowingRef = firebase.firestore()
+            .collection('following')
+            .doc(this.state.userId)
+            .collection('userFollowing')
     }
-  })
+
+    componentDidMount() {
+        this.getData();
+        this.getProfileInfo();
+    }
+
+
+    // This method is passed all the userID's of the users this user is following
+    getData = async () => {
+
+        const mediaDataDataFetched = [];
+
+        // Got users Following info
+        // console.log("\nGot Users Following Data")
+        firebase.firestore()
+            .collection('users')
+            .doc(this.state.userId)
+            .get()
+            .then(userDetails => {
+
+                // Get all of the posts from the user we are following
+                firebase.firestore()
+                    .collection('posts')
+                    .doc(this.state.userId)
+                    .collection('userPosts')
+                    .get()
+                    .then(privatePosts => {
+
+                        let expectedResultsSize = privatePosts.size;
+                        let count = 0;
+
+                        privatePosts.forEach((userPost) => {
+
+                            count++;
+                            // Get the posts details
+                            firebase.firestore()
+                                .collection('postData')
+                                .doc(userPost.id)
+                                .get()
+                                .then((postData => {
+
+                                    const profileImage = userDetails.get("profileimage");
+                                    const name = userDetails.get("username");
+                                    const caption = postData.get("caption");
+                                    const createdAt = postData.get("createdAt");
+                                    const downloadURL = postData.get("downloadURL");
+                                    const mediaType = postData.get("mediaType");
+                                    const userID = this.state.userId;
+
+                                    mediaDataDataFetched.push({
+                                        key: userPost.id,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        mediaType: mediaType,
+                                        profile: profileImage,
+                                        name: name,
+                                        userID: userID,
+                                    });
+
+                                    if (count === expectedResultsSize) {
+                                        //       console.log("\nSetting Data To Variable")
+                                        this.setState({
+                                            mediaDataDataFetched: mediaDataDataFetched,
+                                            loadMediaData: false
+                                        })
+                                    }
+                                }))
+                                .catch((error) => {
+                                    //        console.log(`${error} \nUnable to get Users following post data!`);
+                                });
+                        })
+                    })
+                    .catch((error) => {
+                        //       console.log(`${error} \nUnable to get Users following posts!`);
+                    })
+            });
+    }
+
+    getProfileInfo = async () => {
+
+        const profileDataFetched = [];
+
+
+        firebase.firestore()
+            .collection('users')
+            .doc(this.state.userId)
+            .get()
+            .then((userInfo) => {
+
+                const bio = userInfo.get("bio");
+                const followers = userInfo.get("followers");
+                const following = userInfo.get("following");
+                const name = userInfo.get("name");
+                const username = userInfo.get("username");
+                const profileimage = userInfo.get("profileimage");
+
+
+                profileDataFetched.push({
+                    key: this.state.userId,
+                    bio: bio,
+                    followers: followers,
+                    following: following,
+                    name: name,
+                    username: username,
+                    profileimage: profileimage,
+                    profile: profileimage,
+                })
+
+                this.setState({
+                    profileDataFetched: profileDataFetched,
+                })
+            })
+
+    }
+
+    render() {
+
+        return (
+            <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+
+                <View>
+                    <PrivateProfileDisplay
+                        userID={this.state.userId}
+                        data={this.state.profileDataFetched}
+                        navigation={this.props.route.params.navigation}
+                    />
+                </View>
+
+
+                {/* mediaData Feed */}
+                {this.state.loadMediaData
+                    ?
+                    <View style={styles.loading}>
+                        <ActivityIndicator size="large" color="red"/>
+                    </View>
+                    :
+
+                    <View style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+                        <View style={feedStyles.screenBackground}>
+                            <View style={{paddingTop: 10, height: 30}}>
+                            </View>
+
+                            <FlatList
+                                data={this.state.mediaDataDataFetched}
+                                numColumns={3}
+                                renderItem={({item}) => (
+
+                                    <SearchScreenObject
+                                        item={item}
+                                        navigation={this.props.route.params.navigation}
+                                        comingFrom={"PrivateProfile"}
+                                    />
+                                )}
+
+                            />
+
+                        </View>
+                    </View>
+                }
+            </ScrollView>
+        );
+
+    }
 }
-}
-
-// const retrieveUserPosts = async() => {
-//   if (user != null) {
-//   await db.collection('posts').doc(user.uid).collection('userPosts').get().then((doc) => {
-//     if( doc.exists ) {
-//       setUserPosts(doc.data());
-//     }
-//   })
-// }
-// }
-
-const fetchPosts = async () => {
-  try {
-    const list = [];
-    await firestore()
-    .collection('posts')
-    .doc(user.uid)
-    .collection('userPosts')
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const {
-          caption,
-          createdAt,
-          downloadURL,
-          mediaType,
-        } = doc.data();
-        list.push({
-          caption,
-          createdAt,
-          downloadURL,
-          mediaType,
-        })
-      })
-    })
-  } catch {
-
-} finally {
-
-}
-
-
-
-
-
-
-
-useEffect(() => {
-  
-  retrieveProfileInfo();
-  retrieveUserPosts();
-  
-});
-
-
-
-// const user = firebase.auth().currentUser;
-// if (user != null) {
-// user.reload;
-// }
-
-
-
-//if (user !== null) {
-//  setupUI(user);
-//}
-
-
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
-      <ScrollView style={StyleSheet.container}>
-        <View   style = {styles.usernameBackButton} >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-        <SimpleLineIcons
-          style={styles.icon}
-          name="arrow-left"
-          size={20}
-          color="white"
-          
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.userNameTop}>{profileDisplay ? profileDisplay.username : ''}</Text>
-          </TouchableOpacity>
-        </View> 
-        <SafeAreaView style={styles.lines}>
-          <View style={styles.textWrapper}>
-          <Image    style={styles.imageStyle}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : 'null'
-          }}
-          />
-            <Text style={styles.createText}>{profileDisplay ? profileDisplay.name : ''}</Text>
-          </View>
-          <View style={styles.textWrapper}>
-            <Text style={styles.createText2}>Followers</Text>
-            <Text style={styles.createText2}>       {profileDisplay ? profileDisplay.followers : '0'}</Text>
-          </View>
-          <View style={styles.textWrapper}>
-            <Text style={styles.createText2}>Following</Text>
-            <Text style={styles.createText2}>     {profileDisplay ? profileDisplay.following : '0'}</Text>
-          </View>
-
-         
-       
-        </SafeAreaView>
-        <View>
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Edit</Text>
-        </TouchableOpacity>
-        </View>
-        <View>
-        <TouchableOpacity style={styles.loginBtn} onPress={() => firebase.auth().signOut()}>
-          <Text style={styles.loginText}>Log out</Text>
-        </TouchableOpacity>
-        </View>
-        <View>
-            <Text style = {styles.bioText}>    {profileDisplay ? profileDisplay.bio : ''}</Text>
-        </View>
-        <View>
-          <Image style = {styles.postImages}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[0] : 'null'
-          }}
-          />
-         
-        </View>
-        <View>
-          <Image style = {styles.postImages}
-          source={{
-            width: 100,
-            height: 200,
-            uri: userPosts ? userPosts.downloadURL[1] : 'null'
-          }}
-          />
-         
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-    
-  );
-        };
-
-
 
 const styles = StyleSheet.create({
-  imageStyle: {
-    height: 50,
-    width: 50,
-    borderRadius: 75,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 20,
-  },
-  createText: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat",
-    fontSize: 18,
-    color: "white",
-    justifyContent: "center",
-    alignContent: "center",
-  },
-  createText2: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat",
-    fontSize: 10,
-    color: "white",
-    justifyContent: "center",
-    alignContent: "center",
-  },
-  textWrapper: {
-    borderWidth: 2,
-    borderColor: "white",
-    borderRadius: 75,
-    padding: 10,
-    backgroundColor: "grey",
-    margin: 10,
-  },
-  lines: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    top: 20,
-  },
-  userNameTop: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat",
-    fontSize: 20,
-    color: "white",
-    justifyContent: "center",
-    alignItems: "flex-start",
-  },
-  loginBtn: {
-      width: '20%',
-      backgroundColor: 'white',
-      borderRadius: 25,
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: 20,
-      marginBottom: 20,
-      left: 20
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    loginText: {
-      color: 'black',
-      fontFamily: 'Montserrat',
-  },
-  bioText: {
-      color: 'white',
-      fontFamily: 'Montserrat',
-      fontSize: 15,
-  },
-  usernameBackButton: {
-    flex: 0,
-    flexDirection: 'row'
-  },
-  postImages: {
-    margin: 20,
-    left: 20,
-   
-  }
-});
-}
+})
 
-export default ProfileView;
+export default PrivateProfile;

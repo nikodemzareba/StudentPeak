@@ -40,7 +40,8 @@ export default function SearchScreenObject(props) {
         <TouchableOpacity style={{flex: 1, flexDirection: 'column', margin: 1}}
                           onPress={() => {
                               const navigation = props.navigation;
-                              props.navigation.navigate("ViewPost", {navigation: navigation, data: props.item})
+                              const comingFrom = props.comingFrom;
+                              props.navigation.navigate("ViewPost", {navigation: navigation, data: props.item, comingFrom: comingFrom})
                           }}
         >
             {props.item.mediaType === "picture"

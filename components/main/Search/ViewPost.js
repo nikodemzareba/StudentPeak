@@ -28,7 +28,16 @@ export default function ViewPost(props) {
             <TouchableOpacity style={{padding: 30}}
                               onPress={() => {
                                   const navigation = props.route.params.navigation;
-                                  props.route.params.navigation.navigate("Search", {navigation: navigation})
+                                  console.log(`\n\nGoing Back to Screen: ${props.route.params.comingFrom}`)
+
+                                  if(props.route.params.comingFrom ==="PrivateProfile")
+                                  {
+                                      props.route.params.navigation.navigate("PrivateProfile", {navigation: navigation})
+                                  }
+                                  else
+                                  {
+                                      props.route.params.navigation.navigate("Search", {navigation: navigation})
+                                  }
                               }}
             >
                 <SimpleLineIcons

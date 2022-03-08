@@ -38,10 +38,10 @@ function Save(props) {
         }
         setUploading(true)
         let downloadURLStill = null
-        let downloadURL = await SaveStorage(props.route.params.source, `post/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
+        let downloadURL = await SaveStorage(props.route.params.source, `posts/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
 
         if (props.route.params.imageSource != null) {
-            downloadURLStill = await SaveStorage(props.route.params.imageSource, `post/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
+            downloadURLStill = await SaveStorage(props.route.params.imageSource, `posts/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
         }
 
         savePostData(downloadURL, downloadURLStill);

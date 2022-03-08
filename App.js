@@ -1,4 +1,3 @@
-// Imports for react native app js. 
 import firebase from 'firebase' // do not move this from first line -- will cause errors.
 require('firebase/firestore');
 import "firebase/auth";
@@ -117,9 +116,9 @@ function App() {
                         {isRegisterComplete ?
 
                             // if user has completed registration and has an account.
-                            <Stack.Group initialRouteName="AboutYou">
+                            <Stack.Group initialRouteName="Main">
 
-                                <Stack.Screen name="AboutYou" component={AboutYou} options={{headerShown: false}}/>
+                                <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
                                 <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="showComment" component={showComment} options={{headerShown: false}}/>

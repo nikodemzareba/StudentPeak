@@ -1,33 +1,118 @@
 import {Button, Dimensions, FlatList, Image, ImageBackground, StyleSheet, StatusBar, Text, TouchableOpacity, View, SafeAreaView} from "react-native";
 import {Feather} from "@expo/vector-icons";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {ScrollView} from "react-native-gesture-handler";
 import firebase from 'firebase/app';
 import "firebase/auth";
+import {connect} from 'react-redux'
 
 const {height, width} = Dimensions.get('window');
 
 
-export default function PrivateProfileDisplay(props) {
+function PrivateProfileDisplay(props) {
 
     const [refresh, setRefresh] = useState(false);
       
-      
+    const [userPosts, setUserPosts] = useState();
+    const[user, setUser] = useState (null);
+     const [following, setFollowing] = useState(false);
+     
+  
+   
+    useEffect(() => {
+      const{currentUser, posts } = props;
+      console.log({currentUser, posts})
+     
+      if(props.userID == firebase.auth().currentUser.uid) {
+        setUser(currentUser);
+  
+      }
+      else {
+  
+        firebase.firestore()
+              .collection("users")
+              .doc(firebase.auth().currentUser.uid)
+              .get()
+              .then((snapshot) => {
+                  if (snapshot.exists) {
+                      setUser(snapshot.data());
+                  }
+                  else {
+                      console.log('does not exist')
+                  }
+              })
+              firebase.firestore()
+              .collection("posts")
+              .doc(firebase.auth().currentUser.uid)
+              .collection("userPosts")
+              .orderBy("creation", "asc")
+              .get()
+              .then((snapshot) =>{
+                      let posts = snapshot.docs.map(doc => {
+                          const data = doc.data();
+                          const id = doc.id;
+                          return{id,...data}
+                      })
+                      setUserPosts(posts)
+  
+              })
+  
+      }
+  
+      if(props.following.indexOf(props.userID) > -1) {
+        setFollowing(true);
+      }
+        else{
+          setFollowing(false);
+        }
+  
+  
+    }, [props.userID, props.following])
+  
+    const onFollow = () => {
+      firebase.firestore()
+      .collection("following")
+      .doc(firebase.auth().currentUser.uid)
+      .collection("userFollowing")
+      .doc(props.userID)
+      .set({});
 
+      const increment = firebase.firestore.FieldValue.increment(1);
+
+      firebase.firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .update({following: increment});
+
+
+      
+    }
+  
+  const onUnFollow = () => {
+    firebase.firestore()
+    .collection("following")
+    .doc(firebase.auth().currentUser.uid)
+    .collection("userFollowing")
+    .doc(props.userID)
+    .delete();
+
+    const decrement = firebase.firestore.FieldValue.increment(-1);
+
+    firebase.firestore()
+    .collection("users")
+    .doc(firebase.auth().currentUser.uid)
+    .update({following: decrement})
+    }
 
     return (
-        <View>
+        <View style={StyleSheet.container}>
         <FlatList
-                showsHorizontalScrollIndicator={false}
                 data={props.data}
-                horizontal
-                contentContainerStyle={{
-                    alignItems: 'center'
-                }}
                 renderItem={({item}) => {
                     return (
-<ScrollView style={StyleSheet.container}>
-                        <><View style={styles.textWrapper}>
+
+                        <>
+                        <View style={styles.textWrapper}>
                         <Image style={styles.imageStyle}
                           source={{
                             width: 100,
@@ -54,19 +139,59 @@ export default function PrivateProfileDisplay(props) {
                         <View>
             <Text style = {styles.bioText}>   {item.bio ? item.bio : 'null'}</Text>
         </View>
-        <View>
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Edit</Text>
-        </TouchableOpacity>
-        </View>
-        <View>
-        <TouchableOpacity style={styles.loginBtn} onPress={() => firebase.auth().signOut()}>
-          <Text style={styles.loginText}>Log out</Text>
-        </TouchableOpacity>
-        </View>
+        {item.key != firebase.auth().currentUser.uid
+                ?
+                <View>
+   <View style={styles.loginBtn}>
+          {following ? (
+            <Button
+            title="Following"
+            
+            onPress={()=> onUnFollow()} 
+
+           />
+          ):
+          (
+            <Button
+            title="Follow"
+            onPress={()=> onFollow()}
+
+           />
+          )}
+          </View>
+
+        
+                </View>
+                :
+
+                <View>
+ 
+                </View>
+                }
+        
+        {item.key === firebase.auth().currentUser.uid
+                ?
+                <View>
+                   <View>
+<TouchableOpacity style={styles.loginBtn}>
+  <Text style={styles.loginText}>Edit</Text>
+</TouchableOpacity>
+</View>
+<View>
+<TouchableOpacity style={styles.loginBtn} onPress={() => firebase.auth().signOut()}>
+  <Text style={styles.loginText}>Log out</Text>
+</TouchableOpacity>
+</View>    
+                </View>
+                :
+
+                <View>
+ 
+                </View>
+                }
                         </SafeAreaView>
                         </>    
-                        </ScrollView>               
+                                      
                     )
                 }}
             />
@@ -138,7 +263,7 @@ const styles = StyleSheet.create({
       alignItems: "flex-start",
     },
     loginBtn: {
-        width: '20%',
+        width: '60%',
         backgroundColor: 'white',
         borderRadius: 25,
         height: 50,
@@ -165,3 +290,11 @@ const styles = StyleSheet.create({
      
     }
   });
+
+  const mapStateToProps = (store) => ({
+    currentUser: store.userState.currentUser,
+    posts: store.userState.postImages,
+    following: store.userState.following
+  })
+
+  export default connect (mapStateToProps, null)(PrivateProfileDisplay);

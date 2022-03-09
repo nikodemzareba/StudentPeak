@@ -49,7 +49,7 @@ class PrivateProfile extends Component {
           
            //  this.getData(this.props);
         this.getProfileInfo(this.props);
-        this.state.mediaDataDataFetched = [];
+       // this.state.mediaDataDataFetched = [];
         
        }
 

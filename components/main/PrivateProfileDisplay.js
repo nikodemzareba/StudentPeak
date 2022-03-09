@@ -84,6 +84,11 @@ function PrivateProfileDisplay(props) {
       .doc(firebase.auth().currentUser.uid)
       .update({following: increment});
 
+      firebase.firestore()
+      .collection("users")
+      .doc(props.userID)
+      .update({followers: increment});
+
 
       
     }
@@ -101,7 +106,13 @@ function PrivateProfileDisplay(props) {
     firebase.firestore()
     .collection("users")
     .doc(firebase.auth().currentUser.uid)
-    .update({following: decrement})
+    .update({following: decrement});
+
+    firebase.firestore()
+      .collection("users")
+      .doc(props.userID)
+      .update({followers: decrement});
+
     }
 
     return (

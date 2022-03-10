@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Search works with Tags&#10;&#10;Need to do:&#10;. fix unhandled promise error&#10;&#10;&#10;In Previous Update:">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/authentication/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/authentication/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +96,8 @@
       <workItem from="1646194789643" duration="493000" />
       <workItem from="1646333787140" duration="672000" />
       <workItem from="1646336490491" duration="348000" />
+      <workItem from="1646401256130" duration="584000" />
+      <workItem from="1646660303943" duration="1224000" />
     </task>
     <task id="LOCAL-00001" summary="changed code to match new post DB structure">
       <created>1645823466307</created>
@@ -330,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646178878227</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
+      <created>1646396198458</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1646396198458</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +356,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update:&#10;Refactoring&#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;.getProfileImage method works&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects" />
     <MESSAGE value="In this Update:&#10;.Trending page gets users following liked posts &#10;&#10;Need to do:&#10;Formatting&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
@@ -374,7 +380,8 @@
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;&#10;&#10;Need to do:&#10;Video thumbnail&#10;&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
+    <MESSAGE value="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

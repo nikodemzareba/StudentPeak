@@ -114,7 +114,7 @@ export class Main extends Component {
                                 ),
                             }}
                 />
-                <Tab.Screen name="PublicProfile" component={PublicProfileScreen}
+                <Tab.Screen name="PublicProfile" component={PublicProfileScreen} initialParams={{navigation: this.props.navigation}}
                             options={() => ({
                                 tabBarButton: () => null,
                                 tabBarVisible: false

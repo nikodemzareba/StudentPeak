@@ -9,7 +9,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUserPosts, sendNotification } from '../../redux/actions/index';
 
-
+// Firebase collection information. 
+// Type "1" = Image
+// Type "0" = Video
 
 require("firebase/firestore")
 require("firebase/firebase-storage")
@@ -22,6 +24,8 @@ function Save(props) {
     const [error, setError] = useState(false)
     const [data, setData] = useState("")
     const [keyword, setKeyword] = useState("")
+ 
+
 
 
     useLayoutEffect(() => {
@@ -30,6 +34,7 @@ function Save(props) {
                 <Feather style={navbar.image} name="check" size={24} color="green" onPress={() => { uploadImage() }} />
             ),
         });
+
     }, [caption]);
 
     const uploadImage = async () => {
@@ -67,22 +72,44 @@ function Save(props) {
     }
     const savePostData = (downloadURL, downloadURLStill) => {
         let object = {
-            downloadURL,
             caption,
-            likesCount: 0,
             commentsCount: 0,
-            type: props.route.params.type,
-            creation: firebase.firestore.FieldValue.serverTimestamp()
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            downloadURL,
+            likesCount: 0,
+            type: props.route.params.type, // media type. 
+            userID: firebase.auth().currentUser.uid,
+            postTags: [],
+        }
+
+        let empty = {
+
         }
         if (downloadURLStill != null) {
             object.downloadURLStill = downloadURLStill
         }
 
+
+        // Generates a unique postID for each post. 
+        const postID = Math.random().toString(36);
+
+        firebase.firestore()
+        .collection('postData')
+        .doc(postID)
+        .set(object).then((result) => {
+            props.fetchUserPosts()
+            props.navigation.popToTop()
+        }).catch((error) => {
+            setUploading(false)
+            setError(true)
+        })
+
         firebase.firestore()
             .collection('posts')
             .doc(firebase.auth().currentUser.uid)
             .collection("userPosts")
-            .add(object).then((result) => {
+            .doc(postID)
+            .set(object).then((result) => {
                 props.fetchUserPosts()
                 props.navigation.popToTop()
             }).catch((error) => {

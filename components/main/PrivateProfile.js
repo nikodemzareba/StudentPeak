@@ -43,6 +43,16 @@ class PrivateProfile extends Component {
         this.getProfileInfo();
     }
 
+    componentDidUpdate() {
+        
+        
+          
+           //  this.getData(this.props);
+        this.getProfileInfo(this.props);
+       // this.state.mediaDataDataFetched = [];
+        
+       }
+
 
     // This method is passed all the userID's of the users this user is following
     getData = async () => {

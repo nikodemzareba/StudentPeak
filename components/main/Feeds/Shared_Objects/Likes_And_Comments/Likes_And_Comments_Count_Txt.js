@@ -129,7 +129,8 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
             }}
         >
-            <Text style={{marginLeft: 10, color: 'white', fontSize: 15, fontWeight: 'bold', paddingRight: 10}}>
+            {/*<Text size={15} style={{ textAlign: "center", width: 200, height: 80, position: 'relative', color:'white'}}>*/}
+            <Text  style={{textAlign: "center", paddingLeft:15,  width: undefined, height: 80, position: 'relative',  color: 'white',  fontSize: 18, fontWeight: 'bold', paddingRight: 10}}>
                 <B>{splitNumberByCommas(props.count)}</B>
             </Text>
         </TouchableOpacity>

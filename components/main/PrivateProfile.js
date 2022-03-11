@@ -15,6 +15,9 @@ import PrivateProfileDisplay from './PrivateProfileDisplay';
 import {feedStyles} from "./Feeds/Shared_Objects/Styles";
 import SearchScreenObject from "./Search/Objects/SearchScreenObject";
 
+import {useWindowDimensions } from 'react-native';
+import { TabView, SceneMap } from 'react-native-tab-view';
+
 
 class PrivateProfile extends Component {
 

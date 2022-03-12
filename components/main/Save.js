@@ -20,6 +20,7 @@ require("firebase/firebase-storage")
 
 function Save(props) {
     const [caption, setCaption] = useState("")
+    //const [postTag, setPostTag] = useState("")
     const [uploading, setUploading] = useState(false)
     const [error, setError] = useState(false)
     const [data, setData] = useState("")
@@ -37,16 +38,20 @@ function Save(props) {
 
     }, [caption]);
 
+    // Generates a unique postID for each post. 
+    const postID = Math.random().toString(36);
+    const postTag = 'football';
+
     const uploadImage = async () => {
         if (uploading) {
             return;
         }
         setUploading(true)
         let downloadURLStill = null
-        let downloadURL = await SaveStorage(props.route.params.source, `posts/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
+        let downloadURL = await SaveStorage(props.route.params.source, `posts/${firebase.auth().currentUser.uid}/${postID}`)
 
         if (props.route.params.imageSource != null) {
-            downloadURLStill = await SaveStorage(props.route.params.imageSource, `posts/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
+            downloadURLStill = await SaveStorage(props.route.params.imageSource, `posts/${firebase.auth().currentUser.uid}/${postID}`)
         }
 
         savePostData(downloadURL, downloadURLStill);
@@ -78,8 +83,7 @@ function Save(props) {
             downloadURL,
             likesCount: 0,
             type: props.route.params.type, // media type. 
-            userID: firebase.auth().currentUser.uid,
-            postTags: [],
+            userID: firebase.auth().currentUser.uid
         }
 
         let empty = {
@@ -88,10 +92,6 @@ function Save(props) {
         if (downloadURLStill != null) {
             object.downloadURLStill = downloadURLStill
         }
-
-
-        // Generates a unique postID for each post. 
-        const postID = Math.random().toString(36);
 
         firebase.firestore()
         .collection('postData')
@@ -110,6 +110,19 @@ function Save(props) {
             .collection("userPosts")
             .doc(postID)
             .set(object).then((result) => {
+                props.fetchUserPosts()
+                props.navigation.popToTop()
+            }).catch((error) => {
+                setUploading(false)
+                setError(true)
+            })
+
+            firebase.firestore()
+            .collection('postTags')
+            .doc('dance') // add a selector in comment section then make this a variable.
+            .collection('posts')
+            .doc(postID)
+            .set(empty).then((result) => {
                 props.fetchUserPosts()
                 props.navigation.popToTop()
             }).catch((error) => {
@@ -225,9 +238,9 @@ function Save(props) {
                             {props.route.params.type ?
 
                                 <Image
-                                    style={container.image}
+                                    style={container.image }
                                     source={{ uri: props.route.params.source }}
-                                    style={{ aspectRatio: 1 / 1, backgroundColor: 'black' }}
+                                    styles={{ aspectRatio: 1 / 1, backgroundColor: 'black' }}
                                 />
 
                                 :

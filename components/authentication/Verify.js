@@ -22,33 +22,33 @@ export class Verify extends Component {
 
   
 
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-      changeEmail: '',
-      changeplaceofstudy: '',
-    }
+  //   this.state = {
+  //     changeEmail: '',
+  //     changeplaceofstudy: '',
+  //   }
 
-    this.onVerify = this.onVerify.bind(this)
-  }
+  //   this.onVerify = this.onVerify.bind(this)
+  // }
 
-  onVerify() {
-    const { changeEmail} = this.state
-        firebase.firestore()
-        .collection('users')
-        .doc(firebase.auth().currentUser.uid)
-        .update({
-          verifyEmail: changeEmail,
-          placeofstudy: changeplaceofstudy,
-        })
-        .then(() => {
-        console.log(`Successfully Verified`);
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-      }   
+  // onVerify() {
+  //   const { changeEmail} = this.state
+  //       firebase.firestore()
+  //       .collection('users')
+  //       .doc(firebase.auth().currentUser.uid)
+  //       .update({
+  //         verifyEmail: changeEmail,
+  //         placeofstudy: changeplaceofstudy,
+  //       })
+  //       .then(() => {
+  //       console.log(`Successfully Verified`);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error)
+  //       })
+  //     }   
     
       
 
@@ -78,9 +78,9 @@ export class Verify extends Component {
       <View style={styles.passView}>
         
          <Picker
-          selectedValue={changeplaceofstudy}
+          //selectedValue={changeplaceofstudy}
           style={{ height:100, width: 260 }}
-          onValueChange={(changeplaceofstudy) => this.setState(changeplaceofstudy)}
+          //onValueChange={(changeplaceofstudy) => this.setState(changeplaceofstudy)}
         >
           <Picker.Item label="University of Kent" value="ukc" />
           <Picker.Item label="Canterbury Christ Church" value="ccu" />

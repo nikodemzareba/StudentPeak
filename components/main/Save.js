@@ -25,6 +25,7 @@ function Save(props) {
     const [error, setError] = useState(false)
     const [data, setData] = useState("")
     const [keyword, setKeyword] = useState("")
+    const [mediaType, setMediaType] = useState("")
  
 
 
@@ -35,6 +36,13 @@ function Save(props) {
                 <Feather style={navbar.image} name="check" size={24} color="green" onPress={() => { uploadImage() }} />
             ),
         });
+
+        const media = props.route.params.type
+        if(media == 1){
+           setMediaType("picture");
+        }else if(media == 0){
+            setMediaType("video");
+        }
 
     }, [caption]);
 
@@ -82,7 +90,7 @@ function Save(props) {
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             downloadURL,
             likesCount: 0,
-            type: props.route.params.type, // media type. 
+            mediaType: mediaType, // media type. 
             userID: firebase.auth().currentUser.uid
         }
 
@@ -109,7 +117,7 @@ function Save(props) {
             .doc(firebase.auth().currentUser.uid)
             .collection("userPosts")
             .doc(postID)
-            .set(object).then((result) => {
+            .set(empty).then((result) => {
                 props.fetchUserPosts()
                 props.navigation.popToTop()
             }).catch((error) => {
@@ -236,13 +244,13 @@ function Save(props) {
                         </View>
                         <View>
                             {props.route.params.type ?
-
+                                
                                 <Image
                                     style={container.image }
                                     source={{ uri: props.route.params.source }}
                                     styles={{ aspectRatio: 1 / 1, backgroundColor: 'black' }}
                                 />
-
+                           
                                 :
 
                                 <Video

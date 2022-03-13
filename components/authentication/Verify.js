@@ -20,22 +20,27 @@ import 'firebase/firestore'
 
 export class Verify extends Component {
 
+  
+
   constructor(props) {
     super(props)
 
     this.state = {
-      verifyEmail: '',
+      changeEmail: '',
+      changeplaceofstudy: '',
     }
 
     this.onVerify = this.onVerify.bind(this)
   }
 
   onVerify() {
-    const { verifyEmail} = this.state
+    const { changeEmail} = this.state
         firebase.firestore()
-        .collection("users")
-        .set({
-          verifyEmail,
+        .collection('users')
+        .doc(firebase.auth().currentUser.uid)
+        .update({
+          verifyEmail: changeEmail,
+          placeofstudy: changeplaceofstudy,
         })
         .then(() => {
         console.log(`Successfully Verified`);
@@ -43,25 +48,13 @@ export class Verify extends Component {
         .catch((error) => {
           console.log(error)
         })
-      }
+      }   
     
       
-  
-    
-
 
   render(){
-    const { navigation } = this.props;
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <SimpleLineIcons
-          style={styles.icon}
-          name="arrow-left"
-          size={20}
-          color="white"
-        />
-      </TouchableOpacity>
       <View>
         <Text style={styles.logo}>StudentPeak</Text>
       </View>
@@ -76,7 +69,7 @@ export class Verify extends Component {
           style={styles.inputText}
           placeholder="Email address*"
           placeholderTextColor="black"
-          onChangeText={(verifyEmail) => this.setState({ verifyEmail })}
+          onChangeText={(changeEmail) => this.setState({ changeEmail })}
         />
       </View>
       <View>
@@ -84,14 +77,14 @@ export class Verify extends Component {
       </View>
       <View style={styles.passView}>
         
-        {/* <Picker
-          selectedValue={selectedValue}
+         <Picker
+          selectedValue={changeplaceofstudy}
           style={{ height:100, width: 260 }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+          onValueChange={(changeplaceofstudy) => this.setState(changeplaceofstudy)}
         >
           <Picker.Item label="University of Kent" value="ukc" />
           <Picker.Item label="Canterbury Christ Church" value="ccu" />
-        </Picker> */}
+        </Picker> 
       </View>
 
       <TouchableOpacity style={styles.loginBtn} onPress={this.onVerify}>

@@ -116,9 +116,9 @@ function App() {
                         {isRegisterComplete ?
 
                             // if user has completed registration and has an account.
-                            <Stack.Group initialRouteName="Main">
+                            <Stack.Group initialRouteName="Verify">
 
-                                <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
+                                <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
                                 <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="showComment" component={showComment} options={{headerShown: false}}/>

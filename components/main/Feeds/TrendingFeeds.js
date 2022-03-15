@@ -281,51 +281,53 @@ class TrendingFeeds extends Component {
                 .doc(postData.get("userID"))
                 .get()
                 .then(userDetails => {
-                    const profileImage = userDetails.get("profileimage");
-                    const username = userDetails.get("username");
-                    const userID = postData.get("userID");
 
-                    const caption = postData.get("caption");
-                    const createdAt = postData.get("createdAt");
-                    const downloadURL = postData.get("downloadURL");
-                    const mediaType = postData.get("mediaType");
+                    if(userDetails.exists) {
+                        const profileImage = userDetails.get("profileimage");
+                        const username = userDetails.get("username");
+                        const userID = postData.get("userID");
 
-                    if (type === "picture") {
-                        this.setState({
-                            trendingFeed_PicturesReceived: this.state.trendingFeed_PicturesReceived + 1
-                        });
+                        const caption = postData.get("caption");
+                        const createdAt = postData.get("createdAt");
+                        const downloadURL = postData.get("downloadURL");
+                        const mediaType = postData.get("mediaType");
 
-                        picturesDataFetched.push({
-                            key: postData.id,
-                            userID: userID,
-                            name: username,
-                            profile: profileImage,
-                            caption: caption,
-                            createdAt: createdAt,
-                            downloadURL: downloadURL,
-                            mediaType: mediaType,
+                        if (type === "picture") {
+                            this.setState({
+                                trendingFeed_PicturesReceived: this.state.trendingFeed_PicturesReceived + 1
+                            });
 
-                        });
-                    } else if (type === "video") {
-                        this.setState({
-                            trendingFeed_VideosReceived: this.state.trendingFeed_VideosReceived + 1
-                        });
+                            picturesDataFetched.push({
+                                key: postData.id,
+                                userID: userID,
+                                name: username,
+                                profile: profileImage,
+                                caption: caption,
+                                createdAt: createdAt,
+                                downloadURL: downloadURL,
+                                mediaType: mediaType,
 
-                        videosDataFetched.push({
-                            key: postData.id,
-                            userID: userID,
-                            name: username,
-                            profile: profileImage,
-                            caption: caption,
-                            createdAt: createdAt,
-                            downloadURL: downloadURL,
-                            mediaType: mediaType,
-                        });
+                            });
+                        } else if (type === "video") {
+                            this.setState({
+                                trendingFeed_VideosReceived: this.state.trendingFeed_VideosReceived + 1
+                            });
+
+                            videosDataFetched.push({
+                                key: postData.id,
+                                userID: userID,
+                                name: username,
+                                profile: profileImage,
+                                caption: caption,
+                                createdAt: createdAt,
+                                downloadURL: downloadURL,
+                                mediaType: mediaType,
+                            });
+                        }
+
+                        console.log(`\ngetPopularPicturePosts() UserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+
                     }
-
-                    console.log(`\ngetPopularPicturePosts() UserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
-
-
                     if (receivedPosts === querySize) {
                         console.log("\nSetting Data To Variable")
 

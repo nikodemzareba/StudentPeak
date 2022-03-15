@@ -183,53 +183,57 @@ class FeedScreen extends Component {
                                     .get()
                                     .then((postData => {
 
-                                        const profileImage = userDetails.get("profileimage");
-                                        const username = userDetails.get("username");
-                                        const userID = userFollowing.id;
+                                        if(userDetails.exists)
+                                        {
+                                            const profileImage = userDetails.get("profileimage");
+                                            const username = userDetails.get("username");
+                                            const userID = userFollowing.id;
 
-                                        const caption = postData.get("caption");
-                                        const createdAt = postData.get("createdAt");
-                                        const downloadURL = postData.get("downloadURL");
-                                        const mediaType = postData.get("mediaType");
+                                            const caption = postData.get("caption");
+                                            const createdAt = postData.get("createdAt");
+                                            const downloadURL = postData.get("downloadURL");
+                                            const mediaType = postData.get("mediaType");
 
-                                        if (mediaType === "video") {
+                                            if (mediaType === "video") {
 
-                                            this.setState({
-                                                videosReceived: this.state.videosReceived + 1
-                                            });
+                                                this.setState({
+                                                    videosReceived: this.state.videosReceived + 1
+                                                });
 
-                                            videosDataFetched.push({
-                                                key: userPost.id,
-                                                userID: userID,
-                                                name: username,
-                                                profile: profileImage,
-                                                caption: caption,
-                                                createdAt: createdAt,
-                                                downloadURL: downloadURL,
-                                                mediaType: mediaType,
-                                                 // Needs be retrieved inside the comment method
-                                            });
-                                        } else if (mediaType === "picture") {
+                                                videosDataFetched.push({
+                                                    key: userPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
+                                                    // Needs be retrieved inside the comment method
+                                                });
+                                            } else if (mediaType === "picture") {
 
-                                            this.setState({
-                                                picturesReceived: this.state.picturesReceived + 1
-                                            });
+                                                this.setState({
+                                                    picturesReceived: this.state.picturesReceived + 1
+                                                });
 
-                                            picturesDataFetched.push({
-                                                key: userPost.id,
-                                                userID: userID,
-                                                name: username,
-                                                profile: profileImage,
-                                                caption: caption,
-                                                createdAt: createdAt,
-                                                downloadURL: downloadURL,
-                                                mediaType: mediaType,
+                                                picturesDataFetched.push({
+                                                    key: userPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
 
-                                            });
+                                                });
+                                            }
+
+                                            console.log(`\nFeedScreen \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                            console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+
                                         }
-
-                                        console.log(`\nFeedScreen \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
-                                        console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                         if (processedFollowingUsers === expectedFollowingUsersCount && expectedResults === countProcessed) {
 

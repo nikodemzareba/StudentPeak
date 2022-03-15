@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Removed Un-necessary comments console.log msgs&#10;&#10;.Added Comments&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects/Profile_Image_Icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/Functions/getCommentByUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/Functions/getCommentByUsers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/UsersLikedPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/UsersLikedPost.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects/ProfileIcon_And_Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects/ProfileIcon_And_Username.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects/Profile_Icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects/Profile_Icon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects/Username_Link_Txt.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects/Username_Link_Txt.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +65,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../gp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Profile_Objects" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects" />
       <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Trending_Feed" />
@@ -377,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647308277825</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="In this Update:&#10;.Removed Un-necessary comments console.log msgs&#10;&#10;.Added Comments&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens">
+      <created>1647310411456</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1647310411456</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +409,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.GUi up &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Trending Topic Number object shape now increases with text size&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
@@ -421,7 +433,8 @@
     <MESSAGE value="In this Update:&#10;Fix Likes and comments TXT not appearing onn IOS&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
     <MESSAGE value="In this Update:&#10;Commit&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
     <MESSAGE value="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
+    <MESSAGE value="In this Update:&#10;.Removed Un-necessary comments console.log msgs&#10;&#10;.Added Comments&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Removed Un-necessary comments console.log msgs&#10;&#10;.Added Comments&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -444,6 +457,18 @@
           <url>file://$PROJECT_DIR$/components/main/Save.js</url>
           <line>18</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/Functions/getCommentByUsers.js</url>
+          <line>11</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js</url>
+          <line>31</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

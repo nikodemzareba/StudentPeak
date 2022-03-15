@@ -52,6 +52,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
                         .doc(user.id)
                         .get()
                         .then(userDetails => {
+
                             firebase.firestore()
                                 .collection('following')
                                 .doc(props.userID)
@@ -60,19 +61,30 @@ export default function Likes_And_Comments_Count_Txt(props) {
                                 .get()
                                 .then(followingUser => {
 
-                                    let following = false;
-                                    if (followingUser.exists) {
-                                        following = true;
+                                    let  userID = userDetails.id, userExists=false, username ="Deleted User", profileImage="", following = false;
+
+                                    if(userDetails.exists)
+                                    {
+                                        if (followingUser.exists) {
+                                            following = true;
+                                        }
+
+                                        username = userDetails.get("username");
+                                        profileImage = userDetails.get("profileimage");
+                                        userExists = true;
+
+                                        console.log(`\n\nLikes_And_Comments_Count_Txt() \nuserID: ${props.userID} does exist`)
                                     }
-                                    const userID = userDetails.id;
-                                    const username = userDetails.get("username");
-                                    const profileImage = userDetails.get("profileimage");
+                                    else {
+                                        console.log(`\n\nLikes_And_Comments_Count_Txt() \nuserID: ${props.userID} doesnt exist`)
+                                    }
 
                                     postLikeData.push({
                                         key: userID,
                                         username: username,
                                         following: following,
                                         profileImage: profileImage,
+                                        userExists: userExists,
 
                                     });
 

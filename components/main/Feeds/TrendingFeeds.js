@@ -185,9 +185,6 @@ class TrendingFeeds extends Component {
                                         const downloadURL = postData.get("downloadURL");
                                         const mediaType = postData.get("mediaType");
 
-                                        const commentsCount = postData.get("commentsCount");
-
-
                                         if (mediaType === "video") {
 
                                             if( ! this.isKeyInList(likedPost.id, friendsVideoDataFetched))
@@ -206,7 +203,7 @@ class TrendingFeeds extends Component {
                                                     downloadURL: downloadURL,
                                                     mediaType: mediaType,
 
-                                                    commentsCount: commentsCount,    // Needs be retrieved inside the comment method
+
                                                 });
                                             }
 
@@ -228,12 +225,11 @@ class TrendingFeeds extends Component {
                                                     downloadURL: downloadURL,
                                                     mediaType: mediaType,
 
-                                                    commentsCount: commentsCount, // Needs be retrieved inside the comment method
                                                 });
                                             }
                                         }
 
-                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                         console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                         if (processedFollowingUsers === expectedFollowingUsersCount) {
@@ -294,8 +290,6 @@ class TrendingFeeds extends Component {
                     const downloadURL = postData.get("downloadURL");
                     const mediaType = postData.get("mediaType");
 
-                    const commentsCount = postData.get("commentsCount");
-
                     if (type === "picture") {
                         this.setState({
                             trendingFeed_PicturesReceived: this.state.trendingFeed_PicturesReceived + 1
@@ -311,7 +305,6 @@ class TrendingFeeds extends Component {
                             downloadURL: downloadURL,
                             mediaType: mediaType,
 
-                            commentsCount: commentsCount, // Needs be retrieved inside the comment method
                         });
                     } else if (type === "video") {
                         this.setState({
@@ -327,12 +320,10 @@ class TrendingFeeds extends Component {
                             createdAt: createdAt,
                             downloadURL: downloadURL,
                             mediaType: mediaType,
-
-                            commentsCount: commentsCount, // Needs be retrieved inside the comment method
                         });
                     }
 
-                    console.log(`\ngetPopularPicturePosts() UserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                    console.log(`\ngetPopularPicturePosts() UserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
 
 
                     if (receivedPosts === querySize) {

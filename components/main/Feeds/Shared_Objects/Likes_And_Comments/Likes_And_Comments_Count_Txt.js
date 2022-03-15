@@ -108,7 +108,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
             })
             .catch((exception) => {
                 alert(`\nError getting users who liked this post\n\n${exception}`);
-                console.log(`\n\nError getting users who liked this post ${props.postID}`);
+                console.log(`\n\nError getting users who liked this post  ${props.postID}`);
             })
     }
     return (

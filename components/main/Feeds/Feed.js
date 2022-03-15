@@ -192,8 +192,6 @@ class FeedScreen extends Component {
                                         const downloadURL = postData.get("downloadURL");
                                         const mediaType = postData.get("mediaType");
 
-                                        const commentsCount = postData.get("commentsCount");
-
                                         if (mediaType === "video") {
 
                                             this.setState({
@@ -209,8 +207,7 @@ class FeedScreen extends Component {
                                                 createdAt: createdAt,
                                                 downloadURL: downloadURL,
                                                 mediaType: mediaType,
-
-                                                commentsCount: commentsCount,    // Needs be retrieved inside the comment method
+                                                 // Needs be retrieved inside the comment method
                                             });
                                         } else if (mediaType === "picture") {
 
@@ -228,11 +225,10 @@ class FeedScreen extends Component {
                                                 downloadURL: downloadURL,
                                                 mediaType: mediaType,
 
-                                                commentsCount: commentsCount, // Needs be retrieved inside the comment method
                                             });
                                         }
 
-                                        console.log(`\nFeedScreen \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
+                                        console.log(`\nFeedScreen \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                         console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                         if (processedFollowingUsers === expectedFollowingUsersCount && expectedResults === countProcessed) {

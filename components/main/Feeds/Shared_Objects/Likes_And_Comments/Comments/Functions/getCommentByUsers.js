@@ -10,8 +10,8 @@ export const getCommentByUsers = (postID, navigation) => {
         //sort comments out by latest entries to the collection
         // .orderBy('createdAt', 'asc')
         .get()
-        .then(doc => {
-            const resultsCount = doc.size;
+        .then(commentsCollection => {
+            const resultsCount = commentsCollection.size;
             // console.log("\n\n Document has is \n\n" + resultsCount);
             let count = 0;
 
@@ -21,12 +21,12 @@ export const getCommentByUsers = (postID, navigation) => {
                 return
             }
 
-            doc.forEach((commentGot) => {
+            commentsCollection.forEach((commentDoc) => {
                 count++;
                 //get the comment made by the user
-                const userComment = commentGot.get('comment');
-                const userId = commentGot.get('userId')
-                const createdAt = commentGot.get('createdAt')
+                const userComment = commentDoc.get('comment');
+                const userId = commentDoc.get('userId')
+                const createdAt = commentDoc.get('createdAt')
                 // console.log("got user id from data  " + userId + " comm is  " + userComment + "   createdAT" + createdAt )
                 //next step will be to go get the comment User Details
                 firebase.firestore()
@@ -34,18 +34,30 @@ export const getCommentByUsers = (postID, navigation) => {
                     .doc(userId)
                     .get()
                     .then(userDetails => {
-                        const username = userDetails.get("username");
-                        const profileImage = userDetails.get("profileimage");
-                        const userID = firebase.auth().currentUser.uid
+
+                        let  userPostedID = commentDoc.id, userExists=false, username ="Deleted User", profileImage="";
+                        if(userDetails.exists)
+                        {
+                            username = userDetails.get("username");
+                            profileImage = userDetails.get("profileimage");
+                            userExists = true;
+
+                            console.log(`\n\ngetCommentByUsers() \nuserID: ${userPostedID} does exist`)
+                        }
+                        else {
+                            console.log(`\n\ngetCommentByUsers() \nuserID: ${userPostedID} doesnt exist`)
+                        }
+
                         //saving all information into array
                         commentInfo.push({
-                            key: commentGot.id,
+                            key: userPostedID,
                             username: username,
-                            userID: userID,
+                            userID: firebase.auth().currentUser.uid,
                             profileImage: profileImage,
                             comment: userComment,
                             createdAt: createdAt,
-                            postID: postID
+                            postID: postID,
+                            userExists: userExists
 
                         })
                         // console.log("All details captured here  " +  JSON.stringify(commentInfo));

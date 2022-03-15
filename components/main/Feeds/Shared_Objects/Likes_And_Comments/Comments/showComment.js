@@ -125,8 +125,7 @@ export default function showComment(props) {
                     })
             }
 
-        }
-        catch (e) {
+        } catch (e) {
             // This will be a "population is too big" error.
             console.log(`\n\nshowComment() Error \n${e}`);
         }
@@ -142,8 +141,15 @@ export default function showComment(props) {
                 renderItem={({item}) => {
                     return (
                         <View style={feedStyles.showCommentContainer}>
-                            <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
-                                          profileImage={item.profileImage} navigation={navigation}/>
+                            <Profile_Icon
+                                userID={item.userID}
+                                width={50}
+                                height={50}
+                                borderRadius={50}
+                                profileImage={item.profileImage}
+                                navigation={navigation}
+                                userExists={item.userExists}
+                            />
                             <View style={feedStyles.containerText}>
                                 <Text style={feedStyles.displayName}>{item.username}</Text>
                                 <Text style={{

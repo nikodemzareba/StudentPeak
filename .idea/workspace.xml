@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Commit&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/Functions/getCommentByUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/Functions/getCommentByUsers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -374,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647306869256</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
+      <created>1647308277825</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1647308277825</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,7 +396,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.GUi up &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
@@ -418,7 +420,8 @@
     <MESSAGE value="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
     <MESSAGE value="In this Update:&#10;Fix Likes and comments TXT not appearing onn IOS&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
     <MESSAGE value="In this Update:&#10;Commit&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Commit&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
+    <MESSAGE value="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

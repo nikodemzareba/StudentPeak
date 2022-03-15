@@ -118,12 +118,12 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
                 // props.navigation.navigate("PublicProfile", {uid: props.userID})
                 if (props.use === "like") {
-                    console.log(`\n\nLikes BTN Function Requested`)
+                    console.log(`\n\nLikes_And_Comments_Count_Txt() Likes BTN Function Requested`)
 
                     getPostLikeData();
 
                 } else if (props.use === "comment") {
-                    console.log(`\n\nGo to Likes Comments Page`)
+                    console.log(`\n\nLikes_And_Comments_Count_Txt() Go to Likes Comments Page`)
                     getCommentByUsers(props.postID, props.navigation)
                 }
 

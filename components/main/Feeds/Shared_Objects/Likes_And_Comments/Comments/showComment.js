@@ -9,18 +9,17 @@ import ProfileIcon_And_Username from "../../Profile_Objects/ProfileIcon_And_User
 
 
 export default function showComment(props) {
-    console.log('we are in the ShowComments');
-    console.log(`\n\n ${props.route.params.commentInfo}\n` + 'data in array is \n' + JSON.stringify(props.route.params.commentInfo))
+    console.log(`\n\nshowComment() we are in the ShowComments for postID ${props.route.params.postID}`);
 
     const userMakingPost = firebase.auth().currentUser.uid;
 
     const navigation = props.route.params.navigation;
 
     //let postID = ${props.params.route.postID};
-    console.log('\ntest  \n' + props.route.params.postID);
+    // console.log('\ntest  \n' + props.route.params.postID);
 
     const [comment, setComment] = useState("");
-    const[refresh, setRefresh] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
 
     const commentInfoData = props.route.params.commentInfo;
@@ -87,10 +86,9 @@ export default function showComment(props) {
                 return id;
 
             })
-            console.log(result);
-            if(result !== undefined)
-            {
-                console.log('\nresult to be shown here \n' + result)
+            // console.log(result);
+            if (result !== undefined) {
+                // console.log('\nresult to be shown here \n' + result)
                 firebase.firestore()
                     .collection('postData')
                     .doc(props.route.params.postID)
@@ -121,16 +119,16 @@ export default function showComment(props) {
                                 setRefresh(!refresh)
                             })
                             .catch((exception) => {
-                                alert(`\nUnable to pull user information \n\n${exception}`);
-                                console.log(`\nUnable to pull user information\n\n${exception}`);
+                                alert(`\n\nshowComment() Unable to pull user information \n\n${exception}`);
+                                console.log(`\n\nshowComment() Unable to pull user information\n\n${exception}`);
                             })
-
                     })
             }
 
-        }catch (e) {
+        }
+        catch (e) {
             // This will be a "population is too big" error.
-            console.error(e);
+            console.log(`\n\nshowComment() Error \n${e}`);
         }
     }
 

@@ -48,9 +48,6 @@ function Match() {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.logo}>StudentPeak</Text>
-      </View>
-      <View>
         <Text style={styles.createText}>Student Match</Text>
       </View>
       <View>

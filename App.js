@@ -43,6 +43,7 @@ import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
 import Chat from './components/main/ChatList'
 import showComment from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment";
+import match from './components/main/match';
 
 const Stack = createStackNavigator();
 
@@ -123,6 +124,7 @@ function App() {
                                 <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
                                 <Stack.Screen name="AboutYou" component={AboutYou} options={{headerShown: false}}/>
                                 <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
+                                <Stack.Screen name="Match" component={match} options={{headerShown: true}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="showComment" component={showComment} options={{headerShown: false}}/>
                                 <Stack.Screen name="UsersLikedPost" component={UsersLikedPost} options={{headerShown: false}}/>

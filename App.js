@@ -9,10 +9,12 @@ import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import {connect} from 'react-redux'
 
+
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
+
 
 // All of the screens imported.
 import Welcome from './components/authentication/Welcome'
@@ -116,9 +118,10 @@ function App() {
                         {isRegisterComplete ?
 
                             // if user has completed registration and has an account.
-                            <Stack.Group initialRouteName="Verify">
+                            <Stack.Group initialRouteName="Main">
 
-                                <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
+                                <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
+                                <Stack.Screen name="AboutYou" component={AboutYou} options={{headerShown: false}}/>
                                 <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="showComment" component={showComment} options={{headerShown: false}}/>

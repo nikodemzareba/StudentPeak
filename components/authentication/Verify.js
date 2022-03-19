@@ -11,19 +11,14 @@ import {
   Picker,
 } from 'react-native'
 
-import { SimpleLineIcons } from '@expo/vector-icons'
-
-
-
-
 
 require("firebase/firestore")
 require("firebase/firebase-storage")
 
 
 
-function Verify(props) {
-
+function Verify() {
+  const navigation = useNavigation()
   const [universityEmail, setUniversityEmail] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -42,6 +37,7 @@ function Verify(props) {
           placeofstudy: selectedValue,
         })
         .then(() => {
+        navigation.navigate('AboutYou');
         console.log(`Successfully Verified`);
         })
         .catch((error) => {

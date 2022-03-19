@@ -145,7 +145,7 @@ export class Register extends Component {
                             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                         })
                         .then(() => {
-                            navigation.navigate('Vefify')
+                            navigation.navigate('Verify')
                             console.log(`Successfully added user`)
                         })
                         .catch((error) => {

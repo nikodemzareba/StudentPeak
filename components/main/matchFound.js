@@ -17,28 +17,14 @@ require("firebase/firebase-storage")
 
 
 
-function Match() {
+function MatchFound() {
   const navigation = useNavigation()
-  const [selectedValue, setSelectedValue] = useState("");
 
 
-  const onMatch = () => {
+
+  const onMatchFound = () => {
     
-        firebase.firestore()
-        .collection('matching')
-        .doc('categories')
-        .collection(selectedValue)
-        .doc(firebase.auth().currentUser.uid)
-        .set({
-          userID: firebase.auth().currentUser.uid,
-        })
-        .then(() => {
-        navigation.navigate('MatchFound');
-        console.log(`Successfully Matched Profiles`);
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+        
       };
     
       
@@ -54,17 +40,9 @@ function Match() {
       </View>
       
       
-      <Picker
-        selectedValue={selectedValue}
-        style={{ height: 80, width: 300, marginBottom: 100 }}
-        onValueChange={(itemValue) => setSelectedValue(itemValue)}
-        itemStyle={{ backgroundColor: "black", color: "white", fontFamily:"Montseratt", fontSize:20 }}
-      >
-        <Picker.Item label="Accommodation" value="Accommodation" />
-        <Picker.Item label="Random" value="Random" />
-      </Picker>
       
-      <TouchableOpacity style={styles.loginBtn} onPress={onMatch}>
+      
+      <TouchableOpacity style={styles.loginBtn} onPress={onMatchFound}>
         <Text style={styles.loginText}>Begin</Text>
       </TouchableOpacity>
     </View>
@@ -191,4 +169,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Match;
+export default MatchFound;

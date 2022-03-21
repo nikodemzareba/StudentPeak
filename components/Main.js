@@ -11,8 +11,8 @@ import EventScreen from "./main/Events_Screen/Events"
 import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
 import Match from "./main/match";
-import Chat from "./main/Chat";
 import TrendingFeeds from "./main/Feeds/TrendingFeeds";
+import ChatList from "./main/Chat/ChatList"
 
 
 import {connect} from 'react-redux'
@@ -24,6 +24,7 @@ const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
 
 import {LogBox} from 'react-native';
+import StackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -120,7 +121,7 @@ export class Main extends Component {
                                 tabBarVisible: false
                             })}
                 />
-                <Tab.Screen name="Chat" component={Chat}
+                <Tab.Screen name="Chat" component={ChatList}
                             options={() => ({
                                 tabBarButton: () => null,
                                 tabBarVisible: false

@@ -1,6 +1,7 @@
 import firebase from 'firebase' // do not move this from first line -- will cause errors.
 require('firebase/firestore');
 import "firebase/auth";
+import {getAuth} from "firebase/auth"
 import React, {useEffect, Component, useState} from 'react' // imports React Native Library
 
 import {Provider} from 'react-redux'
@@ -9,12 +10,10 @@ import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import {connect} from 'react-redux'
 
-
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
-
 
 // All of the screens imported.
 import Welcome from './components/authentication/Welcome'
@@ -38,12 +37,13 @@ import ViewPost from "./components/main/Search/ViewPost";
 import Trending_Pictures_And_Videos_Feed from "./components/main/Feeds/Trending_Feed/Trending_Pictures_And_Videos_Feed";
 
 
-
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
-import Chat from './components/main/ChatList'
+import Chat from './components/main/Chat/ChatList'
 import showComment from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment";
+import Contacts from "./components/main/Chat/Contacts";
+import ChatHeader from "./components/main/Chat/ChatHeader";
 import match from './components/main/match';
 import matchFound from './components/main/matchFound';
 
@@ -136,7 +136,8 @@ function App() {
                                 <Stack.Screen name="SearchScreenResults" component={SearchScreenResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="ViewPost" component={ViewPost} options={{headerShown: false}}/>
                                 <Stack.Screen name="Trending_Pictures_Videos_Feed" component={Trending_Pictures_And_Videos_Feed} options={{headerShown: false}}/>
-
+                                <Stack.Screen name = "contacts" component = {Contacts}/>
+                                <Stack.Screen name="ChatWindow" component = {Chat} options={{headerTitle: (props) => <ChatHeader {...props} /> }}/>
                             </Stack.Group>
 
                             :

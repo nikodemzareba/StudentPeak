@@ -167,7 +167,7 @@ function Save(props) {
                 <View style={styles.suggestionsRowContainer}>
                     <View style={styles.userIconBox}>
                         <Image
-                            style={{ aspectRatio: 1 / 1, height: 45 }}
+                            style={{ aspectRatio: 1, height: 45 }}
                             source={{
                                 uri: item.image
                             }}
@@ -248,7 +248,7 @@ function Save(props) {
                                 <Image
                                     style={container.image }
                                     source={{ uri: props.route.params.source }}
-                                    styles={{ aspectRatio: 1 / 1, backgroundColor: 'black' }}
+                                    styles={{ aspectRatio: 1, backgroundColor: 'black' }}
                                 />
                            
                                 :
@@ -259,7 +259,7 @@ function Save(props) {
                                     isLooping={true}
                                     resizeMode="cover"
 
-                                    style={{ aspectRatio: 1 / 1, backgroundColor: 'black' }}
+                                    style={{ aspectRatio: 1, backgroundColor: 'black' }}
                                 />
                             }
                         </View>
@@ -498,14 +498,14 @@ const container = StyleSheet.create({
 
     },
     image: {
-        aspectRatio: 1 / 1,
+        aspectRatio: 1,
     },
     fillHorizontal: {
         flexGrow: 1,
         paddingBottom: 0
     },
     imageSmall: {
-        aspectRatio: 1 / 1,
+        aspectRatio: 1,
         height: 70
     },
     gallery: {

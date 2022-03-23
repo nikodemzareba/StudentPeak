@@ -77,20 +77,8 @@ function Save(props) {
 
 
                     });
-                
-                try {
-                    
-                }
-                catch (e) {
-                    console.log(`\n\nSave uploadImage() - ERROR \n${e}`)
-                }
-
 
             })
-            // console.log(result);
-            if (result !== undefined) {
-
-            }
 
         } catch (e) {
             // This will be a "population is too big" error.

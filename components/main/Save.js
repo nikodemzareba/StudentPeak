@@ -135,7 +135,7 @@ function Save(props) {
 
                         t.set(postsRef.doc(postID), {})
 
-                        const mediaType = props.route.params.type === 0? "video" : "picture";
+                        const mediaType = props.route.params.type === 0 ? "video" : "picture";
 
                         t.set(postDataRef.doc(postID), {
                             caption: caption,
@@ -160,22 +160,25 @@ function Save(props) {
                             if (tag.inDB) // if tag already exists update count
                             {
                                 await t.update(postTagsDocRef(tag.key), "numberOfPosts", firebase.firestore.FieldValue.increment(1))
-                            }
-                            else // if tag doesnt exist create count
+                            } else // if tag doesnt exist create count
                             {
-                               await t.set(postTagsDocRef(tag.key), {numberOfPosts: 1});
+                                await t.set(postTagsDocRef(tag.key), {numberOfPosts: 1});
                             }
 
-                           await t.set(postTagsDocPostsRef(tag.key, postID), {})
+                            await t.set(postTagsDocPostsRef(tag.key, postID), {})
 
                             if (noOfTags === pos) {
-                                console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
+                                console.log(`\n\nSave uploadImage() 1  Successfully uploaded to all paths in DB!`);
+
                                 setUploading(false);
+                                props.navigation.navigate("Add")
                             }
                         }
                         if (noOfTags === 0) {
-                            console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
+                            console.log(`\n\nSave uploadImage() 2 Successfully uploaded to all paths in DB!`);
+
                             setUploading(false);
+                            props.navigation.navigate("Add")
                         }
                     });
             })
@@ -183,9 +186,10 @@ function Save(props) {
         } catch (e) {
             // This will be a "population is too big" error.
             console.log(`\n\nSave uploadImage() Error  \n${e}`);
+
+            alert("Error Uploading Media File!!")
             setUploading(false);
         }
-
     }
 
 

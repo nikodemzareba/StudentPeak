@@ -78,7 +78,9 @@ export default function VideoScreen(props) {
                     const data = await videoRecordPromise;
                     const source = data.uri;
                     let imageSource = await generateThumbnail(source)
-                    props.navigation.navigate('Save', { source, imageSource, type })
+                    const navigation = props.navigation;
+
+                    props.navigation.navigate('Save', { source, imageSource, type,navigation })
 
                 }
             } catch (error) {

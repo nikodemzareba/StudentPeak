@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
+    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/PrivateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/PrivateProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/PublicProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/PublicProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Search/Objects/SearchScreenObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search/Objects/SearchScreenObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Save.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,13 +108,6 @@
       <workItem from="1646660303943" duration="1224000" />
       <workItem from="1646932748449" duration="4437000" />
       <workItem from="1646964762312" duration="2923000" />
-    </task>
-    <task id="LOCAL-00002" summary="In this Update:&#10;Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;&#10;In Previous Update:&#10;changed code to match new post DB structure">
-      <created>1645848181746</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1645848181746</updated>
     </task>
     <task id="LOCAL-00003" summary="In this Update:&#10;.Changed LikeBTN  to a transaction update &#10;&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.Included Batched Update&#10;.Changed like button functionality due to an error on old data in the flatlist being rendered once the user switched tabs from pictures to videos tab.&#10;&#10;.Changed code to match new post DB structure">
       <created>1645855094651</created>
@@ -455,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648059771072</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
+      <created>1648060567849</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1648060567850</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +483,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update:&#10;trending page works for pictures &#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;trending page works for pictures  &amp; Videos&#10;&#10;Need to do:&#10;.avoid adding the same post liked by multiple users&#10;&#10;In Previous Update:&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.avoid adding the same post liked by multiple users&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
     <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
@@ -511,7 +507,8 @@
     <MESSAGE value="In this Update:&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;&#10;Need to do:&#10;.upload to postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;.Save Uploads to storage" />
     <MESSAGE value="In this Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;&#10;Need to do:&#10;.upload to postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
     <MESSAGE value="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
+    <MESSAGE value="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
+    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

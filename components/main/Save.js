@@ -23,15 +23,19 @@ function Save(props) {
     const [mediaType, setMediaType] = useState("")
     const [uploading, setUploading] = useState(false)
 
-    const currentUser = firebase.auth().currentUser.uid;
+     const currentUser = "0000L5JMpPp7LKbPhZoJbcdp"
+        // firebase.auth().currentUser.uid
+    ;
+    const [postTags, setPostTags] = useState(["dance"])
 
-    const postStorageRef = (postID) => `posts/${currentUser}/0A${postID}`;
+    const postStorageRef = (postID) => `posts/${currentUser}/0AAAA${postID}`;
 
     const postsRef =
         firebase.firestore()
             .collection("posts")
             .doc(currentUser)
             .collection("userPosts")
+
 
     const postDataRef =
         firebase.firestore()
@@ -47,7 +51,14 @@ function Save(props) {
             .collection("postTags")
             .doc(tag)
 
-    const [postTag, setPostTag] = useState("")
+    const postTagsDocPostsRef = (tag) =>
+        firebase.firestore()
+            .collection("postTags")
+            .doc(tag)
+            .collection("posts")
+
+    const [postTag, setPostTag] = useState([""])
+
 
 
     const [keyword, setKeyword] = useState("")
@@ -76,10 +87,14 @@ function Save(props) {
 
     const uploadImage = async () => {
 
-       let postID = getRandomString(36);
 
         try {
+
             console.log(`\n\nSave uploadImage() - Requested to save to firebase Storage`);
+            // setUploading(true)
+
+            let postID = getRandomString(36);
+
 
             const storagePath = postStorageRef(postID);
             const result = await firebase.firestore().runTransaction(async (t) => {
@@ -97,15 +112,50 @@ function Save(props) {
                         console.log(`${error} \n\nSave uploadImage() - Error uploading file to fire-storage!`);
                     })
                     .then(downloadURL => {
-                        console.log(`\n\nSave uploadImage()  Successfully uploaded file and got download link - ${downloadURL}`);
+                        console.log(`\n\nSave uploadImage() Successfully uploaded file and got download link - ${downloadURL}`);
 
+                        t.set(postsRef.doc(postID), {})
+
+                        t.set(postDataRef.doc(postID), {
+                            caption: caption,
+                            commentsCount: 0,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                            downloadURL: downloadURL,
+                            likesCount: 0,
+                            mediaType: mediaType,
+                            userId: currentUser,
+                        })
+
+                        postTags.forEach((tag) => {
+                            postTagsRef()
+                                .doc(tag)
+                                .get()
+                                .then((postTagDoc) =>{
+
+                                    if(postTagDoc.exists) //If tag already exists update numberOfPosts
+                                    {
+                                        t.update(postTagsDocRef(tag), "numberOfPosts", firebase.firestore.FieldValue.increment(1))
+                                    }
+                                    else //create tag if if post doesnt exist
+                                    {
+                                        t.set(postTagsDocRef(tag), {
+                                            numberOfPosts: 1
+                                        });
+                                    }
+
+                                    // t.set(postTagsDocPostsRef(tag).doc(postID), {})
+                                })
+                        })
+                        console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
+                        setUploading(false);
 
                     });
             })
 
         } catch (e) {
             // This will be a "population is too big" error.
-            console.log(`\n\nSave uploadImage() Error \n${e}`);
+            console.log(`\n\nSave uploadImage() Error  \n${e}`);
+            setUploading(false);
         }
 
     }

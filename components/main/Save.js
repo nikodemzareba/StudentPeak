@@ -76,10 +76,12 @@ function Save(props) {
 
     const uploadImage = async () => {
 
+       let postID = getRandomString(36);
+
         try {
             console.log(`\n\nSave uploadImage() - Requested to save to firebase Storage`);
 
-            const storagePath = postStorageRef(getRandomString(36));
+            const storagePath = postStorageRef(postID);
             const result = await firebase.firestore().runTransaction(async (t) => {
 
                 const response = await fetch(props.route.params.source); // fetch media
@@ -95,7 +97,7 @@ function Save(props) {
                         console.log(`${error} \n\nSave uploadImage() - Error uploading file to fire-storage!`);
                     })
                     .then(downloadURL => {
-                        console.log(`\n\nSave uploadImage() Successfully uploaded file and got download link - ${downloadURL}`);
+                        console.log(`\n\nSave uploadImage()  Successfully uploaded file and got download link - ${downloadURL}`);
 
 
                     });

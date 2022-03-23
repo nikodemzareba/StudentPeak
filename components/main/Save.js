@@ -21,12 +21,34 @@ require("firebase/firebase-storage")
 function Save(props) {
     const [caption, setCaption] = useState("")
     const [mediaType, setMediaType] = useState("")
-    const postStorageRef = (postID) => `posts/${firebase.auth().currentUser.uid}/0AAA${postID}`;
+    const [uploading, setUploading] = useState(false)
 
+    const currentUser = firebase.auth().currentUser.uid;
+
+    const postStorageRef = (postID) => `posts/${currentUser}/0A${postID}`;
+
+    const postsRef =
+        firebase.firestore()
+            .collection("posts")
+            .doc(currentUser)
+            .collection("userPosts")
+
+    const postDataRef =
+        firebase.firestore()
+            .collection("postData")
+
+
+    const postTagsRef = () =>
+        firebase.firestore()
+            .collection("postTags")
+
+    const postTagsDocRef = (tag) =>
+        firebase.firestore()
+            .collection("postTags")
+            .doc(tag)
 
     const [postTag, setPostTag] = useState("")
 
-    const [uploading, setUploading] = useState(false)
 
     const [keyword, setKeyword] = useState("")
     const [error, setError] = useState(false)
@@ -77,7 +99,6 @@ function Save(props) {
 
 
                     });
-
             })
 
         } catch (e) {

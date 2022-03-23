@@ -6,6 +6,7 @@ import {Ionicons} from "@expo/vector-icons";
 import Profile_Icon from "../../Profile_Objects/Profile_Icon";
 import {useState} from "react";
 import ProfileIcon_And_Username from "../../Profile_Objects/ProfileIcon_And_Username";
+import {getRandomString} from "../../Functions_And_Methods/getRandomString";
 
 
 export default function showComment(props) {
@@ -35,30 +36,6 @@ export default function showComment(props) {
         firebase.firestore()
             .collection('postData')
             .doc(postId)
-
-
-    const getRandomString = (length) => {
-        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var result = '';
-        for (var i = 0; i < length; i++) {
-            result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-        }
-        return result;
-    }
-
-    const dbCheck = (key) => {
-        firebase.firestore()
-            .collection('postData').doc('id').get()
-            .then((docSnapshot) => {
-                if (docSnapshot.exists) {
-                    db.collection('users').doc('id')
-                        .onSnapshot((doc) => {
-                            // do stuff with the data
-                        });
-                }
-            });
-    }
-
 
     const handleComment = async (postId, userId, comment) => {
 
@@ -93,7 +70,7 @@ export default function showComment(props) {
                     .collection('postData')
                     .doc(props.route.params.postID)
                     .collection("comments")
-                    .doc(result)
+                    .doc(`${result}`)
                     .get()
                     .then((r) => {
 

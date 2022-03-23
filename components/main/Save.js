@@ -23,10 +23,19 @@ function Save(props) {
     const [mediaType, setMediaType] = useState("")
     const [uploading, setUploading] = useState(false)
 
-     const currentUser = "0000L5JMpPp7LKbPhZoJbcdp"
+    const currentUser = "0000L5JMpPp7LKbPhZoJbcdp"
         // firebase.auth().currentUser.uid
     ;
-    const [postTags, setPostTags] = useState(["dance"])
+    const [postTags, setPostTags] = useState([
+        {
+            tag:"singing",
+            exists: false
+        },
+        {
+            tag:"helloNicole",
+            exists: false
+        }
+    ])
 
     const postStorageRef = (postID) => `posts/${currentUser}/0AAAA${postID}`;
 
@@ -42,23 +51,20 @@ function Save(props) {
             .collection("postData")
 
 
-    const postTagsRef = () =>
-        firebase.firestore()
-            .collection("postTags")
-
     const postTagsDocRef = (tag) =>
         firebase.firestore()
             .collection("postTags")
             .doc(tag)
 
-    const postTagsDocPostsRef = (tag) =>
+    const postTagsDocPostsRef = (tag, postID) =>
         firebase.firestore()
             .collection("postTags")
             .doc(tag)
             .collection("posts")
+            .doc(postID)
+
 
     const [postTag, setPostTag] = useState([""])
-
 
 
     const [keyword, setKeyword] = useState("")
@@ -126,29 +132,24 @@ function Save(props) {
                             userId: currentUser,
                         })
 
+                        let pos = 0;
                         postTags.forEach((tag) => {
-                            postTagsRef()
-                                .doc(tag)
-                                .get()
-                                .then((postTagDoc) =>{
+                            pos++;
 
-                                    if(postTagDoc.exists) //If tag already exists update numberOfPosts
-                                    {
-                                        t.update(postTagsDocRef(tag), "numberOfPosts", firebase.firestore.FieldValue.increment(1))
-                                    }
-                                    else //create tag if if post doesnt exist
-                                    {
-                                        t.set(postTagsDocRef(tag), {
-                                            numberOfPosts: 1
-                                        });
-                                    }
+                            t.update(postTagsDocRef(tag), "numberOfPosts", firebase.firestore.FieldValue.increment(1))
+                            t.set(postTagsDocPostsRef(tag, postID), {})
 
-                                    // t.set(postTagsDocPostsRef(tag).doc(postID), {})
-                                })
+                            if (postTags.length === pos) {
+                                console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
+                                setUploading(false);
+                            }
                         })
-                        console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
-                        setUploading(false);
 
+
+                        if (postTags.length === 0) {
+                            console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
+                            setUploading(false);
+                        }
                     });
             })
 

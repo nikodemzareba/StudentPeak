@@ -20,24 +20,24 @@ require("firebase/firebase-storage")
 
 function Save(props) {
     const [caption, setCaption] = useState("")
-    const [mediaType, setMediaType] = useState("")
-    const [uploading, setUploading] = useState(false)
 
-    const currentUser = "0000L5JMpPp7LKbPhZoJbcdp"
+    const [uploading, setUploading] = useState(false)
+    const currentUser = "upb6UG9eM0VWzRo8tGke3xK9p953"
         // firebase.auth().currentUser.uid
     ;
     const [postTags, setPostTags] = useState([
         {
-            tag:"singing",
-            exists: false
+            key: "singing",
         },
         {
-            tag:"helloNicole",
-            exists: false
+            key: "helloNicole",
+        },
+        {
+            key: "Rugby",
         }
     ])
 
-    const postStorageRef = (postID) => `posts/${currentUser}/0AAAA${postID}`;
+    const postStorageRef = (postID) => `posts/${currentUser}/${postID}`;
 
     const postsRef =
         firebase.firestore()
@@ -64,9 +64,6 @@ function Save(props) {
             .doc(postID)
 
 
-    const [postTag, setPostTag] = useState([""])
-
-
     const [keyword, setKeyword] = useState("")
     const [error, setError] = useState(false)
 
@@ -82,32 +79,48 @@ function Save(props) {
             ),
         });
 
-        const media = props.route.params.type
-        if (media === 1) {
-            setMediaType("picture");
-        } else if (media === 0) {
-            setMediaType("video");
-        }
+        console.log(`\n\n propsType: ${props.route.params.type}`)
 
     }, [caption]);
 
     const uploadImage = async () => {
 
-
         try {
 
-            console.log(`\n\nSave uploadImage() - Requested to save to firebase Storage`);
-            // setUploading(true)
-
-            let postID = getRandomString(36);
-
-
-            const storagePath = postStorageRef(postID);
             const result = await firebase.firestore().runTransaction(async (t) => {
 
+                setUploading(true);
+                console.log(`\n\nSave uploadImage() - Requested to save to firebase Storage`);
+
+                let postID = getRandomString(36); // generate postID
+                const storagePath = postStorageRef(postID); // generate storage path
+
+                console.log(`\nSave uploadImage() - checking if tags exist`);
+
+                // check if tags exist in db
+                let postTagsChecked = [];
+                for (const tag of postTags) {
+
+                    const postTagFetched = await t.get(postTagsDocRef(tag.key));
+                    let found = false;
+
+                    if (postTagFetched.exists) {
+                        console.log(`\n${tag.key} does exist`)
+                        found = true;
+                    } else {
+                        console.log(`\n${tag.key} doesn't exists`)
+                    }
+
+                    postTagsChecked.push({
+                        key: tag.key,
+                        inDB: found,
+                    });
+                }
+
+                // Uploading file to storage
+                console.log(`\nSave uploadImage() - uploading to firebase Storage`);
                 const response = await fetch(props.route.params.source); // fetch media
                 const blob = await response.blob(); // convert to blob
-
                 const ref = firebase.storage().ref().child(storagePath); // reference to mediaFile path
 
                 await ref.put(blob)
@@ -115,12 +128,14 @@ function Save(props) {
                         return snapshot.ref.getDownloadURL();
                     })
                     .catch((error) => {
-                        console.log(`${error} \n\nSave uploadImage() - Error uploading file to fire-storage!`);
+                        console.log(`${error} \nSave uploadImage() - Error uploading file to fire-storage!`);
                     })
-                    .then(downloadURL => {
-                        console.log(`\n\nSave uploadImage() Successfully uploaded file and got download link - ${downloadURL}`);
+                    .then(async downloadURL => {
+                        console.log(`\nSave uploadImage() uploading; posts, postData`);
 
                         t.set(postsRef.doc(postID), {})
+
+                        const mediaType = props.route.params.type === 0? "video" : "picture";
 
                         t.set(postDataRef.doc(postID), {
                             caption: caption,
@@ -129,24 +144,36 @@ function Save(props) {
                             downloadURL: downloadURL,
                             likesCount: 0,
                             mediaType: mediaType,
+                            thumbnail: props.route.params.imageSource,
                             userId: currentUser,
                         })
 
+                        console.log(`\nSave uploadImage() uploading to postTags`);
+
                         let pos = 0;
-                        postTags.forEach((tag) => {
+                        const noOfTags = postTagsChecked.length;
+
+                        for (const tag of postTagsChecked) {
                             pos++;
+                            console.log(`\nSave uploadImage() uploading to postTag ${tag.key}`);
 
-                            t.update(postTagsDocRef(tag), "numberOfPosts", firebase.firestore.FieldValue.increment(1))
-                            t.set(postTagsDocPostsRef(tag, postID), {})
+                            if (tag.inDB) // if tag already exists update count
+                            {
+                                await t.update(postTagsDocRef(tag.key), "numberOfPosts", firebase.firestore.FieldValue.increment(1))
+                            }
+                            else // if tag doesnt exist create count
+                            {
+                               await t.set(postTagsDocRef(tag.key), {numberOfPosts: 1});
+                            }
 
-                            if (postTags.length === pos) {
+                           await t.set(postTagsDocPostsRef(tag.key, postID), {})
+
+                            if (noOfTags === pos) {
                                 console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
                                 setUploading(false);
                             }
-                        })
-
-
-                        if (postTags.length === 0) {
+                        }
+                        if (noOfTags === 0) {
                             console.log(`\n\nSave uploadImage() Successfully uploaded to all paths in DB`);
                             setUploading(false);
                         }

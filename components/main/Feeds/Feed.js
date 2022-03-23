@@ -193,6 +193,7 @@ class FeedScreen extends Component {
                                             const createdAt = postData.get("createdAt");
                                             const downloadURL = postData.get("downloadURL");
                                             const mediaType = postData.get("mediaType");
+                                            const thumbnail = postData.get("thumbnail");
 
                                             if (mediaType === "video") {
 
@@ -209,6 +210,8 @@ class FeedScreen extends Component {
                                                     createdAt: createdAt,
                                                     downloadURL: downloadURL,
                                                     mediaType: mediaType,
+                                                    thumbnail: thumbnail,
+
                                                     // Needs be retrieved inside the comment method
                                                 });
                                             } else if (mediaType === "picture") {

@@ -109,6 +109,7 @@ class PublicProfile extends Component {
                                     const downloadURL = postData.get("downloadURL");
                                     const mediaType = postData.get("mediaType");
                                     const userID = props.route.params.uid;
+                                    const thumbnail = postData.get("thumbnail");
 
                                     this.state.mediaDataDataFetched.push({
                                         key: userPost.id,
@@ -119,6 +120,7 @@ class PublicProfile extends Component {
                                         profile: profileImage,
                                         name: name,
                                         userID: userID,
+                                        thumbnail: thumbnail,
                                     });
 
                                     if (count === expectedResultsSize) {

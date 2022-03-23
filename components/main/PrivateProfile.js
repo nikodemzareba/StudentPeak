@@ -97,6 +97,7 @@ class PrivateProfile extends Component {
                                     const createdAt = postData.get("createdAt");
                                     const downloadURL = postData.get("downloadURL");
                                     const mediaType = postData.get("mediaType");
+                                    const thumbnail = postData.get("thumbnail");
                                     const userID = this.state.userId;
 
                                     mediaDataDataFetched.push({
@@ -108,6 +109,7 @@ class PrivateProfile extends Component {
                                         profile: profileImage,
                                         name: name,
                                         userID: userID,
+                                        thumbnail: thumbnail,
                                     });
 
                                     if (count === expectedResultsSize) {

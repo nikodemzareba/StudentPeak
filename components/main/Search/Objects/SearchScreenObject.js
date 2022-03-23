@@ -9,6 +9,12 @@ export default function SearchScreenObject(props) {
     const [videoImageThumbnail, setVideoImageThumbnail] = useState(null);
 
     const generateThumbnail = async (uriIn) => {
+
+        if  (props.item.thumbnail !== undefined)
+        {
+            return props.item.thumbnail;
+        }
+
         console.log(`\n\nSearchScreenObject generateThumbnail() URI itemKEy \n${props.item.key}`);
         try {
             const {uri} = await VideoThumbnails.getThumbnailAsync(

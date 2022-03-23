@@ -291,6 +291,7 @@ class TrendingFeeds extends Component {
                         const createdAt = postData.get("createdAt");
                         const downloadURL = postData.get("downloadURL");
                         const mediaType = postData.get("mediaType");
+                        const thumbnail = postData.get("thumbnail");
 
                         if (type === "picture") {
                             this.setState({
@@ -322,6 +323,7 @@ class TrendingFeeds extends Component {
                                 createdAt: createdAt,
                                 downloadURL: downloadURL,
                                 mediaType: mediaType,
+                                thumbnail: thumbnail,
                             });
                         }
 

@@ -71,6 +71,8 @@ class FeedScreen extends Component {
             .doc(this.state.userId)
             .collection('userFollowing')
 
+        this.noPostsMsg = "No Posts Available! / \nFollow a user to view posts on your feed"
+
     }
 
     componentDidMount() {
@@ -170,11 +172,12 @@ class FeedScreen extends Component {
                             console.log("\nGot Posts Of Users i am Following!")
 
                             // For each post from the user we are following
-                            let expectedResults = usersFollowingPosts.size;
-                            let countProcessed = 0;
+                            let expectedUserFollowingPosts = usersFollowingPosts.size;
+                            let processedUserFollowingPosts = 0;
+
                             usersFollowingPosts.forEach((userPost) => {
 
-                                countProcessed++;
+                                processedUserFollowingPosts++;
 
                                 // Get the posts details
                                 firebase.firestore()
@@ -238,7 +241,7 @@ class FeedScreen extends Component {
 
                                         }
 
-                                        if (processedFollowingUsers === expectedFollowingUsersCount && expectedResults === countProcessed) {
+                                        if (processedFollowingUsers === expectedFollowingUsersCount && expectedUserFollowingPosts === processedUserFollowingPosts) {
 
                                             this.setState({
                                                 videosDataFetched: videosDataFetched,
@@ -253,6 +256,16 @@ class FeedScreen extends Component {
                                         console.log(`${error} \nUnable to get Users following post data!`);
                                     });
                             })
+
+                            if (processedFollowingUsers === expectedFollowingUsersCount && expectedUserFollowingPosts === processedUserFollowingPosts) {
+
+                                this.setState({
+                                    videosDataFetched: videosDataFetched,
+                                    picturesDataFetched: picturesDataFetched,
+                                }, () => {
+                                    this.setStatesForLoadingFeed()
+                                });
+                            }
                         })
                         .catch((error) => {
                             console.log(`${error} \nUnable to get Users following posts!`);
@@ -358,8 +371,7 @@ class FeedScreen extends Component {
                                         navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1, padding: 10}}>
-                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> No Posts
-                                            / Follow a user to view posts on your feed </B> </Text>
+                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B>{this.noPostsMsg}</B> </Text>
                                     </View>
                                 }
                             </>
@@ -384,8 +396,7 @@ class FeedScreen extends Component {
                                         navigation={this.props.route.params.navigation}/>
                                     :
                                     <View style={{flex: 1, padding: 10}}>
-                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> No Posts
-                                            / Follow a user to view posts on your feed </B> </Text>
+                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B>{this.noPostsMsg}</B> </Text>
                                     </View>
                                 }
                             </>

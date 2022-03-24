@@ -161,8 +161,13 @@ class TrendingFeeds extends Component {
                 .get()
                 .then(usersFollowingsLikedPosts => {
 
+                   const noOfUserFollowingPosts = usersFollowingsLikedPosts.size;
+                   let processedUserFollowingPosts = 0;
+
                     // For each post the user we are followed has liked
                     usersFollowingsLikedPosts.forEach((likedPost) => {
+
+                        processedUserFollowingPosts++;
 
                         // Get the posts details
                         firebase.firestore()
@@ -232,7 +237,7 @@ class TrendingFeeds extends Component {
                                         console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
                                         console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
-                                        if (processedFollowingUsers === expectedFollowingUsersCount) {
+                                        if (processedFollowingUsers === expectedFollowingUsersCount && noOfUserFollowingPosts === processedUserFollowingPosts) {
                                             console.log("\nSetting Data To Variable")
                                             this.setState({
                                                 friendsVideoDataFetched: friendsVideoDataFetched,
@@ -252,6 +257,18 @@ class TrendingFeeds extends Component {
                                 console.log(`${error} \nUnable to get Users following post data!`);
                             });
                     })
+
+                    if (processedFollowingUsers === expectedFollowingUsersCount && noOfUserFollowingPosts === processedUserFollowingPosts) {
+                        console.log("\nSetting Data To Variable")
+                        this.setState({
+                            friendsVideoDataFetched: friendsVideoDataFetched,
+                            friendsPicturesDataFetched: friendsPicturesDataFetched,
+
+                            friendsPicturesIsLoading: false,
+                            friendsVideosIsLoading: false,
+                        })
+                    }
+
                 })
                 .catch((error) => {
                     console.log(`${error} \nUnable to get Users following posts!`);
@@ -565,13 +582,6 @@ class TrendingFeeds extends Component {
                                     navigation={this.props.route.params.navigation}
                                     type={"video"}
                                 />
-
-                                {/*    :*/}
-                                {/*    <View style={{flex: 1, padding: 10}}>*/}
-                                {/*        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> Follow a*/}
-                                {/*            user to view posts on your feed </B> </Text>*/}
-                                {/*    </View>*/}
-                                {/*}*/}
                             </>
                         }
                     </>

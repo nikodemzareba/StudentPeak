@@ -340,7 +340,9 @@ function Save(props) {
                             data={postTags}
                             horizontal
                             inverted={true}
-                            extraData={this.state}
+                            extraData={refreshFlatListTags}
+                            ref={(list) => this.myFlatList = list}
+                            onLayout={() => this.myFlatList.current.scrollToEnd() }
 
                             contentContainerStyle={{
 
@@ -389,9 +391,22 @@ function Save(props) {
                     </View>
 
                     {/* Tag  TXT Input and Tick Button */}
-                    <View style={{flexDirection: "row",paddingTop: 15,paddingLeft: 15,paddingRight: 15,paddingBottom: 50 }}>
+                    <View style={{
+                        flexDirection: "row",
+                        paddingTop: 15,
+                        paddingLeft: 15,
+                        paddingRight: 15,
+                        paddingBottom: 50
+                    }}>
 
-                        <View style={{backgroundColor: "white",borderColor: 'black',borderWidth: 2,justifyContent: "center",width: WIDTH - 90,height: 50}}>
+                        <View style={{
+                            backgroundColor: "white",
+                            borderColor: 'black',
+                            borderWidth: 2,
+                            justifyContent: "center",
+                            width: WIDTH - 90,
+                            height: 50
+                        }}>
                             <TextInput
                                 placeholder="Add Tag"
                                 textAlign={'center'}
@@ -403,16 +418,39 @@ function Save(props) {
                             />
                         </View>
 
-                        <View style={{ borderColor: 'black',borderWidth: 2,height: 50,width: 62,justifyContent: "center"}}>
+                        <View style={{
+                            borderColor: 'black',
+                            borderWidth: 2,
+                            height: 50,
+                            width: 62,
+                            justifyContent: "center"
+                        }}>
 
                             <Feather style={navbar.image} name="check" size={18} color="green" onPress={() => {
+                                if (tagToAdd !== "") {
 
-                                const result = postTags.filter(x => x.tag === tagToAdd);
-                                if(result !== undefined)
-                                {
-                                    postTags.push({key:tagToAdd})
-                                    setRefreshFlatListTags(!refreshFlatListTags);
+                                    // const result = postTags.filter(x => x.key === tagToAdd);
+                                    // console.log(`\n\nTag to Add:'${tagToAdd}' \nTag Result: '${result}'`)
+                                    //
+                                    // if (result !== undefined) {
+                                    //     console.log(`\nTag '${tagToAdd}' Added to List'`)
+                                    //     // postTags.push({key: tagToAdd})
+                                    //     // setRefreshFlatListTags(!refreshFlatListTags);
+                                    // } else {
+                                    //     console.log(`\nTag '${tagToAdd}' Rejected to List'`)
+                                    // }
+
+                                    const checkIfTagCondition = obj => obj.key === tagToAdd;
+                                    const tagCheckedResult = postTags.some(checkIfTagCondition);
+
+                                    if(!tagCheckedResult)
+                                    {
+                                            console.log(`\nTag '${tagToAdd}' Added to List'`)
+                                            postTags.push({key: tagToAdd})
+                                            setRefreshFlatListTags(!refreshFlatListTags);
+                                    }
                                 }
+
                             }}
                             />
                         </View>

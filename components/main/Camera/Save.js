@@ -40,9 +40,7 @@ function Save(props) {
     const [caption, setCaption] = useState("")
 
     const [uploading, setUploading] = useState(false)
-    const currentUser = "upb6UG9eM0VWzRo8tGke3xK9p953"
-        // firebase.auth().currentUser.uid
-    ;
+    const currentUser =  firebase.auth().currentUser.uid;
 
     const [postTags, setPostTags] = useState([])
     const [tagToAdd, setTagToAdd] = useState("");

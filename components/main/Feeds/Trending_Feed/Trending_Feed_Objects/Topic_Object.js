@@ -8,7 +8,6 @@ export default function Topic_Object(props)
 {
     return(
         <View style={feedStyles.trendingTopics((props.backgroundColor))}>
-                          
 
             <View style={feedStyles.trendingNumber((props.circleBackground))}>
                 <Text style={{color: props.circleTxtColor, fontSize: 20, fontWeight: 'bold'}}>

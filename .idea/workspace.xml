@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js&#10;&#10;Previous Update:">
+    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;. Save GUI style looks decent&#10;&#10;Previous Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Camera/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Save.js" afterDir="false" />
     </list>
@@ -67,7 +67,7 @@
       <workItem from="1648213785714" duration="61000" />
       <workItem from="1648215165828" duration="880000" />
       <workItem from="1648217318245" duration="8559000" />
-      <workItem from="1648231793468" duration="1807000" />
+      <workItem from="1648231793468" duration="2920000" />
     </task>
     <task id="LOCAL-00001" summary="In This Update:&#10;.Refactoring">
       <created>1648219584525</created>
@@ -83,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648225931460</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="In This Update:&#10;. Save GUI style looks decent&#10;&#10;Previous Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+      <created>1648233665742</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1648233665742</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,7 +111,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="In This Update:&#10;.Refactoring" />
     <MESSAGE value="In This Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js&#10;&#10;Previous Update:" />
-    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js&#10;&#10;Previous Update:" />
+    <MESSAGE value="In This Update:&#10;. Save GUI style looks decent&#10;&#10;Previous Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;. Save GUI style looks decent&#10;&#10;Previous Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

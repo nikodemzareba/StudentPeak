@@ -44,22 +44,9 @@ function Save(props) {
         // firebase.auth().currentUser.uid
     ;
 
-    let postTagIndex = 0;
-    const [postTags, setPostTags] = useState([
-        {
-            key: "singing",
-            index: 1,
-        },
-        {
-            key: "helloNicole",
-            index: 2,
-        },
-        {
-            key: "Rugby",
-            index: 3,
-        }
-    ])
-    const [tagToAdd, setTagToAdd] = useState("")
+    const [postTags, setPostTags] = useState([])
+    const [tagToAdd, setTagToAdd] = useState("");
+    const [refreshFlatListTags, setRefreshFlatListTags] = useState(false)
 
     const postStorageRef = (postID) => `posts/${currentUser}/${postID}`;
 
@@ -343,9 +330,7 @@ function Save(props) {
                     */}
 
                     {/* Tag Input */}
-
-
-                    <View style={[{height: 120, paddingLeft:15, paddingRight:15}]}>
+                    <View style={[{height: 120, paddingLeft: 15, paddingRight: 15}]}>
                         <Text style={{color: 'black', fontSize: 20, fontWeight: 'bold', padding: 5}}>
                             <B>Tags:</B>
                         </Text>
@@ -354,6 +339,8 @@ function Save(props) {
                             showsHorizontalScrollIndicator={false}
                             data={postTags}
                             horizontal
+                            inverted={true}
+                            extraData={this.state}
 
                             contentContainerStyle={{
 
@@ -402,11 +389,9 @@ function Save(props) {
                     </View>
 
                     {/* Tag  TXT Input and Tick Button */}
+                    <View style={{flexDirection: "row",paddingTop: 15,paddingLeft: 15,paddingRight: 15,paddingBottom: 50 }}>
 
-
-                    <View style={{ flexDirection: "row",  paddingTop:15,  paddingLeft:15, paddingRight:15, paddingBottom: 50}}>
-
-                        <View style={{backgroundColor: "white", borderColor: 'black', borderWidth:2,justifyContent: "center", width: WIDTH - 90, height: 50}}>
+                        <View style={{backgroundColor: "white",borderColor: 'black',borderWidth: 2,justifyContent: "center",width: WIDTH - 90,height: 50}}>
                             <TextInput
                                 placeholder="Add Tag"
                                 textAlign={'center'}
@@ -418,10 +403,16 @@ function Save(props) {
                             />
                         </View>
 
-                        <View style={{borderColor: 'black',  borderWidth:2, height:50, width:62, justifyContent:"center", }}>
+                        <View style={{ borderColor: 'black',borderWidth: 2,height: 50,width: 62,justifyContent: "center"}}>
 
                             <Feather style={navbar.image} name="check" size={18} color="green" onPress={() => {
-                                console.log('Tick btn ')
+
+                                const result = postTags.filter(x => x.tag === tagToAdd);
+                                if(result !== undefined)
+                                {
+                                    postTags.push({key:tagToAdd})
+                                    setRefreshFlatListTags(!refreshFlatListTags);
+                                }
                             }}
                             />
                         </View>

@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="In this Update:&#10;.Refactoring&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;Feed.js  - Feed.js wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
+    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Student Peak.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Save.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="G1" />
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="G1" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -35,25 +26,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/components/main/Search/Objects/Find_Post_Object.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Search/ViewPost.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Search/SearchScreenResults.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Search/Search.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed_PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectId" id="25WaXTPyIyDTF8M1WWZ4nMuJi8j" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="26sN718OEBSRy4S7MOSstxnoFPj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -62,396 +35,34 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Profile_Objects" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../gp" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Profile_Objects" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects\Likes_And_Comments\Comments\Pictures" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Shared_Objects" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Trending_Feed" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds\Trending_Feed\Trending_Feed_Objects" />
-      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Feeds" />
+      <recent name="C:\Users\DonTy\Dropbox\0.) University\4).) Uni - Work\Year 3\Both Terms\COMP6000 - Group Project\Code\NEW\components\main\Camera" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f00b6843-459d-4425-8307-bb38f27f7c3f" name="Changes" comment="" />
-      <created>1645645335759</created>
+      <changelist id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="" />
+      <created>1648208170055</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1645645335759</updated>
-      <workItem from="1645645337069" duration="339000" />
-      <workItem from="1645828339914" duration="1423000" />
-      <workItem from="1645833447064" duration="1146000" />
-      <workItem from="1645837616375" duration="14493000" />
-      <workItem from="1645903256774" duration="26352000" />
-      <workItem from="1645932366837" duration="4573000" />
-      <workItem from="1645937652771" duration="12000" />
-      <workItem from="1645981291004" duration="27680000" />
-      <workItem from="1646032616032" duration="403000" />
-      <workItem from="1646054344190" duration="2583000" />
-      <workItem from="1646058819080" duration="723000" />
-      <workItem from="1646155405728" duration="725000" />
-      <workItem from="1646194789643" duration="493000" />
-      <workItem from="1646333787140" duration="672000" />
-      <workItem from="1646336490491" duration="348000" />
-      <workItem from="1646401256130" duration="584000" />
-      <workItem from="1646660303943" duration="1224000" />
-      <workItem from="1646932748449" duration="4437000" />
-      <workItem from="1646964762312" duration="2923000" />
-      <workItem from="1648117094600" duration="7445000" />
+      <updated>1648208170055</updated>
+      <workItem from="1648208171341" duration="370000" />
+      <workItem from="1648209000325" duration="103000" />
+      <workItem from="1648209269189" duration="96000" />
+      <workItem from="1648209387688" duration="49000" />
+      <workItem from="1648209452248" duration="141000" />
+      <workItem from="1648209633957" duration="112000" />
+      <workItem from="1648210449821" duration="64000" />
+      <workItem from="1648213785714" duration="61000" />
+      <workItem from="1648215165828" duration="880000" />
+      <workItem from="1648217318245" duration="2144000" />
     </task>
-    <task id="LOCAL-00007" summary="In this Update:&#10;.Refactoring&#10;.getProfileImage method works&#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects">
-      <created>1645859816041</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1645859816041</updated>
-    </task>
-    <task id="LOCAL-00008" summary="In this Update:&#10;.Trending page gets users following liked posts &#10;&#10;Need to do:&#10;Formatting&#10;&#10;In Previous Update:&#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645861648039</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1645861648039</updated>
-    </task>
-    <task id="LOCAL-00009" summary="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645862507126</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1645862507126</updated>
-    </task>
-    <task id="LOCAL-00010" summary="In this Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;&#10;Need to do:&#10;.Formatting&#10;&#10;In Previous Update:&#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645868538299</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1645868538299</updated>
-    </task>
-    <task id="LOCAL-00011" summary="In this Update:&#10;.GUi up &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645870544381</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1645870544381</updated>
-    </task>
-    <task id="LOCAL-00012" summary="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645870896466</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1645870896466</updated>
-    </task>
-    <task id="LOCAL-00013" summary="In this Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645876206446</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1645876206446</updated>
-    </task>
-    <task id="LOCAL-00014" summary="In this Update:&#10;.Trending Topic Number object shape now increases with text size&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645905806279</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1645905806279</updated>
-    </task>
-    <task id="LOCAL-00015" summary="In this Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645911282243</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1645911282243</updated>
-    </task>
-    <task id="LOCAL-00016" summary="In this Update:&#10;Testing polymorphic explore feed&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645923806204</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1645923806204</updated>
-    </task>
-    <task id="LOCAL-00017" summary="In this Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;&#10;Need to do:&#10;Going viral&#10;&#10;In Previous Update:&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645936110974</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1645936110974</updated>
-    </task>
-    <task id="LOCAL-00018" summary="In this Update:&#10;trending page works for pictures &#10;&#10;Need to do:&#10;&#10;&#10;In Previous Update:&#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1645937293385</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1645937293385</updated>
-    </task>
-    <task id="LOCAL-00019" summary="In this Update:&#10;trending page works for pictures  &amp; Videos&#10;&#10;Need to do:&#10;.avoid adding the same post liked by multiple users&#10;&#10;In Previous Update:&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646015361430</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1646015361430</updated>
-    </task>
-    <task id="LOCAL-00020" summary="In this Update:&#10;.avoid adding the same post liked by multiple users&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646016226567</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1646016226567</updated>
-    </task>
-    <task id="LOCAL-00021" summary="In this Update:&#10;.Refactoring&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646017304537</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1646017304537</updated>
-    </task>
-    <task id="LOCAL-00022" summary="In this Update:&#10;.Refactoring&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646018278614</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1646018278614</updated>
-    </task>
-    <task id="LOCAL-00023" summary="In this Update:&#10;.Refactoring&#10;&#10;&#10;Need to do:&#10;Trying to get main feed to reload&#10;&#10;&#10;In Previous Update:&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646026280894</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1646026280894</updated>
-    </task>
-    <task id="LOCAL-00024" summary="In this Update:&#10;.Refactoring&#10;.Feed Screen reloads when user goes to page.&#10;&#10;&#10;Need to do:&#10;Trying to get main feed to reload&#10;&#10;&#10;In Previous Update:&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646028519949</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1646028519949</updated>
-    </task>
-    <task id="LOCAL-00025" summary="In this Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646159956124</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1646159956124</updated>
-    </task>
-    <task id="LOCAL-00026" summary="In this Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646159966403</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1646159966403</updated>
-    </task>
-    <task id="LOCAL-00027" summary="In this Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646161031698</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1646161031698</updated>
-    </task>
-    <task id="LOCAL-00028" summary="In this Update:&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646168148421</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1646168148422</updated>
-    </task>
-    <task id="LOCAL-00029" summary="In this Update:&#10;.Refactoring&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646169261284</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1646169261284</updated>
-    </task>
-    <task id="LOCAL-00030" summary="In this Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;&#10;&#10;Need to do:&#10;Video thumbnail&#10;&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646173394338</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1646173394338</updated>
-    </task>
-    <task id="LOCAL-00031" summary="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646175757647</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1646175757647</updated>
-    </task>
-    <task id="LOCAL-00032" summary="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646175982707</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1646175982707</updated>
-    </task>
-    <task id="LOCAL-00033" summary="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works">
-      <created>1646178878227</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1646178878227</updated>
-    </task>
-    <task id="LOCAL-00034" summary="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
-      <created>1646396198458</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1646396198458</updated>
-    </task>
-    <task id="LOCAL-00035" summary="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
-      <created>1646936673807</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1646936673807</updated>
-    </task>
-    <task id="LOCAL-00036" summary="In this Update:&#10;Fix Likes and comments TXT not appearing onn IOS&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
-      <created>1646940714452</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1646940714452</updated>
-    </task>
-    <task id="LOCAL-00037" summary="In this Update:&#10;Fix Likes and comments TXT not appearing onn IOS&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
-      <created>1646940783067</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1646940783067</updated>
-    </task>
-    <task id="LOCAL-00038" summary="In this Update:&#10;Commit&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
-      <created>1647306869256</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1647306869256</updated>
-    </task>
-    <task id="LOCAL-00039" summary="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:">
-      <created>1647308277825</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1647308277825</updated>
-    </task>
-    <task id="LOCAL-00040" summary="In this Update:&#10;.Removed Un-necessary comments console.log msgs&#10;&#10;.Added Comments&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens">
-      <created>1647310411456</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1647310411456</updated>
-    </task>
-    <task id="LOCAL-00041" summary="In this Update:&#10;Fixed Bug - When a user tries to render a deleted users ProfileIcon_And_Username.js on UsersLikedPost.js causes an error when requesting to retrieve their profile info as it has been deleted - the system now accounts for this and provides a template data and doesnt allow navigation to a user that doesn't exist.&#10;&#10;&#10;&#10;Need to do:&#10;Gotta do the same for comments&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens">
-      <created>1647317774437</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1647317774437</updated>
-    </task>
-    <task id="LOCAL-00042" summary="In this Update:&#10;.Refactored commentsBTN &#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:">
-      <created>1648030682519</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1648030682519</updated>
-    </task>
-    <task id="LOCAL-00043" summary="In this Update:&#10;.Resolving errors, warnings Save.js&#10;&#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:">
-      <created>1648030944409</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1648030944409</updated>
-    </task>
-    <task id="LOCAL-00044" summary="In this Update:&#10;.Save Uploads to storage&#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:">
-      <created>1648037966148</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1648037966148</updated>
-    </task>
-    <task id="LOCAL-00045" summary="In this Update:&#10;.Save Uploads to storage&#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:">
-      <created>1648038074869</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1648038074869</updated>
-    </task>
-    <task id="LOCAL-00046" summary="In this Update:&#10;.Save Uploads to storage&#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:">
-      <created>1648039332948</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1648039332948</updated>
-    </task>
-    <task id="LOCAL-00047" summary="In this Update:&#10;.Save Uploads to storage&#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:">
-      <created>1648039822307</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1648039822307</updated>
-    </task>
-    <task id="LOCAL-00048" summary="In this Update:&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;&#10;Need to do:&#10;.upload to postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;.Save Uploads to storage">
-      <created>1648042604826</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1648042604826</updated>
-    </task>
-    <task id="LOCAL-00049" summary="In this Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;&#10;Need to do:&#10;.upload to postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
-      <created>1648052735431</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1648052735431</updated>
-    </task>
-    <task id="LOCAL-00050" summary="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
-      <created>1648059771072</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1648059771072</updated>
-    </task>
-    <task id="LOCAL-00051" summary="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
-      <created>1648060567849</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1648060567850</updated>
-    </task>
-    <task id="LOCAL-00052" summary="In this Update:&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
-      <created>1648061730567</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1648061730567</updated>
-    </task>
-    <task id="LOCAL-00053" summary="In this Update:&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
-      <created>1648120371882</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1648120371882</updated>
-    </task>
-    <task id="LOCAL-00054" summary="In this Update:&#10;Feed.js  - Feed.js wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
-      <created>1648122638417</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1648122638417</updated>
-    </task>
-    <task id="LOCAL-00055" summary="In this Update:&#10;.Refactoring&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;Feed.js  - Feed.js wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage">
-      <created>1648127424511</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1648127424511</updated>
-    </task>
-    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,84 +73,20 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="G1" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Feed Screen reloads when user goes to page.&#10;&#10;&#10;Need to do:&#10;Trying to get main feed to reload&#10;&#10;&#10;In Previous Update:&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <MESSAGE value="In this Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <MESSAGE value="In this Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <MESSAGE value="In this Update:&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <MESSAGE value="In this Update:&#10;.Refactoring&#10;.Explore page works&#10;&#10;&#10;&#10;&#10;&#10;In Previous Update:&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <MESSAGE value="In this Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;&#10;&#10;Need to do:&#10;Video thumbnail&#10;&#10;&#10;In Previous Update:&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <MESSAGE value="In this Update:&#10;.Video thumbnail - fixed issues with video thumbnail not working&#10;&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;.Sizing of video and picture of on individual post works ViewPost.js&#10;.Refactoring&#10;.Explore page works&#10;.deleted old search screen&#10;. SearchScreenResults() - update (search bar at the top)&#10;.Trending Topics on trending page links to SearchScreenResults.js&#10;.Search Screen &amp; SearchScreenResults() are displaying results&#10;.Feed Screen reloads when user goes to page.&#10;.TrendingFeeds page now reloads data each time the user navigates to the page.&#10;.avoid adding the same post liked by multiple users&#10;.trending page works for pictures  &amp; Videos&#10;.trending page works for pictures &#10;.friendsLiked feed is up&#10;.trending feed is up&#10;.Orderby likecoutn works&#10;.Comments &amp; Likes Display wasnt expecting with numbers for likes &amp; count.&#10;.Explore feed can fit 1billion of each likes and comments &#10;.Trending Topic Number object shape now increases with text size&#10;.Navigational features are up on trending posts flatlist objects&#10;.GUi up &#10;.Refactoring&#10;.Created Trending Topics Object &#10;.Trending page gets users following liked posts &#10;.&amp; Creating Stories Objects&#10;.Refactoring&#10;.getProfileImage method works" />
-    <MESSAGE value="In this Update:&#10;registration gives username and profile image&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
-    <MESSAGE value="In this Update:&#10;Fix Likes and comments TXT not appearing onn IOS&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
-    <MESSAGE value="In this Update:&#10;Commit&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
-    <MESSAGE value="In this Update:&#10;Removed call to get commentsCount in feed screens&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:" />
-    <MESSAGE value="In this Update:&#10;.Removed Un-necessary comments console.log msgs&#10;&#10;.Added Comments&#10;&#10;Need to do:&#10;&#10;&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens" />
-    <MESSAGE value="In this Update:&#10;Fixed Bug - When a user tries to render a deleted users ProfileIcon_And_Username.js on UsersLikedPost.js causes an error when requesting to retrieve their profile info as it has been deleted - the system now accounts for this and provides a template data and doesnt allow navigation to a user that doesn't exist.&#10;&#10;&#10;&#10;Need to do:&#10;Gotta do the same for comments&#10;&#10;In Previous Update:&#10;Removed call to get commentsCount in feed screens" />
-    <MESSAGE value="In this Update:&#10;.Refactored commentsBTN &#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:" />
-    <MESSAGE value="In this Update:&#10;.Resolving errors, warnings Save.js&#10;&#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:" />
-    <MESSAGE value="In this Update:&#10;.Save Uploads to storage&#10;&#10;Need to do:&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:" />
-    <MESSAGE value="In this Update:&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;&#10;Need to do:&#10;.upload to postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;&#10;Need to do:&#10;.upload to postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;Save.js works for uploading&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;Save.js navigates back to add page&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;Feed.js  - Feed.js wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <MESSAGE value="In this Update:&#10;.Refactoring&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;Feed.js  - Feed.js wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="In this Update:&#10;.Refactoring&#10;&#10;&#10;Need to do:&#10;.Allow input for postTags&#10;.Fix orderBy not working on the comments&#10;.Trending feed page activity indicator doesn't update once a follower has posted to their feed.&#10;&#10;&#10;.Implement backArrow on showEventsResults&#10;&#10;.Resize showEvents objects to screen&#10;&#10;.showEventsScreen &#10;&#10;&#10;In Previous Update:&#10;Feed.js  - Feed.js wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;TrendingFeeds.js - trendingFeeds wouldn't load due to an error whereby the user you were following didn't post anything - this exception wasn't caught.&#10;&#10;Save.js navigates back to add page after succesfully uploading mediafile to db.&#10;&#10;check if tag exists before uploading because it doesn't it creates an error.&#10;&#10;uploads media to:&#10;.uploads to postData&#10;.uploads to posts&#10;.Save Uploads to storage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feeds/Feed.js</url>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js</url>
-          <line>516</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Search/Search.js</url>
-          <line>99</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/Functions/getCommentByUsers.js</url>
-          <line>11</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js</url>
-          <line>31</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/main/Save.js</url>
-          <line>129</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/components/main/Camera/Save.js</url>
+          <line>20</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

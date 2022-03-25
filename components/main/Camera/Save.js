@@ -7,8 +7,8 @@ import MentionsTextInput from 'react-native-mentions';
 import {Snackbar} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchUserPosts, sendNotification} from '../../redux/actions/index';
-import {getRandomString} from "./Feeds/Shared_Objects/Functions_And_Methods/getRandomString";
+import {fetchUserPosts, sendNotification} from '../../../redux/actions';
+import {getRandomString} from "../Feeds/Shared_Objects/Functions_And_Methods/getRandomString";
 
 // Firebase collection information. 
 // Type "1" = Image
@@ -314,6 +314,8 @@ function Save(props) {
                         onDismiss={() => setError(false)}>
                         Something Went Wrong!
                     </Snackbar>
+
+
                 </View>
             )}
 

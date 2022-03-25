@@ -40,7 +40,7 @@ function Save(props) {
     const [caption, setCaption] = useState("")
 
     const [uploading, setUploading] = useState(false)
-    const currentUser =  firebase.auth().currentUser.uid;
+    const currentUser = firebase.auth().currentUser.uid;
 
     const [postTags, setPostTags] = useState([])
     const [tagToAdd, setTagToAdd] = useState("");
@@ -351,37 +351,49 @@ function Save(props) {
                             }
                             renderItem={({item, index}) => {
                                 return (
-                                    <TouchableOpacity
-                                        onPress={() => {
-                                            console.log('Pressed')
-                                            Alert.alert('Notification?', 'Do you want to remove this tag?', [
-                                                {
-                                                    text: 'OK', onPress: () => {
-                                                        console.log('Ok')
-                                                    }
-                                                },
-                                                {
-                                                    text: 'Cancel',
-                                                    onPress: () => {
-                                                        console.log('Cancel Pressed')
+                                    <>
+                                        {item === null ?
+                                            <View> </View>
+                                            :
+                                            <TouchableOpacity
+                                                onPress={() => {
+                                                    console.log('Pressed')
+                                                    Alert.alert('Notification?', `Do you want to remove this tag '${item.key}'?`, [
+                                                        {
+                                                            text: 'Yes', onPress: () => {
+                                                                console.log('Yes Pressed')
+                                                                setPostTags(postTags.filter(x => x.key !== item.key))
+                                                                setRefreshFlatListTags(!refreshFlatListTags);
 
-                                                    },
-                                                    style: 'cancel',
-                                                },
-                                            ]);
-                                        }}
-                                    >
-                                        <Topic_Object
 
-                                            number={` #${index}`}
-                                            circleBackground={"white"}
-                                            circleTxtColor={"black"}
+                                                            }
+                                                        },
+                                                        {
+                                                            text: 'No',
+                                                            onPress: () => {
+                                                                console.log('Cancel Pressed')
 
-                                            text={item.key}
-                                            txtColor={"white"}
-                                            backgroundColor={"black"}
-                                        />
-                                    </TouchableOpacity>
+                                                            },
+                                                            style: 'cancel',
+                                                        },
+                                                    ]);
+                                                }}
+                                            >
+                                                <Topic_Object
+
+                                                    number={` #${index}`}
+                                                    circleBackground={"white"}
+                                                    circleTxtColor={"black"}
+
+                                                    text={item.key}
+                                                    txtColor={"white"}
+                                                    backgroundColor={"black"}
+                                                />
+                                            </TouchableOpacity>
+                                        }
+
+                                    </>
+
                                 )
                             }}
                         />
@@ -409,7 +421,7 @@ function Save(props) {
                                 textAlign={'center'}
                                 onChangeText={(tag) => {
                                     if (tag !== undefined || tag !== "") {
-                                        setTagToAdd(tag.replace(/\s/g,''))
+                                        setTagToAdd(tag.replace(/\s/g, ''))
                                     }
                                 }}
                             />
@@ -440,11 +452,10 @@ function Save(props) {
                                     const checkIfTagCondition = obj => obj.key === tagToAdd;
                                     const tagCheckedResult = postTags.some(checkIfTagCondition);
 
-                                    if(!tagCheckedResult)
-                                    {
-                                            console.log(`\nTag '${tagToAdd}' Added to List'`)
-                                            postTags.push({key: tagToAdd})
-                                            setRefreshFlatListTags(!refreshFlatListTags);
+                                    if (!tagCheckedResult) {
+                                        console.log(`\nTag '${tagToAdd}' Added to List'`)
+                                        postTags.push({key: tagToAdd})
+                                        setRefreshFlatListTags(!refreshFlatListTags);
                                     }
                                 }
 

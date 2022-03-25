@@ -30,7 +30,11 @@ export default function Trending_Topics_FlatList(props) {
                 }
                 renderItem={({item}) => {
                     return (
-                        <Trending_Topics_TXT navigation={props.navigation} number={item.key} text={item.topic}/>
+                        <Trending_Topics_TXT
+                            navigation={props.navigation}
+                            number={item.key}
+                            text={item.topic}
+                        />
                     )
                 }}
             />

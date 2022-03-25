@@ -26,11 +26,16 @@ export default function Trending_Topics_TXT(props) {
 
     }
     return (
-        <TouchableOpacity onPress={checkIfThereAreAnyPosts}>
+        <TouchableOpacity
+                          onPress={() => {
+                              console.log(`\n\nTrending_Topics_TXT() pressed`)
+                              checkIfThereAreAnyPosts()
+                          }}
+        >
 
             <Topic_Object
-                number={props.key}
-                text={` #${props.topic}`}
+                number={` #${props.number}`}
+                text={props.text}
 
                 txtColor={"black"}
                 backgroundColor={"white"}

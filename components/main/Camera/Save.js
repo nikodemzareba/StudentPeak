@@ -341,8 +341,7 @@ function Save(props) {
                             horizontal
                             inverted={true}
                             extraData={refreshFlatListTags}
-                            ref={(list) => this.myFlatList = list}
-                            onLayout={() => this.myFlatList.current.scrollToEnd() }
+
 
                             contentContainerStyle={{
 

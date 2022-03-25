@@ -407,11 +407,11 @@ function Save(props) {
                             height: 50
                         }}>
                             <TextInput
-                                placeholder="Add Tag"
+                                placeholder="Add Tag To Post"
                                 textAlign={'center'}
                                 onChangeText={(tag) => {
                                     if (tag !== undefined || tag !== "") {
-                                        setTagToAdd(tag)
+                                        setTagToAdd(tag.replace(/\s/g,''))
                                     }
                                 }}
                             />

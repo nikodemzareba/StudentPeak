@@ -2,13 +2,27 @@ import {Feather} from '@expo/vector-icons';
 import {Video} from 'expo-av';
 import firebase from 'firebase';
 import React, {useLayoutEffect, useState} from 'react';
-import {ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+    ActivityIndicator,
+    Alert, Dimensions,
+    FlatList,
+    Image, Linking,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import MentionsTextInput from 'react-native-mentions';
 import {Snackbar} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchUserPosts, sendNotification} from '../../../redux/actions';
 import {getRandomString} from "../Feeds/Shared_Objects/Functions_And_Methods/getRandomString";
+import {B} from "../Feeds/Shared_Objects/Bold";
+import Trending_Topics_TXT from "../Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT";
+import Topic_Object from "../Feeds/Trending_Feed/Trending_Feed_Objects/Topic_Object";
+
 
 // Firebase collection information. 
 // Type "1" = Image
@@ -19,23 +33,33 @@ require("firebase/firebase-storage")
 
 
 function Save(props) {
+
+    const WIDTH = Dimensions.get('window').width;
+    const HEIGHT = Dimensions.get('window').height;
+
     const [caption, setCaption] = useState("")
 
     const [uploading, setUploading] = useState(false)
     const currentUser = "upb6UG9eM0VWzRo8tGke3xK9p953"
         // firebase.auth().currentUser.uid
     ;
+
+    let postTagIndex = 0;
     const [postTags, setPostTags] = useState([
         {
             key: "singing",
+            index: 1,
         },
         {
             key: "helloNicole",
+            index: 2,
         },
         {
             key: "Rugby",
+            index: 3,
         }
     ])
+    const [tagToAdd, setTagToAdd] = useState("")
 
     const postStorageRef = (postID) => `posts/${currentUser}/${postID}`;
 
@@ -251,7 +275,7 @@ function Save(props) {
                 <View style={[container.container]}>
                     <View style={[container.container, utils.backgroundWhite, utils.padding15]}>
 
-                        <View style={[{marginBottom: 20, width: '100%'}]}>
+                        <View style={[{marginBottom: 20, width: '100%', borderColor: 'red', borderWidth: 2}]}>
 
 
                             <MentionsTextInput
@@ -285,36 +309,138 @@ function Save(props) {
                                 MaxVisibleRowCount={3}
                             />
                         </View>
-                        <View>
-                            {props.route.params.type ?
 
-                                <Image
-                                    style={container.image}
-                                    source={{uri: props.route.params.source}}
-                                    styles={{aspectRatio: 1, backgroundColor: 'black'}}
-                                />
+                        {props.route.params.type ?
 
-                                :
+                            <Image
+                                style={container.image}
+                                source={{uri: props.route.params.source}}
+                                styles={{aspectRatio: 1, backgroundColor: 'black'}}
+                            />
 
-                                <Video
-                                    source={{uri: props.route.params.source}}
-                                    shouldPlay={true}
-                                    isLooping={true}
-                                    resizeMode="cover"
+                            :
 
-                                    style={{aspectRatio: 1, backgroundColor: 'black'}}
-                                />
-                            }
-                        </View>
+                            <Video
+                                source={{uri: props.route.params.source}}
+                                shouldPlay={true}
+                                isLooping={true}
+                                resizeMode="cover"
+
+                                style={{aspectRatio: 1, backgroundColor: 'black'}}
+                            />
+                        }
+
 
                     </View>
+                    {/*  <View style={[{ borderColor:'red',borderWidth:2}]}>
                     <Snackbar
                         visible={error}
                         duration={2000}
                         onDismiss={() => setError(false)}>
                         Something Went Wrong!
                     </Snackbar>
+                    </View>
+                    */}
 
+                    {/* Tag Input */}
+
+
+                    <View style={[{borderWidth: 2, height: 120}]}>
+                        <Text style={{color: 'black', fontSize: 20, fontWeight: 'bold', padding: 5}}>
+                            <B>Tags:</B>
+                        </Text>
+
+                        <FlatList
+                            showsHorizontalScrollIndicator={false}
+                            data={postTags}
+                            horizontal
+
+                            contentContainerStyle={{
+
+                                justifyContent: 'space-between'
+
+                            }}
+                            ItemSeparatorComponent={
+                                () => <View style={{width: 16}}/>
+                            }
+                            renderItem={({item}) => {
+                                return (
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            console.log('Pressed')
+                                            Alert.alert('Notification?', 'Do you want to remove this tag?', [
+                                                {
+                                                    text: 'OK', onPress: () => {
+                                                        console.log('Ok')
+                                                    }
+                                                },
+                                                {
+                                                    text: 'Cancel',
+                                                    onPress: () => {
+                                                        console.log('Cancel Pressed')
+
+                                                    },
+                                                    style: 'cancel',
+                                                },
+                                            ]);
+                                        }}
+                                    >
+                                        <Topic_Object
+
+                                            text={item.key}
+                                            txtColor={"white"}
+                                            backgroundColor={"black"}
+
+                                            number={" X"}
+                                            circleBackground={"white"}
+                                            circleTxtColor={"red"}
+                                        />
+                                    </TouchableOpacity>
+                                )
+                            }}
+                        />
+                    </View>
+                    <View style={{
+                        backgroundColor: "white",
+                        justifyContent: "center",
+                        // borderColor: 'orange',
+                        borderWidth: 2,
+                        flexDirection: "row",
+
+
+                    }}>
+                        <View style={{
+                            backgroundColor: "white",
+                            justifyContent: "center",
+                            width: WIDTH - 70,
+                            height: 50
+
+                        }}>
+                            <TextInput
+                                placeholder="Add Tag"
+                                textAlign={'center'}
+                                onChangeText={(tag) => {
+                                    if (tag !== undefined || tag !== "") {
+                                        setTagToAdd(tag)
+                                    }
+                                }}
+                            />
+                        </View>
+
+                        <View
+                            style={{borderColor: 'black', borderWidth: 2}}
+                        >
+
+                            <Feather style={navbar.image} name="check" size={24} color="green" onPress={() => {
+                                console.log('Tick btn ')
+                            }}/>
+
+                        </View>
+                    </View>
+
+                    <View style={{height: 50}}>
+
+                    </View>
 
                 </View>
             )}

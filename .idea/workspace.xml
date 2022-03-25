@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Student Peak.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js&#10;&#10;Previous Update:">
+      <change afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Topic_Object.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Save.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Camera/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Save.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Events_Screen/Events.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Events_Screen/Events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,6 +33,9 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="26sN718OEBSRy4S7MOSstxnoFPj" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -61,8 +70,16 @@
       <workItem from="1648210449821" duration="64000" />
       <workItem from="1648213785714" duration="61000" />
       <workItem from="1648215165828" duration="880000" />
-      <workItem from="1648217318245" duration="2144000" />
+      <workItem from="1648217318245" duration="8395000" />
     </task>
+    <task id="LOCAL-00001" summary="In This Update:&#10;.Refactoring">
+      <created>1648219584525</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648219584525</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,6 +95,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="In This Update:&#10;.Refactoring" />
+    <MESSAGE value="In This Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js&#10;&#10;Previous Update:" />
+    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js&#10;&#10;Previous Update:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -345,7 +345,7 @@ function Save(props) {
                     {/* Tag Input */}
 
 
-                    <View style={[{borderWidth: 2, height: 120}]}>
+                    <View style={[{height: 120, paddingLeft:15, paddingRight:15}]}>
                         <Text style={{color: 'black', fontSize: 20, fontWeight: 'bold', padding: 5}}>
                             <B>Tags:</B>
                         </Text>
@@ -363,7 +363,7 @@ function Save(props) {
                             ItemSeparatorComponent={
                                 () => <View style={{width: 16}}/>
                             }
-                            renderItem={({item}) => {
+                            renderItem={({item, index}) => {
                                 return (
                                     <TouchableOpacity
                                         onPress={() => {
@@ -387,35 +387,26 @@ function Save(props) {
                                     >
                                         <Topic_Object
 
+                                            number={` #${index}`}
+                                            circleBackground={"white"}
+                                            circleTxtColor={"black"}
+
                                             text={item.key}
                                             txtColor={"white"}
                                             backgroundColor={"black"}
-
-                                            number={" X"}
-                                            circleBackground={"white"}
-                                            circleTxtColor={"red"}
                                         />
                                     </TouchableOpacity>
                                 )
                             }}
                         />
                     </View>
-                    <View style={{
-                        backgroundColor: "white",
-                        justifyContent: "center",
-                        // borderColor: 'orange',
-                        borderWidth: 2,
-                        flexDirection: "row",
+
+                    {/* Tag  TXT Input and Tick Button */}
 
 
-                    }}>
-                        <View style={{
-                            backgroundColor: "white",
-                            justifyContent: "center",
-                            width: WIDTH - 70,
-                            height: 50
+                    <View style={{ flexDirection: "row",  paddingTop:15,  paddingLeft:15, paddingRight:15, paddingBottom: 50}}>
 
-                        }}>
+                        <View style={{backgroundColor: "white", borderColor: 'black', borderWidth:2,justifyContent: "center", width: WIDTH - 90, height: 50}}>
                             <TextInput
                                 placeholder="Add Tag"
                                 textAlign={'center'}
@@ -427,19 +418,13 @@ function Save(props) {
                             />
                         </View>
 
-                        <View
-                            style={{borderColor: 'black', borderWidth: 2}}
-                        >
+                        <View style={{borderColor: 'black',  borderWidth:2, height:50, width:62, justifyContent:"center", }}>
 
-                            <Feather style={navbar.image} name="check" size={24} color="green" onPress={() => {
+                            <Feather style={navbar.image} name="check" size={18} color="green" onPress={() => {
                                 console.log('Tick btn ')
-                            }}/>
-
+                            }}
+                            />
                         </View>
-                    </View>
-
-                    <View style={{height: 50}}>
-
                     </View>
 
                 </View>

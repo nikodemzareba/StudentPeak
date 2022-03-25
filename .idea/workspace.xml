@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;.Avoid adding duplicate Tags&#10;&#10;&#10;&#10;Previous Update:&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;&#10;&#10;Previous Update:&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Camera/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Save.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Topic_Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Topic_Object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Stories/Stories_FlatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Stories/Stories_FlatList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Posts_FlatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Posts_FlatList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_FlatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_FlatList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Pictures_And_Videos_Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Pictures_And_Videos_Feed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +72,7 @@
       <workItem from="1648213785714" duration="61000" />
       <workItem from="1648215165828" duration="880000" />
       <workItem from="1648217318245" duration="8559000" />
-      <workItem from="1648231793468" duration="7957000" />
+      <workItem from="1648231793468" duration="14483000" />
     </task>
     <task id="LOCAL-00001" summary="In This Update:&#10;.Refactoring">
       <created>1648219584525</created>
@@ -107,7 +109,28 @@
       <option name="project" value="LOCAL" />
       <updated>1648237441322</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="In This Update:&#10;.Trending Topics text disappeared on &#10;&#10;&#10;&#10;Previous Update:&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+      <created>1648241456056</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1648241456056</updated>
+    </task>
+    <task id="LOCAL-00007" summary="In This Update:&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;&#10;&#10;&#10;Previous Update:&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+      <created>1648241550347</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1648241550347</updated>
+    </task>
+    <task id="LOCAL-00008" summary="In This Update:&#10;.Tags on save page (white space is removed)&#10;&#10;&#10;&#10;Previous Update:&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+      <created>1648243565368</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1648243565368</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,7 +154,11 @@
     <MESSAGE value="In This Update:&#10;. Save GUI style looks decent&#10;&#10;Previous Update:&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
     <MESSAGE value="In This Update:&#10;.You can now add a tag to a post by text input&#10;&#10;Previous Update:&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
     <MESSAGE value="In This Update:&#10;.Avoid adding duplicate Tags&#10;&#10;&#10;&#10;Previous Update:&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;.Avoid adding duplicate Tags&#10;&#10;&#10;&#10;Previous Update:&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <MESSAGE value="In This Update:&#10;.Trending Topics text disappeared on &#10;&#10;&#10;&#10;Previous Update:&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <MESSAGE value="In This Update:&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;&#10;&#10;&#10;Previous Update:&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <MESSAGE value="In This Update:&#10;.Tags on save page (white space is removed)&#10;&#10;&#10;&#10;Previous Update:&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <MESSAGE value="In This Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;&#10;&#10;Previous Update:&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;&#10;&#10;Previous Update:&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

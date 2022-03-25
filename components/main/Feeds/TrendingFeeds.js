@@ -141,9 +141,8 @@ class TrendingFeeds extends Component {
         const friendsPicturesDataFetched = [];
 
         let expectedFollowingUsersCount = querySnapshot.size;
-        console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
-
         let processedFollowingUsers = 0;
+        console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
 
         // Got users Following info
         console.log("\nGot Users Following Data")
@@ -238,7 +237,7 @@ class TrendingFeeds extends Component {
                                         console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
                                         if (processedFollowingUsers === expectedFollowingUsersCount && noOfUserFollowingPosts === processedUserFollowingPosts) {
-                                            console.log("\nSetting Data To Variable")
+                                            console.log("\ngetFriendsLikePostsSetting()1 Fetched getFriendsLikePosts()")
                                             this.setState({
                                                 friendsVideoDataFetched: friendsVideoDataFetched,
                                                 friendsPicturesDataFetched: friendsPicturesDataFetched,
@@ -259,7 +258,7 @@ class TrendingFeeds extends Component {
                     })
 
                     if (processedFollowingUsers === expectedFollowingUsersCount && noOfUserFollowingPosts === processedUserFollowingPosts) {
-                        console.log("\nSetting Data To Variable")
+                        console.log("\ngetFriendsLikePostsSetting()2 Fetched getFriendsLikePosts()")
                         this.setState({
                             friendsVideoDataFetched: friendsVideoDataFetched,
                             friendsPicturesDataFetched: friendsPicturesDataFetched,

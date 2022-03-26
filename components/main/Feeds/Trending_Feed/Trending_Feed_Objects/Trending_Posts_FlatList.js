@@ -9,7 +9,7 @@ export default function Trending_Posts_FlatList(props) {
     const windowHeight = Dimensions.get('window').height;
     const windowWidth = Dimensions.get('window').width;
 
-    console.log(`\nTrending_Posts_FlatList() ${props.text} Data Size: ${Object.keys(props.data).length}`)
+    // console.log(`\nTrending_Posts_FlatList() ${props.text} Data Size: ${Object.keys(props.data).length}`)
 
     return (
         <View style={{padding: 15}}>

@@ -154,7 +154,7 @@ function Save(props) {
                             likesCount: 0,
                             mediaType: mediaType,
                             thumbnail: props.route.params.imageSource,
-                            userId: currentUser,
+                            userID: currentUser,
                         })
 
                         console.log(`\nSave uploadImage() uploading to postTags`);

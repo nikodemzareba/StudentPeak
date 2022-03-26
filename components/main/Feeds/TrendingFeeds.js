@@ -420,11 +420,13 @@ class TrendingFeeds extends Component {
                     }
                     if (receivedPosts === querySize) {
                         if (type === "picture") {
+                            console.log(`\ngetPopularPicturePosts() \nType : ${type} \nData: ${this.state.trendingFeed_PicturesDataFetched}`);
                             this.setState({
                                 trendingFeed_PicturesIsLoading: false,
                                 trendingFeed_PicturesDataFetched: picturesDataFetched,
                             })
                         } else if (type === "video") {
+                            console.log(`\ngetPopularPicturePosts() \nType : ${type} \nData: ${this.state.trendingFeed_VideosDataFetched}`);
                             this.setState({
                                 trendingFeed_VideosIsLoading: false,
                                 trendingFeed_VideosDataFetched: videosDataFetched,

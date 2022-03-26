@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;&#10;&#10;Previous Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main/Camera/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Save.js" afterDir="false" />
     </list>
@@ -67,7 +67,7 @@
       <workItem from="1648213785714" duration="61000" />
       <workItem from="1648215165828" duration="880000" />
       <workItem from="1648217318245" duration="8559000" />
-      <workItem from="1648231793468" duration="17322000" />
+      <workItem from="1648231793468" duration="21231000" />
     </task>
     <task id="LOCAL-00001" summary="In This Update:&#10;.Refactoring">
       <created>1648219584525</created>
@@ -139,7 +139,21 @@
       <option name="project" value="LOCAL" />
       <updated>1648248966934</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+      <created>1648250979368</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1648250979368</updated>
+    </task>
+    <task id="LOCAL-00012" summary="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+      <created>1648250986867</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1648250986867</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +182,8 @@
     <MESSAGE value="In This Update:&#10;.Tags on save page (white space is removed)&#10;&#10;&#10;&#10;Previous Update:&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
     <MESSAGE value="In This Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;&#10;&#10;Previous Update:&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
     <MESSAGE value="In This Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;&#10;&#10;Previous Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;&#10;&#10;Previous Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <MESSAGE value="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

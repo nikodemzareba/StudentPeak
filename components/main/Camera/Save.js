@@ -357,21 +357,16 @@ function Save(props) {
                                             :
                                             <TouchableOpacity
                                                 onPress={() => {
-                                                    console.log('Pressed')
-                                                    Alert.alert('Notification?', `Do you want to remove this tag '${item.key}'?`, [
+                                                    Alert.alert('Notification', `Do you want to remove this tag '${item.key}'?`, [
                                                         {
                                                             text: 'Yes', onPress: () => {
-                                                                console.log('Yes Pressed')
                                                                 setPostTags(postTags.filter(x => x.key !== item.key))
                                                                 setRefreshFlatListTags(!refreshFlatListTags);
-
-
                                                             }
                                                         },
                                                         {
                                                             text: 'No',
                                                             onPress: () => {
-                                                                console.log('Cancel Pressed')
 
                                                             },
                                                             style: 'cancel',
@@ -421,7 +416,7 @@ function Save(props) {
                                 textAlign={'center'}
                                 onChangeText={(tag) => {
                                     if (tag !== undefined || tag !== "") {
-                                        setTagToAdd(tag.replace(/\s/g, ''))
+                                        setTagToAdd(tag)
                                     }
                                 }}
                             />
@@ -438,27 +433,22 @@ function Save(props) {
                             <Feather style={navbar.image} name="check" size={18} color="green" onPress={() => {
                                 if (tagToAdd !== "") {
 
-                                    // const result = postTags.filter(x => x.key === tagToAdd);
-                                    // console.log(`\n\nTag to Add:'${tagToAdd}' \nTag Result: '${result}'`)
-                                    //
-                                    // if (result !== undefined) {
-                                    //     console.log(`\nTag '${tagToAdd}' Added to List'`)
-                                    //     // postTags.push({key: tagToAdd})
-                                    //     // setRefreshFlatListTags(!refreshFlatListTags);
-                                    // } else {
-                                    //     console.log(`\nTag '${tagToAdd}' Rejected to List'`)
-                                    // }
+                                    let x = tagToAdd.split(" ");
+                                    let newTag = "";
+                                    console.log(`Tag Split by space ${x}`)
 
-                                    const checkIfTagCondition = obj => obj.key === tagToAdd;
+                                    x.forEach((txt)=>{
+                                       newTag += txt.charAt(0).toUpperCase() + txt.slice(1);
+                                    })
+
+                                    const checkIfTagCondition = obj => obj.key === newTag;
                                     const tagCheckedResult = postTags.some(checkIfTagCondition);
 
                                     if (!tagCheckedResult) {
-                                        console.log(`\nTag '${tagToAdd}' Added to List'`)
-                                        postTags.push({key: tagToAdd})
+                                        postTags.push({key: newTag})
                                         setRefreshFlatListTags(!refreshFlatListTags);
                                     }
                                 }
-
                             }}
                             />
                         </View>

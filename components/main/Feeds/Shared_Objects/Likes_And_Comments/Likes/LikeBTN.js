@@ -13,6 +13,8 @@ import heart_fill from './heart-431-fill.png'
 
 export default function LikeBTN(props) {
 
+    // console.log("\nLikeBTN() PostedID received " +props.postID);
+
     const [likeState, setLikeState] = useState(false);
     const [currentLikes, setCurrentLikes] = useState(0);
     const [likeDataLoaded, setLikeDataLoaded] = useState(false);

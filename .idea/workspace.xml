@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In this Update: &#10;.Commit &#10;&#10;&#10;&#10;Need To work On:&#10;&#10;&#10;Previous Updates:">
+    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;&#10;&#10;&#10;Previous Update:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Search/Objects/SearchScreenObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search/Objects/SearchScreenObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/CommentBTN.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/LikeBTN.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/TrendingFeeds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Posts_FlatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Posts_FlatList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648250986867</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="In This Update:&#10;&#10;&#10;&#10;Previous Update:">
+      <created>1648328374710</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1648328374710</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +200,8 @@
     <MESSAGE value="In This Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;&#10;&#10;Previous Update:&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
     <MESSAGE value="In This Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;&#10;&#10;Previous Update:&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
     <MESSAGE value="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js" />
+    <MESSAGE value="In This Update:&#10;&#10;&#10;&#10;Previous Update:" />
+    <option name="LAST_COMMIT_MESSAGE" value="In This Update:&#10;&#10;&#10;&#10;Previous Update:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

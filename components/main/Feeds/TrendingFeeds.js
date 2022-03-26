@@ -92,12 +92,51 @@ class TrendingFeeds extends Component {
             .doc(this.state.userId)
             .collection('userFollowing')
 
-        this.popularPicturePostsRef = (type) =>
+        this.popularPostsRef = (type) =>
             firebase.firestore()
                 .collection("postData")
                 .orderBy('likesCount', 'desc')
                 .where("mediaType", "==", type)
                 .limit(50)
+    }
+
+    resetConditions = () =>{
+
+        this.setState({
+            //Trending Topics
+            trendingTopicsDataFetched: [],
+            trendingTopicsLoading: true,
+
+            // Stories
+            pictureStoriesData: [],
+            pictureStoriesDataLoaded: false,
+            videoStoriesData: [],
+            videoStoriesDataLoaded: false,
+
+            // Friends Following Data
+            friendsVideoDataFetched: [],
+            friendsVideosIsLoading: true,
+            friendsVideosReceived: 0,
+            friendsLoadVideos: false,
+
+            friendsPicturesDataFetched: [],
+            friendsPicturesIsLoading: true,
+            friendsPicturesReceived: 0,
+            loadFriendsPictures: false,
+
+            // Trending Data
+            trendingFeed_VideosDataFetched: [],
+            trendingFeed_VideosIsLoading: true,
+            trendingFeed_VideosReceived: 0,
+            trendingFeed_loadVideos: false,
+
+            trendingFeed_PicturesDataFetched: [],
+            trendingFeed_PicturesIsLoading: true,
+            trendingFeed_PicturesReceived: 0,
+            trendingFeed_loadPictures: false,
+
+        });
+
     }
 
     requestProfileImage() {
@@ -110,7 +149,6 @@ class TrendingFeeds extends Component {
             }
         })
     }
-
 
     componentDidMount() {
 
@@ -133,6 +171,36 @@ class TrendingFeeds extends Component {
 
     isKeyInList(key, list) {
         return list.some(item => key === item.key);
+    }
+
+    getPopularTopics = async (querySnapShot) => {
+        let data = [];
+        let resultsSize = querySnapShot.size;
+        let receivedDataCount = 0;
+
+        await querySnapShot.forEach((trendingTopic) => {
+
+            receivedDataCount++
+
+            data.push({
+                key: `${receivedDataCount}`,
+                topic: `${trendingTopic.id}`
+            });
+
+            if (resultsSize === receivedDataCount) {
+
+                this.setState({
+                    trendingTopicsDataFetched: data,
+                    trendingTopicsLoading: false
+                })
+            }
+        })
+
+        if (resultsSize === 0) {
+            this.setState({
+                trendingTopicsLoading: false
+            })
+        }
     }
 
     getFriendsLikePosts = async (querySnapshot) => {
@@ -284,10 +352,14 @@ class TrendingFeeds extends Component {
 
     getPopularPosts = async (querySnapshot, type) => {
 
+        console.log(`\n #############################################################################################`);
+        let querySize = querySnapshot.size;
+        console.log(`\nTrendingFeed1 getPopularPosts() 1  ${type} QuerySize: ${querySize} `)
+
+        console.log(`\n #############################################################################################`);
+
         const picturesDataFetched = [];
         const videosDataFetched = [];
-
-        let querySize = querySnapshot.size;
         let receivedPosts = 0;
 
         await querySnapshot.forEach((postData) => {
@@ -347,8 +419,6 @@ class TrendingFeeds extends Component {
 
                     }
                     if (receivedPosts === querySize) {
-                        console.log("\nSetting Data To Variable")
-
                         if (type === "picture") {
                             this.setState({
                                 trendingFeed_PicturesIsLoading: false,
@@ -381,90 +451,24 @@ class TrendingFeeds extends Component {
         }
     }
 
-    getPopularTopics = async (querySnapShot) => {
-        let data = [];
-        let resultsSize = querySnapShot.size;
-        let receivedDataCount = 0;
-
-        await querySnapShot.forEach((trendingTopic) => {
-
-            receivedDataCount++
-
-            data.push({
-                key: `${receivedDataCount}`,
-                topic: `${trendingTopic.id}`
-            });
-
-            if (resultsSize === receivedDataCount) {
-
-                this.setState({
-                    trendingTopicsDataFetched: data,
-                    trendingTopicsLoading: false
-                })
-            }
-        })
-
-        if (resultsSize === 0) {
-            this.setState({
-                trendingTopicsLoading: false
-            })
-        }
-    }
-
-    resetConditions = () =>{
-
-        this.setState({
-            //Trending Topics
-            trendingTopicsDataFetched: [],
-            trendingTopicsLoading: true,
-
-            // Stories
-            pictureStoriesData: [],
-            pictureStoriesDataLoaded: false,
-            videoStoriesData: [],
-            videoStoriesDataLoaded: false,
-
-            // Friends Following Data
-            friendsVideoDataFetched: [],
-            friendsVideosIsLoading: true,
-            friendsVideosReceived: 0,
-            friendsLoadVideos: false,
-
-            friendsPicturesDataFetched: [],
-            friendsPicturesIsLoading: true,
-            friendsPicturesReceived: 0,
-            loadFriendsPictures: false,
-
-            // Trending Data
-            trendingFeed_VideosDataFetched: [],
-            trendingFeed_VideosIsLoading: true,
-            trendingFeed_VideosReceived: 0,
-            trendingFeed_loadVideos: false,
-
-            trendingFeed_PicturesDataFetched: [],
-            trendingFeed_PicturesIsLoading: true,
-            trendingFeed_PicturesReceived: 0,
-            trendingFeed_loadPictures: false,
-
-        });
-      
-    }
-
     getData = () =>{
-
-        // Get friends liked posts
-        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getFriendsLikePosts);
-
-        // Get popular pictures & videos
-        this.unsubscribe = this.popularPicturePostsRef("picture").onSnapshot((r) => {
-            this.getPopularPosts(r, "picture")
-        });
-        this.unsubscribe = this.popularPicturePostsRef("video").onSnapshot((r) => {
-            this.getPopularPosts(r, "video")
-        });
 
         // Get popular topics
         this.unsubscribe = this.popularPostTopicsRef.onSnapshot(this.getPopularTopics);
+
+        // Get friends liked posts
+        this.unsubscribe = this.usersFollowingRef.onSnapshot((r) => {
+            this.getFriendsLikePosts(r)
+        });
+
+        console.log(`\n ###############################################################################################`);
+        // Get popular pictures & videos
+        this.unsubscribe = this.popularPostsRef("picture").onSnapshot((r) => {
+            this.getPopularPosts(r, "picture")
+        });
+        this.unsubscribe = this.popularPostsRef("video").onSnapshot((r) => {
+            this.getPopularPosts(r, "video")
+        });
 
         //HELLO DELETE Later
         this.setState({

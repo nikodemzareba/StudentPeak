@@ -12,13 +12,11 @@ import {getCommentByUsers} from "./Functions/getCommentByUsers";
 
 export default function CommentBTN(props) {
 
-
+    // console.log(`CommentBTN() PostedID received  \n${props.postID}`);
 
     let [currentCommentsCount, setCurrentCommentsCount] = useState(false);
     const [currentComments, setCurrentComments] = useState(0);
     const postID = props.postID;
-    console.log("PostedID recevied " + postID);
-
 
     const commentBTN_Count = () => {
         let currentCommentState, commentCount;
@@ -41,8 +39,6 @@ export default function CommentBTN(props) {
                     setCurrentCommentsCount(currentCommentState)
                 })
     }
-
-
     commentBTN_Count();
 
     //get comments  via the postID

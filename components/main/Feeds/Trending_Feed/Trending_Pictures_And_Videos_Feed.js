@@ -10,7 +10,7 @@ import Trending_Posts_FlatList from "./Trending_Feed_Objects/Trending_Posts_Flat
 
 
 export default function Trending_Pictures_And_Videos_Feed(props) {
-    console.log("\n\n Trending_Pictures_And_Videos_Feed()")
+
     return (
 
         <View style={feedStyles.screenBackground}>

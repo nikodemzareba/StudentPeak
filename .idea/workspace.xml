@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In This Update:&#10;.postTags can be deleted&#10;&#10;&#10;Previous Update:&#10;. Save.js removed typo error&#10;&#10;. match.js Got rid of navigating errors from pages from G1&#10;.TrendingFeeds GUI update when no data is available on page.&#10;&#10;.Tags on save page (white space is removed)&#10;.Trending Topics text disappeared on refactoring and now is visible&#10;&#10;.Trending Topics error due to refactoring wasn't navigating to search screen results&#10;.Avoid adding duplicate Tags&#10;.You can now add a tag to a post by text input&#10;&#10;. Save GUI style looks decent&#10;.Displaying tags on save page&#10;.Refactored to Topic_Object.js">
+    <list default="true" id="b89c0aae-2bdb-4173-b192-cb4f1313f474" name="Changes" comment="In this Update: &#10;.Commit &#10;&#10;&#10;&#10;Need To work On:&#10;&#10;&#10;Previous Updates:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/main/Camera/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Camera/Save.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/main/Search/Objects/SearchScreenObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main/Search/Objects/SearchScreenObject.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/VideosFeed_Objects/feedControl/components/VideoPlayer.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Feed.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/main/Feeds/PictureFeed.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="26sN718OEBSRy4S7MOSstxnoFPj" />
   <component name="ProjectLevelVcsManager">
@@ -195,7 +202,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/main/Feeds/Trending_Feed/Trending_Feed_Objects/Trending_Topics_TXT.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

@@ -12,7 +12,9 @@ export default function SearchScreenObject(props) {
 
         if  (props.item.thumbnail !== undefined)
         {
-            return props.item.thumbnail;
+            setVideoImageThumbnail(props.item.thumbnail);
+            setDoneThumbnail(true);
+            return ;
         }
 
         console.log(`\n\nSearchScreenObject generateThumbnail() URI itemKEy \n${props.item.key}`);

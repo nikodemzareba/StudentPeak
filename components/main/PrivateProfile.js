@@ -11,7 +11,7 @@ import firebase from "firebase";
 
 
 import {storyData} from "./Feeds/FakeJSONData/TempStoryData";
-import PrivateProfileDisplay from './PrivateProfileDisplay';
+import ProfileDisplay from './ProfileDisplay';
 import {feedStyles} from "./Feeds/Shared_Objects/Styles";
 import SearchScreenObject from "./Search/Objects/SearchScreenObject";
 
@@ -45,29 +45,24 @@ class PrivateProfile extends Component {
 
     componentDidUpdate() {
         
-        
-          
-           //  this.getData(this.props);
         this.getProfileInfo(this.props);
-       // this.state.mediaDataDataFetched = [];
         
        }
 
 
-    // This method is passed all the userID's of the users this user is following
+    // This method is passed all of the users posts
     getData = async () => {
 
         const mediaDataDataFetched = [];
 
-        // Got users Following info
-        // console.log("\nGot Users Following Data")
+        // Get user info
         firebase.firestore()
             .collection('users')
             .doc(this.state.userId)
             .get()
             .then(userDetails => {
 
-                // Get all of the posts from the user we are following
+                // Get all of the posts from the user
                 firebase.firestore()
                     .collection('posts')
                     .doc(this.state.userId)
@@ -108,29 +103,24 @@ class PrivateProfile extends Component {
                                     });
 
                                     if (count === expectedResultsSize) {
-                                        //       console.log("\nSetting Data To Variable")
                                         this.setState({
                                             mediaDataDataFetched: mediaDataDataFetched,
                                             loadMediaData: false
                                         })
                                     }
                                 }))
-                                .catch((error) => {
-                                    //        console.log(`${error} \nUnable to get Users following post data!`);
-                                });
                         })
                     })
-                    .catch((error) => {
-                        //       console.log(`${error} \nUnable to get Users following posts!`);
-                    })
+                   
             });
     }
 
+    // Get the profile info related to the user
     getProfileInfo = async () => {
 
         const profileDataFetched = [];
 
-
+// In the users collection, search for the currently logged in user's info
         firebase.firestore()
             .collection('users')
             .doc(this.state.userId)
@@ -169,7 +159,7 @@ class PrivateProfile extends Component {
             <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
 
                 <View>
-                    <PrivateProfileDisplay
+                    <ProfileDisplay
                         userID={this.state.userId}
                         data={this.state.profileDataFetched}
                         navigation={this.props.route.params.navigation}
@@ -177,7 +167,6 @@ class PrivateProfile extends Component {
                 </View>
 
 
-                {/* mediaData Feed */}
                 {this.state.loadMediaData
                     ?
                     <View style={styles.loading}>

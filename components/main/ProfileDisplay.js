@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 const {height, width} = Dimensions.get('window');
 
 
-function PrivateProfileDisplay(props) {
+function ProfileDisplay(props) {
 
     const [refresh, setRefresh] = useState(false);
       
@@ -28,7 +28,7 @@ function PrivateProfileDisplay(props) {
   
       }
       else {
-  
+  // Check if user has posts
         firebase.firestore()
               .collection("users")
               .doc(firebase.auth().currentUser.uid)
@@ -69,6 +69,7 @@ function PrivateProfileDisplay(props) {
   
     }, [props.userID, props.following])
   
+    // On press, follow the user.
     const onFollow = () => {
       firebase.firestore()
       .collection("following")
@@ -93,6 +94,7 @@ function PrivateProfileDisplay(props) {
       
     }
   
+    // On press, unfollow the user.
   const onUnFollow = () => {
     firebase.firestore()
     .collection("following")
@@ -113,6 +115,13 @@ function PrivateProfileDisplay(props) {
       .doc(props.userID)
       .update({followers: decrement});
 
+    }
+
+
+    // Sign the user out.
+    const signOut = () => {
+      
+      firebase.auth().signOut();
     }
 
     return (
@@ -189,7 +198,7 @@ function PrivateProfileDisplay(props) {
 </TouchableOpacity>
 </View>
 <View>
-<TouchableOpacity style={styles.loginBtn} onPress={() => firebase.auth().signOut()}>
+<TouchableOpacity style={styles.loginBtn} onPress={() => signOut()}>
   <Text style={styles.loginText}>Log out</Text>
 </TouchableOpacity>
 </View>    
@@ -308,4 +317,4 @@ const styles = StyleSheet.create({
     following: store.userState.following
   })
 
-  export default connect (mapStateToProps, null)(PrivateProfileDisplay);
+  export default connect (mapStateToProps, null)(ProfileDisplay);

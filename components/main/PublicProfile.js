@@ -13,7 +13,7 @@ import firebase from "firebase";
 
 
 import {storyData} from "./Feeds/FakeJSONData/TempStoryData";
-import PrivateProfileDisplay from './PrivateProfileDisplay';
+import ProfileDisplay from './ProfileDisplay';
 import {feedStyles} from "./Feeds/Shared_Objects/Styles";
 import SearchScreenObject from "./Search/Objects/SearchScreenObject";
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
@@ -71,17 +71,17 @@ class PublicProfile extends Component {
 
     
 
-    // This method is passed all the userID's of the users this user is following
+    // This method is passed all of the users posts
     getData = async (props) => {
-        // Got users Following info
-        // console.log("\nGot Users Following Data")
+
+        // Get navigated to users info
         firebase.firestore()
             .collection('users')
             .doc(props.route.params.uid)
             .get()
             .then(userDetails => {
 
-                // Get all of the posts from the user we are following
+                // Get all of the posts from the user
                 firebase.firestore()
                     .collection('posts')
                     .doc(props.route.params.uid)
@@ -122,28 +122,23 @@ class PublicProfile extends Component {
                                     });
 
                                     if (count === expectedResultsSize) {
-                                        //       console.log("\nSetting Data To Variable")
+                                       
                                         this.setState({
                                             mediaDataDataFetched: this.state.mediaDataDataFetched,
                                             loadMediaData: false
                                         })
                                     }
                                 }))
-                                .catch((error) => {
-                                    //        console.log(`${error} \nUnable to get Users following post data!`);
-                                });
                         })
-                    })
-                    .catch((error) => {
-                        //       console.log(`${error} \nUnable to get Users following posts!`);
                     })
             });
     }
 
+    // Get the profile info related to the user
     getProfileInfo = async (props) => {
         const profileDataFetched = [];
 
-
+// In the users collection, search for the currently logged in user's info
         firebase.firestore()
             .collection('users')
             .doc(props.route.params.uid)
@@ -184,7 +179,7 @@ class PublicProfile extends Component {
             <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
 
                 <View>
-                    <PrivateProfileDisplay
+                    <ProfileDisplay
                         userID={this.props.route.params.uid}
                         data={this.state.profileDataFetched}
                         navigation={this.props.route.params.navigation}
@@ -198,7 +193,7 @@ class PublicProfile extends Component {
     
 
 
-                {/* mediaData Feed */}
+            
                 {this.state.loadMediaData
                     ?
                     <View style={styles.loading}>

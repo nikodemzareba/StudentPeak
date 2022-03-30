@@ -7,8 +7,8 @@ import {feedStyles} from "./Shared_Objects/Styles";
 import Pictures_And_Videos_Post_Object from "./Shared_Objects/Pictures_And_Videos_Post_Object";
 import Stories_FlatList from "./Shared_Objects/Stories/Stories_FlatList";
 
-
-
+import {LogBox} from 'react-native';
+LogBox.ignoreAllLogs();
 
 export default function Feed_PictureFeed(props) {
 

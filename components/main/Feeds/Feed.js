@@ -27,6 +27,7 @@ import Chat_BTN from "./Shared_Objects/Chat_BTN";
 import {getProfileImage} from "./Shared_Objects/Functions_And_Methods/getProfileImage";
 
 LogBox.ignoreLogs(['Setting a timer']);
+LogBox.ignoreAllLogs();
 
 
 const videosOrPicturesSelectedToView = [
@@ -74,6 +75,7 @@ class FeedScreen extends Component {
     }
 
     componentDidMount() {
+        
         this.requestProfileImage();
         this.dataRequest();
         console.log(`${this.state.userId}`)

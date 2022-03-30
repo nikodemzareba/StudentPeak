@@ -15,11 +15,7 @@ const WINDOW_WIDTH = Dimensions.get("window").width;
 const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 
-
-
-
-
-export default function VideoScreen(props) {
+export default function Add(props) {
     const [hasPermission, setHasPermission] = useState(null);
     const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
     const [isPreview, setIsPreview] = useState(false);
@@ -69,7 +65,7 @@ export default function VideoScreen(props) {
         if (cameraRef.current) {
             try {
 
-                const options = { maxDuration: 60, quality: Camera.Constants.VideoQuality['480p'] }
+                const options = { maxDuration: 60, quality: Camera.Constants.VideoQuality['720p'] }
 
 
                 const videoRecordPromise = cameraRef.current.recordAsync(options);
@@ -189,10 +185,8 @@ export default function VideoScreen(props) {
                 <View
                     style={[{ aspectRatio: 1 / 1, height: WINDOW_WIDTH }]}>
                     <Image
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, aspectRatio: 1 / 1, height: WINDOW_WIDTH }}
                         source={{ uri: galleryPickedImage.uri }}
-
-                        style={[{ aspectRatio: 1 / 1, height: WINDOW_WIDTH }]}
                         ratio={'1:1'}
 
                     />
@@ -209,7 +203,7 @@ export default function VideoScreen(props) {
                         <Feather style={{ padding: 10 }} name={"camera"} size={20} color="white" />
                     </TouchableOpacity>
                 </View>
-                <View style={{ flex: 1 }, [utils.borderTopGray]}>
+                <View style={{ flex: 1 , borderTopWidth: 1, borderColor: 'lightgrey'}}>
 
                     <FlatList
                         numColumns={3}
@@ -248,10 +242,9 @@ export default function VideoScreen(props) {
                 {isFocused ?
                     <Camera
                         ref={cameraRef}
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, aspectRatio: 1 / 1, height: WINDOW_WIDTH  }}
                         type={cameraType}
                         flashMode={isFlash ? Camera.Constants.FlashMode.torch : Camera.Constants.FlashMode.off}
-                        style={[{ aspectRatio: 1 / 1, height: WINDOW_WIDTH }]}
                         ratio={'1:1'}
                         onCameraReady={onCameraReady}
                     />
@@ -272,6 +265,8 @@ export default function VideoScreen(props) {
         </View>
     );
 }
+
+
 const styles = StyleSheet.create({
     closeButton: {
         position: "absolute",

@@ -1,6 +1,7 @@
 import firebase from 'firebase' // do not move this from first line -- will cause errors.
 require('firebase/firestore');
 import "firebase/auth";
+import {getAuth} from "firebase/auth"
 import React, {useEffect, Component, useState} from 'react' // imports React Native Library
 
 import {Provider} from 'react-redux'
@@ -39,8 +40,13 @@ import Trending_Pictures_And_Videos_Feed from "./components/main/Feeds/Trending_
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
-import Chat from './components/main/ChatList'
+import Chat from './components/main/Chat/ChatList'
 import showComment from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment";
+import Contacts from "./components/main/Chat/Contacts";
+import ChatHeader from "./components/main/Chat/ChatHeader";
+import match from './components/main/match';
+import matchFound from './components/main/matchFound';
+
 
 const Stack = createStackNavigator();
 
@@ -119,7 +125,10 @@ function App() {
                             <Stack.Group initialRouteName="Main">
 
                                 <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
+                                <Stack.Screen name="AboutYou" component={AboutYou} options={{headerShown: false}}/>
                                 <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
+                                <Stack.Screen name="Match" component={match} options={{headerShown: true}}/>
+                                <Stack.Screen name="MatchFound" component={matchFound} options={{headerShown: true}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="showComment" component={showComment} options={{headerShown: false}}/>
                                 <Stack.Screen name="UsersLikedPost" component={UsersLikedPost} options={{headerShown: false}}/>
@@ -127,7 +136,8 @@ function App() {
                                 <Stack.Screen name="SearchScreenResults" component={SearchScreenResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="ViewPost" component={ViewPost} options={{headerShown: false}}/>
                                 <Stack.Screen name="Trending_Pictures_Videos_Feed" component={Trending_Pictures_And_Videos_Feed} options={{headerShown: false}}/>
-
+                                <Stack.Screen name = "contacts" component = {Contacts}/>
+                                <Stack.Screen name="ChatWindow" component = {Chat} options={{headerTitle: (props) => <ChatHeader {...props} /> }}/>
                             </Stack.Group>
 
                             :

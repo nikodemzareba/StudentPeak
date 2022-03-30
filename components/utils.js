@@ -34,3 +34,30 @@ function timeDifference(current, previous) {
 }
 
 export { timeDifference };
+
+const colors = {
+    darkGrey: "#083835",
+    darkerGrey: "#566765",
+    lightGrey: "#d3d9d5",
+    deepGrey: "#6f756a",
+    skyblue: "#34b7f1",
+    smokeWhite: "#ece5dd",
+    white: "white",
+    otherDarkGrey: "#3C3C3C",
+    otherLighterGrey: "#757575",
+    iconGray: "#717171",
+};
+
+export const theme = {
+    colors: {
+        background: colors.smokeWhite,
+        foreground: colors.darkerGrey,
+        primary: colors.darkGrey,
+        tertiary: colors.deepGrey,
+        secondary: colors.lightGrey,
+        white: colors.white,
+        text: colors.otherDarkGrey,
+        secondaryText: colors.otherLighterGrey,
+        iconGray: colors.iconGray,
+    },
+};

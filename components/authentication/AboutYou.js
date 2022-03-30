@@ -1,4 +1,6 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
+import firebase from 'firebase';
 import { Component, useState } from 'react'
 import {
   StyleSheet,
@@ -9,20 +11,44 @@ import {
   Picker,
 } from 'react-native'
 
-import { SimpleLineIcons } from '@expo/vector-icons'
-import firebase from 'firebase'
-import 'firebase/firestore'
 
 
-const AboutYou = ({ navigation }) => {
-  function navigate() {
-    /* 
-      Add validation with 
-      database and send user to profile.
-      */
-    navigation.navigate('ChooseUsername')
-  }
-  const [selectedValue, setSelectedValue] = useState("University of Kent");
+
+require("firebase/firestore")
+require("firebase/firebase-storage")
+
+function AboutYou() {
+  const navigation = useNavigation()
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [dob, setDob] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
+
+
+  const onAboutYou = () => {
+
+    // Implement a check for student email to check if the email is .ac.uk.
+    // Implement outlook API to authenticate. 
+    // Create a database of Universities and render them on screen as selection. 
+  
+        firebase.firestore()
+        .collection('users')
+        .doc(firebase.auth().currentUser.uid)
+        .update({
+          name: name,
+          surname: surname,
+          dob: dob,
+          gender: selectedValue,
+        })
+        .then(() => {
+        //navigation.navigate('AboutYou');
+        console.log(`Successfully Verified`);
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      };
+  
 
 
  
@@ -31,17 +57,8 @@ const AboutYou = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <View>
-        <Text style={styles.textView}></Text>
+        <Text style={styles.etextView}></Text>
         </View>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <SimpleLineIcons
-          style={styles.icon}
-          name="arrow-left"
-          size={20}
-          color="white"
-          
-        />
-      </TouchableOpacity>
       <View>
         <Text style={styles.logo}>StudentPeak</Text>
       </View>
@@ -49,7 +66,7 @@ const AboutYou = ({ navigation }) => {
         <Text style={styles.createText}>About You</Text>
       </View>
       <View>
-        <Text style={styles.textView}>First Name</Text>
+        <Text style={styles.etextView}>First Name</Text>
       </View>
       <View style={styles.emailView}>
         <TextInput
@@ -60,7 +77,7 @@ const AboutYou = ({ navigation }) => {
         />
       </View>
       <View>
-        <Text style={styles.textView}>Last Name</Text>
+        <Text style={styles.etextView}>Last Name</Text>
       </View>
       <View style={styles.emailView}>
         <TextInput
@@ -71,7 +88,7 @@ const AboutYou = ({ navigation }) => {
         />
       </View>
       <View>
-      <Text style={styles.textView}>{'   Date of Birth'}</Text>
+      <Text style={styles.etextView}>{'   Date of Birth'}</Text>
       </View>
       <View style = {{flex: 1, flexDirection: 'row'}}>
       <View style={styles.dobView}>
@@ -103,19 +120,19 @@ const AboutYou = ({ navigation }) => {
       <Text style={
           styles.genderTextView}>{'Gender'}</Text>
       </View>
-      <View style={styles.passView}>
-        <Picker
-          selectedValue={selectedValue}
-          style={{ height:100, width: 260 }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="Male" value="M" />
-          <Picker.Item label="Female" value="F" />
-          <Picker.Item label="Other" value="O" />
-        </Picker>
-      </View>
 
-      <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
+      <Picker
+        selectedValue={selectedValue}
+        style={{ height: 10, width: 300, marginBottom: 100 }}
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
+        itemStyle={{ backgroundColor: "black", color: "white", fontFamily:"Montseratt", fontSize:20 }}
+      >
+        <Picker.Item label="Male" value="male" />
+        <Picker.Item label="Female" value="female" />
+        <Picker.Item label="Other" value="other" />
+      </Picker>
+
+      <TouchableOpacity style={styles.loginBtn} onPress={onAboutYou()}>
         <Text style={styles.loginText}>Continue</Text>
       </TouchableOpacity>
     </View>
@@ -212,7 +229,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
     borderRadius: 20,
   },
-  textView: {
+  etextView: {
     height: 30,
     marginRight: 160,
     fontSize: 20,

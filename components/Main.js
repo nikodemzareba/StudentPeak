@@ -103,17 +103,12 @@ export class Main extends Component {
                             }}
                 />
                 <Tab.Screen name="PrivateProfile" component={PrivateProfileScreen} initialParams={{navigation: this.props.navigation}}
-                            listeners={({navigation}) => ({
-                                tabPress: event => {
-                                    event.preventDefault();
-                                    navigation.navigate("PrivateProfile", {uid: firebase.auth().currentUser.uid})
-                                }
-                            })}
-                            options={{
+                            options={() => ({
                                 tabBarIcon: ({color, size}) => (
+                                    //decide what is inside the Icon
                                     <MaterialCommunityIcons name="account-circle" color={color} size={26}/>
                                 ),
-                            }}
+                            })}
                 />
                 <Tab.Screen name="PublicProfile" component={PublicProfileScreen} initialParams={{navigation: this.props.navigation}}
                             options={() => ({

@@ -23,6 +23,7 @@ class PrivateProfile extends Component {
       mediaDataDataFetched: [],
       mediaDataIsLoading: true,
       loadMediaData: false,
+      previous: "",
     };
     this.usersFollowingRef = firebase
       .firestore()
@@ -32,13 +33,14 @@ class PrivateProfile extends Component {
   }
 
   componentDidMount() {
-    this.getPostInfo();
+    this.getPostInfo(this.props);
     this.getProfileInfo();
+      this.props.navigation.addListener('focus', () => {
+        this.getPostInfo(this.props);
+        this.getProfileInfo();
+    });
   }
 
-  componentDidUpdate() {
-    this.getProfileInfo(this.props);
-  }
 
   // This method is passed all of the users posts
   getPostInfo = async () => {

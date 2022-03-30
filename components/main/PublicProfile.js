@@ -41,7 +41,7 @@ class PublicProfile extends Component {
     if (this.previous === this.props.route.params.uid) {
     } else {
       this.previous = this.props.route.params.uid;
-      this.getData(this.props);
+      this.getPostInfo(this.props);
       this.getProfileInfo(this.props);
       this.state.mediaDataDataFetched = [];
     }

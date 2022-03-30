@@ -33,13 +33,16 @@ class PrivateProfile extends Component {
   }
 
   componentDidMount() {
-    this.getPostInfo(this.props);
-    this.getProfileInfo();
       this.props.navigation.addListener('focus', () => {
         this.getPostInfo(this.props);
-        this.getProfileInfo();
+        this.getProfileInfo(this.props);
     });
   }
+
+
+
+
+
 
 
   // This method is passed all of the users posts

@@ -33,19 +33,15 @@ class PublicProfile extends Component {
   }
 
   componentDidMount() {
-    this.getPostInfo(this.props);
+    
+
+    this.props.navigation.addListener('focus', () => {
+        this.state.mediaDataDataFetched = [];
+        this.getPostInfo(this.props);
     this.getProfileInfo(this.props);
+    });
   }
 
-  componentDidUpdate() {
-    if (this.previous === this.props.route.params.uid) {
-    } else {
-      this.previous = this.props.route.params.uid;
-      this.getPostInfo(this.props);
-      this.getProfileInfo(this.props);
-      this.state.mediaDataDataFetched = [];
-    }
-  }
 
   // This method is passed all of the users posts
   getPostInfo = async (props) => {

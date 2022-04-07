@@ -41,7 +41,8 @@ export default function SearchScreenObject(props) {
                           onPress={() => {
                               const navigation = props.navigation;
                               const comingFrom = props.comingFrom;
-                              props.navigation.navigate("ViewPost", {navigation: navigation, data: props.item, comingFrom: comingFrom})
+                              const userIDOfProfile =  props.userIDOfProfile;
+                              props.navigation.navigate("ViewPost", {navigation: navigation, data: props.item, comingFrom: comingFrom, userID: userIDOfProfile})
                           }}
         >
             {props.item.mediaType === "picture"

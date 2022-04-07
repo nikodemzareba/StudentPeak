@@ -220,6 +220,7 @@ class PublicProfile extends Component {
                                         item={item}
                                         navigation={this.props.route.params.navigation}
                                         comingFrom={"PublicProfile"}
+                                        userIDOfProfile={this.props.route.params.uid}
                                     />
                                 )}
 

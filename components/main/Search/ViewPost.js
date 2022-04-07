@@ -34,6 +34,11 @@ export default function ViewPost(props) {
                                   {
                                       props.route.params.navigation.navigate("PrivateProfile", {navigation: navigation})
                                   }
+                                  else if(props.route.params.comingFrom ==="PublicProfile")
+                                  {
+                                      const userID = props.route.params.userID;
+                                      props.navigation.navigate("PublicProfile", {uid: userID})
+                                  }
                                   else
                                   {
                                       props.route.params.navigation.navigate("Search", {navigation: navigation})

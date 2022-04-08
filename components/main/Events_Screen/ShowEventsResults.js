@@ -84,7 +84,7 @@ export default function ShowEventsResults(dataIncome) {
                     {/*If rating doesn't exist fill in a 0 */}
 
                     let ratingRate = 0;
-                    let foundRatingsProperty = false;
+
 
                     if(item.hasOwnProperty('venue') && item.venue.hasOwnProperty('rating'))
                     {
@@ -92,14 +92,16 @@ export default function ShowEventsResults(dataIncome) {
                     }
 
                     return (
-                        <View style={{Width: ITEM_SIZE}}>
+                        <View style={{Width: ITEM_SIZE, height:HEIGHT-200}}>
                             <View
                                 style={{
                                     marginHorizontal: SPACING,
                                     padding: SPACING * 2,
                                     alignItems: 'center',
                                     backgroundColor: 'white',
-                                    borderRadius: 34
+                                    borderRadius: 34,
+                                    borderWidth:2,
+                                    borderColor:"red"
                                 }}
                             >
                                 <Image
@@ -115,9 +117,9 @@ export default function ShowEventsResults(dataIncome) {
                                 <Rating rating={ratingRate}/>
                                 <Tickets tickets={item.ticket_info}/>
 
-                                <Text style={{fontSize: 12}} numberOfLines={3}>
-                                    {item.description}
-                                </Text>
+                                {/*<Text style={{fontSize: 12}} numberOfLines={3}>*/}
+                                {/*    {item.description}*/}
+                                {/*</Text>*/}
                             </View>
                         </View>
                     )
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     posterImage: {
-        width: '100%',
+        width: ITEM_SIZE,
         height: ITEM_SIZE * 1.2,
         resizeMode: 'cover',
         borderRadius: 24,

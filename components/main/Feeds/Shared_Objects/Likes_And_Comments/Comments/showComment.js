@@ -6,21 +6,21 @@ import {Ionicons} from "@expo/vector-icons";
 import Profile_Icon from "../../Profile_Objects/Profile_Icon";
 import {useState} from "react";
 import ProfileIcon_And_Username from "../../Profile_Objects/ProfileIcon_And_Username";
+import {getRandomString} from "../../Functions_And_Methods/getRandomString";
 
 
 export default function showComment(props) {
-    console.log('we are in the ShowComments');
-    console.log(`\n\n ${props.route.params.commentInfo}\n` + 'data in array is \n' + JSON.stringify(props.route.params.commentInfo))
+    console.log(`\n\nshowComment() we are in the ShowComments for postID ${props.route.params.postID}`);
 
     const userMakingPost = firebase.auth().currentUser.uid;
 
     const navigation = props.route.params.navigation;
 
     //let postID = ${props.params.route.postID};
-    console.log('\ntest  \n' + props.route.params.postID);
+    // console.log('\ntest  \n' + props.route.params.postID);
 
     const [comment, setComment] = useState("");
-    const[refresh, setRefresh] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
 
     const commentInfoData = props.route.params.commentInfo;
@@ -36,30 +36,6 @@ export default function showComment(props) {
         firebase.firestore()
             .collection('postData')
             .doc(postId)
-
-
-    const getRandomString = (length) => {
-        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var result = '';
-        for (var i = 0; i < length; i++) {
-            result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-        }
-        return result;
-    }
-
-    const dbCheck = (key) => {
-        firebase.firestore()
-            .collection('postData').doc('id').get()
-            .then((docSnapshot) => {
-                if (docSnapshot.exists) {
-                    db.collection('users').doc('id')
-                        .onSnapshot((doc) => {
-                            // do stuff with the data
-                        });
-                }
-            });
-    }
-
 
     const handleComment = async (postId, userId, comment) => {
 
@@ -87,15 +63,14 @@ export default function showComment(props) {
                 return id;
 
             })
-            console.log(result);
-            if(result !== undefined)
-            {
-                console.log('\nresult to be shown here \n' + result)
+            // console.log(result);
+            if (result !== undefined) {
+                // console.log('\nresult to be shown here \n' + result)
                 firebase.firestore()
                     .collection('postData')
                     .doc(props.route.params.postID)
                     .collection("comments")
-                    .doc(result)
+                    .doc(`${result}`)
                     .get()
                     .then((r) => {
 
@@ -121,16 +96,15 @@ export default function showComment(props) {
                                 setRefresh(!refresh)
                             })
                             .catch((exception) => {
-                                alert(`\nUnable to pull user information \n\n${exception}`);
-                                console.log(`\nUnable to pull user information\n\n${exception}`);
+                                alert(`\n\nshowComment() Unable to pull user information \n\n${exception}`);
+                                console.log(`\n\nshowComment() Unable to pull user information\n\n${exception}`);
                             })
-
                     })
             }
 
-        }catch (e) {
+        } catch (e) {
             // This will be a "population is too big" error.
-            console.error(e);
+            console.log(`\n\nshowComment() Error \n${e}`);
         }
     }
 
@@ -144,8 +118,15 @@ export default function showComment(props) {
                 renderItem={({item}) => {
                     return (
                         <View style={feedStyles.showCommentContainer}>
-                            <Profile_Icon userID={item.userID} width={50} height={50} borderRadius={50}
-                                          profileImage={item.profileImage} navigation={navigation}/>
+                            <Profile_Icon
+                                userID={item.userID}
+                                width={50}
+                                height={50}
+                                borderRadius={50}
+                                profileImage={item.profileImage}
+                                navigation={navigation}
+                                userExists={item.userExists}
+                            />
                             <View style={feedStyles.containerText}>
                                 <Text style={feedStyles.displayName}>{item.username}</Text>
                                 <Text style={{

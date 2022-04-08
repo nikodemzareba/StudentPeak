@@ -92,312 +92,12 @@ class TrendingFeeds extends Component {
             .doc(this.state.userId)
             .collection('userFollowing')
 
-        this.popularPicturePostsRef = (type) =>
+        this.popularPostsRef = (type) =>
             firebase.firestore()
                 .collection("postData")
                 .orderBy('likesCount', 'desc')
                 .where("mediaType", "==", type)
                 .limit(50)
-    }
-
-    requestProfileImage() {
-        getProfileImage(this.state.userId).then((r) => {
-            if (r !== undefined) {
-                this.setState({
-                    profileImage: r,
-                    profileImageLoaded: true,
-                });
-            }
-        })
-    }
-
-
-    componentDidMount() {
-
-        this.requestProfileImage();
-        this.getData();
-
-        this.willFocusSubscription = this.props.navigation.addListener(
-            'willFocus',
-            () => {
-
-                this.resetConditions();
-                this.getData();
-            }
-        );
-    }
-
-    componentWillUnmount() {
-        this.willFocusSubscription();
-    }
-
-    isKeyInList(key, list) {
-        return list.some(item => key === item.key);
-    }
-
-    getFriendsLikePosts = async (querySnapshot) => {
-
-        const friendsVideoDataFetched = [];
-        const friendsPicturesDataFetched = [];
-
-        let expectedFollowingUsersCount = querySnapshot.size;
-        console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
-
-        let processedFollowingUsers = 0;
-
-        // Got users Following info
-        console.log("\nGot Users Following Data")
-
-        // For each user we are following
-        await querySnapshot.forEach((userFollowing) => {
-
-            processedFollowingUsers++;
-
-            // Get all of the posts this user we are following has liked
-            firebase.firestore()
-                .collection('posts')
-                .doc(userFollowing.id)
-                .collection('postsUserHasLiked')
-                .get()
-                .then(usersFollowingsLikedPosts => {
-
-                    // For each post the user we are followed has liked
-                    usersFollowingsLikedPosts.forEach((likedPost) => {
-
-                        // Get the posts details
-                        firebase.firestore()
-                            .collection('postData')
-                            .doc(likedPost.id)
-                            .get()
-                            .then((postData => {
-
-                                firebase.firestore()
-                                    .collection('users')
-                                    .doc(postData.get("userID"))
-                                    .get()
-                                    .then(userDetails => {
-                                        const profileImage = userDetails.get("profileimage");
-                                        const username = userDetails.get("username");
-                                        const userID = postData.get("userID");
-
-                                        const caption = postData.get("caption");
-                                        const createdAt = postData.get("createdAt");
-                                        const downloadURL = postData.get("downloadURL");
-                                        const mediaType = postData.get("mediaType");
-
-                                        const commentsCount = postData.get("commentsCount");
-
-
-                                        if (mediaType === "video") {
-
-                                            if( ! this.isKeyInList(likedPost.id, friendsVideoDataFetched))
-                                            {
-                                                this.setState({
-                                                    friendsVideosReceived: this.state.friendsVideosReceived + 1
-                                                });
-
-                                                friendsVideoDataFetched.push({
-                                                    key: likedPost.id,
-                                                    userID: userID,
-                                                    name: username,
-                                                    profile: profileImage,
-                                                    caption: caption,
-                                                    createdAt: createdAt,
-                                                    downloadURL: downloadURL,
-                                                    mediaType: mediaType,
-
-                                                    commentsCount: commentsCount,    // Needs be retrieved inside the comment method
-                                                });
-                                            }
-
-                                        } else if (mediaType === "picture") {
-
-                                            if( ! this.isKeyInList(likedPost.id, friendsPicturesDataFetched)) {
-
-                                                this.setState({
-                                                    friendsPicturesReceived: this.state.friendsPicturesReceived + 1
-                                                });
-
-                                                friendsPicturesDataFetched.push({
-                                                    key: likedPost.id,
-                                                    userID: userID,
-                                                    name: username,
-                                                    profile: profileImage,
-                                                    caption: caption,
-                                                    createdAt: createdAt,
-                                                    downloadURL: downloadURL,
-                                                    mediaType: mediaType,
-
-                                                    commentsCount: commentsCount, // Needs be retrieved inside the comment method
-                                                });
-                                            }
-                                        }
-
-                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
-                                        console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
-
-                                        if (processedFollowingUsers === expectedFollowingUsersCount) {
-                                            console.log("\nSetting Data To Variable")
-                                            this.setState({
-                                                friendsVideoDataFetched: friendsVideoDataFetched,
-                                                friendsPicturesDataFetched: friendsPicturesDataFetched,
-
-                                                friendsPicturesIsLoading: false,
-                                                friendsVideosIsLoading: false,
-                                            })
-                                        }
-                                    })
-                                    .catch((error) => {
-                                        console.log(`${error} \nUnable to get User we are followings data!`);
-                                    });
-
-                            }))
-                            .catch((error) => {
-                                console.log(`${error} \nUnable to get Users following post data!`);
-                            });
-                    })
-                })
-                .catch((error) => {
-                    console.log(`${error} \nUnable to get Users following posts!`);
-                });
-        })
-
-        if (expectedFollowingUsersCount === 0) {
-            this.setState({
-                friendsPicturesIsLoading: false,
-                friendsVideosIsLoading: false,
-            })
-        }
-    }
-
-    getPopularPosts = async (querySnapshot, type) => {
-
-        const picturesDataFetched = [];
-        const videosDataFetched = [];
-
-        let querySize = querySnapshot.size;
-        let receivedPosts = 0;
-
-        await querySnapshot.forEach((postData) => {
-            receivedPosts++;
-            firebase.firestore()
-                .collection('users')
-                .doc(postData.get("userID"))
-                .get()
-                .then(userDetails => {
-                    const profileImage = userDetails.get("profileimage");
-                    const username = userDetails.get("username");
-                    const userID = postData.get("userID");
-
-                    const caption = postData.get("caption");
-                    const createdAt = postData.get("createdAt");
-                    const downloadURL = postData.get("downloadURL");
-                    const mediaType = postData.get("mediaType");
-
-                    const commentsCount = postData.get("commentsCount");
-
-                    if (type === "picture") {
-                        this.setState({
-                            trendingFeed_PicturesReceived: this.state.trendingFeed_PicturesReceived + 1
-                        });
-
-                        picturesDataFetched.push({
-                            key: postData.id,
-                            userID: userID,
-                            name: username,
-                            profile: profileImage,
-                            caption: caption,
-                            createdAt: createdAt,
-                            downloadURL: downloadURL,
-                            mediaType: mediaType,
-
-                            commentsCount: commentsCount, // Needs be retrieved inside the comment method
-                        });
-                    } else if (type === "video") {
-                        this.setState({
-                            trendingFeed_VideosReceived: this.state.trendingFeed_VideosReceived + 1
-                        });
-
-                        videosDataFetched.push({
-                            key: postData.id,
-                            userID: userID,
-                            name: username,
-                            profile: profileImage,
-                            caption: caption,
-                            createdAt: createdAt,
-                            downloadURL: downloadURL,
-                            mediaType: mediaType,
-
-                            commentsCount: commentsCount, // Needs be retrieved inside the comment method
-                        });
-                    }
-
-                    console.log(`\ngetPopularPicturePosts() UserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} `);
-
-
-                    if (receivedPosts === querySize) {
-                        console.log("\nSetting Data To Variable")
-
-                        if (type === "picture") {
-                            this.setState({
-                                trendingFeed_PicturesIsLoading: false,
-                                trendingFeed_PicturesDataFetched: picturesDataFetched,
-                            })
-                        } else if (type === "video") {
-                            this.setState({
-                                trendingFeed_VideosIsLoading: false,
-                                trendingFeed_VideosDataFetched: videosDataFetched,
-                            })
-                        }
-                    }
-                })
-                .catch((error) => {
-                    console.log(`${error} \nUnable to get User we are followings data! `);
-                });
-        })
-
-        if (querySize === 0) {
-
-            if (type === "picture") {
-                this.setState({
-                    trendingFeed_PicturesIsLoading: false,
-                })
-            } else if (type === "video") {
-                this.setState({
-                    trendingFeed_VideosIsLoading: false,
-                })
-            }
-        }
-    }
-
-    getPopularTopics = async (querySnapShot) => {
-        let data = [];
-        let resultsSize = querySnapShot.size;
-        let receivedDataCount = 0;
-
-        await querySnapShot.forEach((trendingTopic) => {
-
-            receivedDataCount++
-
-            data.push({
-                key: `${receivedDataCount}`,
-                topic: `${trendingTopic.id}`
-            });
-
-            if (resultsSize === receivedDataCount) {
-
-                this.setState({
-                    trendingTopicsDataFetched: data,
-                    trendingTopicsLoading: false
-                })
-            }
-        })
-
-        if (resultsSize === 0) {
-            this.setState({
-                trendingTopicsLoading: false
-            })
-        }
     }
 
     resetConditions = () =>{
@@ -436,24 +136,341 @@ class TrendingFeeds extends Component {
             trendingFeed_loadPictures: false,
 
         });
-      
+
+    }
+
+    requestProfileImage() {
+        getProfileImage(this.state.userId).then((r) => {
+            if (r !== undefined) {
+                this.setState({
+                    profileImage: r,
+                    profileImageLoaded: true,
+                });
+            }
+        })
+    }
+
+    componentDidMount() {
+
+        this.requestProfileImage();
+        this.getData();
+
+        this.willFocusSubscription = this.props.navigation.addListener(
+            'willFocus',
+            () => {
+
+                this.resetConditions();
+                this.getData();
+            }
+        );
+    }
+
+    componentWillUnmount() {
+        this.willFocusSubscription();
+    }
+
+    isKeyInList(key, list) {
+        return list.some(item => key === item.key);
+    }
+
+    getPopularTopics = async (querySnapShot) => {
+        let data = [];
+        let resultsSize = querySnapShot.size;
+        let receivedDataCount = 0;
+
+        await querySnapShot.forEach((trendingTopic) => {
+
+            receivedDataCount++
+
+            data.push({
+                key: `${receivedDataCount}`,
+                topic: `${trendingTopic.id}`
+            });
+
+            if (resultsSize === receivedDataCount) {
+
+                this.setState({
+                    trendingTopicsDataFetched: data,
+                    trendingTopicsLoading: false
+                })
+            }
+        })
+
+        if (resultsSize === 0) {
+            this.setState({
+                trendingTopicsLoading: false
+            })
+        }
+    }
+
+    getFriendsLikePosts = async (querySnapshot) => {
+
+        const friendsVideoDataFetched = [];
+        const friendsPicturesDataFetched = [];
+
+        let expectedFollowingUsersCount = querySnapshot.size;
+        let processedFollowingUsers = 0;
+        console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
+
+        // Got users Following info
+        console.log("\nGot Users Following Data")
+
+        // For each user we are following
+        await querySnapshot.forEach((userFollowing) => {
+
+            processedFollowingUsers++;
+
+            // Get all of the posts this user we are following has liked
+            firebase.firestore()
+                .collection('posts')
+                .doc(userFollowing.id)
+                .collection('postsUserHasLiked')
+                .get()
+                .then(usersFollowingsLikedPosts => {
+
+                   const noOfUserFollowingPosts = usersFollowingsLikedPosts.size;
+                   let processedUserFollowingPosts = 0;
+
+                    // For each post the user we are followed has liked
+                    usersFollowingsLikedPosts.forEach((likedPost) => {
+
+                        processedUserFollowingPosts++;
+
+                        // Get the posts details
+                        firebase.firestore()
+                            .collection('postData')
+                            .doc(likedPost.id)
+                            .get()
+                            .then((postData => {
+
+                                firebase.firestore()
+                                    .collection('users')
+                                    .doc(postData.get("userID"))
+                                    .get()
+                                    .then(userDetails => {
+                                        const profileImage = userDetails.get("profileimage");
+                                        const username = userDetails.get("username");
+                                        const userID = postData.get("userID");
+
+                                        const caption = postData.get("caption");
+                                        const createdAt = postData.get("createdAt");
+                                        const downloadURL = postData.get("downloadURL");
+                                        const mediaType = postData.get("mediaType");
+
+                                        if (mediaType === "video") {
+
+                                            if( ! this.isKeyInList(likedPost.id, friendsVideoDataFetched))
+                                            {
+                                                this.setState({
+                                                    friendsVideosReceived: this.state.friendsVideosReceived + 1
+                                                });
+
+                                                friendsVideoDataFetched.push({
+                                                    key: likedPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
+
+
+                                                });
+                                            }
+
+                                        } else if (mediaType === "picture") {
+
+                                            if( ! this.isKeyInList(likedPost.id, friendsPicturesDataFetched)) {
+
+                                                this.setState({
+                                                    friendsPicturesReceived: this.state.friendsPicturesReceived + 1
+                                                });
+
+                                                friendsPicturesDataFetched.push({
+                                                    key: likedPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
+
+                                                });
+                                            }
+                                        }
+
+                                        console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${likedPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                        console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+
+                                        if (processedFollowingUsers === expectedFollowingUsersCount && noOfUserFollowingPosts === processedUserFollowingPosts) {
+                                            console.log("\ngetFriendsLikePostsSetting()1 Fetched getFriendsLikePosts()")
+                                            this.setState({
+                                                friendsVideoDataFetched: friendsVideoDataFetched,
+                                                friendsPicturesDataFetched: friendsPicturesDataFetched,
+
+                                                friendsPicturesIsLoading: false,
+                                                friendsVideosIsLoading: false,
+                                            })
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.log(`${error} \nUnable to get User we are followings data!`);
+                                    });
+
+                            }))
+                            .catch((error) => {
+                                console.log(`${error} \nUnable to get Users following post data!`);
+                            });
+                    })
+
+                    if (processedFollowingUsers === expectedFollowingUsersCount && noOfUserFollowingPosts === processedUserFollowingPosts) {
+                        console.log("\ngetFriendsLikePostsSetting()2 Fetched getFriendsLikePosts()")
+                        this.setState({
+                            friendsVideoDataFetched: friendsVideoDataFetched,
+                            friendsPicturesDataFetched: friendsPicturesDataFetched,
+
+                            friendsPicturesIsLoading: false,
+                            friendsVideosIsLoading: false,
+                        })
+                    }
+
+                })
+                .catch((error) => {
+                    console.log(`${error} \nUnable to get Users following posts!`);
+                });
+        })
+
+        if (expectedFollowingUsersCount === 0) {
+            this.setState({
+                friendsPicturesIsLoading: false,
+                friendsVideosIsLoading: false,
+            })
+        }
+    }
+
+    getPopularPosts = async (querySnapshot, type) => {
+
+        console.log(`\n #############################################################################################`);
+        let querySize = querySnapshot.size;
+        console.log(`\nTrendingFeed1 getPopularPosts() 1  ${type} QuerySize: ${querySize} `)
+
+        console.log(`\n #############################################################################################`);
+
+        const picturesDataFetched = [];
+        const videosDataFetched = [];
+        let receivedPosts = 0;
+
+        await querySnapshot.forEach((postData) => {
+            receivedPosts++;
+            firebase.firestore()
+                .collection('users')
+                .doc(postData.get("userID"))
+                .get()
+                .then(userDetails => {
+
+                    if(userDetails.exists) {
+                        const profileImage = userDetails.get("profileimage");
+                        const username = userDetails.get("username");
+                        const userID = postData.get("userID");
+
+                        const caption = postData.get("caption");
+                        const createdAt = postData.get("createdAt");
+                        const downloadURL = postData.get("downloadURL");
+                        const mediaType = postData.get("mediaType");
+                        const thumbnail = postData.get("thumbnail");
+
+                        if (type === "picture") {
+                            this.setState({
+                                trendingFeed_PicturesReceived: this.state.trendingFeed_PicturesReceived + 1
+                            });
+
+                            picturesDataFetched.push({
+                                key: postData.id,
+                                userID: userID,
+                                name: username,
+                                profile: profileImage,
+                                caption: caption,
+                                createdAt: createdAt,
+                                downloadURL: downloadURL,
+                                mediaType: mediaType,
+
+                            });
+                        } else if (type === "video") {
+                            this.setState({
+                                trendingFeed_VideosReceived: this.state.trendingFeed_VideosReceived + 1
+                            });
+
+                            videosDataFetched.push({
+                                key: postData.id,
+                                userID: userID,
+                                name: username,
+                                profile: profileImage,
+                                caption: caption,
+                                createdAt: createdAt,
+                                downloadURL: downloadURL,
+                                mediaType: mediaType,
+                                thumbnail: thumbnail,
+                            });
+                        }
+
+                        console.log(`\ngetPopularPicturePosts() UserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${postData.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+
+                    }
+                    if (receivedPosts === querySize) {
+                        if (type === "picture") {
+                            console.log(`\ngetPopularPicturePosts() \nType : ${type} \nData: ${this.state.trendingFeed_PicturesDataFetched}`);
+                            this.setState({
+                                trendingFeed_PicturesIsLoading: false,
+                                trendingFeed_PicturesDataFetched: picturesDataFetched,
+                            })
+                        } else if (type === "video") {
+                            console.log(`\ngetPopularPicturePosts() \nType : ${type} \nData: ${this.state.trendingFeed_VideosDataFetched}`);
+                            this.setState({
+                                trendingFeed_VideosIsLoading: false,
+                                trendingFeed_VideosDataFetched: videosDataFetched,
+                            })
+                        }
+                    }
+                })
+                .catch((error) => {
+                    console.log(`${error} \nUnable to get User we are followings data! `);
+                });
+        })
+
+        if (querySize === 0) {
+
+            if (type === "picture") {
+                this.setState({
+                    trendingFeed_PicturesIsLoading: false,
+                })
+            } else if (type === "video") {
+                this.setState({
+                    trendingFeed_VideosIsLoading: false,
+                })
+            }
+        }
     }
 
     getData = () =>{
 
-        // Get friends liked posts
-        this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getFriendsLikePosts);
-
-        // Get popular pictures & videos
-        this.unsubscribe = this.popularPicturePostsRef("picture").onSnapshot((r) => {
-            this.getPopularPosts(r, "picture")
-        });
-        this.unsubscribe = this.popularPicturePostsRef("video").onSnapshot((r) => {
-            this.getPopularPosts(r, "video")
-        });
-
         // Get popular topics
         this.unsubscribe = this.popularPostTopicsRef.onSnapshot(this.getPopularTopics);
+
+        // Get friends liked posts
+        this.unsubscribe = this.usersFollowingRef.onSnapshot((r) => {
+            this.getFriendsLikePosts(r)
+        });
+
+        console.log(`\n ###############################################################################################`);
+        // Get popular pictures & videos
+        this.unsubscribe = this.popularPostsRef("picture").onSnapshot((r) => {
+            this.getPopularPosts(r, "picture")
+        });
+        this.unsubscribe = this.popularPostsRef("video").onSnapshot((r) => {
+            this.getPopularPosts(r, "video")
+        });
 
         //HELLO DELETE Later
         this.setState({
@@ -570,13 +587,6 @@ class TrendingFeeds extends Component {
                                     navigation={this.props.route.params.navigation}
                                     type={"video"}
                                 />
-
-                                {/*    :*/}
-                                {/*    <View style={{flex: 1, padding: 10}}>*/}
-                                {/*        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B> Follow a*/}
-                                {/*            user to view posts on your feed </B> </Text>*/}
-                                {/*    </View>*/}
-                                {/*}*/}
                             </>
                         }
                     </>

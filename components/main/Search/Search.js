@@ -137,6 +137,7 @@ export default function Search(props) {
                                 userID={item.key}
                                 profileImage={item.profileImage}
                                 navigation={props.navigation}
+                                userExists={true}
                             />
 
 

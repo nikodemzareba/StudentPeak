@@ -25,7 +25,7 @@ export default function Welcome({ navigation }) {
         <Text style={styles.loginText}>Login</Text>
       </TouchableOpacity>
 
-      <Text style={styles.introTwo}>TheStudentPeak.com</Text>
+      <Text style={styles.introTwo}>StudentPeak.co.uk</Text>
     </View>
   )
 }

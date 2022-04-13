@@ -65,8 +65,6 @@ export default function Pictures_And_Videos_Post_Object(props) {
                 postID={props.postID}
                 navigation={props.navigation}
                 position={position}
-
-                commentsCount={props.commentsCount}
             />
 
         </View>

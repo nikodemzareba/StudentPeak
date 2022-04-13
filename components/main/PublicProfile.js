@@ -1,186 +1,252 @@
-import React, { useEffect, useState } from "react";
+import React, {Component} from 'react'
 import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Alert,
-  Image,
-  Button,
-  FlatList,
-  TouchableOpacity
-} from "react-native";
+    View,
+    ActivityIndicator,
+    ScrollView,
+    StyleSheet,
+    Text,
+    FlatList,
+    Button
+} from 'react-native';
 
-import firebase from 'firebase'
-require('firebase/firestore')
-import "firebase/auth";
-import {connect} from 'react-redux'
-
-/*
-import { StatusBar } from "expo-status-bar";
-import { FlatList, RawButton, ScrollView } from "react-native-gesture-handler";
-import { SimpleLineIcons } from '@expo/vector-icons';
-import App from '../../App';
-*/
+import firebase from "firebase";
 
 
-function PublicProfile(props) {
-  const[userPosts, setUserPosts] = useState ([]);
-  const[user, setUser] = useState (null);
-   const [following, setFollowing] = useState(false);
+import {storyData} from "./Feeds/FakeJSONData/TempStoryData";
+import PrivateProfileDisplay from './PrivateProfileDisplay';
+import {feedStyles} from "./Feeds/Shared_Objects/Styles";
+import SearchScreenObject from "./Search/Objects/SearchScreenObject";
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
-  useEffect(() => {
-    const{currentUser, posts } = props;
-    console.log({currentUser, posts})
+class PublicProfile extends Component {
 
-    if(props.route.params.uid == firebase.auth().currentUser.uid) {
-      setUser(currentUser)
-      setUserPosts(posts)
+  
 
+    constructor(props) {
+
+
+        super(props);
+        this.state = {
+
+            profileImageLoaded: false,
+            profileImage: "",
+            userId:
+            firebase.auth().currentUser.uid,
+
+            mediaDataDataFetched: [],
+            mediaDataIsLoading: true,
+            loadMediaData: false,
+            userID: "",
+            previous: ""
+        }
+        this.usersFollowingRef = firebase.firestore()
+            .collection('following')
+            .doc(this.props.route.params.uid)
+            .collection('userFollowing')
+
+        
+            
     }
-    else {
 
-      firebase.firestore()
-            .collection("users")
+    componentDidMount() {
+        this.getData(this.props);
+        this.getProfileInfo(this.props);
+    }
+
+    componentDidUpdate() {
+        
+        if (this.previous === this.props.route.params.uid) {
+
+        }
+        else {
+             this.previous = this.props.route.params.uid;
+             this.getData(this.props);
+        this.getProfileInfo(this.props);
+        this.state.mediaDataDataFetched = [];
+        }
+       }
+        
+    
+
+    
+
+    // This method is passed all the userID's of the users this user is following
+    getData = async (props) => {
+        // Got users Following info
+        // console.log("\nGot Users Following Data")
+        firebase.firestore()
+            .collection('users')
             .doc(props.route.params.uid)
             .get()
-            .then((snapshot) => {
-                if (snapshot.exists) {
-                    setUser(snapshot.data());
-                }
-                else {
-                    console.log('does not exist')
-                }
-            })
-            firebase.firestore()
-            .collection("posts")
-            .doc(props.route.params.uid)
-            .collection("userPosts")
-            .orderBy("creation", "asc")
-            .get()
-            .then((snapshot) =>{
-                    let posts = snapshot.docs.map(doc => {
-                        const data = doc.data();
-                        const id = doc.id;
-                        return{id,...data}
+            .then(userDetails => {
+
+                // Get all of the posts from the user we are following
+                firebase.firestore()
+                    .collection('posts')
+                    .doc(props.route.params.uid)
+                    .collection('userPosts')
+                    .get()
+                    .then(privatePosts => {
+
+                        let expectedResultsSize = privatePosts.size;
+                        let count = 0;
+
+                        privatePosts.forEach((userPost) => {
+
+                            count++;
+                            // Get the posts details
+                            firebase.firestore()
+                                .collection('postData')
+                                .doc(userPost.id)
+                                .get()
+                                .then((postData => {
+
+                                    const profileImage = userDetails.get("profileimage");
+                                    const name = userDetails.get("username");
+                                    const caption = postData.get("caption");
+                                    const createdAt = postData.get("createdAt");
+                                    const downloadURL = postData.get("downloadURL");
+                                    const mediaType = postData.get("mediaType");
+                                    const userID = props.route.params.uid;
+                                    const thumbnail = postData.get("thumbnail");
+
+                                    this.state.mediaDataDataFetched.push({
+                                        key: userPost.id,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        mediaType: mediaType,
+                                        profile: profileImage,
+                                        name: name,
+                                        userID: userID,
+                                        thumbnail: thumbnail,
+                                    });
+
+                                    if (count === expectedResultsSize) {
+                                        //       console.log("\nSetting Data To Variable")
+                                        this.setState({
+                                            mediaDataDataFetched: this.state.mediaDataDataFetched,
+                                            loadMediaData: false
+                                        })
+                                    }
+                                }))
+                                .catch((error) => {
+                                    //        console.log(`${error} \nUnable to get Users following post data!`);
+                                });
+                        })
                     })
-                    setUserPosts(posts)
+                    .catch((error) => {
+                        //       console.log(`${error} \nUnable to get Users following posts!`);
+                    })
+            });
+    }
 
+    getProfileInfo = async (props) => {
+        const profileDataFetched = [];
+
+
+        firebase.firestore()
+            .collection('users')
+            .doc(props.route.params.uid)
+            .get()
+            .then((userInfo) => {
+
+                const bio = userInfo.get("bio");
+                const followers = userInfo.get("followers");
+                const following = userInfo.get("following");
+                const name = userInfo.get("name");
+                const username = userInfo.get("username");
+                const profileimage = userInfo.get("profileimage");
+
+
+                profileDataFetched.push({
+                    key: props.route.params.uid,
+                    bio: bio,
+                    followers: followers,
+                    following: following,
+                    name: name,
+                    username: username,
+                    profileimage: profileimage,
+                    profile: profileimage,
+                })
+
+                this.setState({
+                    profileDataFetched: profileDataFetched,
+                })
             })
 
     }
 
-    if(props.following.indexOf(props.route.params.uid) > -1) {
-      setFollowing(true);
+     
+
+    render() {
+      
+        return (
+            <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+
+                <View>
+                    <PrivateProfileDisplay
+                        userID={this.props.route.params.uid}
+                        data={this.state.profileDataFetched}
+                        navigation={this.props.route.params.navigation}
+                    />
+                </View>
+
+                
+              
+   
+
+    
+
+
+                {/* mediaData Feed */}
+                {this.state.loadMediaData
+                    ?
+                    <View style={styles.loading}>
+                        <ActivityIndicator size="large" color="red"/>
+                    </View>
+                    :
+
+                    <View style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+                        <View style={feedStyles.screenBackground}>
+                            <View style={{paddingTop: 10, height: 30}}>
+                            </View>
+
+                            <FlatList
+                                data={this.state.mediaDataDataFetched}
+                                numColumns={3}
+                                renderItem={({item}) => (
+
+                                    <SearchScreenObject
+                                        item={item}
+                                        navigation={this.props.route.params.navigation}
+                                        comingFrom={"PublicProfile"}
+                                        userIDOfProfile={this.props.route.params.uid}
+                                    />
+                                )}
+
+                            />
+
+                        </View>
+                    </View>
+                }
+            </ScrollView>
+        );
+
     }
-      else{
-        setFollowing(false);
-      }
-
-
-  }, [props.route.params.uid, props.following])
-
-
-
-const onFollow = () => {
-    firebase.firestore()
-    .collection("following")
-    .doc(firebase.auth().currentUser.uid)
-    .collection("userFollowing")
-    .doc(props.route.params.uid)
-    .set({})
-  }
-
-const onUnFollow = () => {
-  firebase.firestore()
-  .collection("following")
-  .doc(firebase.auth().currentUser.uid)
-  .collection("userFollowing")
-  .doc(props.route.params.uid)
-  .delete()
-  }
-
-if(user== null) {
-  return <View/>
 }
-return (
-  <View style={styles.container}>
-    <View style={styles.containerInfo}>
-    <Text>
-      {user.username}</Text>
 
-      {props.route.params.uid != firebase.auth().currentUser.uid ? (
-        <View>
-          {following ?(
-            <Button
-            title="Following"
-            onPress={()=> onUnFollow()}
-
-           />
-          ):
-          (
-            <Button
-            title="Follow"
-            onPress={()=> onFollow()}
-
-           />
-          )}
-          </View>
-
-      ) : null}
-    </View>
-    <View style={styles.containerGallery}>
-      <FlatList
-        numColumns= {3}
-        horizontal = {false}
-        data = {userPosts}
-        renderItem={({item})=>(
-          <View
-            style = {styles.containerImage}>
-          <Image
-          style = {styles.image}
-            source={{uri: item.downloadURL}}
-          />
-          </View>
-        ) }
-      />
-
-    </View>
-
-  </View>
-
-)
-}
 const styles = StyleSheet.create({
-  container : {
-    flex: 1,
-    marginTop : 40 
-  },
-
-  containerInfo: {
-    margin : 20
-
-  },
-
-  containerInfoGallery: {
-    flex : 1
-
-  },
-  image: {
-    flex:1 ,
-    aspectRatio: 1/1 
-  },
-
-  containerImage: {
-    flex: 1/3
-  }
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
 })
 
-const mapStateToProps = (store) => ({
-  currentUser: store.userState.currentUser,
-  posts: store.userState.postImages,
-  following: store.userState.following
-})
-
-export default connect (mapStateToProps, null)(PublicProfile);
+export default PublicProfile;

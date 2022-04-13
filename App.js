@@ -25,20 +25,22 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
-import Add from './components/main/Add'
-import Save from './components/main/Save'
+import Add from './components/main/Camera/Add'
+import Save from "./components/main/Camera/Save";
 import Topbar from './components/main/top/Topbar'
 import ShowEventsResults from './components/main/Events_Screen/ShowEventsResults'
-import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/UsersLikedPost";
+import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/UsersLikedPost";
 import Search from "./components/main/Search/Search";
 import SearchScreenResults from "./components/main/Search/SearchScreenResults";
 import ViewPost from "./components/main/Search/ViewPost";
+import Trending_Pictures_And_Videos_Feed from "./components/main/Feeds/Trending_Feed/Trending_Pictures_And_Videos_Feed";
 
 
 import Picture from './components/authentication/Picture'
 import Interests from './components/authentication/Interests'
 import Recommended from './components/authentication/Recommended'
 import Chat from './components/main/ChatList'
+import showComment from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Comments/showComment";
 
 const Stack = createStackNavigator();
 
@@ -117,12 +119,14 @@ function App() {
                             <Stack.Group initialRouteName="Main">
 
                                 <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
-                                <Stack.Screen name="Save" component={Save} options={{headerShown: false}}/>
+                                <Stack.Screen name="Save" component={Save} options={{headerShown: true}}/>
                                 <Stack.Screen name="ShowEventsResults" component={ShowEventsResults} options={{headerShown: false}}/>
+                                <Stack.Screen name="showComment" component={showComment} options={{headerShown: false}}/>
                                 <Stack.Screen name="UsersLikedPost" component={UsersLikedPost} options={{headerShown: false}}/>
                                 <Stack.Screen name="Search" component={Search} options={{headerShown: false}}/>
                                 <Stack.Screen name="SearchScreenResults" component={SearchScreenResults} options={{headerShown: false}}/>
                                 <Stack.Screen name="ViewPost" component={ViewPost} options={{headerShown: false}}/>
+                                <Stack.Screen name="Trending_Pictures_Videos_Feed" component={Trending_Pictures_And_Videos_Feed} options={{headerShown: false}}/>
 
                             </Stack.Group>
 
@@ -133,7 +137,8 @@ function App() {
 
                                 <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
 
-                            </Stack.Group>}
+                            </Stack.Group>
+                        }
 
 
 

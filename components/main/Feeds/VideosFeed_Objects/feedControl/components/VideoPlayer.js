@@ -5,12 +5,12 @@ import {Feather} from "@expo/vector-icons";
 
 import VideoControls from './VideoControls';
 import {B} from "../../../Shared_Objects/Bold";
-import  ProfileTitle from "../../../Shared_Objects/ProfileTitle"
+import  ProfileTitle from "../../../Shared_Objects/Profile_Objects/ProfileTitle"
 import Caption from "../../../Shared_Objects/Caption";
 import Likes_And_Comments_Count_Txt  from "../../../Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
-import View_All_Comments from "../../../Shared_Objects/Likes_And_Comments/View_All_Comments";
+import View_All_Comments from "../../../Shared_Objects/Likes_And_Comments/Comments/View_All_Comments";
 import {feedStyles} from "../../../Shared_Objects/Styles";
-import LikeBTN from "../../../Shared_Objects/Likes_And_Comments/LikeBTN";
+import LikeBTN from "../../../Shared_Objects/Likes_And_Comments/Likes/LikeBTN";
 import LikesAndCommentsDisplay from "../../../Shared_Objects/Likes_And_Comments/LikesAndCommentsDisplay";
 
 export default function VideoPlayer(props) {
@@ -115,7 +115,7 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
-      <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
+      <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} navigation={props.navigation}/>
 
     </View>
   );

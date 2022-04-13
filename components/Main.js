@@ -1,13 +1,12 @@
 import React, {Component} from "react";
-import {View, Text, Button, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import firebase from 'firebase'
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import FeedScreen from "./main/Feeds/Feed"
-import Add from "./main/Add"
-import SearchScreen from "./main/Search/Search"
+import Add from "./main/Camera/Add"
+import Search from "./main/Search/Search"
 import EventScreen from "./main/Events_Screen/Events"
 import PublicProfileScreen from "./main/PublicProfile"
 import PrivateProfileScreen from "./main/PrivateProfile"
@@ -19,8 +18,6 @@ import TrendingFeeds from "./main/Feeds/TrendingFeeds";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {fetchUser, fetchUserPosts, fetchUserFollowing} from "../redux/actions/index";
-import Modal from "./main/Feeds/Shared_Objects/modal";
-import VideoFeed from "./main/Feeds/VideoFeed";
 import {users} from "../redux/reducers/users";
 
 const Tab = createBottomTabNavigator();
@@ -50,18 +47,12 @@ export class Main extends Component {
                     tabBarStyle: {
                         height: 78,
                         backgroundColor: 'black',
-                        borderRadius: 15,
-                        left: 5,
-                        right: 5,
-                        borderBottomLeftRadius: 0,
-                        borderBottomRightRadius: 0,
                     }
                 }}
 
             >
 
                 <Tab.Screen name="Feed" component={FeedScreen} initialParams={{navigation: this.props.navigation}}
-                            tabBar={() => <Modal/>}
 
                             options={{
                                 header: () => null,
@@ -76,12 +67,16 @@ export class Main extends Component {
                 />
                 <Tab.Screen name="TrendingFeeds" component={TrendingFeeds} initialParams={{navigation: this.props.navigation}}
                             options={{
+                                header: () => null,
+                                tabBarVisible: false,
+
                                 tabBarIcon: ({color, size}) => (
                                     //decide what is inside the Icon
                                     <MaterialCommunityIcons name="magnify" color={color} size={26}/>
                                 ),
                             }}
                 />
+
                 <Tab.Screen name="Add" component={Add}
                             options={{
                                 tabBarIcon: ({color, size}) => (
@@ -106,7 +101,7 @@ export class Main extends Component {
                                 ),
                             }}
                 />
-                <Tab.Screen name="PrivateProfile" component={PrivateProfileScreen}
+                <Tab.Screen name="PrivateProfile" component={PrivateProfileScreen} initialParams={{navigation: this.props.navigation}}
                             listeners={({navigation}) => ({
                                 tabPress: event => {
                                     event.preventDefault();
@@ -119,7 +114,7 @@ export class Main extends Component {
                                 ),
                             }}
                 />
-                <Tab.Screen name="PublicProfile" component={PublicProfileScreen}
+                <Tab.Screen name="PublicProfile" component={PublicProfileScreen} initialParams={{navigation: this.props.navigation}}
                             options={() => ({
                                 tabBarButton: () => null,
                                 tabBarVisible: false

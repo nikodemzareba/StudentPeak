@@ -8,6 +8,7 @@ export default function Tickets({tickets}) {
     const areYouSure = async (link) => {
         const msg = "Are you sure you want to open the third party link, the safety of this link is unknown?";
         let activated = null;
+        console.log(`\n\nJSON\n ${JSON.stringify(tickets)} \n\nOther\n ${tickets} `)
 
         if (Platform.OS === 'web') {
             alert(msg);

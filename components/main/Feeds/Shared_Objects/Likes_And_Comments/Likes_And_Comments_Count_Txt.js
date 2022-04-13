@@ -2,6 +2,7 @@ import {Text, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {B} from "../Bold";
 import firebase from "firebase";
+import {getCommentByUsers} from "./Comments/Functions/getCommentByUsers";
 
 
 export default function Likes_And_Comments_Count_Txt(props) {
@@ -51,6 +52,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
                         .doc(user.id)
                         .get()
                         .then(userDetails => {
+
                             firebase.firestore()
                                 .collection('following')
                                 .doc(props.userID)
@@ -59,19 +61,30 @@ export default function Likes_And_Comments_Count_Txt(props) {
                                 .get()
                                 .then(followingUser => {
 
-                                    let following = false;
-                                    if (followingUser.exists) {
-                                        following = true;
+                                    let  userID = userDetails.id, userExists=false, username ="Deleted User", profileImage="", following = false;
+
+                                    if(userDetails.exists)
+                                    {
+                                        if (followingUser.exists) {
+                                            following = true;
+                                        }
+
+                                        username = userDetails.get("username");
+                                        profileImage = userDetails.get("profileimage");
+                                        userExists = true;
+
+                                        console.log(`\n\nLikes_And_Comments_Count_Txt() \nuserID: ${props.userID} does exist`)
                                     }
-                                    const userID = userDetails.id;
-                                    const username = userDetails.get("username");
-                                    const profileImage = userDetails.get("profileimage");
+                                    else {
+                                        console.log(`\n\nLikes_And_Comments_Count_Txt() \nuserID: ${props.userID} doesnt exist`)
+                                    }
 
                                     postLikeData.push({
                                         key: userID,
                                         username: username,
                                         following: following,
                                         profileImage: profileImage,
+                                        userExists: userExists,
 
                                     });
 
@@ -107,7 +120,7 @@ export default function Likes_And_Comments_Count_Txt(props) {
             })
             .catch((exception) => {
                 alert(`\nError getting users who liked this post\n\n${exception}`);
-                console.log(`\n\nError getting users who liked this post ${props.postID}`);
+                console.log(`\n\nError getting users who liked this post  ${props.postID}`);
             })
     }
     return (
@@ -117,18 +130,19 @@ export default function Likes_And_Comments_Count_Txt(props) {
 
                 // props.navigation.navigate("PublicProfile", {uid: props.userID})
                 if (props.use === "like") {
-                    console.log(`\n\nLikes BTN Function Requested`)
+                    console.log(`\n\nLikes_And_Comments_Count_Txt() Likes BTN Function Requested`)
 
                     getPostLikeData();
 
                 } else if (props.use === "comment") {
-                    console.log(`\n\nGo to Likes Comments Page`)
-                    // props.navigation.navigate("PublicProfile", {uid: props.userID})
+                    console.log(`\n\nLikes_And_Comments_Count_Txt() Go to Likes Comments Page`)
+                    getCommentByUsers(props.postID, props.navigation)
                 }
 
             }}
         >
-            <Text style={{marginLeft: 10, color: 'white', fontSize: 15, fontWeight: 'bold', paddingRight: 10}}>
+            {/*<Text size={15} style={{ textAlign: "center", width: 200, height: 80, position: 'relative', color:'white'}}>*/}
+            <Text  style={{textAlign: "center", paddingLeft:15,  width: undefined, height: 80, position: 'relative',  color: 'white',  fontSize: 18, fontWeight: 'bold', paddingRight: 10}}>
                 <B>{splitNumberByCommas(props.count)}</B>
             </Text>
         </TouchableOpacity>

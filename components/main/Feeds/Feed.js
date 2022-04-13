@@ -2,18 +2,16 @@ import React, {Component, useRef, useState} from 'react'
 import {
     View,
     Dimensions,
-    FlatList,
     Text,
     ActivityIndicator,
     ScrollView,
-    Button,
     StyleSheet,
-    SafeAreaView, Image, TouchableOpacity
+    Image, TouchableOpacity
 } from 'react-native';
 
 import firebase from "firebase";
-import PictureFeed from "./PictureFeed";
-import VideoFeed from "./VideoFeed";
+import Feed_PictureFeed from "./Feed_PictureFeed";
+import Feed_VideoFeed from "./Feed_VideoFeed";
 
 
 const {height, width} = Dimensions.get('window');
@@ -23,10 +21,10 @@ const separator = "#############################################################
 
 import {LogBox} from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
-import Profile_Icon from "./Shared_Objects/Profile_Icon";
-
-import View_All_Comments from "./Shared_Objects/Likes_And_Comments/View_All_Comments";
-import Username_Link_Txt from "./Shared_Objects/Username_Link_Txt";
+import {storyData} from "./FakeJSONData/TempStoryData";
+import {B} from "./Shared_Objects/Bold";
+import Chat_BTN from "./Shared_Objects/Chat_BTN";
+import {getProfileImage} from "./Shared_Objects/Functions_And_Methods/getProfileImage";
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -36,11 +34,7 @@ const videosOrPicturesSelectedToView = [
     {label: 'Videos', value: 1},
 ];
 
-import {storyData} from "./FakeJSONData/TempStoryData";
-import Likes_And_Comments_Count_Txt from "./Shared_Objects/Likes_And_Comments/Likes_And_Comments_Count_Txt";
-import {B} from "./Shared_Objects/Bold";
-import Chat_BTN from "./Shared_Objects/Chat_BTN";
-
+// const controller = new AbortController();
 
 class FeedScreen extends Component {
 
@@ -57,7 +51,7 @@ class FeedScreen extends Component {
             profileImageLoaded: false,
             profileImage: "",
             userId:
-                // "upb6UG9eM0VWzRo8tGke3xK9p953",
+            // "upb6UG9eM0VWzRo8tGke3xK9p953",
             firebase.auth().currentUser.uid,
 
             videosDataFetched: [],
@@ -69,57 +63,96 @@ class FeedScreen extends Component {
             picturesIsLoading: true,
             picturesReceived: 0,
             loadPictures: false,
+
+
         }
         this.usersFollowingRef = firebase.firestore()
             .collection('following')
             .doc(this.state.userId)
             .collection('userFollowing')
+
+        this.noPostsMsg = "No Posts Available! / \nFollow a user to view posts on your feed"
+
     }
 
     componentDidMount() {
-        this.getProfileImage();
+        this.requestProfileImage();
+        this.dataRequest();
+        console.log(`${this.state.userId}`)
+
+        LogBox.ignoreLogs(['Animated: `useNativeDriver`','componentWillReceiveProps']); // temp fix for errors should be avoided
+
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
+            this.resetConditions();
+            this.dataRequest();
+        });
+    }
+
+
+    componentWillUnmount() {
+        this._unsubscribe();
+        // this.willFocusSubscription();
+        // controller.abort();
+    }
+
+    requestProfileImage() {
+        getProfileImage(this.state.userId).then((r) => {
+            if (r !== undefined) {
+                this.setState({
+                    profileImage: r,
+                    profileImageLoaded: true,
+                });
+            }
+        })
+    }
+
+    resetConditions = () => {
+
+        this.setState({
+            storiesData: [],
+            storiesDataLoaded: false,
+
+            videosDataFetched: [],
+            videosIsLoading: true,
+            videosReceived: 0,
+            loadVideos: false,
+
+            picturesDataFetched: [],
+            picturesIsLoading: true,
+            picturesReceived: 0,
+            loadPictures: false,
+        })
+    }
+
+    dataRequest = () => {
+        console.log("\n\nRequesting new feed DATA")
         this.unsubscribe = this.usersFollowingRef.onSnapshot(this.getData);
 
-        //HELLO DELETE Later
+        // HELLO REMOVE
         this.setState({
             storiesDataLoaded: true,
             storiesData: storyData
         });
     }
 
-    getProfileImage() {
-        firebase.firestore()
-            .collection('users')
-            .doc(this.state.userId)
-            .get()
-            .then(userDetails => {
-                console.log(`\n\nCurrent UserID: ${this.state.userId} \nProfile Image URL: ${userDetails.get("profileimage")}`)
-                if (userDetails.get("profileimage") !== "") {
-                    console.log(`\n\n Has Profile Image`);
-
-                    this.setState({
-                        profileImage: userDetails.get("profileimage"),
-                        profileImageLoaded: true,
-                    });
-                }
-            })
-    }
-
+    // This method is passed all the userID's of the users this user is following
     getData = async (querySnapshot) => {
+
         const videosDataFetched = [];
         const picturesDataFetched = [];
 
         let expectedFollowingUsersCount = querySnapshot.size;
-        console.log(`\nNumber of Users Following: ${expectedFollowingUsersCount}`)
+        console.log(`\n\nFeedScreen getData() Number of Users Following: ${expectedFollowingUsersCount}`)
 
         let processedFollowingUsers = 0;
 
         // Got users Following info
         console.log("\nGot Users Following Data")
+
+        // For each user we are following
         await querySnapshot.forEach((userFollowing) => {
 
-            // Get the user we are following userName & userProfilePhoto
-
+            // Get each user we are following; userName & userProfilePhoto
             firebase.firestore()
                 .collection('users')
                 .doc(userFollowing.id)
@@ -128,118 +161,118 @@ class FeedScreen extends Component {
 
                     console.log("\nGot Users Following Details etc: username, profileimage")
                     processedFollowingUsers++;
+
+                    // Get all of the posts from the user we are following
                     firebase.firestore()
                         .collection('posts')
                         .doc(userFollowing.id)
                         .collection('userPosts')
-                        //.where("mediaType", "==", "video")
                         .get()
                         .then(usersFollowingPosts => {
                             console.log("\nGot Posts Of Users i am Following!")
 
+                            // For each post from the user we are following
+                            let expectedUserFollowingPosts = usersFollowingPosts.size;
+                            let processedUserFollowingPosts = 0;
+
                             usersFollowingPosts.forEach((userPost) => {
 
+                                processedUserFollowingPosts++;
+
+                                // Get the posts details
                                 firebase.firestore()
                                     .collection('postData')
                                     .doc(userPost.id)
                                     .get()
-                                    .then((postCommentsAndLikes => {
+                                    .then((postData => {
 
-                                        let userLikedPost = false;
-                                        firebase.firestore()
-                                            .collection('postData')
-                                            .doc(userPost.id)
-                                            .collection("likes")
-                                            .doc(this.state.userId)
-                                            .get()
-                                            .then(documentSnapshot => {
-                                                if (documentSnapshot.exists) {
-                                                    userLikedPost = true;
-                                                }
-                                            })
-                                            .then(() => {
+                                        if(userDetails.exists)
+                                        {
+                                            const profileImage = userDetails.get("profileimage");
+                                            const username = userDetails.get("username");
+                                            const userID = userFollowing.id;
 
-                                                const profileImage = userDetails.get("profileimage");
-                                                const username = userDetails.get("username");
-                                                const userID = userFollowing.id;
+                                            const caption = postData.get("caption");
+                                            const createdAt = postData.get("createdAt");
+                                            const downloadURL = postData.get("downloadURL");
+                                            const mediaType = postData.get("mediaType");
+                                            const thumbnail = postData.get("thumbnail");
 
-                                                const caption = userPost.get("caption");
-                                                const createdAt = userPost.get("createdAt");
-                                                const downloadURL = userPost.get("downloadURL");
-                                                const mediaType = userPost.get("mediaType");
+                                            if (mediaType === "video") {
 
-                                                const commentsCount = postCommentsAndLikes.get("commentsCount");
-                                                const likesCount = postCommentsAndLikes.get("likesCount");
+                                                this.setState({
+                                                    videosReceived: this.state.videosReceived + 1
+                                                });
 
+                                                videosDataFetched.push({
+                                                    key: userPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
+                                                    thumbnail: thumbnail,
 
-                                                if (mediaType === "video") {
+                                                    // Needs be retrieved inside the comment method
+                                                });
+                                            } else if (mediaType === "picture") {
 
-                                                    this.setState({
-                                                        videosReceived: this.state.videosReceived + 1
-                                                    });
+                                                this.setState({
+                                                    picturesReceived: this.state.picturesReceived + 1
+                                                });
 
-                                                    videosDataFetched.push({
-                                                        key: userPost.id,
-                                                        userID: userID,
-                                                        name: username,
-                                                        profile: profileImage,
-                                                        caption: caption,
-                                                        createdAt: createdAt,
-                                                        downloadURL: downloadURL,
-                                                        commentsCount: commentsCount,
-                                                        likesCount: likesCount,
-                                                        userLikedPost: userLikedPost,
-                                                        mediaType: mediaType
-                                                    });
-                                                } else if (mediaType === "picture") {
+                                                picturesDataFetched.push({
+                                                    key: userPost.id,
+                                                    userID: userID,
+                                                    name: username,
+                                                    profile: profileImage,
+                                                    caption: caption,
+                                                    createdAt: createdAt,
+                                                    downloadURL: downloadURL,
+                                                    mediaType: mediaType,
 
-                                                    this.setState({
-                                                        picturesReceived: this.state.picturesReceived + 1
-                                                    });
+                                                });
+                                            }
 
-                                                    picturesDataFetched.push({
-                                                        key: userPost.id,
-                                                        userID: userID,
-                                                        name: username,
-                                                        profile: profileImage,
-                                                        caption: caption,
-                                                        createdAt: createdAt,
-                                                        downloadURL: downloadURL,
-                                                        commentsCount: commentsCount,
-                                                        likesCount: likesCount,
-                                                        userLikedPost: userLikedPost,
-                                                        mediaType: mediaType
-                                                    });
-                                                }
+                                            console.log(`\nFeedScreen \nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType}`);
+                                            console.log(`\n\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
 
-                                                console.log(`\nUserID: ${userID} \nUserName: ${username} \nProfile Picture: ${profileImage}   \nPostID : ${userPost.id} \nMediaType : ${mediaType} \nCaption: ${caption} \nCreatedAt: ${createdAt} \nDownloadURL: ${downloadURL} \nMediaType: ${mediaType} \nCommentsCount: ${commentsCount} \nLikesCount: ${likesCount} \nUserLikedPost: ${userLikedPost}`);
-                                                console.log(`\nProcessed Users Count = ${processedFollowingUsers} | Expected Users Count = ${expectedFollowingUsersCount}`);
+                                        }
 
-                                                if (processedFollowingUsers === expectedFollowingUsersCount) {
-                                                    console.log("\nSetting Data To Variable")
-                                                    this.setState({
-                                                        videosDataFetched: videosDataFetched,
-                                                        picturesDataFetched: picturesDataFetched,
-                                                    }, () => {
-                                                        this.setStatesForLoadingFeed()
-                                                    });
-                                                }
-                                            })
-                                            .catch((exception) => {
-                                                console.log(`\nUnable to get Post Likes \n\n${exception}`);
+                                        if (processedFollowingUsers === expectedFollowingUsersCount && expectedUserFollowingPosts === processedUserFollowingPosts) {
 
-                                            })
+                                            this.setState({
+                                                videosDataFetched: videosDataFetched,
+                                                picturesDataFetched: picturesDataFetched,
+                                            }, () => {
+                                                this.setStatesForLoadingFeed()
+                                            });
+                                        }
+
                                     }))
-                                //  const {caption, createdAt, downloadURL, mediaType, commentsCount} = userPost.data();
+                                    .catch((error) => {
+                                        console.log(`${error} \nUnable to get Users following post data!`);
+                                    });
                             })
+
+                            if (processedFollowingUsers === expectedFollowingUsersCount && expectedUserFollowingPosts === processedUserFollowingPosts) {
+
+                                this.setState({
+                                    videosDataFetched: videosDataFetched,
+                                    picturesDataFetched: picturesDataFetched,
+                                }, () => {
+                                    this.setStatesForLoadingFeed()
+                                });
+                            }
                         })
-                })
-                .then(() => {
-
-
+                        .catch((error) => {
+                            console.log(`${error} \nUnable to get Users following posts!`);
+                        });
                 })
                 .catch((error) => {
-                    console.log(`${error} \nUnable to get Users following posts!`);
+                    console.log(`${error} \nUnable to get User we are followings data!`);
                 });
         })
 
@@ -251,12 +284,15 @@ class FeedScreen extends Component {
     setStatesForLoadingFeed() {
         console.log("\nLoad Pictures & Videos")
         if (this.state.videosReceived > 0) {
+
+            console.log("\nFeed Screen got Pictures")
             this.setState({
                 loadVideos: true
             });
         }
 
         if (this.state.picturesReceived > 0) {
+            console.log("\nFeed Screen got Videos")
             this.setState({
                 loadPictures: true
             });
@@ -266,7 +302,6 @@ class FeedScreen extends Component {
             videosIsLoading: false,
             picturesIsLoading: false
         });
-
     }
 
     render() {
@@ -310,7 +345,7 @@ class FeedScreen extends Component {
                     </View>
 
                     {/* Chat BTN */}
-                    <Chat_BTN   navigation={this.props.navigation}/>
+                    <Chat_BTN navigation={this.props.navigation}/>
                 </View>
 
 
@@ -329,14 +364,14 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadPictures && this.state.storiesDataLoaded
                                     ?
-                                    <PictureFeed
+                                    <Feed_PictureFeed
                                         userID={this.state.userId}
                                         data={this.state.picturesDataFetched}
                                         storyData={this.state.storiesData}
                                         navigation={this.props.route.params.navigation}/>
                                     :
-                                    <View style={{flex: 1, padding:10}}>
-                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
+                                    <View style={{flex: 1, padding: 10}}>
+                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B>{this.noPostsMsg}</B> </Text>
                                     </View>
                                 }
                             </>
@@ -355,13 +390,13 @@ class FeedScreen extends Component {
                             <>
                                 {this.state.loadVideos
                                     ?
-                                    <VideoFeed
+                                    <Feed_VideoFeed
                                         userID={this.state.userId}
                                         data={this.state.videosDataFetched}
                                         navigation={this.props.route.params.navigation}/>
                                     :
-                                    <View style={{flex: 1, padding:10}}>
-                                        <Text style={{color: "white", textAlign:"center", fontSize:20}}> <B> Follow a user to view posts on your feed  </B> </Text>
+                                    <View style={{flex: 1, padding: 10}}>
+                                        <Text style={{color: "white", textAlign: "center", fontSize: 20}}> <B>{this.noPostsMsg}</B> </Text>
                                     </View>
                                 }
                             </>

@@ -10,30 +10,39 @@ export default function Trending_Topics_FlatList(props) {
 
 
     return (
-        <View>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold', padding: 10}}>
-                <B>Trending Topics</B>
+        <View style={{padding: 15}}>
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>
+                <B>Trending Topics:</B>
             </Text>
 
-            <FlatList
-                showsHorizontalScrollIndicator={false}
-                data={props.data}
-                horizontal
+            {Object.keys(props.data).length === 0 ?
+                <View style={[feedStyles.trendingTopics(("black")), {width:50, borderColor: "red", borderWidth: 2}]}>
+                </View>
+                :
+                <FlatList
+                    showsHorizontalScrollIndicator={false}
+                    data={props.data}
+                    horizontal
 
-                contentContainerStyle={{
+                    contentContainerStyle={{
 
-                    justifyContent: 'space-between'
+                        justifyContent: 'space-between'
 
-                }}
-                ItemSeparatorComponent={
-                    () => <View style={{width: 16}}/>
-                }
-                renderItem={({item}) => {
-                    return (
-                        <Trending_Topics_TXT navigation={props.navigation} number={item.key} text={item.topic}/>
-                    )
-                }}
-            />
+                    }}
+                    ItemSeparatorComponent={
+                        () => <View style={{width: 16}}/>
+                    }
+                    renderItem={({item}) => {
+                        return (
+                            <Trending_Topics_TXT
+                                navigation={props.navigation}
+                                number={item.key}
+                                text={item.topic}
+                            />
+                        )
+                    }}
+                />
+            }
         </View>
 
 

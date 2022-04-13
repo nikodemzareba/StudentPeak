@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import {View} from 'react-native'
 
-export default function match() {
+export default function Match() {
     return (
-    <View> </View>
+        <View>
+        </View>
     )
 }

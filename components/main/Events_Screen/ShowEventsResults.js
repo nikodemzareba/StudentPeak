@@ -81,43 +81,60 @@ export default function ShowEventsResults(dataIncome) {
                 }}
                 renderItem={({item}) => {
 
-                    {/*If rating doesn't exist fill in a 0 */}
+                    {/*If rating doesn't exist fill in a 0 */
+                    }
 
                     let ratingRate = 0;
-                    let foundRatingsProperty = false;
 
-                    if(item.hasOwnProperty('venue') && item.venue.hasOwnProperty('rating'))
-                    {
+
+                    if (item.hasOwnProperty('venue') && item.venue.hasOwnProperty('rating')) {
                         ratingRate = item.venue.rating;
                     }
 
                     return (
-                        <View style={{Width: ITEM_SIZE}}>
+                        <View style={{Width: ITEM_SIZE, height: HEIGHT - 200}}>
                             <View
                                 style={{
                                     marginHorizontal: SPACING,
                                     padding: SPACING * 2,
                                     alignItems: 'center',
                                     backgroundColor: 'white',
-                                    borderRadius: 34
+                                    borderRadius: 34,
+                                    borderWidth: 2,
+                                    borderColor: "red",
+                                    Width: ITEM_SIZE
                                 }}
                             >
                                 <Image
                                     style={styles.posterImage}
                                     source={{uri: item.thumbnail}}
                                 />
-
-                                <Text style={{fontSize: 24}} numberOfLines={1}>
-                                    {item.title}
-                                </Text>
+                                <View
+                                    style={{flexDirection: 'row', width: ITEM_SIZE}}
+                                >
+                                    <Text style={{fontSize: 24, flexShrink: 1}} numberOfLines={1}>
+                                        {item.title}
+                                    </Text>
+                                </View>
 
 
                                 <Rating rating={ratingRate}/>
-                                <Tickets tickets={item.ticket_info}/>
 
-                                <Text style={{fontSize: 12}} numberOfLines={3}>
-                                    {item.description}
-                                </Text>
+                                <View
+                                    style={{
+                                        flexDirection: 'row', width: ITEM_SIZE, 
+                                    }}
+                                >
+                                    <Tickets tickets={item.ticket_info}/>
+
+                                </View>
+
+                                <View style={{flexDirection: 'row', width: ITEM_SIZE,}}
+                                >
+                                    <Text style={{fontSize: 12, flexShrink: 1}} numberOfLines={1}>
+                                        {item.description}
+                                    </Text>
+                                </View>
                             </View>
                         </View>
                     )
@@ -146,7 +163,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     posterImage: {
-        width: '100%',
+        width: ITEM_SIZE,
         height: ITEM_SIZE * 1.2,
         resizeMode: 'cover',
         borderRadius: 24,

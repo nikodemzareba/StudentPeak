@@ -14,21 +14,33 @@ export default function ProfileIcon_And_Username(props) {
             justifyContent: 'space-between',
             paddingHorizontal: 10,
         }}
-
                           onPress={() => {
                               console.log(`\n\nProfileIcon_And_Username ${props.userID}`)
 
-                              if (props.userID === firebase.auth().currentUser.uid) {
-                                  props.navigation.navigate("PrivateProfile");
+                              if (props.userExists) {
+                                  if (props.userID === firebase.auth().currentUser.uid) {
+                                      props.navigation.navigate("PrivateProfile");
+                                      return;
+                                  }
+                                  props.navigation.navigate("PublicProfile", {uid: props.userID})
+
                                   return;
                               }
-                              props.navigation.navigate("PublicProfile", {uid: props.userID})
+
+                              console.log(`\n\nProfileIcon_And_Username() ${props.userID} doesn't exist to navigate to this profilePage`)
+
                           }
                           }
         >
             <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', paddingRight: 40}}>
-                <Profile_Icon userID={props.userID} width={50} height={50} borderRadius={50}
-                              profileImage={props.profileImage} navigation={props.navigation}/>
+                <Profile_Icon
+                    userID={props.userID}
+                    width={50} height={50}
+                    borderRadius={50}
+                    profileImage={props.profileImage}
+                    navigation={props.navigation}
+                    userExists={props.userExists}
+                />
             </TouchableOpacity>
             <TouchableOpacity style={{alignItems: 'flex-start'}}>
                 <Username_Link_Txt
@@ -36,6 +48,7 @@ export default function ProfileIcon_And_Username(props) {
                     userID={props.userID}
                     fontSize={15}
                     fontWeight={'bold'} navigation={props.navigation}
+                    userExists={props.userExists}
                 />
             </TouchableOpacity>
 

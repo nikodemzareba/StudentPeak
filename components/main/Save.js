@@ -3,6 +3,7 @@ import { Video } from 'expo-av';
 import firebase from 'firebase';
 import React, { useLayoutEffect, useState } from 'react';
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import MentionsTextInput from 'react-native-mentions';
 import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -37,10 +38,10 @@ function Save(props) {
         }
         setUploading(true)
         let downloadURLStill = null
-        let downloadURL = await SaveStorage(props.route.params.source, `post/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
+        let downloadURL = await SaveStorage(props.route.params.source, `posts/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
 
         if (props.route.params.imageSource != null) {
-            downloadURLStill = await SaveStorage(props.route.params.imageSource, `post/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
+            downloadURLStill = await SaveStorage(props.route.params.imageSource, `posts/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`)
         }
 
         savePostData(downloadURL, downloadURLStill);
@@ -383,7 +384,7 @@ const utils = StyleSheet.create({
     }
 })
 const navbar = StyleSheet.create({
-
+    
     image: {
         padding: 20
     },
@@ -404,6 +405,7 @@ const navbar = StyleSheet.create({
 const container = StyleSheet.create({
     container: {
         flex: 1,
+        
     },
     camera: {
         flex: 1,
@@ -425,7 +427,8 @@ const container = StyleSheet.create({
     },
     form: {
         flex: 1,
-        margin: 25
+        margin: 25,
+       
     },
     profileInfo: {
         padding: 25,

@@ -101,7 +101,8 @@ export default function ShowEventsResults(dataIncome) {
                                     backgroundColor: 'white',
                                     borderRadius: 34,
                                     borderWidth: 2,
-                                    borderColor: "red"
+                                    borderColor: "red",
+                                    Width: ITEM_SIZE
                                 }}
                             >
                                 <Image
@@ -109,7 +110,7 @@ export default function ShowEventsResults(dataIncome) {
                                     source={{uri: item.thumbnail}}
                                 />
                                 <View
-                                    style={{flexDirection: 'row', width:ITEM_SIZE}}
+                                    style={{flexDirection: 'row', width: ITEM_SIZE}}
                                 >
                                     <Text style={{fontSize: 24, flexShrink: 1}} numberOfLines={1}>
                                         {item.title}
@@ -118,12 +119,17 @@ export default function ShowEventsResults(dataIncome) {
 
 
                                 <Rating rating={ratingRate}/>
-                                <Tickets tickets={item.ticket_info}/>
-
-
 
                                 <View
-                                    style={{flexDirection: 'row', width:ITEM_SIZE}}
+                                    style={{
+                                        flexDirection: 'row', width: ITEM_SIZE, 
+                                    }}
+                                >
+                                    <Tickets tickets={item.ticket_info}/>
+
+                                </View>
+
+                                <View style={{flexDirection: 'row', width: ITEM_SIZE,}}
                                 >
                                     <Text style={{fontSize: 12, flexShrink: 1}} numberOfLines={1}>
                                         {item.description}

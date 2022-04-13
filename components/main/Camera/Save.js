@@ -13,8 +13,7 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
-import MentionsTextInput from 'react-native-mentions';
-import {Snackbar} from 'react-native-paper';
+
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchUserPosts, sendNotification} from '../../../redux/actions';
@@ -262,36 +261,14 @@ function Save(props) {
 
                         <View style={[{marginBottom: 20, width: '100%', borderColor: 'red', borderWidth: 2}]}>
 
-
-                            <MentionsTextInput
-
-                                textInputStyle={{
-                                    borderColor: '#ebebeb',
-                                    borderWidth: 1,
-                                    padding: 5,
-                                    fontSize: 15,
-                                    width: '100%'
+                            <TextInput
+                                placeholder="Add Tag To Post"
+                                textAlign={'center'}
+                                onChangeText={(caption) => {
+                                    if (caption !== undefined || caption !== "") {
+                                        setCaption(caption)
+                                    }
                                 }}
-                                suggestionsPanelStyle={{backgroundColor: 'rgba(100,100,100,0.1)'}}
-                                loadingComponent={() => <View style={{
-                                    flex: 1,
-                                    width: 200,
-                                    justifyContent: 'center',
-                                    alignItems: 'center'
-                                }}><ActivityIndicator/></View>}
-                                textInputMinHeight={30}
-                                textInputMaxHeight={80}
-                                trigger={'@'}
-                                triggerLocation={'new-word-only'} // 'new-word-only', 'anywhere'
-                                value={caption}
-                                onChangeText={setCaption}
-                                triggerCallback={callback.bind(this)}
-                                renderSuggestionsRow={renderSuggestionsRow.bind(this)}
-                                suggestionsData={data}
-                                keyExtractor={(item, index) => item.username}
-                                suggestionRowHeight={45}
-                                horizontal={true}
-                                MaxVisibleRowCount={3}
                             />
                         </View>
 

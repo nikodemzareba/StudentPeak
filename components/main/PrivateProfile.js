@@ -1,71 +1,66 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {
-  View,
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  FlatList,
+    View,
+    ActivityIndicator,
+    ScrollView,
+    StyleSheet,
+    FlatList,
 } from "react-native";
 import firebase from "firebase";
 import ProfileDisplay from "./ProfileDisplay";
-import { feedStyles } from "./Feeds/Shared_Objects/Styles";
+import {feedStyles} from "./Feeds/Shared_Objects/Styles";
 import SearchScreenObject from "./Search/Objects/SearchScreenObject";
 
 class PrivateProfile extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      profileImageLoaded: false,
-      profileImage: "",
-      userId: firebase.auth().currentUser.uid,
+        this.state = {
+            profileImageLoaded: false,
+            profileImage: "",
+            userId: firebase.auth().currentUser.uid,
 
-      mediaDataDataFetched: [],
-      mediaDataIsLoading: true,
-      loadMediaData: false,
-      previous: "",
-    };
-    this.usersFollowingRef = firebase
-      .firestore()
-      .collection("following")
-      .doc(this.state.userId)
-      .collection("userFollowing");
-  }
+            mediaDataDataFetched: [],
+            mediaDataIsLoading: true,
+            loadMediaData: false,
+            previous: "",
+        };
+        this.usersFollowingRef = firebase
+            .firestore()
+            .collection("following")
+            .doc(this.state.userId)
+            .collection("userFollowing");
+    }
 
-  componentDidMount() {
-      this.props.navigation.addListener('focus', () => {
-        this.getPostInfo(this.props);
-        this.getProfileInfo(this.props);
-    });
-  }
-
-
+    componentDidMount() {
+        this.props.navigation.addListener('focus', () => {
+            this.getPostInfo(this.props);
+            this.getProfileInfo(this.props);
+        });
+    }
 
 
+    // This method is passed all of the users posts
+    getPostInfo = async () => {
+        const mediaDataDataFetched = [];
 
-
-
-  // This method is passed all of the users posts
-  getPostInfo = async () => {
-    const mediaDataDataFetched = [];
-
-    // Get user info
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(this.state.userId)
-      .get()
-      .then((userDetails) => {
-        // Get all of the posts from the user
+        // Get user info
         firebase
-          .firestore()
-          .collection("posts")
-          .doc(this.state.userId)
-          .collection("userPosts")
-          .get()
-          .then((privatePosts) => {
-            let expectedResultsSize = privatePosts.size;
-            let count = 0;
+            .firestore()
+            .collection("users")
+            .doc(this.state.userId)
+            .get()
+            .then((userDetails) => {
+                // Get all of the posts from the user
+                firebase
+                    .firestore()
+                    .collection("posts")
+                    .doc(this.state.userId)
+                    .collection("userPosts")
+                    .get()
+                    .then((privatePosts) => {
+                        let expectedResultsSize = privatePosts.size;
+                        let count = 0;
 
                         privatePosts.forEach((userPost) => {
 
@@ -98,102 +93,102 @@ class PrivateProfile extends Component {
                                         thumbnail: thumbnail,
                                     });
 
-                  if (count === expectedResultsSize) {
-                    this.setState({
-                      mediaDataDataFetched: mediaDataDataFetched,
-                      loadMediaData: false,
+                                    if (count === expectedResultsSize) {
+                                        this.setState({
+                                            mediaDataDataFetched: mediaDataDataFetched,
+                                            loadMediaData: false,
+                                        });
+                                    }
+                                }))
+                        });
                     });
-                  }
+            });
+    };
+
+    // Get the profile info related to the user
+    getProfileInfo = async () => {
+        const profileDataFetched = [];
+
+        // In the users collection, search for the currently logged in user's info
+        firebase
+            .firestore()
+            .collection("users")
+            .doc(this.state.userId)
+            .get()
+            .then((userInfo) => {
+                const bio = userInfo.get("bio");
+                const followers = userInfo.get("followers");
+                const following = userInfo.get("following");
+                const name = userInfo.get("name");
+                const username = userInfo.get("username");
+                const profileimage = userInfo.get("profileimage");
+
+                profileDataFetched.push({
+                    key: this.state.userId,
+                    bio: bio,
+                    followers: followers,
+                    following: following,
+                    name: name,
+                    username: username,
+                    profileimage: profileimage,
+                    profile: profileimage,
+                });
+
+                this.setState({
+                    profileDataFetched: profileDataFetched,
                 });
             });
-          });
-      });
-  };
+    };
 
-  // Get the profile info related to the user
-  getProfileInfo = async () => {
-    const profileDataFetched = [];
+    render() {
+        return (
+            <ScrollView style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+                <View>
+                    <ProfileDisplay
+                        userID={this.state.userId}
+                        data={this.state.profileDataFetched}
+                        navigation={this.props.route.params.navigation}
+                    />
+                </View>
 
-    // In the users collection, search for the currently logged in user's info
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(this.state.userId)
-      .get()
-      .then((userInfo) => {
-        const bio = userInfo.get("bio");
-        const followers = userInfo.get("followers");
-        const following = userInfo.get("following");
-        const name = userInfo.get("name");
-        const username = userInfo.get("username");
-        const profileimage = userInfo.get("profileimage");
+                {this.state.loadMediaData ? (
+                    <View style={styles.loading}>
+                        <ActivityIndicator size="large" color="red"/>
+                    </View>
+                ) : (
+                    <View style={{flex: 1, paddingTop: 15, backgroundColor: "black"}}>
+                        <View style={feedStyles.screenBackground}>
+                            <View style={{paddingTop: 10, height: 30}}></View>
 
-        profileDataFetched.push({
-          key: this.state.userId,
-          bio: bio,
-          followers: followers,
-          following: following,
-          name: name,
-          username: username,
-          profileimage: profileimage,
-          profile: profileimage,
-        });
-
-        this.setState({
-          profileDataFetched: profileDataFetched,
-        });
-      });
-  };
-
-  render() {
-    return (
-      <ScrollView style={{ flex: 1, paddingTop: 15, backgroundColor: "black" }}>
-        <View>
-          <ProfileDisplay
-            userID={this.state.userId}
-            data={this.state.profileDataFetched}
-            navigation={this.props.route.params.navigation}
-          />
-        </View>
-
-        {this.state.loadMediaData ? (
-          <View style={styles.loading}>
-            <ActivityIndicator size="large" color="red" />
-          </View>
-        ) : (
-          <View style={{ flex: 1, paddingTop: 15, backgroundColor: "black" }}>
-            <View style={feedStyles.screenBackground}>
-              <View style={{ paddingTop: 10, height: 30 }}></View>
-
-              <FlatList
-                data={this.state.mediaDataDataFetched}
-                numColumns={3}
-                renderItem={({ item }) => (
-                  <SearchScreenObject
-                    item={item}
-                    navigation={this.props.route.params.navigation}
-                    comingFrom={"PrivateProfile"}
-                  />
+                            <FlatList
+                                data={this.state.mediaDataDataFetched}
+                                numColumns={3}
+                                renderItem={({item}) => (
+                                    <SearchScreenObject
+                                        item={item}
+                                        navigation={this.props.route.params.navigation}
+                                        comingFrom={"PrivateProfile"}
+                                    />
+                                )}
+                            />
+                        </View>
+                    </View>
                 )}
-              />
-            </View>
-          </View>
-        )}
-      </ScrollView>
-    );
-  }
+            </ScrollView>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  loading: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+    loading: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: "center",
+        justifyContent: "center",
+    },
 });
 
 export default PrivateProfile;

@@ -33,7 +33,7 @@ class PublicProfile extends Component {
   }
 
   componentDidMount() {
-    
+
 
     this.props.navigation.addListener('focus', () => {
         this.state.mediaDataDataFetched = [];
@@ -63,33 +63,36 @@ class PublicProfile extends Component {
             let expectedResultsSize = privatePosts.size;
             let count = 0;
 
-            privatePosts.forEach((userPost) => {
-              count++;
-              // Get the posts details
-              firebase
-                .firestore()
-                .collection("postData")
-                .doc(userPost.id)
-                .get()
-                .then((postData) => {
-                  const profileImage = userDetails.get("profileimage");
-                  const name = userDetails.get("username");
-                  const caption = postData.get("caption");
-                  const createdAt = postData.get("createdAt");
-                  const downloadURL = postData.get("downloadURL");
-                  const mediaType = postData.get("mediaType");
-                  const userID = props.route.params.uid;
+                        privatePosts.forEach((userPost) => {
 
-                  this.state.mediaDataDataFetched.push({
-                    key: userPost.id,
-                    caption: caption,
-                    createdAt: createdAt,
-                    downloadURL: downloadURL,
-                    mediaType: mediaType,
-                    profile: profileImage,
-                    name: name,
-                    userID: userID,
-                  });
+                            count++;
+                            // Get the posts details
+                            firebase.firestore()
+                                .collection('postData')
+                                .doc(userPost.id)
+                                .get()
+                                .then((postData => {
+
+                                    const profileImage = userDetails.get("profileimage");
+                                    const name = userDetails.get("username");
+                                    const caption = postData.get("caption");
+                                    const createdAt = postData.get("createdAt");
+                                    const downloadURL = postData.get("downloadURL");
+                                    const mediaType = postData.get("mediaType");
+                                    const userID = props.route.params.uid;
+                                    const thumbnail = postData.get("thumbnail");
+
+                                    this.state.mediaDataDataFetched.push({
+                                        key: userPost.id,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        mediaType: mediaType,
+                                        profile: profileImage,
+                                        name: name,
+                                        userID: userID,
+                                        thumbnail: thumbnail,
+                                    });
 
                   if (count === expectedResultsSize) {
                     this.setState({
@@ -158,23 +161,28 @@ class PublicProfile extends Component {
             <View style={feedStyles.screenBackground}>
               <View style={{ paddingTop: 10, height: 30 }}></View>
 
-              <FlatList
-                data={this.state.mediaDataDataFetched}
-                numColumns={3}
-                renderItem={({ item }) => (
-                  <SearchScreenObject
-                    item={item}
-                    navigation={this.props.route.params.navigation}
-                    comingFrom={"PublicProfile"}
-                  />
-                )}
-              />
-            </View>
-          </View>
-        )}
-      </ScrollView>
-    );
-  }
+                            <FlatList
+                                data={this.state.mediaDataDataFetched}
+                                numColumns={3}
+                                renderItem={({item}) => (
+
+                                    <SearchScreenObject
+                                        item={item}
+                                        navigation={this.props.route.params.navigation}
+                                        comingFrom={"PublicProfile"}
+                                        userIDOfProfile={this.props.route.params.uid}
+                                    />
+                                )}
+
+                            />
+
+                        </View>
+                    </View>
+                }
+            </ScrollView>
+        );
+
+    }
 }
 
 const styles = StyleSheet.create({

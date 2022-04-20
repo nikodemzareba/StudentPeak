@@ -11,7 +11,9 @@ export default function Stories_FlatList(props) {
         data={props.storyData}
         horizontal
         contentContainerStyle={{
-            alignItems: 'center'
+            alignItems: 'center',
+            paddingRight:10,
+            paddingLeft:8
         }}
         renderItem={({item}) => {
             return (
@@ -23,7 +25,7 @@ export default function Stories_FlatList(props) {
                     height={45}
                     borderRadius={45}
                     username={item.username}
-                    maxUsernameLength={8}
+                    maxUsernameLength={7}
                     fontSize={9}
                     navigation={props.navigation}
                 />

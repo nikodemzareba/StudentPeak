@@ -67,33 +67,36 @@ class PrivateProfile extends Component {
             let expectedResultsSize = privatePosts.size;
             let count = 0;
 
-            privatePosts.forEach((userPost) => {
-              count++;
-              // Get the posts details
-              firebase
-                .firestore()
-                .collection("postData")
-                .doc(userPost.id)
-                .get()
-                .then((postData) => {
-                  const profileImage = userDetails.get("profileimage");
-                  const name = userDetails.get("username");
-                  const caption = postData.get("caption");
-                  const createdAt = postData.get("createdAt");
-                  const downloadURL = postData.get("downloadURL");
-                  const mediaType = postData.get("mediaType");
-                  const userID = this.state.userId;
+                        privatePosts.forEach((userPost) => {
 
-                  mediaDataDataFetched.push({
-                    key: userPost.id,
-                    caption: caption,
-                    createdAt: createdAt,
-                    downloadURL: downloadURL,
-                    mediaType: mediaType,
-                    profile: profileImage,
-                    name: name,
-                    userID: userID,
-                  });
+                            count++;
+                            // Get the posts details
+                            firebase.firestore()
+                                .collection('postData')
+                                .doc(userPost.id)
+                                .get()
+                                .then((postData => {
+
+                                    const profileImage = userDetails.get("profileimage");
+                                    const name = userDetails.get("username");
+                                    const caption = postData.get("caption");
+                                    const createdAt = postData.get("createdAt");
+                                    const downloadURL = postData.get("downloadURL");
+                                    const mediaType = postData.get("mediaType");
+                                    const thumbnail = postData.get("thumbnail");
+                                    const userID = this.state.userId;
+
+                                    mediaDataDataFetched.push({
+                                        key: userPost.id,
+                                        caption: caption,
+                                        createdAt: createdAt,
+                                        downloadURL: downloadURL,
+                                        mediaType: mediaType,
+                                        profile: profileImage,
+                                        name: name,
+                                        userID: userID,
+                                        thumbnail: thumbnail,
+                                    });
 
                   if (count === expectedResultsSize) {
                     this.setState({

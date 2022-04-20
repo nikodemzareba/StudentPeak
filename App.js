@@ -26,8 +26,8 @@ import ChooseUsername from './components/authentication/ChooseUsername'
 import StudyDetails from './components/authentication/StudyDetails'
 import Connect from './components/authentication/Connect'
 import Bio from './components/authentication/Bio'
-import Add from './components/main/Add'
-import Save from './components/main/Save'
+import Add from './components/main/Camera/Add'
+import Save from "./components/main/Camera/Save";
 import Topbar from './components/main/top/Topbar'
 import ShowEventsResults from './components/main/Events_Screen/ShowEventsResults'
 import UsersLikedPost from "./components/main/Feeds/Shared_Objects/Likes_And_Comments/Likes/UsersLikedPost";
@@ -147,7 +147,8 @@ function App() {
 
                                 <Stack.Screen name="Verify" component={Verify} options={{headerShown: false}}/>
 
-                            </Stack.Group>}
+                            </Stack.Group>
+                        }
 
 
 

@@ -115,7 +115,7 @@ export default function VideoPlayer(props) {
           togglePlay={togglePlay}
         />
       </View>
-      <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} likesCount={item.likesCount}  commentsCount={item.commentsCount} navigation={props.navigation}/>
+      <LikesAndCommentsDisplay userID={props.userID}  userLikedPost={item.userLikedPost} postID={item.key} navigation={props.navigation}/>
 
     </View>
   );

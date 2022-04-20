@@ -25,17 +25,6 @@ export default function SearchScreenResults(props) {
             <View style={feedStyles.screenBackground}>
                 <View style={{paddingTop: 10, height: 30}}>
                 </View>
-                {/*<View style={{backgroundColor: "white", justifyContent: "center", height: 50}}>*/}
-                {/*    <TextInput*/}
-                {/*        placeholder={props.route.params.postTag} onChangeText={(tag) => {*/}
-
-                {/*        if (tag !== undefined || tag !== "") {*/}
-                {/*            getPosts(tag)*/}
-                {/*            console.log(`\n\nGetting Posts for tag ${tag}`)*/}
-                {/*        }*/}
-                {/*    }}*/}
-                {/*    />*/}
-                {/*</View>*/}
 
                 <TouchableOpacity
                     onPress={() => {

@@ -34,7 +34,7 @@ export default function Events(props) {
     {/* Run Script when page is first rendered */
     }
     useEffect(() => {
-           displayIP();
+        displayIP();
     }, []);
 
     {/* Variables  */
@@ -72,7 +72,7 @@ export default function Events(props) {
 
     const alertMsg = (title, msg) => {
         alert(msg);
-        Alert.alert(title , msg, [
+        Alert.alert(title, msg, [
             {
                 text: 'Cancel',
                 onPress: () => console.log('Cancel Pressed'),
@@ -82,7 +82,8 @@ export default function Events(props) {
         ]);
     }
 
-    {/* Searching For Event  */}
+    {/* Searching For Event  */
+    }
     const btn_event = async () => {
 
         console.log(`\n\nEvents Data ${chosenEvent} \n\nLocation Data ${chosenLocation}`)
@@ -108,8 +109,7 @@ export default function Events(props) {
                 // console.log(`\n\nFetch Data Events Data 1\n${json[0].title}`);
                 console.log(`\n\nEvents Page Fetch Data \n${JSON.stringify(json)}`);
 
-                if(json.hasOwnProperty('events_results'))
-                {
+                if (json.hasOwnProperty('events_results')) {
                     props.navigation.navigate('ShowEventsResults', {json});
                     return;
                 }
@@ -120,7 +120,7 @@ export default function Events(props) {
             })
             .catch((error) => {
                 alertMsg('Error', `Error Fetching Data \n\n${error}`)
-                console.log("\n\n"+ error)
+                console.log("\n\n" + error)
             });
     }
 
@@ -131,7 +131,7 @@ export default function Events(props) {
 
             {/*<MyActivityIndicator/>*/}
             <Image
-                style={[styles.Image, {width: WIDTH, height: ((HEIGHT / 6) * 4) }]}
+                style={[styles.Image, {width: WIDTH, height: ((HEIGHT / 6) * 4)}]}
                 source={require('./Images/Events2.jpg')}
             />
 

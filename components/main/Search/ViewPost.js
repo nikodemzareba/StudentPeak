@@ -19,7 +19,7 @@ import styles from "../../post/styles";
 const windowHeight = Dimensions.get('window').height;
 export default function ViewPost(props) {
 
-    console.log(`\n\nViewPost() ${props.route.params.data.key}`)
+    console.log(`\n\nViewPost() postID: ${props.route.params.data.key} mediaType: ${props.route.params.data.mediaType}`)
 
     return (
 
@@ -33,6 +33,11 @@ export default function ViewPost(props) {
                                   if(props.route.params.comingFrom ==="PrivateProfile")
                                   {
                                       props.route.params.navigation.navigate("PrivateProfile", {navigation: navigation})
+                                  }
+                                  else if(props.route.params.comingFrom ==="PublicProfile")
+                                  {
+                                      const userID = props.route.params.userID;
+                                      props.navigation.navigate("PublicProfile", {uid: userID})
                                   }
                                   else
                                   {
@@ -63,8 +68,6 @@ export default function ViewPost(props) {
                     mediaType={props.route.params.data.mediaType}
 
                     postID={props.route.params.data.key}
-                    commentsCount={props.route.params.data.commentsCount}
-
                 />
             </View>
 

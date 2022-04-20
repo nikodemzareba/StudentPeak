@@ -18,7 +18,7 @@ export default function LikesAndCommentsDisplay(props) {
             <CommentBTN
                 userID={props.userID}
                 postID={props.postID}
-                commentsCount={props.commentsCount}
+
                 navigation={props.navigation}
             />
         </View>

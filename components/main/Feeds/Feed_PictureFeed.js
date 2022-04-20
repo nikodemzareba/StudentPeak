@@ -41,7 +41,7 @@ export default function Feed_PictureFeed(props) {
                             mediaType={item.mediaType}
 
                             postID={item.key}
-                            commentsCount={item.commentsCount}
+
                         />
 
                     )

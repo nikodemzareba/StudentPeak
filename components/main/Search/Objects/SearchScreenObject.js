@@ -9,6 +9,14 @@ export default function SearchScreenObject(props) {
     const [videoImageThumbnail, setVideoImageThumbnail] = useState(null);
 
     const generateThumbnail = async (uriIn) => {
+
+        if  (props.item.thumbnail !== undefined)
+        {
+            setVideoImageThumbnail(props.item.thumbnail);
+            setDoneThumbnail(true);
+            return ;
+        }
+
         console.log(`\n\nSearchScreenObject generateThumbnail() URI itemKEy \n${props.item.key}`);
         try {
             const {uri} = await VideoThumbnails.getThumbnailAsync(
@@ -41,7 +49,8 @@ export default function SearchScreenObject(props) {
                           onPress={() => {
                               const navigation = props.navigation;
                               const comingFrom = props.comingFrom;
-                              props.navigation.navigate("ViewPost", {navigation: navigation, data: props.item, comingFrom: comingFrom})
+                              const userIDOfProfile =  props.userIDOfProfile;
+                              props.navigation.navigate("ViewPost", {navigation: navigation, data: props.item, comingFrom: comingFrom, userID: userIDOfProfile})
                           }}
         >
             {props.item.mediaType === "picture"

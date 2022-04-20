@@ -70,7 +70,7 @@ export const feedStyles = StyleSheet.create({
         alignItems: 'flex-start',
         padding:4
     },
-    trendingTopics:{
+    trendingTopics :(background) => ({
         flexDirection:"row",
         alignContent:"center",
 
@@ -87,11 +87,11 @@ export const feedStyles = StyleSheet.create({
 
         textAlign:"center",
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: background,
         padding:5,
 
-    },
-    trendingNumber:{
+    }),
+    trendingNumber:(background) => ({
 
         flexDirection:"row",
         alignContent:"center",
@@ -103,9 +103,9 @@ export const feedStyles = StyleSheet.create({
         borderRadius: 45,
         // textAlign: 'center',
         alignItems:"center",
-        backgroundColor:"black",
+        backgroundColor:background,
         paddingRight:10
-    },
+    }),
     loading: {
         position: 'absolute',
         left: 0,

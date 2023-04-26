@@ -17,18 +17,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access your camera",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "config": {
-        "firebase":{
+        "firebase": {
           "apiKey": "AIzaSyAEvTx7v-Z10OWeDI4uSlUQVW8ZdBoLnFk",
           "authDomain": "studentpeak-8b306.firebaseapp.com",
           "projectId": "studentpeak-8b306",
@@ -40,7 +48,8 @@
       }
     },
     "plugins": [
-      "expo-camera"
+      "expo-camera",
+      "expo-av"
     ]
   }
 }

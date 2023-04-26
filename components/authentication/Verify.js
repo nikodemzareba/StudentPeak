@@ -1,4 +1,6 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
+import firebase from 'firebase';
 import { Component, useState } from 'react'
 import {
   StyleSheet,
@@ -9,30 +11,45 @@ import {
   Picker,
 } from 'react-native'
 
-import { SimpleLineIcons } from '@expo/vector-icons'
 
-import firebase from 'firebase'
-import 'firebase/firestore'
+require("firebase/firestore")
+require("firebase/firebase-storage")
 
-const Verify = ({ navigation }) => {
-  function navigate() {
-    /* 
-      Add validation with 
-      database and send user to profile.
-      */
-    navigation.navigate('AboutYou')
-  }
-  const [selectedValue, setSelectedValue] = useState("University of Kent");
+
+
+function Verify() {
+  const navigation = useNavigation()
+  const [universityEmail, setUniversityEmail] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
+
+
+  const onVerify = () => {
+
+    // Implement a check for student email to check if the email is .ac.uk.
+    // Implement outlook API to authenticate. 
+    // Create a database of Universities and render them on screen as selection. 
+  
+        firebase.firestore()
+        .collection('users')
+        .doc(firebase.auth().currentUser.uid)
+        .update({
+          verifyEmail: universityEmail,
+          placeofstudy: selectedValue,
+        })
+        .then(() => {
+        navigation.navigate('AboutYou');
+        console.log(`Successfully Verified`);
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      };
+    
+      
+
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <SimpleLineIcons
-          style={styles.icon}
-          name="arrow-left"
-          size={20}
-          color="white"
-        />
-      </TouchableOpacity>
       <View>
         <Text style={styles.logo}>StudentPeak</Text>
       </View>
@@ -47,29 +64,30 @@ const Verify = ({ navigation }) => {
           style={styles.inputText}
           placeholder="Email address*"
           placeholderTextColor="black"
-          //onChangeText={(text) => this.setState({ email: text })}
+          onChangeText={(changeEmail) => setUniversityEmail(changeEmail)}
         />
       </View>
       <View>
         <Text style={styles.ptextView}>Place of Study</Text>
       </View>
-      <View style={styles.passView}>
-        <Picker
-          selectedValue={selectedValue}
-          style={{ height:100, width: 260 }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="University of Kent" value="ukc" />
-          <Picker.Item label="Canterbury Christ Church" value="ccu" />
-        </Picker>
-      </View>
-
-      <TouchableOpacity style={styles.loginBtn} onPress={navigate}>
+      
+      
+      <Picker
+        selectedValue={selectedValue}
+        style={{ height: 80, width: 300, marginBottom: 100 }}
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
+        itemStyle={{ backgroundColor: "black", color: "white", fontFamily:"Montseratt", fontSize:20 }}
+      >
+        <Picker.Item label="University of Kent" value="UniversityOfKent" />
+        <Picker.Item label="University of Christ Church" value="ChristChurchUniversity" />
+      </Picker>
+      
+      <TouchableOpacity style={styles.loginBtn} onPress={onVerify}>
         <Text style={styles.loginText}>Verify</Text>
       </TouchableOpacity>
     </View>
   )
-}
+ }
 
 const styles = StyleSheet.create({
   container: {
@@ -191,4 +209,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Verify
+export default Verify;
